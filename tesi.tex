@@ -3,6 +3,20 @@
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 
+\usepackage{siunitx}
+\usepackage[autostyle=true]{csquotes}
+\usepackage[style=numeric,backref,hyperref,abbreviate=false,backend=biber]{biblatex}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+
+\sisetup{per-mode=symbol,
+  inter-unit-separator={}\cdot{},
+  exponent-product=\cdot,
+  output-product=\cdot
+}
+
+\bibliography{bibliografia} % nome del file contenente la bibliografia
+\defbibheading{subbibliography}{\section*{#1}\markboth{#1}{#1}}
+
 % TODO: scegliere il titolo definitivo e creare il frontespizio con il pacchetto
 % `frontespizio'
 \title{Equazione di Keplero}
@@ -47,6 +61,16 @@
 \section{I pianeti extrasolari}
 \label{sec:extrasolari}
 
-
+\clearpage{}
+\phantomsection{}
+\nocite{*} % TODO: citare i libri
+\addcontentsline{toc}{chapter}{Riferimenti bibliografici}
+\printbibliography[title=Riferimenti bibliografici]
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master:
+%%% fill-column: 80
+%%% End:
