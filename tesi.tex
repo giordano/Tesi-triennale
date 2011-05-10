@@ -3,10 +3,31 @@
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 
+%%%%% Pacchetti caricati
+% `mathtools' serve per definire la norma e il valore assoluto. Caricarlo prima
+% di `amsthm' altrimenti i simboli QED potrebbero essere allineati a sinistra
+% usando l'opzione di classe `fleqn'.
+\usepackage{mathtools}
+\usepackage{amsfonts,amssymb,amsthm}
 \usepackage{siunitx}
 \usepackage[autostyle=true]{csquotes}
 \usepackage[style=numeric,backref,hyperref,abbreviate=false,backend=biber]{biblatex}
-\usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{hyperref}
+% `bm' serve per scrivere i vettori in corsivo con il comando
+% `\bm{vettore}'. Deve sostituire il comando `\mathbf{vettore}' perché questo
+% restituisce erroneamente lettere in tondo, non in corsivo e non funziona con
+% le lettere greche.
+\usepackage{bm}
+%%%%% Fine pacchetti
+
+%%%%% Impostazioni
+% impostazioni per il pacchetto `hyperref'. Per l'elenco di tutte le opzioni del
+% documento consulta il manuale: `texdoc hyperref'
+\hypersetup{colorlinks,% link colorati, non riquadrati
+  breaklinks=true,% permette di spezzare i link su più righi
+  bookmarksnumbered,% inserisce i numeri delle sezioni nei segnalibri
+  urlcolor=black,linkcolor=black,citecolor=black
+}
 
 \sisetup{per-mode=symbol,
   inter-unit-separator={}\cdot{},
@@ -20,6 +41,80 @@
 % TODO: scegliere il titolo definitivo e creare il frontespizio con il pacchetto
 % `frontespizio'
 \title{Equazione di Keplero}
+%%%%% Fine impostazioni
+
+%%%%% Comandi personalizzati
+% ridefinisco i comandi per alcune lettere greche in modo che si usino le
+% varianti
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+% Operatori
+\newcommand*{\dd}{\mathop{}\!\mathrm{d}} % Operatore differenziale \dd
+\DeclareMathOperator{\uimm}{\mathrm{i}} % unità immaginaria
+% Operatore valore assoluto \abs{x}. Usa \abs*{} per le frazioni
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+% Operatore norma \norm{x}. Usa \norm*{} per le frazioni
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+%% Derivate
+% Derivata totale: \toder[ordine]{funzione}{variabile}
+\newcommand*{\toder}[3][]{\frac{{\dd^{#1}}#2}{\dd {#3}^{#1}}}
+% Derivata parziale \parder[ordine]{funzione}{variabile}
+% Per la definizione del comando `parder' (per inserire le derivate parziali)
+% vedi http://www.guit.sssup.it/phpbb/viewtopic.php?p=42188#42188
+\makeatletter
+\newcommand{\parder}[2]{\begingroup
+  \@tempswafalse\toks@={}\count@=\z@
+  \@for\next:=#2\do
+    {\expandafter\check@var\next\@nil
+     \advance\count@\parder@exp
+     \if@tempswa
+       \toks@=\expandafter{\the\toks@\,}%
+     \else
+       \@tempswatrue
+     \fi
+     \toks@=\expandafter{\the\expandafter\toks@\expandafter\partial\parder@var}}%
+  \frac{\partial\ifnum\count@=\@ne\else^{\number\count@}\fi#1}{\the\toks@}%
+  \endgroup}
+\def\check@var{\@ifstar{\mult@var}{\one@var}}
+\def\mult@var#1#2\@nil{\def\parder@var{#2^{#1}}\def\parder@exp{#1}}
+\def\one@var#1\@nil{\def\parder@var{#1}\chardef\parder@exp\@ne}
+\makeatother
+
+% Derivate per le formule in linea (usare \frac in linea è eccessivo). La `l'
+% iniziale nel nome distingue questi comandi da quelli per le formule fuori
+% corpo. Non uso `\dd' ma `\mathrm{d}' perché nelle formule in linea `\dd'
+% aggiunge una spaziatura non adatta. Non sono dei comandi bellissimi, ma
+% permettono di passare facilmente da formula in linea a fuori corpo e viceversa
+% cambiando una lettera.
+% Derivata totale: \ltoder[ordine]{funzione}{variabile}
+\newcommand*{\ltoder}[3][]{\mathrm{d}^{#1}#2 / \mathrm{d} {#3}^{#1}}
+% Derivata parziale: \lparder[ordine]{funzione}{variabile}
+\newcommand*{\lparder}[3][]{\partial^{#1} #2 / \partial {#3}^{#1}} 
+% NOTA: `\parder' e `\lparder' non sono completamente interscambiabili, il primo
+% comando è molto più complesso e permette di inserire le derivate miste, a
+% differenza del secondo.
+
+% Costante di Eulero
+\DeclareMathOperator{\e}{\mathrm{e}}
+% Versore. Esempi: versore x: `\versore{x}', versore i: \versor{\imath}, versore
+% j: \versor{\jmath} (solo `i' e `j' richiedono `\imath' e `\jmath', altrimenti
+% il puntino litiga con `\hat')
+\newcommand*{\versor}[1]{\hat{\bm{#1}}}
+
+% Ambiente per scrivere sistemi di equazioni.
+% Vedi `L'arte di scrivere con LaTeX' di Pantieri.
+% Esempio d'uso (in ambiente matematico):
+%	\begin{sistema}
+%         x+y+z=0 \\
+%         2x-y=1 \\
+%         y-4z=-3
+%       \end{sistema}
+\newenvironment{sistema}%
+{\left\lbrace\begin{array}{@{}l@{}}}%
+    {\end{array}\right.}
+%%%%% Fine comandi personalizzati
 
 \begin{document}
 
