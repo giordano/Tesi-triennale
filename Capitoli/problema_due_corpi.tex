@@ -1,8 +1,120 @@
 \chapter{Il problema dei due corpi}
 \label{chap:due-corpi}
 
+In questo capitolo affronteremo il \emph{problema dei due corpi}, cioè lo studio
+del moto di due corpi, supposti puntiformi, soggetti solamente alla mutua
+interazione dovuta a forze che soddisfano il principio di azione e reazione. In
+particolare ci occuperemo del caso dell'interazione gravitazionale che è una
+forza di tipo centrale. Il problema sarà risolto usando il formalismo newtoniano
+e quello lagrangiano, di quest'ultimo presenteremo una breve introduzione.
+Riusciremo a determinare analiticamente le equazioni delle orbite dei due corpi
+e a dedurre alcune proprietà.
+
 \section{Formalismo newtoniano}
 \label{sec:formalismo-newton}
+Consideriamo un sistema costituito da due corpi, puntiformi, di masse $m_1$ e
+$m_2$ e in un fissato sistema di riferimento inerziale indichiamo con $\bm{r}_1$
+e $\bm{r}_2$ i rispettivi vettori posizione. Per la seconda legge di Newton la
+forza $\bm{F}_{21}$ che il corpo di massa $m_1$ esercita sul corpo di massa
+$m_2$ è data da
+\begin{equation}
+  \label{eq:f21}
+  \bm{F}_{21} = m_2\toder[2]{\bm{r}_2}{t}
+\end{equation}
+e la forza $\bm{F}_{12}$ che il corpo di massa $m_2$ esercita sull'altro è
+\begin{equation}
+  \label{eq:f12}
+  \bm{F}_{12} = m_1\toder[2]{\bm{r}_1}{t}.
+\end{equation}
+Assumiamo per ipotesi che queste due forze soddisfino il principio di azione e
+reazione nella forma forte:
+\begin{equation}
+  \label{eq:az-reaz}
+  \bm{F}_{12} = -\bm{F}_{21}.
+\end{equation}
+Definiamo il vettore \emph{posizione relativa}
+\begin{equation}
+  \label{eq:pos-rel}
+  \bm{r}=\bm{r}_2-\bm{r}_1
+\end{equation}
+e il \emph{centro di massa}
+\begin{equation}
+  \label{eq:cdm}
+  \bm{r}_\textup{g} = \frac{m_1\bm{r}_1+m_2\bm{r}_2}{m_1+m_2}.
+\end{equation}
+Dalle equazioni~\eqref{eq:pos-rel} e \eqref{eq:cdm} possiamo ricavare $\bm{r}_1$
+e $\bm{r}_2$ in funzione di $\bm{r}$ e $\bm{r}_\textup{g}$:
+\begin{align}
+  \bm{r}_1 &= \bm{r}_\textup{g} - \frac{m_2}{m_1+m_2}\bm{r} = \bm{r}_\textup{g} -
+  \frac{\mu}{m_1}\bm{r},\\
+  \bm{r}_2 &= \bm{r}_\textup{g} + \frac{m_1}{m_1+m_2}\bm{r} = \bm{r}_\textup{g} +
+  \frac{\mu}{m_2}\bm{r},
+\end{align}
+in cui abbiamo introdotto la \emph{massa ridotta} $\mu$ definita dalla metà
+della media armonica fra $m_1$ e $m_2$
+\begin{equation}
+  \frac{1}{\mu} = \frac{1}{m_1} + \frac{1}{m_2} \iff \mu=\frac{m_1m_2}{m_1+m_2}.
+\end{equation}
+Osserviamo che la massa ridotta è sempre minore delle due masse, infatti
+\begin{equation}
+  \mu =\frac{m_1}{m_1/m_2+1} = \frac{m_2}{1+m_2/m_1}.
+\end{equation}
+Definiamo inoltre la \emph{massa totale} $M_\textup{T}$ del sistema
+\begin{equation}
+  M_\textup{T}=m_1+m_2.
+\end{equation}
+L'equazione del moto del centro di massa può essere trovata semplicemente
+calcolando l'accelerazione di $\bm{r}_\textup{g}$:
+\begin{equation}
+  \toder[2]{\bm{r}_\textup{g}}{t} = \frac{1}{M_\textup{T}}
+  \left(
+    m_1\toder[2]{\bm{r}_1}{t} + m_2\toder[2]{\bm{r}_2}{t}
+  \right) = \frac{\bm{F}_{12}+\bm{F}_{21}}{M_\textup{T}} = \bm{0},
+\end{equation}
+quindi il centro di massa è in quiete o si muove di moto rettilineo uniforme. A
+ogni modo il sistema in cui il centro di massa è a riposo è un sistema inerziale
+allora lo scegliamo come nostro nuovo sistema di riferimento e in particolare
+fissiamo come origine del sistema la posizione del centro di massa. In questo
+nuovo sistema le posizioni delle due masse saranno dunque descritte dai vettori
+\begin{align}
+  \bm{r}_1 &= -\frac{\mu}{m_1}\bm{r},\\
+  \bm{r}_2 &= \frac{\mu}{m_2}\bm{r}.
+\end{align}
+Dividendo ambo i membri della~\eqref{eq:f21} per $m_2$ e ambo i membri
+della~\eqref{eq:f12} per $m_1$ e sottraendo membro a membro le equazioni così
+ottenuti ricaviamo
+\begin{equation}
+  \frac{\bm{F}_{21}}{m_2}-\frac{\bm{F}_{12}}{m_1} = \bm{F}_{21}
+  \left(
+    \frac{1}{m_2}+\frac{1}{m_1}
+  \right) = \frac{\bm{F}_{21}}{\mu} = \toder[2]{(\bm{r}_2-\bm{r}_1)}{t} = \toder[2]{\bm{r}}{t}
+\end{equation}
+in cui abbiamo ricordato che vale il principio di azione e reazione espresso
+dalla~\eqref{eq:az-reaz}. L'equazione precedente può essere riscritta nella forma
+\begin{equation}
+  \bm{F}_{21}=\mu\toder[2]{\bm{r}}{t}  
+\end{equation}
+da cui possiamo dedurre che il problema dei due corpi interagenti si è ridotto
+al problema del moto di un solo corpo puntiforme fittizio, di massa $\mu$ e
+posizione $\bm{r}$ nel sistema del centro di massa, all'interno campo generato
+da un altro corpo puntiforme fittizio di massa $M_\textup{T}$ fisso
+nell'origine.
+
+Consideriamo in particolare il caso dell'interazione gravitazionale. Isaac
+Newton nel 1687 pubblicò il libro \emph{Philosophiæ Naturalis Principia
+  Mathematica} in cui forniva l'espressione di tale interazione. Se indichiamo
+con $M$ la massa del corpo fisso che genera il campo a cui è soggetto il corpo
+di massa $m$ e con $\bm{r}$ il vettore diretto dal corpo di massa $M$ verso il
+corpo di massa $m$ allora la forza $\bm{F}_\textup{G}$ di attrazione
+gravitazionale è data da
+\begin{equation}
+  \bm{F}_\textup{G} = -\frac{GMm}{r^2}\versor{r},
+\end{equation}
+in cui $G=\SI{6.674
+  28(67)e-11}{\metre\tothe{3}\per\kilogram\per\second\squared}$ è la costante di
+gravitazione universale \cite{codata-costanti}. Si tratta di una forza centrale,
+cioè puramente radiale.
+
 
 \section{Formalismo lagrangiano}
 \label{sec:formalismo-lagrange}
