@@ -5,10 +5,12 @@ PRINCIPALE		= tesi
 PRINCIPALE_TEX		= $(PRINCIPALE).tex
 PRINCIPALE_PDF		= $(PRINCIPALE).pdf
 BIBLIOGRAFIA		= bibliografia.bib
-TUTTI_TEX		= $(PRINCIPALE_TEX)
+CAPITOLI_TEX		= $(wildcard Capitoli/*.tex)
+TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
 TUTTI_FILE		= $(TUTTI_TEX) $(BIBLIOGRAFIA)
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.log \
-			  *.out *.run.xml *~
+			  *.out *.run.xml *~ $(wildcard Capitoli/*.aux) \
+			  $(wildcard Capitoli/*~)
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF)
 
 ##### Regole
