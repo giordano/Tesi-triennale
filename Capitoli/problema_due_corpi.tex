@@ -9,7 +9,10 @@ l'interazione fra i due corpi è quella gravitazionale che è una forza di tipo
 centrale. Il problema sarà risolto usando il formalismo newtoniano e quello
 lagrangiano, di quest'ultimo presenteremo una breve introduzione. Riusciremo a
 determinare analiticamente le equazioni delle orbite dei due corpi e a dedurre
-alcune proprietà.
+alcune proprietà del sistema. La risoluzione del problema di Keplero permette di
+descrivere, fra le altre cose, il moto di due corpi celesti, per esempio un
+pianeta e la sua stella, che sono soggetti solo alla mutua interazione
+gravitazionale.
 
 \section{Formalismo newtoniano}
 \label{sec:formalismo-newton}
@@ -68,7 +71,8 @@ Definiamo inoltre la \emph{massa totale} $M_\textup{T}$ del sistema
   M_\textup{T}=m_1+m_2.
 \end{equation}
 Dalle definizioni di massa ridotta e totale deriva che
-$M_\textup{T}\mu=m_1m_2$. L'equazione del moto del centro di massa può essere
+$M_\textup{T}\mu=m_1m_2$. Se, per esempio, $m_2\gg m_1$ allora $\mu\simeq m_1$ e
+$M_\textup{T}\simeq m_2$. L'equazione del moto del centro di massa può essere
 trovata semplicemente calcolando l'accelerazione di $\bm{r}_\textup{g}$:
 \begin{equation}
   \toder[2]{\bm{r}_\textup{g}}{t} = \frac{1}{M_\textup{T}}
@@ -87,9 +91,11 @@ nuovo sistema le posizioni delle due masse saranno dunque descritte dai vettori
     \bm{r}_2 &= \frac{\mu}{m_2}\bm{r}.
   \end{align}
 \end{subequations}
-Dividendo ambo i membri della~\eqref{eq:f21} per $m_2$ e ambo i membri
-della~\eqref{eq:f12} per $m_1$ e sottraendo membro a membro le equazioni così
-ottenuti ricaviamo
+Osserviamo che se, per esempio, $m_2\gg m_1$ allora $\bm{r}_2\simeq\bm{0}$, cioè
+il corpo più massivo si trova praticamente nel centro di massa, come è logico
+aspettarsi dalla definizione di centro di massa. Dividendo ambo i membri
+della~\eqref{eq:f21} per $m_2$ e ambo i membri della~\eqref{eq:f12} per $m_1$ e
+sottraendo membro a membro le equazioni così ottenuti ricaviamo
 \begin{equation}
   \frac{\bm{F}_{21}}{m_2}-\frac{\bm{F}_{12}}{m_1} = \bm{F}_{21}
   \left(
@@ -160,12 +166,16 @@ sia non nullo.
 Dal momento che il moto della particella di massa ridotta si svolge in un piano
 possiamo utilizzare le coordinate polari $r,\theta$ per rappresentare la
 posizione del corpo nel sistema di riferimento del centro di massa. Dalla
-meccanica si ricava che per un moto piano l'accelerazione $\ddot{\bm{r}}$ del
-vettore posizione $\bm{r}$ è data da
-\begin{equation} %TODO: alla fine controllare aspetto di questa equazione
-  \ddot{\bm{r}} = (\ddot{r}-r\dot{\theta}^2)\versor{r} + (r\ddot{\theta} +
-  2\dot{r}\dot{\theta}) \versor{\theta}
-\end{equation}
+meccanica si ricava che per un moto piano la velocità $\dot{\bm{r}}$ e
+l'accelerazione $\ddot{\bm{r}}$ del vettore posizione $\bm{r}$ sono date da
+\begin{subequations}
+  \begin{align} %TODO: alla fine controllare aspetto di questa equazione
+    \dot{\bm{r}}  &= \dot{r}\versor{r} +
+    r\dot{\theta}\versor{\theta}, \label{eq:velocita-polare}\\
+    \ddot{\bm{r}} &= (\ddot{r}-r\dot{\theta}^2)\versor{r} + (r\ddot{\theta} +
+    2\dot{r}\dot{\theta}) \versor{\theta}.
+  \end{align}
+\end{subequations}
 Usando le coordinate polari l'equazione vettoriale~\eqref{eq:forza-mu} può
 allora essere riscritta come due equazioni scalari:
 \begin{subequations}
@@ -176,13 +186,13 @@ allora essere riscritta come due equazioni scalari:
   \end{gather}
 \end{subequations}
 Dalla~\eqref{eq:forza-mu-az} si trova nuovamente la costanza del modulo del
-momento angolare, infatti
+momento angolare $l_0 = \mu r^2\dot{\theta}$, infatti
 \begin{equation}
   0 = r\mu(r\ddot{\theta} + 2\dot{r}\dot{\theta}) = \toder{\mu
     r^2\dot{\theta}}{t} = \toder{l_0}{t}.
 \end{equation}
 L'area differenziale $\dd A$ spazzata dalla particella di massa ridotta che si
-sposta di un angolo $\dd\theta$ è espressa da
+sposta di un angolo infinitesimo $\dd\theta$ è espressa da
 \begin{equation}
   \dd A = \frac{r\cdot r\dd\theta}{2} = \frac{r^2\dd\theta}{2},
 \end{equation}
@@ -191,19 +201,205 @@ quindi la velocità areolare $\ltoder{A}{t}$ è
   \toder{A}{t} = \frac{1}{2}r^2\dot{\theta} = \frac{1}{2}\frac{l_0}{\mu} =
   \text{costante}.
 \end{equation}
-Abbiamo così ottenuto la seconda legge di Keplero: \emph{il vettore
-  posizione della particella rispetto al centro di massa spazza aree uguali in
-  intervalli di tempo uguali}. Osserviamo che per giungere a questo risultato è
-stato sufficiente utilizzare la costanza del momento angolare che deriva a sua
-volta dal carattere centrale della forza. Dunque questo risultato è valido per
-tutte le forze di questo tipo.
+Abbiamo così ottenuto la seconda legge di Keplero: \emph{il vettore posizione
+  della particella rispetto al centro di massa spazza aree uguali in intervalli
+  di tempo uguali}. Osserviamo che per giungere a questo risultato è stato
+sufficiente utilizzare la costanza del momento angolare che deriva a sua volta
+dal carattere centrale della forza, pertanto questo risultato è valido per tutte
+le forze di questo tipo.
 
 \subsubsection{Equazione dell'orbita}
 \label{sec:equazione-dellorbita}
 
 Vogliamo ora cercare un'espressione esplicita della coordinata polare $r$ in
 funzione dell'altra coordinata $\theta$, che a sua volta dipenderà dal
-tempo. Per fare ciò è conveniente effettuare la sostituzione $u=1/r$
+tempo. Per fare ciò è conveniente effettuare la sostituzione $u=1/r$. Espandiamo
+le derivate temporali di $r$:
+\begin{subequations}
+  \begin{align}
+    \dot{r} &= \toder{r}{t} = \toder{r}{\theta}\toder{\theta}{t} =
+    \toder{(1/u)}{\theta}\dot{\theta} =
+    -\frac{\dot{\theta}}{u^2}\toder{u}{\theta}
+    = -\frac{l_0}{\mu}\toder{u}{\theta}, \label{eq:derivata1-r}\\
+    \begin{split}
+      \ddot{r} &= \toder[2]{r}{t} = \toder{}{\theta} \left( \toder{r}{t}
+      \right)\toder{\theta}{t} = \toder{}{\theta} \left(
+        -\frac{l_0}{\mu}\toder{u}{\theta} \right)\dot{\theta} =
+      -\frac{l_0\dot{\theta}}{\mu}\toder[2]{u}{\theta} \\
+      &= - \left(
+        \frac{l_0}{\mu} \right)^2u^2\toder[2]{u}{\theta}. \label{eq:derivata2-r}
+    \end{split}
+  \end{align}
+\end{subequations}
+Sostituendo la~\eqref{eq:derivata2-r} nella~\eqref{eq:forza-mu-r} abbiamo
+\begin{equation}
+  -GM_\textup{T}u^2 = -\left(
+        \frac{l_0}{\mu} \right)^2u^2\toder[2]{u}{\theta} - \frac{l_0^2u^3}{\mu^2}.
+\end{equation}
+$r$ è la distanza della particella di massa ridotta dal centro di massa, quindi
+assume valori finiti e il suo reciproco $u$ non è mai nullo, allora
+nell'equazione precedente possiamo dividere ambo i membri per $u^2$ e otteniamo
+\begin{equation}
+  \toder[2]{u}{\theta} + u = \frac{GM_\textup{T}\mu^2}{l_0^2}.
+\end{equation}
+Questa è una equazione differenziale ordinaria lineare a coefficienti costanti
+del secondo ordine, chiamata \emph{equazione di Binet}. Per semplificare i
+calcoli poniamo
+\begin{equation}
+  \label{eq:rec-semilato}
+  \frac{GM_\textup{T}\mu^2}{l_0^2} = \frac{1}{p}
+\end{equation}
+e così l'integrale generale dell'equazione di Binet è
+\begin{equation}
+  \label{eq:sol-binet}
+  u(\theta) = c_0\cos\theta + c_1\sin\theta + \frac{1}{p}
+\end{equation}
+con $c_0$ e $c_1$ costanti determinate dalle condizioni iniziali. La soluzione
+può essere riscritta in maniera diversa se imponiamo
+\begin{subequations}
+  \label{eq:cost-binet}
+  \begin{align}
+    c_0 &= \frac{e}{p}\cos\tilde\omega, \\
+    c_1 &= \frac{e}{p}\sin\tilde\omega,
+  \end{align}
+\end{subequations}
+dove $e$ (un'ampiezza) e $\tilde\omega$ (una fase) svolgono il ruolo di nuove
+costanti di integrazione. Le~\eqref{eq:cost-binet} possono essere invertite:
+\begin{subequations}
+  \begin{align}
+    \tilde\omega &= \arctan \frac{c_1}{c_0}, \\
+    e &= \frac{c_0p}{\cos\omega}.
+  \end{align}
+\end{subequations}
+Dunque fissate $c_0$ e $c_1$, $\tilde\omega$ e $e$ sono univocamente
+determinate. In questo modo la~\eqref{eq:sol-binet} diventa
+\begin{equation}
+  u(\theta) = \frac{1}{p}(1+e\cos(\theta-\tilde\omega))
+\end{equation}
+e ricordando che $u=1/r$ giungiamo all'equazione polare dell'orbita della
+particella di massa ridotta nel sistema di riferimento del centro di massa
+\begin{equation}
+  \label{eq:orbita}
+  r(\theta) = \frac{p}{1+e\cos(\theta-\tilde\omega)}.
+\end{equation}
+
+\subsubsection{Classificazione geometrica delle orbite}
+\label{sec:class-geom-orbite}
+
+La~\eqref{eq:orbita} è l'equazione polare di una conica. La costante $e$ è
+chiamata \emph{eccentricità} della conica, la costante $p$ invece è detta
+\emph{semilato retto}. Entrambe possono assumere valori non negativi. A seconda
+dei diversi valori dell'eccentricità le orbite possono essere classificate nel
+seguente modo:
+\begin{itemize}
+\item $e<1$: \emph{ellisse}. Nel caso particolare $e=0$ si ha una
+  \emph{circonferenza};
+\item $e=1$: \emph{parabola};
+\item $e>1$: \emph{iperbole}.
+\end{itemize}
+\begin{figure}
+  \centering
+  \input{Immagini/gnuplot/ellisse}
+  \caption{Ellisse in coordinate polari. L'origine del sistema di riferimento è
+    il centro di massa (CDM) che coincide con uno dei fuochi dell'ellisse, $a$ è
+    il semiasse maggiore, $b$ è il semiasse minore, $p$ è il semilato retto, $c$
+    è la distanza fra il centro dell'ellisse e i fuochi.}
+  \label{fig:ellisse}
+\end{figure}
+Occupiamoci in dettaglio delle orbite chiuse. L'unica conica chiusa è l'ellisse
+e nel caso dell'ellisse la~\eqref{eq:orbita} è l'equazione con centro in uno dei
+fuochi, quindi se uno dei due corpi è molto più massivo dell'altro (per esempio
+il Sole e un pianeta che gli orbita intorno) abbiamo ricavato la prima legge di
+Keplero: \emph{I pianeti, considerati puntiformi, descrivono orbite ellittiche
+  di cui il Sole occupa uno dei fuochi}. Dalla geometria analitica è noto che
+per l'ellisse il semilato retto è uguale a
+\begin{equation}
+  \label{eq:semilato-ellisse}
+  p = a(1-e^2),
+\end{equation}
+dove $a$ è il semiasse maggiore dell'ellisse (vedi la
+figura~\ref{fig:ellisse}). Osserviamo inoltre che $r(\pi/2)=p$. Inserendo la~\eqref{eq:rec-semilato}
+nella~\eqref{eq:semilato-ellisse} possiamo ricavare l'eccentricità dell'ellisse
+\begin{equation}
+  e = \sqrt{1-\frac{1}{p}} = \sqrt{1-\frac{l_0^2}{GM_\textup{T}\mu^2a}}.
+\end{equation}
+Si noti che, poiché $l_0\neq 0$ per ipotesi, si ha $0\leq e<1$, coerentemente
+con la classificazione illustrata prima.
+%TODO: illustrare i legami fra p, a, e, b. Definire periapside e apoapside (per
+%ora l'ho fatto più avanti, ricordati di sistemare!)
+
+\subsubsection{Velocità}
+\label{sec:velocita}
+\begin{figure}
+  \centering
+  \input{Immagini/gnuplot/velocita}
+  \caption{Andamento del modulo quadro della velocità del corpo di massa ridotta
+  in funziona dell'angolo $\theta$. Abbiamo posto $\tilde\omega=0$.}
+  \label{fig:velocita}
+\end{figure}
+Calcoliamo il modulo quadro della velocità del corpo fittizio di massa ridotta
+durante la sua orbita, data dalla~\eqref{eq:velocita-polare}: $v(\theta)^2 =
+\norm{\dot{\bm{r}}(\theta)}^2 = \dot{r}^2(\theta) +
+r^2(\theta)\dot{\theta}^2$. Ricordando le formule~\eqref{eq:derivata1-r}
+e~\eqref{eq:sol-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
+\begin{subequations}
+  \begin{align}
+    \dot{r}(\theta) &= -\frac{l_0}{\mu}\toder{u}{\theta} = -\frac{l_0}{p}
+    \left(
+      -\frac{1}{p}e\sin(\theta-\tilde\omega)
+    \right) = \frac{l_0}{\mu p}e\sin(\theta-\tilde\omega), \\
+    r(\theta)\dot{\theta} &= \frac{l_0}{\mu}u = \frac{l_0}{\mu
+      p}(1+e\cos(\theta-\tilde\omega)).
+  \end{align}
+\end{subequations}
+Quindi, mettendo insieme le relazioni appena trovate, la~\eqref{eq:rec-semilato} e la~\eqref{eq:orbita} risulta
+\begin{equation}
+  \begin{split}
+    v^2(\theta) &= \dot{r}^2(\theta) + r^2(\theta)\dot{\theta}^2 \\
+    &= \left(
+      \frac{l_0}{\mu p}
+    \right)^2(e^2\sin^2(\theta-\tilde\omega) + 1 + 2e\cos(\theta-\tilde\omega) +
+    e^2\cos^2(\theta-\tilde\omega)) \\
+    &= \left(
+      \frac{l_0}{\mu p}
+    \right)^2(1+2e\cos(\theta-\tilde\omega)+e^2) \\
+    &= \left(
+      \frac{l_0}{\mu p}
+    \right)^2(2(1+e\cos(\theta-\tilde\omega)) + (e^2-1)) \\
+    &= \frac{l_0^2}{\mu^2p}
+    \left(
+      2\frac{1+e\cos(\theta-\tilde\omega)}{p} - \frac{1-e^2}{p}
+    \right) = \frac{l_0^2}{\mu^2 p}
+    \left(
+      \frac{2}{r(\theta)} - \frac{1}{a}
+    \right) \\
+    &= \frac{l_0^2}{\mu^2}\frac{GM_\textup{T}\mu^2}{l_0^2}
+    \left(
+      \frac{2}{r(\theta)} - \frac{1}{a}
+    \right) = GM_\textup{T}
+    \left(
+      \frac{2}{r(\theta)} - \frac{1}{a}
+    \right).
+  \end{split}
+\end{equation}
+Questa relazione lega il modulo quadro della velocità alla distanza della
+particella fittizia dal centro di massa. Si può osservare in particolare che
+$v^2(\theta)$ è proporzionale a $1/r(\theta)$, quindi il modulo della velocità è
+massimo quando il corpo di massa ridotta si trova nel punto più vicino al centro
+di massa, chiamato \emph{periapside}, e vale %TODO: definire per bene il
+                                %periapside e spiegare che r(w)=a*(1-e).
+\begin{equation}
+  v^2(\tilde\omega) = \frac{GM_\textup{T}}{a}\frac{1+e}{1-e}.
+\end{equation}
+Inoltre il modulo quadro della velocità sarà minimo quando la distanza dal
+centro di massa è massima, cioè quando il corpo fittizio è in \emph{apoapside}
+\begin{equation}
+  v^2(\tilde\omega+\pi) = \frac{GM_\textup{T}}{a}\frac{1-e}{1+e}.
+\end{equation}
+Questi risultati sono in accordo con la seconda legge di Keplero. L'andamento di
+$v^2$ in funzione della coordinata $\theta$ è riportato nella
+figura~\ref{fig:velocita}.
+
 
 \section{Formalismo lagrangiano}
 \label{sec:formalismo-lagrange}
