@@ -318,9 +318,11 @@ per l'ellisse il semilato retto è uguale a
   p = a(1-e^2),
 \end{equation}
 dove $a$ è il semiasse maggiore dell'ellisse (vedi la
-figura~\ref{fig:ellisse}). Osserviamo inoltre che $r(\pi/2)=p$. Inserendo la~\eqref{eq:rec-semilato}
-nella~\eqref{eq:semilato-ellisse} possiamo ricavare l'eccentricità dell'ellisse
+figura~\ref{fig:ellisse}). Osserviamo inoltre che $r(\pi/2)=p$. Inserendo
+la~\eqref{eq:rec-semilato} nella~\eqref{eq:semilato-ellisse} possiamo ricavare
+l'eccentricità dell'ellisse
 \begin{equation}
+  \label{eq:eccentricita-ellisse}
   e = \sqrt{1-\frac{1}{p}} = \sqrt{1-\frac{l_0^2}{GM_\textup{T}\mu^2a}}.
 \end{equation}
 Si noti che, poiché $l_0\neq 0$ per ipotesi, si ha $0\leq e<1$, coerentemente
@@ -352,7 +354,8 @@ e~\eqref{eq:sol-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
       p}(1+e\cos(\theta-\tilde\omega)).
   \end{align}
 \end{subequations}
-Quindi, mettendo insieme le relazioni appena trovate, la~\eqref{eq:rec-semilato} e la~\eqref{eq:orbita} risulta
+Quindi, mettendo insieme le relazioni appena trovate, la~\eqref{eq:rec-semilato}
+e la~\eqref{eq:orbita} risulta
 \begin{equation}
   \begin{split}
     v^2(\theta) &= \dot{r}^2(\theta) + r^2(\theta)\dot{\theta}^2 \\
@@ -400,6 +403,68 @@ Questi risultati sono in accordo con la seconda legge di Keplero. L'andamento di
 $v^2$ in funzione della coordinata $\theta$ è riportato nella
 figura~\ref{fig:velocita}.
 
+\subsubsection{Energia e classificazione energetica delle orbite}
+\label{sec:energ-class}
+
+Possiamo ora calcolare anche l'energia meccanica del sistema costituito dai due
+corpi
+\begin{equation}
+  \label{eq:energia}
+  \begin{split}
+    E &= T + U = \frac{1}{2}\mu v^2(\theta) - \frac{GM_\textup{T}\mu}{r(\theta)}
+    = \frac{1}{2}\mu(\dot{r^2(\theta)} + r^2(\theta)\dot{\theta}^2) -
+    \frac{GM_\textup{T}\mu}{r(\theta)} \\
+    &= \frac{1}{2}GM_\textup{T}\mu
+    \left(
+      \frac{2}{r(\theta)} - \frac{1}{a}
+    \right) - \frac{GM_\textup{T}\mu}{r(\theta)} = -\frac{GM_\textup{T}\mu}{2a}.
+  \end{split}
+\end{equation}
+Dunque l'energia è una costante del moto e dipende solo dalle masse $m_1$ e
+$m_2$ dei due corpi e dal semiasse maggiore dell'ellisse descritta dal loro moto
+relativo, ma non dall'eccentricità di questa. Naturalmente il fatto che
+l'energia si conservi non deve sorprendere perché abbiamo supposto per ipotesi
+che il sistema fosse isolato e che l'unica forza agente fosse quella
+gravitazionale. %TODO: svolgere esercizio su dE in funzione di da.
+Dalla~\eqref{eq:energia} possiamo osservare che il moto relativo è equivalente a
+un moto unidimensionale e con un potenziale efficace
+\begin{equation}
+  U_\textup{eff}(r(\theta)) = \frac{1}{2}\mu r^2(\theta)\dot{\theta}^2 -
+  \frac{GM_\textup{T}\mu}{r(\theta)} = \frac{1}{2}\frac{l_0^2}{\mu r^2(\theta)} -
+  \frac{GM_\textup{T}\mu}{r(\theta)}.
+\end{equation}
+\begin{figure} %TODO: scegliere valori migliori per il grafico
+  \centering
+  \input{Immagini/gnuplot/potenziale_efficace}
+  \caption{Andamento del potenziale efficace nel problema di Keplero in funzione
+    della distanza dal centro di massa.}
+  \label{fig:potenziale-efficace}
+\end{figure}
+Il termine $l_0/(2\mu r^2(\theta))$ è chiamato \emph{potenziale
+  centrifugo}. Nella figura~\ref{fig:potenziale-efficace} è riportato il grafico
+della curva del potenziale efficace. Per $r=r_0=l_0/(GM_\textup{T}\mu^2$ si ha
+un punto di minimo per $U_\textup{eff}$ e risulta $U_\textup{eff}(r_0) =
+-G^2M_\textup{T}^2\mu^3/(2l_0^2)$. La differenza fra l'energia e la curva di
+$U_\textup{eff}$ dà $\mu\dot{r}^2/2$, quindi il moto è ammesso solo in quelle
+regioni in cui $E-U_\textup{eff}\geq 0$, cioè:
+\begin{enumerate}
+\item se $E = E_0 = G^2M_\textup{T}^2\mu^3/(2l_0^2)$ risulta $\dot{r}=0$, cioè
+  $r(t) = r_0 = \text{costante}$. L'orbita è dunque circolare e il moto
+  circolare uniforme con frequenza $\omega_0 = l_0/(\mu r_0^2)$;
+\item se $E = E_1 \in \mathopen{]}E_0,0\mathclose{[}$, il moto è limitato fra le
+  distanze apsidali $r_\textup{min}$ e $r_\textup{max}$ e l'orbita è un'ellisse;
+\item se $E = E_2 \geq 0$ il moto è limitato inferiormente ma non
+  superiormente. Si può far vedere che se $E_2 = 0$ l'orbita descritta è una
+  parabola, se $E_2>0$ si ha un'iperbole.
+\end{enumerate}
+Confrontando la~\eqref{eq:eccentricita-ellisse} e la~\eqref{eq:energia} possiamo
+ricavare una relazione fra l'energia, nel caso $E<0$, e l'eccentricità
+dell'ellisse
+\begin{equation}
+  e = \sqrt{1+\frac{2El_0^2}{G^2M_\textup{T}^2\mu^3}}.
+\end{equation}
+Notiamo che più è negativa l'energia è minore è l'eccentricità dell'ellisse,
+cioè maggiormente legato è il sistema. %TODO
 
 \section{Formalismo lagrangiano}
 \label{sec:formalismo-lagrange}
