@@ -9,7 +9,7 @@ CAPITOLI_TEX		= $(wildcard Capitoli/*.tex)
 TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
 TUTTI_FILE		= $(TUTTI_TEX) $(BIBLIOGRAFIA)
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.log \
-			  *.out *.run.xml *~ $(wildcard Capitoli/*.aux) \
+			  *.out *.run.xml *.toc *~ $(wildcard Capitoli/*.aux) \
 			  $(wildcard Capitoli/*~)
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF)
 

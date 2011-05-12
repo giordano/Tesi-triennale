@@ -117,13 +117,18 @@
 %%%%% Fine comandi personalizzati
 
 \begin{document}
-
+\frontmatter{}
 \maketitle{} % TODO: il frontespizio andrà fatto con `frontespizio'
 
+\clearpage{}
+\tableofcontents{} % TODO: capire perché questa pagina è numerata `1'
+
+\mainmatter{}
 \include{Capitoli/problema_due_corpi}
 \include{Capitoli/elementi_orbitali}
 \include{Capitoli/applicazioni_astrofisiche}
 
+\backmatter{}
 \clearpage{}
 \phantomsection{}
 \nocite{*} % TODO: citare i libri
