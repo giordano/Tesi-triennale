@@ -19,9 +19,9 @@ gravitazionale.
 
 Consideriamo un sistema costituito da due corpi, puntiformi, di masse $m_1$ e
 $m_2$ e in un fissato sistema di riferimento inerziale indichiamo con $\bm{r}_1$
-e $\bm{r}_2$ i rispettivi vettori posizione. Per la seconda legge di Newton la
-forza $\bm{F}_{21}$ che il corpo di massa $m_1$ esercita sul corpo di massa
-$m_2$ è data da
+e $\bm{r}_2$ i rispettivi vettori posizione. %TODO: inserire figura, magari tikz
+Per la seconda legge di Newton la forza $\bm{F}_{21}$ che il corpo di massa
+$m_1$ esercita sul corpo di massa $m_2$ è data da
 \begin{equation}
   \label{eq:f21}
   \bm{F}_{21} = m_2\toder[2]{\bm{r}_2}{t}
@@ -167,7 +167,8 @@ Dal momento che il moto della particella di massa ridotta si svolge in un piano
 possiamo utilizzare le coordinate polari $r,\theta$ per rappresentare la
 posizione del corpo nel sistema di riferimento del centro di massa. Dalla
 meccanica si ricava che per un moto piano la velocità $\dot{\bm{r}}$ e
-l'accelerazione $\ddot{\bm{r}}$ del vettore posizione $\bm{r}$ sono date da
+l'accelerazione $\ddot{\bm{r}}$ del vettore posizione $\bm{r}=r\versor{r}$ sono
+date da
 \begin{subequations}
   \begin{align} %TODO: alla fine controllare aspetto di questa equazione
     \dot{\bm{r}}  &= \dot{r}\versor{r} +
@@ -208,13 +209,13 @@ sufficiente utilizzare la costanza del momento angolare che deriva a sua volta
 dal carattere centrale della forza, pertanto questo risultato è valido per tutte
 le forze di questo tipo.
 
-\subsubsection{Equazione dell'orbita}
+\subsection{Equazione dell'orbita}
 \label{sec:equazione-dellorbita}
 
-Vogliamo ora cercare un'espressione esplicita della coordinata polare $r$ in
-funzione dell'altra coordinata $\theta$, che a sua volta dipenderà dal
-tempo. Per fare ciò è conveniente effettuare la sostituzione $u=1/r$. Espandiamo
-le derivate temporali di $r$:
+Nel problema di Keplero, vogliamo ora cercare un'espressione esplicita della
+coordinata polare $r$ in funzione dell'altra coordinata $\theta$, che a sua
+volta dipenderà dal tempo. Per fare ciò è conveniente effettuare la sostituzione
+$u=1/r$. Espandiamo le derivate temporali di $r$:
 \begin{subequations}
   \begin{align}
     \dot{r} &= \toder{r}{t} = \toder{r}{\theta}\toder{\theta}{t} =
@@ -283,16 +284,17 @@ particella di massa ridotta nel sistema di riferimento del centro di massa
   r(\theta) = \frac{p}{1+e\cos(\theta-\tilde\omega)}.
 \end{equation}
 
-\subsubsection{Classificazione geometrica delle orbite}
+\subsection{Classificazione geometrica delle orbite}
 \label{sec:class-geom-orbite}
 
-La~\eqref{eq:orbita} è l'equazione polare di una conica. La costante $e$ è
-chiamata \emph{eccentricità} della conica, la costante $p$ invece è detta
-\emph{semilato retto}. Entrambe possono assumere valori non negativi. A seconda
-dei diversi valori dell'eccentricità le orbite possono essere classificate nel
-seguente modo:
+La~\eqref{eq:orbita} è l'equazione polare di una conica con centro nel fuoco o
+uno dei fuochi nel caso dell'ellisse. La costante $e$ è chiamata
+\emph{eccentricità} della conica, la costante $p$ invece è detta \emph{semilato
+  retto}. Entrambe possono assumere valori non negativi. A seconda dei diversi
+valori dell'eccentricità le orbite possono essere classificate nel seguente
+modo:
 \begin{itemize}
-\item $e<1$: \emph{ellisse}. Nel caso particolare $e=0$ si ha una
+\item $0\leq e<1$: \emph{ellisse}. Nel caso particolare $e=0$ si ha una
   \emph{circonferenza};
 \item $e=1$: \emph{parabola};
 \item $e>1$: \emph{iperbole}.
@@ -303,40 +305,79 @@ seguente modo:
   \caption{Ellisse in coordinate polari. L'origine del sistema di riferimento è
     il centro di massa (CDM) che coincide con uno dei fuochi dell'ellisse, $a$ è
     il semiasse maggiore, $b$ è il semiasse minore, $p$ è il semilato retto, $c$
-    è la distanza fra il centro dell'ellisse e i fuochi.}
+    è l'eccentricità lineare.}
   \label{fig:ellisse}
 \end{figure}
-Occupiamoci in dettaglio delle orbite chiuse. L'unica conica chiusa è l'ellisse
-e nel caso dell'ellisse la~\eqref{eq:orbita} è l'equazione con centro in uno dei
-fuochi, quindi se uno dei due corpi è molto più massivo dell'altro (per esempio
-il Sole e un pianeta che gli orbita intorno) abbiamo ricavato la prima legge di
-Keplero: \emph{I pianeti, considerati puntiformi, descrivono orbite ellittiche
-  di cui il Sole occupa uno dei fuochi}. Dalla geometria analitica è noto che
-per l'ellisse il semilato retto è uguale a
+
+Ricordiamo alcune proprietà geometriche delle coniche. Per l'ellisse (vedi la
+figura~\ref{fig:ellisse}) il semilato retto $p$ è dato da
 \begin{equation}
   \label{eq:semilato-ellisse}
-  p = a(1-e^2),
+  p = a(1-e^2) = \frac{b^2}{a},
 \end{equation}
-dove $a$ è il semiasse maggiore dell'ellisse (vedi la
-figura~\ref{fig:ellisse}). Osserviamo inoltre che $r(\pi/2)=p$. Inserendo
-la~\eqref{eq:rec-semilato} nella~\eqref{eq:semilato-ellisse} possiamo ricavare
-l'eccentricità dell'ellisse
+dove $a$ è il \emph{semiasse maggiore} dell'ellisse e $b$ è il \emph{semiasse
+  minore}. Dalla~\eqref{eq:semilato-ellisse} ricaviamo inoltre che
+\begin{align}
+  b &= a\sqrt{1-e^2},\\
+  e &= \sqrt{1-\frac{b^2}{a^2}} =
+  \sqrt{1-\frac{p}{a}}. \label{eq:eccentricita-ellisse}
+\end{align}
+L'\emph{eccentricità lineare} $c$ è la distanza fra il centro dell'ellisse e i
+fuochi e risulta
 \begin{equation}
-  \label{eq:eccentricita-ellisse}
-  e = \sqrt{1-\frac{1}{p}} = \sqrt{1-\frac{l_0^2}{GM_\textup{T}\mu^2a}}.
+  c=\sqrt{a^2-b^2} = ae.
+\end{equation}
+Il \emph{periapside} è il punto di un ellisse più vicino a uno dei due fuochi,
+l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso
+fuoco. Osservando la figura~\ref{fig:ellisse} si riconosce che il periapside è
+raggiunto in corrispondenza di $\theta=\tilde\omega$ e la distanza del
+periapside dal fuoco è $r_\textup{min} = r(\tilde\omega) = a(1-e)$; l'apoapside
+è raggiunto per $\theta=\tilde\omega+\pi$ e la distanza dell'apoapside dallo
+stesso fuoco è $r_\textup{max} = r(\tilde\omega+\pi) = a(1+e)$. Si ottiene il
+caso particolare della circonferenza ponendo nelle equazioni precedenti $e=0$,
+quindi $p=a=b$, $c=e=0$. Per la parabola sussistono le seguenti relazioni:
+\begin{align}
+  c &= a,\\
+  p &= 2a,
+\end{align}
+e per l'iperbole:
+\begin{align}
+  p &= \frac{b^2}{a} = a(e^2-1), \label{eq:semilato-iperbole}\\
+  e &= \sqrt{1+\frac{b^2}{a^2}} =
+  \sqrt{1+\frac{p}{a}}, \label{eq:eccentricita-iperbole}\\
+  c &= \sqrt{a^2+b^2}.
+\end{align}
+Osserviamo infine che per tutte le coniche risulta $r(\tilde\omega\pm\pi/2)=p$.
+
+Inserendo la~\eqref{eq:rec-semilato} nella~\eqref{eq:eccentricita-ellisse}
+possiamo ricavare l'eccentricità di un'orbita ellittica legata ai parametri
+fisici del sistema
+\begin{equation}
+  \label{eq:eccentricita-orbita-ellisse}
+  e = \sqrt{1-\frac{p}{a}} = \sqrt{1-\frac{l_0^2}{GM_\textup{T}\mu^2a}}.
 \end{equation}
 Si noti che, poiché $l_0\neq 0$ per ipotesi, si ha $0\leq e<1$, coerentemente
-con la classificazione illustrata prima.
-%TODO: illustrare i legami fra p, a, e, b. Definire periapside e apoapside (per
-%ora l'ho fatto più avanti, ricordati di sistemare!)
+con la classificazione illustrata prima. Nel caso di orbita iperbolica dobbiamo
+invece utilizzare la~\eqref{eq:eccentricita-iperbole}:
+\begin{equation}
+  \label{eq:eccentricita-orbita-iperbole}
+  e = \sqrt{1+\frac{p}{a}} = \sqrt{1+\frac{l_0^2}{GM_\textup{T}\mu^2a}}
+\end{equation}
+e qui risulta $e>1$.
 
-\subsubsection{Velocità}
+L'unica conica chiusa è l'ellisse, quindi se uno dei due corpi del sistema è
+molto più massivo dell'altro (per esempio il Sole e un pianeta che gli orbita
+intorno) abbiamo ricavato la prima legge di Keplero: \emph{I pianeti,
+  considerati puntiformi, descrivono orbite ellittiche di cui il Sole occupa uno
+  dei fuochi}.
+
+\subsection{Calcolo della velocità e applicazioni astronomiche}
 \label{sec:velocita}
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/velocita}
   \caption{Andamento qualitativo del modulo quadro della velocità del corpo di
-    massa ridotta in funziona dell'angolo $\theta$ nel caso di orbita ellittica,
+    massa ridotta in funzione dell'angolo $\theta$ nel caso di orbita ellittica,
     per diversi valori dell'eccentricità $e$ e con $a$ fissato. Abbiamo posto
     $\tilde\omega=0$.}
   \label{fig:velocita}
@@ -356,9 +397,10 @@ e~\eqref{eq:sol-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
       p}(1+e\cos(\theta-\tilde\omega)).
   \end{align}
 \end{subequations}
-Quindi, mettendo insieme le relazioni appena trovate, la~\eqref{eq:rec-semilato}
+Per quanto riguarda il moto ellittico, mettendo insieme le relazioni appena trovate, la~\eqref{eq:rec-semilato}
 e la~\eqref{eq:orbita} risulta
 \begin{equation}
+  \label{eq:velocita-ellisse}
   \begin{split}
     v^2(\theta) &= \dot{r}^2(\theta) + r^2(\theta)\dot{\theta}^2 \\
     &= \left(
@@ -390,14 +432,12 @@ e la~\eqref{eq:orbita} risulta
 Questa relazione lega il modulo quadro della velocità alla distanza della
 particella fittizia dal centro di massa. Si può osservare in particolare che
 $v^2(\theta)$ è proporzionale a $1/r(\theta)$, quindi il modulo della velocità è
-massimo quando il corpo di massa ridotta si trova nel punto più vicino al centro
-di massa, chiamato \emph{periapside}, e vale %TODO: definire per bene il
-                                %periapside e spiegare che r(w)=a*(1-e).
+massimo quando il corpo di massa ridotta si trova nel periapside e vale
 \begin{equation}
   v^2(\tilde\omega) = \frac{GM_\textup{T}}{a}\frac{1+e}{1-e}.
 \end{equation}
 Inoltre il modulo quadro della velocità sarà minimo quando la distanza dal
-centro di massa è massima, cioè quando il corpo fittizio è in \emph{apoapside}
+centro di massa è massima, cioè all'apoapside
 \begin{equation}
   v^2(\tilde\omega+\pi) = \frac{GM_\textup{T}}{a}\frac{1-e}{1+e}.
 \end{equation}
@@ -405,46 +445,97 @@ Questi risultati sono in accordo con la seconda legge di Keplero. L'andamento di
 $v^2$ in funzione della coordinata $\theta$ è riportato nella
 figura~\ref{fig:velocita}.
 
-\subsubsection{Energia e classificazione energetica delle orbite}
-\label{sec:energ-class}
+\begin{figure}
+  \centering
+  \input{Immagini/gnuplot/velocita_los}
+  \caption{Andamento qualitativo del modulo quadro della velocità, lungo la
+    direzione di vista, del corpo di massa ridotta in funzione dell'angolo
+    $\theta$ nel caso di orbita ellittica. Il grafico è stato fatto per gli
+    stessi valori di eccentricità utilizzati nella figura~\ref{fig:velocita},
+    mantenendo costante il semiasse maggiore. Abbiamo posto $\tilde\omega=0$.}
+  \label{fig:velocita-los}
+\end{figure}
+Nelle osservazioni astronomiche quello che viene effettivamente misurato non è
+la velocità data dalla~\eqref{eq:velocita-ellisse} ma la componente lungo la
+direzione di vista %TODO: aggiungere immagine come la 47 dello Smart e
+                   %completare il discorso!
 
-Possiamo ora calcolare anche l'energia meccanica del sistema costituito dai due
-corpi
+I calcoli svolti per determinare la velocità nel caso di orbite ellittiche sono
+del tutto analoghi a quelli necessari nel caso di orbite paraboliche e
+iperboliche, però per le orbite paraboliche $e=1$ quindi
+\begin{equation}
+  \label{eq:velocita-parabola}
+  v^2(\theta) = \frac{2GM_\textup{T}}{r(\theta)},
+\end{equation}
+mentre per le orbite iperboliche semilato retto ed eccentricità sono legati
+dalla~\eqref{eq:semilato-iperbole}, dunque
+\begin{equation}
+  \label{eq:velocita-iperbole}
+  v^2(\theta) = GM_\textup{T}
+    \left(
+      \frac{2}{r(\theta)} + \frac{1}{a}
+    \right).
+\end{equation}
+
+
+\subsection{Energia e classificazione energetica delle orbite}
+\label{sec:energia-orbite}
+
+Possiamo ora calcolare l'energia meccanica del sistema costituito dai due corpi:
 \begin{equation}
   \label{eq:energia}
-  \begin{split}
-    E &= T + U = \frac{1}{2}\mu v^2(\theta) - \frac{GM_\textup{T}\mu}{r(\theta)}
-    = \frac{1}{2}\mu(\dot{r^2(\theta)} + r^2(\theta)\dot{\theta}^2) -
-    \frac{GM_\textup{T}\mu}{r(\theta)} \\
-    &= \frac{1}{2}GM_\textup{T}\mu
-    \left(
-      \frac{2}{r(\theta)} - \frac{1}{a}
-    \right) - \frac{GM_\textup{T}\mu}{r(\theta)} = -\frac{GM_\textup{T}\mu}{2a}.
-  \end{split}
+  E= T + U = \frac{1}{2}\mu v^2(\theta) - \frac{GM_\textup{T}\mu}{r(\theta)}
+  = \frac{1}{2}\mu(\dot{r^2(\theta)} + r^2(\theta)\dot{\theta}^2) -
+  \frac{GM_\textup{T}\mu}{r(\theta)}.
 \end{equation}
-Dunque l'energia è una costante del moto e dipende solo dalle masse $m_1$ e
-$m_2$ dei due corpi e dal semiasse maggiore dell'ellisse descritta dal loro moto
-relativo, ma non dall'eccentricità di questa. Naturalmente il fatto che
-l'energia si conservi non deve sorprendere perché abbiamo supposto per ipotesi
-che il sistema fosse isolato e che l'unica forza agente fosse quella
+Per le orbite ellittiche sostituiamo al posto della velocità l'espressione data
+dalla~\eqref{eq:velocita-ellisse}
+\begin{equation}
+  \label{eq:energia-ellisse}
+  E = \frac{1}{2}GM_\textup{T}\mu
+  \left(
+    \frac{2}{r(\theta)} - \frac{1}{a}
+  \right) - \frac{GM_\textup{T}\mu}{r(\theta)} = -\frac{GM_\textup{T}\mu}{2a}.
+\end{equation}
+Per le orbite paraboliche usiamo la~\eqref{eq:velocita-parabola}:
+\begin{equation}
+  E = \frac{1}{2}\frac{2GM_\textup{T}\mu}{r(\theta)} -
+  \frac{GM_\textup{T}\mu}{r(\theta)} = 0.
+\end{equation}
+Infine per le orbite iperboliche usiamo la~\eqref{eq:velocita-iperbole}:
+\begin{equation}
+    \label{eq:energia-iperbole}
+  E = \frac{1}{2}GM_\textup{T}\mu
+  \left(
+    \frac{2}{r(\theta)} + \frac{1}{a}
+  \right) - \frac{GM_\textup{T}\mu}{r(\theta)} = \frac{GM_\textup{T}\mu}{2a}.
+\end{equation}
+Dunque in tutti i casi l'energia è una costante del moto e dipende solo dalle
+masse $m_1$ e $m_2$ dei due corpi e dal semiasse maggiore dell'ellisse descritta
+dal loro moto relativo, ma non dall'eccentricità di questa. Naturalmente il
+fatto che l'energia si conserva non deve sorprendere perché abbiamo supposto per
+ipotesi che il sistema fosse isolato e che l'unica forza agente fosse quella
 gravitazionale. %TODO: svolgere esercizio su dE in funzione di da.
+
 Dalla~\eqref{eq:energia} possiamo osservare che il moto relativo è equivalente a
 un moto unidimensionale e con un potenziale efficace
+\begin{figure} %TODO: scegliere valori migliori per il grafico
+  \centering
+  \input{Immagini/gnuplot/potenziale_efficace}
+  \caption{Andamento qualitativo del potenziale efficace nel problema di Keplero
+    in funzione della distanza dal centro di massa. Il grafico rappresenta la
+    funzione $k_1/r^2-k_2/r$, con $k_1$ e $k_2$ costanti scelte
+    arbitrariamente.}
+  \label{fig:potenziale-efficace}
+\end{figure}
 \begin{equation}
   U_\textup{eff}(r(\theta)) = \frac{1}{2}\mu r^2(\theta)\dot{\theta}^2 -
   \frac{GM_\textup{T}\mu}{r(\theta)} = \frac{1}{2}\frac{l_0^2}{\mu r^2(\theta)} -
   \frac{GM_\textup{T}\mu}{r(\theta)}.
 \end{equation}
-\begin{figure} %TODO: scegliere valori migliori per il grafico
-  \centering
-  \input{Immagini/gnuplot/potenziale_efficace}
-  \caption{Andamento qualitativo del potenziale efficace nel problema di Keplero
-    in funzione della distanza dal centro di massa.}
-  \label{fig:potenziale-efficace}
-\end{figure}
 Il termine $l_0/(2\mu r^2(\theta))$ è chiamato \emph{potenziale
   centrifugo}. Nella figura~\ref{fig:potenziale-efficace} è riportato il grafico
-della curva del potenziale efficace. Per $r=r_0=l_0/(GM_\textup{T}\mu^2$ si ha
+della curva del potenziale efficace. Per $r=r_0=l_0/(GM_\textup{T}\mu^2)$ si ha
 un punto di minimo per $U_\textup{eff}$ e risulta $U_\textup{eff}(r_0) =
 -G^2M_\textup{T}^2\mu^3/(2l_0^2)$. La differenza fra l'energia e la curva di
 $U_\textup{eff}$ dà $\mu\dot{r}^2/2$, quindi il moto è ammesso solo in quelle
@@ -456,15 +547,39 @@ regioni in cui $E-U_\textup{eff}\geq 0$, cioè:
 \item se $E = E_1 \in \mathopen{]}E_0,0\mathclose{[}$, il moto è limitato fra le
   distanze apsidali $r_\textup{min}$ e $r_\textup{max}$ e l'orbita è un'ellisse;
 \item se $E = E_2 \geq 0$ il moto è limitato inferiormente ma non
-  superiormente. Si può far vedere che se $E_2 = 0$ l'orbita descritta è una
-  parabola, se $E_2>0$ si ha un'iperbole.
+  superiormente. Se $E_2 = 0$ l'orbita descritta è una parabola, se $E_2>0$ si
+  ha un'iperbole.
 \end{enumerate}
-Confrontando la~\eqref{eq:eccentricita-ellisse} e la~\eqref{eq:energia} possiamo
-ricavare una relazione fra l'energia, nel caso $E<0$, e l'eccentricità
-dell'ellisse
+
+Inserendo la~\eqref{eq:energia-ellisse}
+nella~\eqref{eq:eccentricita-orbita-ellisse} e la~\eqref{eq:energia-iperbole}
+nella~\eqref{eq:eccentricita-orbita-iperbole} abbiamo che sia per orbite
+ellittiche che per orbite iperboliche sussiste la seguente relazione fra energia
+ed eccentricità dell'orbita
 \begin{equation}
   e = \sqrt{1+\frac{2El_0^2}{G^2M_\textup{T}^2\mu^3}}.
 \end{equation}
+Si noti che questa relazione è valida anche per le orbite paraboliche perché in
+questo caso l'energia è nulla e l'eccentricità vale $e$.
+
+Il centro di massa esercita un'attrazione sulla particella fittizia di massa
+ridotta, tuttavia la presenza del potenziale centrifugo non
+nullo\footnote{Ricorda che abbiamo supposto per ipotesi che sia $l_0\neq 0$.}
+impedisce che la massa ridotta possa cadere sul centro di massa se il campo
+generato è quello gravitazionale. Infatti abbiamo
+\begin{equation}
+  0\leq \frac{1}{2}\mu\dot{r}^2 = E - U_\textup{eff}(r) = E -
+  \frac{1}{2}\frac{l_0^2}{\mu r^2} - \frac{GM_\textup{T}\mu}{r}
+\end{equation}
+che può essere riscritta come
+\begin{equation}
+  \frac{1}{2}\frac{l_0^2}{\mu} + GM_\textup{T}\mu r \leq Er^2
+\end{equation}
+e facendo il limite per $r \to 0$ abbiamo
+\begin{equation}
+  \frac{1}{2}\frac{l_0^2}{\mu} \leq 0,
+\end{equation}
+ma questo non è impossibile.
 
 \section{Formalismo lagrangiano}
 \label{sec:formalismo-lagrange}
