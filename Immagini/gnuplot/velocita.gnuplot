@@ -2,17 +2,20 @@
 set term epslatex
 # imposta il file di output
 set output 'Immagini/gnuplot/velocita.tex'
-unset key
+set key top center
 unset xtics
 unset ytics
-a=1
-e=0.5
 set xtics ("{\\scriptsize periapside: $\\theta=0$}" 0, \
     "{\\scriptsize apoapside: $\\theta=\\pi$}" pi, \
     "{\\scriptsize{periapside:$\\theta=2\\pi$}}" 2*pi) nomirror
 set border 3 # visualizza solo i bordi in basso e a sinistra
-set size 0.8,0.8
+set size 0.7,0.7
 set xlabel "$\\theta$"  # etichetta per l'asse x
 set ylabel "$v^2(\\theta)$" # etichetta per l'asse y
-r(x)=a*(1-e**2)/(1+e*cos(x))
-plot [0:2*pi][0:(1+e)/(a*(1-e))] 2./r(x)-1/a lw 2
+#a=1
+#e=0.5
+r(a,e,x)=a*(1-e**2)/(1+e*cos(x))
+v2(a,e,x)=2./r(a,e,x)-1/a
+plot [0:2*pi][0:(1+0.8)/(1*(1-0.8))] v2(1,0,x) lw 2 title "$e=0$",\
+     v2(1,0.5,x) lw 2 title "$e=0.5$",\
+     v2(1,0.8,x) lw 2 title "$e=0.8$"
