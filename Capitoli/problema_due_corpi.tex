@@ -17,7 +17,7 @@ gravitazionale.
 \section{Formalismo newtoniano}
 \label{sec:formalismo-newton}
 
-Consideriamo un sistema costituito da due corpi, puntiformi, di masse $m_1$ e
+Consideriamo un sistema costituito da due corpi puntiformi, di masse $m_1$ e
 $m_2$ e in un fissato sistema di riferimento inerziale indichiamo con $\bm{r}_1$
 e $\bm{r}_2$ i rispettivi vettori posizione. %TODO: inserire figura, magari tikz
 Per la seconda legge di Newton la forza $\bm{F}_{21}$ che il corpo di massa
@@ -39,17 +39,19 @@ reazione nella forma forte:
 \end{equation}
 Definiamo il vettore \emph{posizione relativa}
 \begin{equation}
-  \label{eq:pos-rel}
+  \label{eq:posizione-relativa}
   \bm{r}=\bm{r}_2-\bm{r}_1
 \end{equation}
 e il \emph{centro di massa}
 \begin{equation}
-  \label{eq:cdm}
+  \label{eq:centro-di-massa}
   \bm{r}_\textup{g} = \frac{m_1\bm{r}_1+m_2\bm{r}_2}{m_1+m_2}.
 \end{equation}
-Dalle equazioni~\eqref{eq:pos-rel} e \eqref{eq:cdm} possiamo ricavare $\bm{r}_1$
-e $\bm{r}_2$ in funzione di $\bm{r}$ e $\bm{r}_\textup{g}$:
+Dalle equazioni~\eqref{eq:posizione-relativa} e~\eqref{eq:centro-di-massa}
+possiamo ricavare $\bm{r}_1$ e $\bm{r}_2$ in funzione di $\bm{r}$ e
+$\bm{r}_\textup{g}$:
 \begin{subequations}
+  \label{eq:r1-r2-posizione-relativa-cdm}
   \begin{align}
     \bm{r}_1 &= \bm{r}_\textup{g} - \frac{m_2}{m_1+m_2}\bm{r} =
     \bm{r}_\textup{g} - \frac{\mu}{m_1}\bm{r},\\
@@ -116,6 +118,7 @@ da un altro corpo puntiforme fittizio di massa $M_\textup{T}$ fisso
 nell'origine.
 
 \subsection{Problema di Keplero}
+\label{sec:problema-keplero}
 
 Consideriamo il caso dell'interazione gravitazionale. Se indichiamo con $M$ la
 massa del corpo che genera il campo a cui è soggetto il corpo di massa $m$ e con
@@ -182,11 +185,13 @@ allora essere riscritta come due equazioni scalari:
 \begin{subequations}
   \begin{gather}
     -\frac{GM_\textup{T}\mu}{r^2} = \mu(\ddot{r} - r\dot{\theta}^2) \iff
-    -\frac{GM_\textup{T}}{r^2}=\ddot{r}-r\dot{\theta}^2, \label{eq:forza-mu-r}\\
-    0 = \mu(r\ddot{\theta} + 2\dot{r}\dot{\theta}). \label{eq:forza-mu-az}
+    -\frac{GM_\textup{T}}{r^2}=\ddot{r}-r\dot{\theta}^2,
+    \label{eq:forza-mu-radiale}\\
+    0 = \mu(r\ddot{\theta} +
+    2\dot{r}\dot{\theta}). \label{eq:forza-mu-azimutale}
   \end{gather}
 \end{subequations}
-Dalla~\eqref{eq:forza-mu-az} si trova nuovamente la costanza del modulo del
+Dalla~\eqref{eq:forza-mu-azimutale} si trova nuovamente la costanza del modulo del
 momento angolare $l_0 = \mu r^2\dot{\theta}$, infatti
 \begin{equation}
   0 = r\mu(r\ddot{\theta} + 2\dot{r}\dot{\theta}) = \toder{\mu
@@ -232,7 +237,7 @@ $u=1/r$. Espandiamo le derivate temporali di $r$:
     \end{split}
   \end{align}
 \end{subequations}
-Sostituendo la~\eqref{eq:derivata2-r} nella~\eqref{eq:forza-mu-r} abbiamo
+Sostituendo la~\eqref{eq:derivata2-r} nella~\eqref{eq:forza-mu-radiale} abbiamo
 \begin{equation}
   -GM_\textup{T}u^2 = -\left(
         \frac{l_0}{\mu} \right)^2u^2\toder[2]{u}{\theta} - \frac{l_0^2u^3}{\mu^2}.
@@ -585,9 +590,254 @@ e facendo il limite per $r \to 0$ abbiamo
 \end{equation}
 ma questo non è impossibile.
 
-\section{Formalismo lagrangiano}
+\section{Formalismo lagrangiano e hamitoniano}
 \label{sec:formalismo-lagrange}
 
+\subsection{Introduzione alla meccanica lagrangiana e hamiltoniana}
+\label{sec:intro-lagrange}
+
+La meccanica newtoniana descrive l'evoluzione di un sistema fisico attraverso la
+\emph{seconda legge del moto di Newton}. Nella seconda metà del diciottesimo
+secolo il fisico e matematico francese di origine italiana Joseph-Louis Lagrange
+propose una formulazione alternativa della meccanica che ora presentiamo
+brevemente.
+
+Un sistema fisico composta da $N$ particelle nello spazio è descritto da $3N$
+coordinate, ma se il sistema è soggetto a dei vincoli queste $3N$ grandezze non
+sono tutte necessariamente indipendenti fra loro. Se i vincoli sono
+olonomi\footnote{Un vincolo si dice \emph{olonomo} se è esprimibile sotto forma
+  di un'equazione del tipo $f(\bm{r}_1,\dots,\bm{r}_N,t)=0$, dove le $\bm{r}_i$
+  rappresentano le posizioni delle $N$ particelle all'istante $t$.} ed espressi
+da $k$ equazioni allora è possibile introdurre $n=3N-k$ coordinate indipendenti
+che indichiamo con $q_1,\dots,q_n$ e che determinano univocamente il
+sistema tenendo conto dei vincoli. Le $q_i$ sono dette \emph{coordinate
+  generalizzate} o \emph{lagrangiane}, non hanno necessariamente le dimensioni
+di una lunghezza e la loro scelta non è univoca; $n$, il numero di grandezze
+indipendenti, è chiamato \emph{numero di gradi di libertà}. D'ora in poi
+indicheremo per brevità con $\bm{q} = (q_1,\dots,q_n)$ l'insieme delle $n$
+coordinate generalizzate e con $\dot{\bm{q}} =
+(\dot{q}_1,\dots,\dot{q}_n)$ l'insieme delle \emph{velocità
+  generalizzate} sebbene, come già osservato, a rigore non tutte queste
+grandezze hanno necessariamente la stessa dimensione fisica. Definiamo la
+\emph{funzione di Lagrange} o \emph{lagrangiana}
+$\mathcal{L}(\bm{q},\dot{\bm{q}},t)$
+\begin{equation}
+  \mathcal{L}(\bm{q},\dot{\bm{q}},t) = T(\bm{q},\dot{\bm{q}},t) -
+  U(\bm{q},\dot{\bm{q}},t)
+\end{equation}
+dove $T(\bm{q},\dot{\bm{q}},t)$ è l'\emph{energia cinetica} del sistema e
+$U(\bm{q},\dot{\bm{q}},t)$ è l'energia potenziale, chiamata \emph{potenziale
+  generalizzato} quando dipende dalle velocità $\dot{\bm{q}}$. Nella meccanica
+lagrangiana l'evoluzione del sistema è descritto dalle $n$ equazioni
+differenziali del secondo ordine chiamate \emph{equazioni di Lagrange}
+\begin{equation}
+  \label{eq:lagrange}
+  \toder{}{t}
+  \left(
+    \parder{\mathcal{L}}{\dot{q}_i}
+  \right) = \parder{\mathcal{L}}{q_i} \qquad (i=1,2,\dots,n).
+\end{equation}
+La grandezza
+\begin{equation}
+  p_i = \parder{\mathcal{L}}{\dot{q}_i}
+\end{equation}
+è chiamata \emph{momento coniugato} alla variabile generalizzata $q_i$.
+Dalla~\eqref{eq:lagrange} si vede subito che se la lagrangiana non dipende
+esplicitamente dalla coordinata generalizzata $q_i$ allora il corrispondente
+momento coniugato è una costante del moto. In questo caso la $q_i$ si dice
+\emph{ciclica}.
+
+Nella prima metà del 1800 il fisico e matematico irlandese William Rowan
+Hamilton riformulò la meccanica lagrangiana. Nel formalismo lagrangiano le
+variabili fondamentali sono le coordinate generalizzate $\bm{q}$ che
+costituiscono lo \emph{spazio delle configurazioni}, invece nel formalismo
+hamitoniano si passa alle \emph{variabili canoniche} $(\bm{q},\bm{p})$ che
+formano lo \emph{spazio delle fasi}. La \emph{funzione di Hamilton} o
+\emph{hamiltoniana} è la funzione definita dalla seguente trasformazione di
+Legendre della lagrangiana
+\begin{equation}
+  \mathcal{H}(\bm{q},\bm{p},t) = \sum_{i=1}^n\dot{q}_ip_i -
+  \mathcal{L}(\bm{q},\dot{\bm{q}},t).
+\end{equation}
+In alcuni contesti l'hamiltoniana è chiamata anche \emph{funzione energia}. Nel
+caso in cui l'energia cinetica è una funzione omogenea di secondo grado delle
+velocità generalizzate $\dot{q}_i$ e il potenziale non dipende da esse allora
+l'hamiltoniana coincide con l'energia meccanica totale del sistema $E = T +
+U$. Se inoltre l'hamiltoniana non dipende esplicitamente dal tempo l'energia del
+sistema è un integrale primo del moto. Le equazioni del moto in questo
+formalismo sono date dalle seguenti $2n$, per $i=1,2,\dots,n$, equazioni
+differenziali del primo ordine, chiamate \emph{equazioni di Hamilton}
+\begin{subequations}
+  \begin{align}
+    \parder{\mathcal{H}}{p_i} &= \dot{q}_i, \\
+    \parder{\mathcal{H}}{q_i} &= -\dot{p}_i.
+  \end{align}
+\end{subequations}
+
+Maggiori dettagli su questi formalismi possono essere trovati in qualsiasi libro
+di meccanica classica come~\cite{goldstein:meccanica} e~\cite{landau:meccanica}.
+
+\subsection{Risoluzione del problema dei due corpi}
+\label{sec:risoluzione-lagrange}
+
+%TODO: mettere un riferimento alla figura che inserirò nel paragrafo sul
+%formalismo newtoniano e riferirsi alle grandezze presenti in quella figura. Ora
+%ricopio l'introduzione della sezione precedente, ricordati di cambiare dopo che
+%ci sarà la figura!
+Consideriamo un sistema costituito da due corpi puntiformi, di masse $m_1$ e
+$m_2$ e in un fissato sistema di riferimento inerziale indichiamo con $\bm{r}_1$
+e $\bm{r}_2$ i rispettivi vettori posizione. Come fatto nel
+paragrafo~\ref{sec:formalismo-newton} introduciamo anche i vettori posizione
+relativa e posizione del centro di massa dati rispettivamente
+dalla~\eqref{eq:posizione-relativa} e dalla~\eqref{eq:centro-di-massa} e quindi
+i vettori di posizione sono legati a questi dalle
+relazioni~\eqref{eq:r1-r2-posizione-relativa-cdm}. Le quantità di moto dei due
+corpi che costituiscono il sistema sono date rispettivamente da
+\begin{subequations}
+  \begin{align}
+    \bm{p}_1 &= \toder{m_1\bm{r}_1}{t} = m_1\dot{\bm{r}}_1, \\
+    \bm{p}_2 &= \toder{m_2\bm{r}_2}{t} = m_2\dot{\bm{r}}_2
+  \end{align}
+\end{subequations}
+Supponiamo che le forze con cui interagiscono i due corpi derivino da un unico
+potenziale $U=U(\bm{r})$ dipendente solo dalla posizione relativa fra i due
+corpi, dunque la lagrangiana del sistema è data da
+\begin{equation}
+  \label{eq:lagrangiana-due-corpi}
+  \begin{split}
+    \mathcal{L} &= T - U = \frac{1}{2}m_1\dot{\bm{r}}_1^2 +
+    \frac{1}{2}m_2\dot{\bm{r}}_2^2 - U(\bm{r}) \\
+    &= \frac{1}{2}m_1
+    \left(
+      \dot{\bm{r}}_\textup{g} -
+      \frac{\mu}{m_1}\dot{\bm{r}}
+    \right)^2 + \frac{1}{2}m_2
+    \left(
+      \dot{\bm{r}}_\textup{g} +
+      \frac{\mu}{m_2}\dot{\bm{r}}
+    \right)^2 - U(\bm{r}) \\
+    &= \frac{1}{2}M_\textup{T}\dot{\bm{r}}_\textup{g}^2 +
+    \frac{1}{2}\mu\dot{\bm{r}}^2 - U(\bm{r}),
+\end{split}
+\end{equation}
+dove $M_\textup{T}=m_1+m_2$ e $\mu=m_1m_2/(m_1+m_2)$ sono, rispettivamente, la
+massa totale e la massa ridotta già introdotti nel
+paragrafo~\ref{sec:formalismo-newton}. Il primo termine dell'ultimo membro
+della~\eqref{eq:lagrangiana-due-corpi} è l'energia cinetica di un corpo fittizio
+di massa $M_\textup{T}$ e la cui posizione è quella del centro di massa, il
+secondo termine è l'energia cinetica di un corpo fittizio di massa $\mu$ e
+posizione $\bm{r}$ rispetto all'origine del sistema di riferimento. I momenti
+coniugati alle coordinate $\bm{r}_\textup{g}$ e $\bm{r}$ sono
+\begin{subequations}
+  \begin{align}
+    \bm{p}_\textup{g} &= \parder{\mathcal{L}}{\dot{\bm{r}}_\textup{g}} =
+    M_\textup{T}\dot{\bm{r}}_\textup{g} = m_1\dot{\bm{r}}_1+m_2\dot{\bm{r}}_2 =
+    \bm{p}_1 + \bm{p}_2, \\
+    \bm{p} &= \parder{\mathcal{L}}{\dot{\bm{r}}} = \mu\dot{\bm{r}} =
+    \frac{m_2\bm{p}_1 + m_1\bm{p}_2}{m_1 + m_2}. \label{eq:momento-relativo}
+  \end{align}
+\end{subequations}
+$\bm{p}_\textup{g}$ è il \emph{momento totale}, $\bm{p}$ il \emph{momento
+  relativo}. Osserviamo che
+\begin{equation}
+  \frac{\bm{p}}{\mu} = \frac{\bm{p}_1}{m_1} + \frac{\bm{p}_2}{m_2}.
+\end{equation}
+La coordinata $\bm{r}_\textup{g}$ è ciclica nella
+lagrangiana~\eqref{eq:lagrangiana-due-corpi} quindi il momento totale
+$\bm{p}_\textup{g}=M_\textup{T}\dot{\bm{r}}_\textup{g}$ è una costante del moto:
+il centro di massa si muove di moto rettilineo uniforme oppure è in quiete,
+comunque il sistema di riferimento in cui esso è a riposo è inerziale. Come
+abbiamo fatto nella sezione~\ref{sec:formalismo-newton} allora scegliamo il
+sistema del centro di massa come nostro sistema di riferimento e la lagrangiana
+così diventa
+\begin{equation}
+  \label{eq:lagrangiana2-due-corpi}
+  \mathcal{L} = \frac{1}{2}\mu\dot{\bm{r}}^2 - U(\bm{r}).
+\end{equation}
+La coordinata $\bm{r}$ svolge dunque il ruolo di coordinata generalizzata e la
+sua dimensione è uguale al numero di gradi di libertà del sistema. L'equazione
+di Lagrange per la coordinata $\bm{r}$ è
+\begin{equation}
+  \toder{\bm{p}}{t} = -\toder{U(\bm{r})}{\bm{r}} \iff \mu\toder[2]{\bm{r}}{t} =
+  -\nabla U(\bm{r}),
+\end{equation}
+cioè la~\eqref{eq:f21-mu} ricordando che $\bm{F}_{21} = -\nabla U(\bm{r})$
+perché abbiamo supposto che le forze agenti nel sistema derivino dall'unico
+potenziale $U$.
+
+L'energia cinetica $T$ è una funzione omogenea di secondo grado della velocità
+generalizzata $\dot{\bm{r}}$ mentre l'energia potenziale $U$ non dipende da
+esse, quindi l'hamiltoniana del sistema rappresenta esattamente l'energia
+meccanica totale
+\begin{equation}
+  \mathcal{H} = \bm{p}\cdot\dot{\bm{r}} - \mathcal{L} = \frac{\bm{p}^2}{2\mu} +
+  U(\bm{r})
+\end{equation}
+L'hamiltoniana non dipende esplicitamente dal tempo, quindi l'energia del
+sistema è una costante del moto. Le equazioni di Hamilton per la variabili
+canoniche $(\bm{r},\bm{p})$ sono
+\begin{subequations}
+  \begin{align}
+    \parder{\mathcal{H}}{\bm{p}} &= \dot{\bm{r}} \iff \frac{\bm{p}}{\mu} =
+    \dot{\bm{r}}, \\
+    \parder{\mathcal{H}}{\bm{r}} &= -\dot{\bm{p}} \iff \toder{\bm{p}}{t} =
+    -\toder{U(\bm{r})}{\bm{r}} = -\nabla U(\bm{r}).
+  \end{align}
+\end{subequations}
+La prima equazione di Hamilton è equivalente alla~\eqref{eq:momento-relativo},
+la seconda è equivalente alla~\eqref{eq:f21-mu}.
+
+Supponiamo ora che il potenziale dipenda in particolare dalla distanza $r$ fra i
+due corpi e non dalla direzione del vettore $\bm{r}$, cioè $U=U(r)$. Questo
+comporta, per l'equazione di Lagrange o per la seconda equazione di Hamilton,
+che la forza che agisce sulla particella di massa ridotta è centrale quindi,
+come abbiamo visto nel paragrafo~\ref{sec:problema-keplero}, il vettore momento
+angolare $\bm{l}_0$ è un integrale primo e il moto si svolge in un piano. Allora
+il sistema ha due gradi di libertà e possiamo riscrivere la
+lagrangiana~\eqref{eq:lagrangiana2-due-corpi} nelle coordinate generalizzate
+polari $r,\theta$
+\begin{equation}
+  \mathcal{L} = \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2) - U(r).
+\end{equation}
+La coordinata $\theta$ è ciclica quindi il suo momento coniugato
+\begin{equation}
+  p_\theta = \parder{\mathcal{L}}{\dot{\theta}} = \mu r^2\dot{\theta} = l_0
+\end{equation}
+è una costante del moto. Abbiamo così trovato nuovamente che il modulo del
+vettore momento angolare è costante e ricordiamo che grazie a questo risultato
+nel paragrafo~\ref{sec:problema-keplero} siamo stati in grado di dimostrare la
+seconda elegge di Keplero. L'equazione di Lagrange per la coordinata $r$ è
+\begin{equation}
+  \label{eq:eq-lagrange-due-corpi}
+  \mu\ddot{r} = \mu r\dot{\theta}^2 - \parder{U(r)}{r}.
+\end{equation}
+Se il potenziale è quello di attrazione gravitazionale fra la particella
+relativa e la particella del centro di massa, cioè
+\begin{equation}
+  \label{eq:potenziale-gravitazionale}
+  U(r) = -\frac{GM_\textup{T}\mu}{r},
+\end{equation}
+allora l'equazione di Lagrange~\eqref{eq:eq-lagrange-due-corpi} diventa
+l'equazione del moto~\eqref{eq:forza-mu-radiale} e si può ricavare l'equazione
+dell'orbita~\eqref{eq:orbita} nello stesso modo. Il momento coniugato alla
+coordinata $r$ è
+\begin{equation}
+  p = \parder{\mathcal{L}}{\dot{r}} = \mu\dot{r}.
+\end{equation}
+L'hamiltoniana in coordinate polari e con il
+potenziale~\eqref{eq:potenziale-gravitazionale} è data da
+\begin{equation}
+  \begin{split}
+    \mathcal{H} &= p\dot{r}p_\theta\dot{\theta} - \mathcal{L} =
+    \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2) - \frac{GM_\textup{T}\mu}{r} \\
+    &= \frac{1}{2}\mu\dot{r}^2 + \frac{1}{2}\frac{l_0^2}{\mu r^2} -
+    \frac{GM_\textup{T}\mu}{r},
+  \end{split}
+\end{equation}
+cioè l'espressione dell'energia data dalla~\eqref{eq:energia}.
+
+Naturalmente usando il formalismo lagrangiano e hamiltoniano siamo giunti agli
+stessi risultati trovati usando il formalismo newtoniano.
 
 
 %%% Local Variables: 
