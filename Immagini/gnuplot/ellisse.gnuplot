@@ -15,7 +15,7 @@ e=0.5
 b=a*sqrt(1-e**2)
 c=a*e
 p=a*(1-e**2)
-r(t)=a*(1-e**2)/(1+e*cos(t))
+r(t)=p/(1+e*cos(t))
 set xrange [-1.1*(a+c):1.5*a*(1-e)]
 set yrange [-1.4*b:1.4*b]
 set arrow from 0,-1.2*b to 0,1.2*b filled # asse y
