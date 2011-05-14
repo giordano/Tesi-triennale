@@ -269,10 +269,10 @@ costanti di integrazione. Le~\eqref{eq:cost-binet} possono essere invertite:
 \begin{subequations}
   \begin{align}
     \tilde\omega &= \arctan \frac{c_1}{c_0}, \\
-    e &= \frac{c_0p}{\cos\omega}.
+    e &= \frac{c_0p}{\cos\tilde\omega}.
   \end{align}
 \end{subequations}
-Dunque fissate $c_0$ e $c_1$, $\tilde\omega$ e $e$ sono univocamente
+Dunque fissate $c_0$ e $c_1$, $\tilde\omega$ ed $e$ sono univocamente
 determinate. In questo modo la~\eqref{eq:sol-binet} diventa
 \begin{equation}
   u(\theta) = \frac{1}{p}(1+e\cos(\theta-\tilde\omega))
@@ -346,7 +346,8 @@ e per l'iperbole:
   p &= \frac{b^2}{a} = a(e^2-1), \label{eq:semilato-iperbole}\\
   e &= \sqrt{1+\frac{b^2}{a^2}} =
   \sqrt{1+\frac{p}{a}}, \label{eq:eccentricita-iperbole}\\
-  c &= \sqrt{a^2+b^2}.
+  b &= a\sqrt{e^2-1}, \\
+  c &= \sqrt{a^2+b^2} = ae.
 \end{align}
 Osserviamo infine che per tutte le coniche risulta $r(\tilde\omega\pm\pi/2)=p$.
 
@@ -390,7 +391,7 @@ r^2(\theta)\dot{\theta}^2$. Ricordando le formule~\eqref{eq:derivata1-r}
 e~\eqref{eq:sol-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
 \begin{subequations}
   \begin{align}
-    \dot{r}(\theta) &= -\frac{l_0}{\mu}\toder{u}{\theta} = -\frac{l_0}{p}
+    \dot{r}(\theta) &= -\frac{l_0}{\mu}\toder{u}{\theta} = -\frac{l_0}{\mu}
     \left(
       -\frac{1}{p}e\sin(\theta-\tilde\omega)
     \right) = \frac{l_0}{\mu p}e\sin(\theta-\tilde\omega), \\
@@ -432,7 +433,7 @@ trovate, la~\eqref{eq:rec-semilato} e la~\eqref{eq:orbita} risulta
 \end{equation}
 Questa relazione lega il modulo quadro della velocità alla distanza della
 particella fittizia dal centro di massa. Si può osservare in particolare che
-$v^2(\theta)$ è proporzionale a $1/r(\theta)$, quindi il modulo della velocità è
+$v^2(\theta)$ è lineare in $1/r(\theta)$, quindi il modulo della velocità è
 massimo quando il corpo di massa ridotta si trova nel periapside e vale
 \begin{equation}
   v^2(\tilde\omega) = \frac{GM_\textup{T}}{a}\frac{1+e}{1-e}.
@@ -456,10 +457,11 @@ figura~\ref{fig:velocita}.
     mantenendo costante il semiasse maggiore. Abbiamo posto $\tilde\omega=0$.}
   \label{fig:velocita-los}
 \end{figure}
-Nelle osservazioni astronomiche quello che viene effettivamente misurato non è
-la velocità data dalla~\eqref{eq:velocita-ellisse} ma la componente lungo la
-direzione di vista %TODO: aggiungere immagine come la 47 dello Smart e
-                   %completare il discorso!
+Nelle osservazioni astronomiche di un sistema composta da due corpi celesti
+quello che viene effettivamente misurato non è la velocità data
+dalla~\eqref{eq:velocita-ellisse} ma la sua componente lungo la direzione di
+vista %TODO: aggiungere immagine come la 47 dello Smart e completare il
+      %discorso!
 
 I calcoli svolti per determinare la velocità nel caso di orbite ellittiche sono
 del tutto analoghi a quelli necessari nel caso di orbite paraboliche e
@@ -512,10 +514,11 @@ Infine per le orbite iperboliche usiamo la~\eqref{eq:velocita-iperbole}:
   \right) - \frac{GM_\textup{T}\mu}{r(\theta)} = \frac{GM_\textup{T}\mu}{2a}.
 \end{equation}
 Dunque in tutti i casi l'energia è una costante del moto e dipende solo dalle
-masse $m_1$ e $m_2$ dei due corpi e dal semiasse maggiore dell'ellisse descritta
-dal loro moto relativo, ma non dall'eccentricità di questa. Naturalmente il
-fatto che l'energia si conserva non deve sorprendere perché abbiamo supposto per
-ipotesi che il sistema fosse isolato e che l'unica forza agente fosse quella
+masse $m_1$ e $m_2$ dei due corpi, attraverso $M_\textup{T}$ e $\mu$, e dal
+semiasse maggiore dell'ellisse descritta dal loro moto relativo, ma non
+dall'eccentricità di questa. Naturalmente il fatto che l'energia si conserva non
+deve sorprendere perché abbiamo supposto per ipotesi che il sistema fosse
+isolato e che l'unica forza agente fosse quella
 gravitazionale. %TODO: svolgere esercizio su dE in funzione di da.
 
 Dalla~\eqref{eq:energia} possiamo osservare che il moto relativo è equivalente a
@@ -525,7 +528,7 @@ un moto unidimensionale e con un potenziale efficace
   \input{Immagini/gnuplot/potenziale_efficace}
   \caption{Andamento qualitativo del potenziale efficace nel problema di Keplero
     in funzione della distanza dal centro di massa. Il grafico rappresenta la
-    funzione $k_1/r^2-k_2/r$, con $k_1$ e $k_2$ costanti scelte
+    funzione $k_1/r^2-k_2/r$, con $k_1$ e $k_2$ costanti positive scelte
     arbitrariamente.}
   \label{fig:potenziale-efficace}
 \end{figure}
@@ -555,13 +558,13 @@ regioni in cui $E-U_\textup{eff}\geq 0$, cioè:
 Inserendo la~\eqref{eq:energia-ellisse}
 nella~\eqref{eq:eccentricita-orbita-ellisse} e la~\eqref{eq:energia-iperbole}
 nella~\eqref{eq:eccentricita-orbita-iperbole} abbiamo che sia per orbite
-ellittiche che per orbite iperboliche sussiste la seguente relazione fra energia
+ellittiche sia per orbite iperboliche sussiste la seguente relazione fra energia
 ed eccentricità dell'orbita
 \begin{equation}
   e = \sqrt{1+\frac{2El_0^2}{G^2M_\textup{T}^2\mu^3}}.
 \end{equation}
 Si noti che questa relazione è valida anche per le orbite paraboliche perché in
-questo caso l'energia è nulla e l'eccentricità vale $e$.
+questo caso l'energia è nulla e l'eccentricità vale $1$.
 
 Il centro di massa esercita un'attrazione sulla particella fittizia di massa
 ridotta, tuttavia la presenza del potenziale centrifugo non
