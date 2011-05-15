@@ -12,10 +12,10 @@ IMMAGINI_GNUPLOT_EPS	= $(patsubst %.gnuplot,%.eps,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_TEX	= $(patsubst %.gnuplot,%.tex,$(IMMAGINI_GNUPLOT))
 TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
 TUTTI_FILE		= $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF)
-CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.log \
-			  *.out *.run.xml *.toc *~ $(wildcard Capitoli/*.aux) \
-			  $(wildcard Capitoli/*~) $(IMMAGINI_GNUPLOT_EPS) \
-			  $(wildcard Immagini/gnuplot/*~)
+CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
+			  *.log *.out *.run.xml *.toc *~ \
+			  $(wildcard Capitoli/*.aux) $(wildcard Capitoli/*~) \
+			  $(IMMAGINI_GNUPLOT_EPS) $(wildcard Immagini/gnuplot/*~)
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
 			  $(IMMAGINI_GNUPLOT_TEX)
 
