@@ -88,6 +88,7 @@ allora lo scegliamo come nostro nuovo sistema di riferimento e in particolare
 fissiamo come origine del sistema la posizione del centro di massa. In questo
 nuovo sistema le posizioni delle due masse saranno dunque descritte dai vettori
 \begin{subequations} %TODO: alla fine controllare aspetto di questa equazione
+  \label{eq:r1-r2-nel-cdm}
   \begin{align}
     \bm{r}_1 &= -\frac{\mu}{m_1}\bm{r},\\
     \bm{r}_2 &= \frac{\mu}{m_2}\bm{r}.
@@ -310,7 +311,7 @@ modo:
   \caption{Ellisse in coordinate polari. L'origine del sistema di riferimento è
     il centro di massa (CDM) che coincide con uno dei fuochi dell'ellisse, $a$ è
     il semiasse maggiore, $b$ è il semiasse minore, $p$ è il semilato retto, $c$
-    è l'eccentricità lineare.}
+    è l'eccentricità lineare. Nel grafico abbiamo posto $a=1$ ed $e=0.7$.}
   \label{fig:ellisse}
 \end{figure}
 
@@ -337,11 +338,11 @@ l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso
 fuoco. Osservando la figura~\ref{fig:ellisse} si riconosce che il periapside
 rispetto al centro di massa è raggiunto in corrispondenza di
 $\theta=\tilde\omega$ e la distanza del periapside dal centro di massa è
-$r_\textup{min} = r(\tilde\omega) = a(1-e)$; l'apoapside è raggiunto per
+$r_\textup{min} = r(\tilde\omega) = a(1-e) = a-c$; l'apoapside è raggiunto per
 $\theta=\tilde\omega+\pi$ e la distanza dell'apoapside dallo stesso fuoco è
-$r_\textup{max} = r(\tilde\omega+\pi) = a(1+e)$. Si ottiene il caso particolare
-della circonferenza ponendo nelle equazioni precedenti $e=0$, quindi $p=a=b$,
-$c=e=0$. Per la parabola sussistono le seguenti relazioni:
+$r_\textup{max} = r(\tilde\omega+\pi) = a(1+e)= a+c$. Si ottiene il caso
+particolare della circonferenza ponendo nelle equazioni precedenti $e=0$, quindi
+$p=a=b$, $c=e=0$. Per la parabola sussistono le seguenti relazioni:
 \begin{align}
   c &= a,\\
   p &= 2a,
@@ -492,9 +493,20 @@ dalla~\eqref{eq:semilato-iperbole}, dunque
 Possiamo ora calcolare l'energia meccanica del sistema costituito dai due corpi:
 \begin{equation}
   \label{eq:energia}
-  E= T + U = \frac{1}{2}\mu v^2(\theta) - \frac{GM_\textup{T}\mu}{r(\theta)}
-  = \frac{1}{2}\mu(\dot{r^2(\theta)} + r^2(\theta)\dot{\theta}^2) -
-  \frac{GM_\textup{T}\mu}{r(\theta)}.
+  \begin{split}
+    E &= T + U = \frac{1}{2}m_1\dot{\bm{r}}_1^2 + \frac{1}{2}m_2\dot{\bm{r}}_2^2
+    - \frac{GM_\textup{T}\mu}{r(\theta)} \\
+    &= \frac{1}{2}m_1
+    \left(
+      -\frac{\mu}{m_1}\dot{\bm{r}}
+    \right)^2 + \frac{1}{2}m_2
+    \left(
+      \frac{\mu}{m_2}\dot{\bm{r}}
+    \right)^2 - \frac{GM_\textup{T}\mu}{r(\theta)} \\
+    &= \frac{1}{2}\mu v^2(\theta)
+    - \frac{GM_\textup{T}\mu}{r(\theta)} = \frac{1}{2}\mu(\dot{r^2(\theta)} +
+    r^2(\theta)\dot{\theta}^2) - \frac{GM_\textup{T}\mu}{r(\theta)}.
+  \end{split}
 \end{equation}
 Per le orbite ellittiche sostituiamo al posto della velocità l'espressione data
 dalla~\eqref{eq:velocita-ellisse}
@@ -589,6 +601,27 @@ e facendo il limite per $r \to 0$ abbiamo
   \frac{1}{2}\frac{l_0^2}{\mu} \leq 0,
 \end{equation}
 ma questo non è impossibile.
+
+\subsubsection{Esercizio} %TODO: titolo
+\label{sec:esercizio}
+
+Vogliamo ora vedere come varia il semiasse maggiore di un'orbita ellittica della
+particella di massa ridotta in funzione dell'energia. Per fare ciò differenziamo
+la~\eqref{eq:energia-ellisse} rispetto ad $a$
+% TODO: c'è bisogno di differenziare? Non si vede subito dall'espressione di E?
+\begin{equation}
+  \dd E = \frac{GM_\textup{T}\mu}{2a^2}\dd a.
+\end{equation}
+Osserviamo che $\dd E$ e $\dd a$ hanno lo stesso segno, quindi se l'energia
+aumenta allora aumenterà anche il semiasse maggiore, se l'energia diminuisce lo
+stesso farà $a$. Questo risultato ha importanti conseguenze astronomiche. Se un
+sistema binario di corpi celesti perde energia per qualche motivo, cioè
+l'energia diventa ancora più negativa, il semiasse maggiore diminuirà rendendo
+il sistema più legato, al contrario se il sistema acquista energia, cioè questa
+diventa meno negativa, il semiasse maggiore aumenterà e il sistema diventerà
+meno legato. Al limite, se l'energia diventa nulla o positiva il sistema non
+sarà più legato.
+
 
 \section{Formalismo lagrangiano e hamitoniano}
 \label{sec:formalismo-lagrange}
@@ -754,9 +787,9 @@ così diventa
   \label{eq:lagrangiana2-due-corpi}
   \mathcal{L} = \frac{1}{2}\mu\dot{\bm{r}}^2 - U(\bm{r}).
 \end{equation}
-La coordinata $\bm{r}$ svolge dunque il ruolo di coordinata generalizzata e la
-sua dimensione è uguale al numero di gradi di libertà del sistema. L'equazione
-di Lagrange per la coordinata $\bm{r}$ è
+Il vettore $\bm{r}$ svolge dunque il ruolo di coordinate generalizzate e il
+numero di coordinate indipendenti che lo individuano è al numero di gradi di
+libertà del sistema. L'equazione di Lagrange per la coordinata $\bm{r}$ è
 \begin{equation}
   \toder{\bm{p}}{t} = -\toder{U(\bm{r})}{\bm{r}} \iff \mu\toder[2]{\bm{r}}{t} =
   -\nabla U(\bm{r}),
@@ -773,7 +806,7 @@ meccanica totale
   \mathcal{H} = \bm{p}\cdot\dot{\bm{r}} - \mathcal{L} = \frac{\bm{p}^2}{2\mu} +
   U(\bm{r})
 \end{equation}
-L'hamiltoniana non dipende esplicitamente dal tempo, quindi l'energia del
+L'hamiltoniana non dipende esplicitamente dal tempo, pertanto l'energia del
 sistema è una costante del moto. Le equazioni di Hamilton per la variabili
 canoniche $(\bm{r},\bm{p})$ sono
 \begin{subequations}
@@ -824,11 +857,11 @@ coordinata $r$ è
 \begin{equation}
   p = \parder{\mathcal{L}}{\dot{r}} = \mu\dot{r}.
 \end{equation}
-L'hamiltoniana in coordinate polari e con il
-potenziale~\eqref{eq:potenziale-gravitazionale} è data da
+L'hamiltoniana in coordinate polari e con il potenziale
+gravitazionale~\eqref{eq:potenziale-gravitazionale} è data da
 \begin{equation}
   \begin{split}
-    \mathcal{H} &= p\dot{r}p_\theta\dot{\theta} - \mathcal{L} =
+    \mathcal{H} &= p\dot{r} + p_\theta\dot{\theta} - \mathcal{L} =
     \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2) - \frac{GM_\textup{T}\mu}{r} \\
     &= \frac{1}{2}\mu\dot{r}^2 + \frac{1}{2}\frac{l_0^2}{\mu r^2} -
     \frac{GM_\textup{T}\mu}{r},
@@ -839,17 +872,40 @@ cioè l'espressione dell'energia data dalla~\eqref{eq:energia}.
 Naturalmente usando il formalismo lagrangiano e hamiltoniano siamo giunti agli
 stessi risultati trovati usando il formalismo newtoniano.
 
-\section{Orbite dei due corpi}%TODO: inventarsi un titolo decente
+\section{Orbite dei due corpi nel problema di Keplero}
+% TODO: inventarsi un titolo decente
 \label{sec:orbite-corpi}
 
+Nel paragrafo~\ref{sec:equazione-dellorbita} abbiamo ricavato
+l'equazione~\eqref{eq:orbita} dell'orbita della particella di massa ridotta per
+il problema di Keplero, ma nel paragrafo~\ref{chap:due-corpi} abbiamo visto che
+il vettore $\bm{r}$ che individua la posizione della particella di massa ridotta
+è legato ai vettori posizione $\bm{r}_1$ e $\bm{r}_2$ delle particelle di massa
+rispettivamente $m_1$ e $m_2$ dalle relazioni~\eqref{eq:r1-r2-nel-cdm}, allora
+sostituendo la~\eqref{eq:orbita} nelle~\eqref{eq:r1-r2-nel-cdm} troviamo che le
+orbite dei due corpi nel sistema di riferimento del centro di massa sono
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/orbite_ellittiche}
-  \caption{AGGIUNGERE LA DIDASCALIA.}
+  \caption{Orbite ellittiche dei due corpi e della particella fittizia di massa
+    $\mu$ nel sistema di riferimento del centro di massa. Abbiamo posto $m_1=1$
+    e $m_2=5$ in unità arbitrarie. I parametri dell'ellisse sono $a=1$ ed
+    $e=0.8$.}
   \label{fig:orbite-ellittiche}
 \end{figure}
-%TODO completare paragrafo
-
+\begin{subequations}
+  \begin{align}
+    r_1(\theta) &= -\frac{\mu}{m_1}r(\theta) =
+    -\frac{\mu}{m_1}\frac{p}{1+e\cos(\theta - \tilde\omega)},\\
+    r_2(\theta) &= \frac{\mu}{m_2}r(\theta) =
+    \frac{\mu}{m_2}\frac{p}{1+e\cos(\theta - \tilde\omega)}.
+  \end{align}
+\end{subequations}
+Nella figura~\ref{fig:orbite-ellittiche} sono riportate le orbite dei due corpi
+e del corpo di massa ridotta nel caso di orbite ellittiche. Come si può
+osservare, entrambi i corpi orbitano intorno al centro di massa ma mentre il
+corpo più massivo, nell'esempio in figura $m_2$, rimane vicino a questo, il
+corpo meno massivo descrive orbite più larghe.
 
 %%% Local Variables: 
 %%% mode: latex
