@@ -7,7 +7,7 @@
 % `mathtools' serve per definire la norma e il valore assoluto
 \usepackage{mathtools}
 \usepackage{amsmath,amsfonts,amssymb}
-\usepackage[font=small,format=hang]{caption}
+\usepackage[font=small,format=hang,labelfont=bf]{caption}
 \usepackage{siunitx}
 \usepackage[autostyle=true]{csquotes}
 \usepackage[style=numeric,backref,hyperref,abbreviate=false,backend=biber]{biblatex}
@@ -121,6 +121,8 @@
 
 \clearpage{}
 \tableofcontents{} % TODO: capire perché questa pagina è numerata `1'
+\clearpage{}
+\listoffigures{}
 
 \mainmatter{}
 \include{Capitoli/problema_due_corpi}

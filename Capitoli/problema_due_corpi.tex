@@ -6,13 +6,13 @@ del moto di due corpi, supposti puntiformi, soggetti solamente alla mutua
 interazione dovuta a forze che soddisfano il principio di azione e reazione. In
 particolare ci occuperemo del \emph{problema di Keplero}, ovvero del caso in cui
 l'interazione fra i due corpi è quella gravitazionale che è una forza di tipo
-centrale. Il problema sarà risolto usando il formalismo newtoniano e quello
-lagrangiano, di quest'ultimo presenteremo una breve introduzione. Riusciremo a
-determinare analiticamente le equazioni delle orbite dei due corpi e a dedurre
-alcune proprietà del sistema. La risoluzione del problema di Keplero permette di
-descrivere, fra le altre cose, il moto di due corpi celesti, per esempio un
-pianeta e la sua stella, che sono soggetti solo alla mutua interazione
-gravitazionale.
+centrale. Il problema sarà risolto usando il formalismo newtoniano e quelli
+lagrangiano e hamiltoniano, di questi ultimi presenteremo una breve
+introduzione. Riusciremo a determinare analiticamente le equazioni delle orbite
+dei due corpi e a dedurre alcune proprietà del sistema. La risoluzione del
+problema di Keplero permette di descrivere, fra le altre cose, il moto di due
+corpi celesti, per esempio un pianeta e la sua stella, che sono soggetti solo
+alla mutua interazione gravitazionale.
 
 \section{Formalismo newtoniano}
 \label{sec:formalismo-newton}
@@ -87,7 +87,7 @@ ogni modo il sistema in cui il centro di massa è a riposo è un sistema inerzia
 allora lo scegliamo come nostro nuovo sistema di riferimento e in particolare
 fissiamo come origine del sistema la posizione del centro di massa. In questo
 nuovo sistema le posizioni delle due masse saranno dunque descritte dai vettori
-\begin{subequations} %TODO: alla fine controllare aspetto di questa equazione
+\begin{subequations}
   \label{eq:r1-r2-nel-cdm}
   \begin{align}
     \bm{r}_1 &= -\frac{\mu}{m_1}\bm{r},\\
@@ -174,7 +174,7 @@ meccanica si ricava che per un moto piano la velocità $\dot{\bm{r}}$ e
 l'accelerazione $\ddot{\bm{r}}$ del vettore posizione $\bm{r}=r\versor{r}$ sono
 date da
 \begin{subequations}
-  \begin{align} %TODO: alla fine controllare aspetto di questa equazione
+  \begin{align}
     \dot{\bm{r}}  &= \dot{r}\versor{r} +
     r\dot{\theta}\versor{\theta}, \label{eq:velocita-polare}\\
     \ddot{\bm{r}} &= (\ddot{r}-r\dot{\theta}^2)\versor{r} + (r\ddot{\theta} +
@@ -308,10 +308,11 @@ modo:
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/ellisse}
-  \caption{Ellisse in coordinate polari. L'origine del sistema di riferimento è
-    il centro di massa (CDM) che coincide con uno dei fuochi dell'ellisse, $a$ è
-    il semiasse maggiore, $b$ è il semiasse minore, $p$ è il semilato retto, $c$
-    è l'eccentricità lineare. Nel grafico abbiamo posto $a=1$ ed $e=0.7$.}
+  \caption[Ellisse in coordinate polari.]{Ellisse in coordinate polari. L'origine
+    del sistema di riferimento è il centro di massa (CDM) che coincide con uno
+    dei fuochi dell'ellisse, $a$ è il semiasse maggiore, $b$ è il semiasse
+    minore, $p$ è il semilato retto, $c$ è l'eccentricità lineare. Nel grafico
+    abbiamo posto $a=1$ ed $e=0.7$.}
   \label{fig:ellisse}
 \end{figure}
 
@@ -384,9 +385,10 @@ intorno) abbiamo ricavato la prima legge di Keplero: \emph{I pianeti,
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/velocita}
-  \caption{Andamento qualitativo del modulo quadro della velocità del corpo di
-    massa ridotta in funzione dell'angolo $\theta$ nel caso di orbita ellittica,
-    per diversi valori dell'eccentricità $e$ e con $a$ fissato. Abbiamo posto
+  \caption[Andamento della velocità in funzione dell'anomalia.]{Andamento
+    qualitativo del modulo quadro della velocità del corpo di massa ridotta in
+    funzione dell'angolo $\theta$ nel caso di orbita ellittica, per diversi
+    valori dell'eccentricità $e$ e con $a$ fissato. Abbiamo posto
     $\tilde\omega=0$.}
   \label{fig:velocita}
 \end{figure}
@@ -456,11 +458,12 @@ figura~\ref{fig:velocita}.
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/velocita_los}
-  \caption{Andamento qualitativo del modulo quadro della velocità, lungo la
-    direzione di vista, del corpo di massa ridotta in funzione dell'angolo
-    $\theta$ nel caso di orbita ellittica. Il grafico è stato fatto per gli
-    stessi valori di eccentricità utilizzati nella figura~\ref{fig:velocita},
-    mantenendo costante il semiasse maggiore. Abbiamo posto $\tilde\omega=0$.}
+  \caption[Andamento della velocità nella direzione di vista.]{Andamento
+    qualitativo del modulo quadro della velocità, lungo la direzione di vista,
+    del corpo di massa ridotta in funzione dell'angolo $\theta$ nel caso di
+    orbita ellittica. Il grafico è stato fatto per gli stessi valori di
+    eccentricità utilizzati nella figura~\ref{fig:velocita}, mantenendo costante
+    il semiasse maggiore. Abbiamo posto $\tilde\omega=0$.}
   \label{fig:velocita-los}
 \end{figure}
 Nelle osservazioni astronomiche di un sistema composta da due corpi celesti
@@ -536,17 +539,18 @@ semiasse maggiore dell'ellisse descritta dal loro moto relativo, ma non
 dall'eccentricità di questa. Naturalmente il fatto che l'energia si conserva non
 deve sorprendere perché abbiamo supposto per ipotesi che il sistema fosse
 isolato e che l'unica forza agente fosse quella
-gravitazionale. %TODO: svolgere esercizio su dE in funzione di da.
+gravitazionale.
 
 Dalla~\eqref{eq:energia} possiamo osservare che il moto relativo è equivalente a
 un moto unidimensionale e con un potenziale efficace
 \begin{figure} %TODO: scegliere valori migliori per il grafico
   \centering
   \input{Immagini/gnuplot/potenziale_efficace}
-  \caption{Andamento qualitativo del potenziale efficace nel problema di Keplero
-    in funzione della distanza dal centro di massa. Il grafico rappresenta la
-    funzione $k_1/r^2-k_2/r$, con $k_1$ e $k_2$ costanti positive scelte
-    arbitrariamente.}
+  \caption[Andamento del potenziale efficace in funzione della distanza dal
+  centro di massa.]{Andamento qualitativo del potenziale efficace nel problema
+    di Keplero in funzione della distanza dal centro di massa. Il grafico
+    rappresenta la funzione $k_1/r^2-k_2/r$, con $k_1$ e $k_2$ costanti positive
+    scelte arbitrariamente.}
   \label{fig:potenziale-efficace}
 \end{figure}
 \begin{equation}
@@ -754,7 +758,7 @@ corpi, dunque la lagrangiana del sistema è data da
 \end{split}
 \end{equation}
 dove $M_\textup{T}=m_1+m_2$ e $\mu=m_1m_2/(m_1+m_2)$ sono, rispettivamente, la
-massa totale e la massa ridotta già introdotti nel
+massa totale e la massa ridotta già introdotte nel
 paragrafo~\ref{sec:formalismo-newton}. Il primo termine dell'ultimo membro
 della~\eqref{eq:lagrangiana-due-corpi} è l'energia cinetica di un corpo fittizio
 di massa $M_\textup{T}$ e la cui posizione è quella del centro di massa, il
@@ -887,10 +891,10 @@ orbite dei due corpi nel sistema di riferimento del centro di massa sono
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/orbite_ellittiche}
-  \caption{Orbite ellittiche dei due corpi e della particella fittizia di massa
-    $\mu$ nel sistema di riferimento del centro di massa. Abbiamo posto $m_1=1$
-    e $m_2=5$ in unità arbitrarie. I parametri dell'ellisse sono $a=1$ ed
-    $e=0.8$.}
+  \caption[Orbite dei due corpi.]{Orbite ellittiche dei due corpi e della
+    particella fittizia di massa $\mu$ nel sistema di riferimento del centro di
+    massa. Abbiamo posto $m_1=1$ e $m_2=5$ in unità arbitrarie. I parametri
+    dell'ellisse sono $a=1$ ed $e=0.8$.}
   \label{fig:orbite-ellittiche}
 \end{figure}
 \begin{subequations}
