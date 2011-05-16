@@ -113,10 +113,10 @@ dalla~\eqref{eq:az-reaz}. L'equazione precedente può essere riscritta nella for
   \bm{F}_{21}=\mu\toder[2]{\bm{r}}{t}
 \end{equation}
 da cui possiamo dedurre che il problema dei due corpi interagenti si è ridotto
-al problema del moto di un solo corpo puntiforme fittizio, di massa $\mu$ e
-posizione $\bm{r}$ nel sistema del centro di massa, all'interno campo generato
-da un altro corpo puntiforme fittizio di massa $M_\textup{T}$ fisso
-nell'origine.
+al problema del moto di un solo corpo puntiforme fittizio di massa $\mu$ e
+posizione $\bm{r}$ nel sistema del centro di massa, che chiameremo a volte
+\emph{particella relativa}, all'interno del campo generato da un altro corpo
+puntiforme fittizio di massa $M_\textup{T}$ fisso nell'origine.
 
 \subsection{Problema di Keplero}
 \label{sec:problema-keplero}
@@ -164,8 +164,8 @@ istante indica la posizione rispetto al centro di massa della particella
 fittizia di massa $\mu$, giace sempre sullo stesso piano perpendicolare a
 $\bm{l}_0$. Se invece risulta $\bm{l}_0=\bm{0}$, $\bm{r}$ è parallelo alla
 quantità di moto $\bm{p}$ e il moto è unidimensionale. Da qui in seguito
-supporremo che il momento angolare $\bm{l}_0$ della particella di massa ridotta
-sia non nullo.
+supporremo che il momento angolare $\bm{l}_0$ della particella relativa sia non
+nullo.
 
 Dal momento che il moto della particella di massa ridotta si svolge in un piano
 possiamo utilizzare le coordinate polari $r,\theta$ per rappresentare la
@@ -284,7 +284,7 @@ determinate. In questo modo la~\eqref{eq:sol-binet} diventa
   u(\theta) = \frac{1}{p}(1+e\cos(\theta-\tilde\omega))
 \end{equation}
 e ricordando che $u=1/r$ giungiamo all'equazione polare dell'orbita della
-particella di massa ridotta nel sistema di riferimento del centro di massa
+particella relativa nel sistema di riferimento del centro di massa
 \begin{equation}
   \label{eq:orbita}
   r(\theta) = \frac{p}{1+e\cos(\theta-\tilde\omega)}.
@@ -386,7 +386,7 @@ intorno) abbiamo ricavato la prima legge di Keplero: \emph{I pianeti,
   \centering
   \input{Immagini/gnuplot/velocita}
   \caption[Andamento della velocità in funzione dell'anomalia]{Andamento
-    qualitativo del modulo quadro della velocità del corpo di massa ridotta in
+    qualitativo del modulo quadro della velocità della particella relativa in
     funzione dell'angolo $\theta$ nel caso di orbita ellittica, per diversi
     valori dell'eccentricità $e$ e con $a$ fissato. Abbiamo posto
     $\tilde\omega=0$}
@@ -442,7 +442,7 @@ trovate, la~\eqref{eq:rec-semilato} e la~\eqref{eq:orbita} risulta
 Questa relazione lega il modulo quadro della velocità alla distanza della
 particella fittizia dal centro di massa. Si può osservare in particolare che
 $v^2(\theta)$ è lineare in $1/r(\theta)$, quindi il modulo della velocità è
-massimo quando il corpo di massa ridotta si trova nel periapside e vale
+massimo quando la particella relativa si trova nel periapside e vale
 \begin{equation}
   v^2(\tilde\omega) = \frac{GM_\textup{T}}{a}\frac{1+e}{1-e}.
 \end{equation}
@@ -590,8 +590,8 @@ questo caso l'energia è nulla e l'eccentricità vale $1$.
 Il centro di massa esercita un'attrazione sulla particella fittizia di massa
 ridotta, tuttavia la presenza del potenziale centrifugo non
 nullo\footnote{Ricorda che abbiamo supposto per ipotesi che sia $l_0\neq 0$.}
-impedisce che la massa ridotta possa cadere sul centro di massa se il campo
-generato è quello gravitazionale. Infatti abbiamo
+impedisce che la particella relativa possa cadere sul centro di massa se il
+campo generato è quello gravitazionale. Infatti abbiamo
 \begin{equation}
   0\leq \frac{1}{2}\mu\dot{r}^2 = E - U_\textup{eff}(r) = E -
   \frac{1}{2}\frac{l_0^2}{\mu r^2} - \frac{GM_\textup{T}\mu}{r}
@@ -645,16 +645,15 @@ olonomi\footnote{Un vincolo si dice \emph{olonomo} se è esprimibile sotto forma
   di un'equazione del tipo $f(\bm{r}_1,\dots,\bm{r}_N,t)=0$, dove le $\bm{r}_i$
   rappresentano le posizioni delle $N$ particelle all'istante $t$.} ed espressi
 da $k$ equazioni allora è possibile introdurre $n=3N-k$ coordinate indipendenti
-che indichiamo con $q_1,\dots,q_n$ e che determinano univocamente il
-sistema tenendo conto dei vincoli. Le $q_i$ sono dette \emph{coordinate
-  generalizzate} o \emph{lagrangiane}, non hanno necessariamente le dimensioni
-di una lunghezza e la loro scelta non è univoca; $n$, il numero di grandezze
-indipendenti, è chiamato \emph{numero di gradi di libertà}. D'ora in poi
-indicheremo per brevità con $\bm{q} = (q_1,\dots,q_n)$ l'insieme delle $n$
-coordinate generalizzate e con $\dot{\bm{q}} =
-(\dot{q}_1,\dots,\dot{q}_n)$ l'insieme delle \emph{velocità
-  generalizzate} sebbene, come già osservato, a rigore non tutte queste
-grandezze hanno necessariamente la stessa dimensione fisica. Definiamo la
+che indichiamo con $q_1,\dots,q_n$ e che determinano univocamente il sistema
+tenendo conto dei vincoli. Le $q_i$ sono dette \emph{coordinate generalizzate} o
+\emph{lagrangiane}, non hanno necessariamente le dimensioni di una lunghezza e
+la loro scelta non è univoca; $n$, il numero di grandezze indipendenti, è
+chiamato \emph{numero di gradi di libertà}. D'ora in poi indicheremo per brevità
+con $\bm{q} = (q_1,\dots,q_n)$ l'insieme delle $n$ coordinate generalizzate e
+con $\dot{\bm{q}} = (\dot{q}_1,\dots,\dot{q}_n)$ l'insieme delle \emph{velocità
+  generalizzate} sebbene, come già osservato, a rigore non è detto che tutte
+queste grandezze abbiano la stessa dimensione fisica. Definiamo la
 \emph{funzione di Lagrange} o \emph{lagrangiana}
 $\mathcal{L}(\bm{q},\dot{\bm{q}},t)$
 \begin{equation}
@@ -826,8 +825,8 @@ la seconda è equivalente alla~\eqref{eq:f21-mu}.
 Supponiamo ora che il potenziale dipenda in particolare dalla distanza $r$ fra i
 due corpi e non dalla direzione del vettore $\bm{r}$, cioè $U=U(r)$. Questo
 comporta, per l'equazione di Lagrange o per la seconda equazione di Hamilton,
-che la forza che agisce sulla particella di massa ridotta è centrale quindi,
-come abbiamo visto nel paragrafo~\ref{sec:problema-keplero}, il vettore momento
+che la forza che agisce sulla particella relativa è centrale quindi, come
+abbiamo visto nel paragrafo~\ref{sec:problema-keplero}, il vettore momento
 angolare $\bm{l}_0$ è un integrale primo e il moto si svolge in un piano. Allora
 il sistema ha due gradi di libertà e possiamo riscrivere la
 lagrangiana~\eqref{eq:lagrangiana2-due-corpi} nelle coordinate generalizzate
@@ -882,8 +881,8 @@ stessi risultati trovati usando il formalismo newtoniano.
 Nel paragrafo~\ref{sec:equazione-dellorbita} abbiamo ricavato
 l'equazione~\eqref{eq:orbita} dell'orbita della particella di massa ridotta per
 il problema di Keplero, ma nel paragrafo~\ref{chap:due-corpi} abbiamo visto che
-il vettore $\bm{r}$ che individua la posizione della particella di massa ridotta
-è legato ai vettori posizione $\bm{r}_1$ e $\bm{r}_2$ delle particelle di massa
+il vettore $\bm{r}$ che individua la posizione della particella relativa è
+legato ai vettori posizione $\bm{r}_1$ e $\bm{r}_2$ delle particelle di massa
 rispettivamente $m_1$ e $m_2$ dalle relazioni~\eqref{eq:r1-r2-nel-cdm}, allora
 sostituendo la~\eqref{eq:orbita} nelle~\eqref{eq:r1-r2-nel-cdm} troviamo che le
 orbite dei due corpi nel sistema di riferimento del centro di massa sono
