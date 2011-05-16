@@ -97,8 +97,8 @@ nuovo sistema le posizioni delle due masse saranno dunque descritte dai vettori
 Osserviamo che se, per esempio, $m_2\gg m_1$ allora $\bm{r}_2\simeq\bm{0}$, cioè
 il corpo più massivo si trova praticamente nel centro di massa, come è logico
 aspettarsi dalla definizione di centro di massa. Dividendo ambo i membri
-della~\eqref{eq:f21} per $m_2$ e ambo i membri della~\eqref{eq:f12} per $m_1$ e
-sottraendo membro a membro le equazioni così ottenuti ricaviamo
+della~\eqref{eq:f21} per $m_2$, ambo i membri della~\eqref{eq:f12} per $m_1$ e
+sottraendo membro a membro le equazioni così ottenute ricaviamo
 \begin{equation}
   \frac{\bm{F}_{21}}{m_2}-\frac{\bm{F}_{12}}{m_1} = \bm{F}_{21}
   \left(
@@ -131,7 +131,7 @@ allora la forza $\bm{F}_\textup{G}$ è data da
 \end{equation}
 in cui $G=\SI{6.674
   28(67)e-11}{\metre\tothe{3}\per\kilogram\per\second\squared}$ è la costante di
-gravitazione universale~\cite{codata-costanti}. Si tratta di una forza centrale,
+gravitazione universale~\cite{codata:costanti}. Si tratta di una forza centrale,
 cioè puramente radiale, e il segno meno indica che è sempre attrattiva verso il
 centro del campo. Sostituendo la~\eqref{eq:legge-attrazione}
 nella~\eqref{eq:f21-mu} abbiamo
@@ -542,7 +542,7 @@ isolato e che l'unica forza agente fosse quella
 gravitazionale.
 
 Dalla~\eqref{eq:energia} possiamo osservare che il moto relativo è equivalente a
-un moto unidimensionale e con un potenziale efficace
+un moto unidimensionale lungo la direzione radiale e con un potenziale efficace
 \begin{figure} %TODO: scegliere valori migliori per il grafico
   \centering
   \input{Immagini/gnuplot/potenziale_efficace}
@@ -568,7 +568,7 @@ regioni in cui $E-U_\textup{eff}\geq 0$, cioè:
 \begin{enumerate}
 \item se $E = E_0 = G^2M_\textup{T}^2\mu^3/(2l_0^2)$ risulta $\dot{r}=0$, cioè
   $r(t) = r_0 = \text{costante}$. L'orbita è dunque circolare e il moto
-  circolare uniforme con frequenza $\omega_0 = l_0/(\mu r_0^2)$;
+  circolare uniforme con pulsazione $\omega_0 = l_0/(\mu r_0^2)$;
 \item se $E = E_1 \in \mathopen{]}E_0,0\mathclose{[}$, il moto è limitato fra le
   distanze apsidali $r_\textup{min}$ e $r_\textup{max}$ e l'orbita è un'ellisse;
 \item se $E = E_2 \geq 0$ il moto è limitato inferiormente ma non
@@ -606,13 +606,12 @@ e facendo il limite per $r \to 0$ abbiamo
 \end{equation}
 ma questo non è impossibile.
 
-\subsubsection{Esercizio} %TODO: titolo
-\label{sec:esercizio}
+\subsubsection{Variazioni dell'energia}
+\label{sec:variazioni energia}
 
 Vogliamo ora vedere come varia il semiasse maggiore di un'orbita ellittica della
 particella di massa ridotta in funzione dell'energia. Per fare ciò differenziamo
 la~\eqref{eq:energia-ellisse} rispetto ad $a$
-% TODO: c'è bisogno di differenziare? Non si vede subito dall'espressione di E?
 \begin{equation}
   \dd E = \frac{GM_\textup{T}\mu}{2a^2}\dd a.
 \end{equation}
