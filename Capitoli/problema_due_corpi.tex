@@ -122,7 +122,7 @@ puntiforme fittizio di massa $M_\textup{T}$ fisso nell'origine.
 \label{sec:problema-keplero}
 
 Consideriamo il caso dell'interazione gravitazionale. Se indichiamo con $M$ la
-massa del corpo che genera il campo a cui è soggetto il corpo di massa $m$ e con
+massa del corpo che genera il campo a cui è soggetto un corpo di massa $m$ e con
 $\bm{r}$ il vettore diretto dal corpo di massa $M$ verso il corpo di massa $m$
 allora la forza $\bm{F}_\textup{G}$ è data da
 \begin{equation}
@@ -249,8 +249,8 @@ nell'equazione precedente possiamo dividere ambo i membri per $u^2$ e otteniamo
 \begin{equation}
   \toder[2]{u}{\theta} + u = \frac{GM_\textup{T}\mu^2}{l_0^2}.
 \end{equation}
-Questa è una equazione differenziale ordinaria lineare a coefficienti costanti
-del secondo ordine, chiamata \emph{equazione di Binet}. Per semplificare i
+Questa è una equazione differenziale ordinaria lineare del secondo ordine a
+coefficienti costanti, chiamata \emph{equazione di Binet}. Per semplificare i
 calcoli poniamo
 \begin{equation}
   \label{eq:rec-semilato}
@@ -259,7 +259,7 @@ calcoli poniamo
 e così l'integrale generale dell'equazione di Binet è
 \begin{equation}
   \label{eq:sol-binet}
-  u(\theta) = c_0\cos\theta + c_1\sin\theta + \frac{1}{p}
+  u(\theta) = c_0\cos\theta + c_1\sin\theta + \frac{1}{p},
 \end{equation}
 con $c_0$ e $c_1$ costanti determinate dalle condizioni iniziali. La soluzione
 può essere riscritta in maniera diversa se imponiamo
@@ -297,7 +297,7 @@ La~\eqref{eq:orbita} è l'equazione polare di una conica con centro nel fuoco o
 uno dei fuochi nel caso dell'ellisse. La costante $e$ è chiamata
 \emph{eccentricità} della conica, la costante $p$ invece è detta \emph{semilato
   retto}. Entrambe possono assumere valori non negativi. A seconda dei diversi
-valori dell'eccentricità le orbite possono essere classificate nel seguente
+valori dell'eccentricità le coniche possono essere classificate nel seguente
 modo:
 \begin{itemize}
 \item $0\leq e<1$: \emph{ellisse}. Nel caso particolare $e=0$ si ha una
@@ -334,7 +334,7 @@ fuochi e risulta
 \begin{equation}
   c=\sqrt{a^2-b^2} = ae.
 \end{equation}
-Il \emph{periapside} è il punto di un ellisse più vicino a uno dei due fuochi,
+Il \emph{periapside} è il punto di un'ellisse più vicino a uno dei due fuochi,
 l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso
 fuoco. Osservando la figura~\ref{fig:ellisse} si riconosce che il periapside
 rispetto al centro di massa è raggiunto in corrispondenza di
@@ -638,15 +638,15 @@ secolo il fisico e matematico francese di origine italiana Joseph-Louis Lagrange
 propose una formulazione alternativa della meccanica che ora presentiamo
 brevemente.
 
-Un sistema fisico composta da $N$ particelle nello spazio è descritto da $3N$
-coordinate, ma se il sistema è soggetto a dei vincoli queste $3N$ grandezze non
-sono tutte necessariamente indipendenti fra loro. Se i vincoli sono
-olonomi\footnote{Un vincolo si dice \emph{olonomo} se è esprimibile sotto forma
-  di un'equazione del tipo $f(\bm{r}_1,\dots,\bm{r}_N,t)=0$, dove le $\bm{r}_i$
-  rappresentano le posizioni delle $N$ particelle all'istante $t$.} ed espressi
-da $k$ equazioni allora è possibile introdurre $n=3N-k$ coordinate indipendenti
-che indichiamo con $q_1,\dots,q_n$ e che determinano univocamente il sistema
-tenendo conto dei vincoli. Le $q_i$ sono dette \emph{coordinate generalizzate} o
+Un sistema fisico composto da $N$ particelle è descritto nello spazio da $3N$
+coordinate, ma se il sistema è soggetto a dei vincoli queste $3N$ grandezze
+potrebbero essere fra loro legate. Se i vincoli sono olonomi\footnote{Un vincolo
+  si dice \emph{olonomo} se è esprimibile sotto forma di un'equazione del tipo
+  $f(\bm{r}_1,\dots,\bm{r}_N,t)=0$, dove le $\bm{r}_i$ rappresentano le
+  posizioni delle $N$ particelle all'istante $t$.} ed espressi da $k$ equazioni
+allora è possibile introdurre $n=3N-k$ coordinate indipendenti che indichiamo
+con $q_1,\dots,q_n$ e che determinano univocamente il sistema tenendo conto dei
+vincoli. Le $q_i$ sono dette \emph{coordinate generalizzate} o
 \emph{lagrangiane}, non hanno necessariamente le dimensioni di una lunghezza e
 la loro scelta non è univoca; $n$, il numero di grandezze indipendenti, è
 chiamato \emph{numero di gradi di libertà}. D'ora in poi indicheremo per brevità
@@ -727,7 +727,7 @@ relativa e posizione del centro di massa dati rispettivamente
 dalla~\eqref{eq:posizione-relativa} e dalla~\eqref{eq:centro-di-massa} e quindi
 i vettori di posizione sono legati a questi dalle
 relazioni~\eqref{eq:r1-r2-posizione-relativa-cdm}. Le quantità di moto dei due
-corpi che costituiscono il sistema sono date rispettivamente da
+corpi che costituiscono il sistema sono
 \begin{subequations}
   \begin{align}
     \bm{p}_1 &= \toder{m_1\bm{r}_1}{t} = m_1\dot{\bm{r}}_1, \\
@@ -759,7 +759,7 @@ dove $M_\textup{T}=m_1+m_2$ e $\mu=m_1m_2/(m_1+m_2)$ sono, rispettivamente, la
 massa totale e la massa ridotta già introdotte nel
 paragrafo~\ref{sec:formalismo-newton}. Il primo termine dell'ultimo membro
 della~\eqref{eq:lagrangiana-due-corpi} è l'energia cinetica di un corpo fittizio
-di massa $M_\textup{T}$ e la cui posizione è quella del centro di massa, il
+di massa $M_\textup{T}$ la cui posizione è quella del centro di massa, il
 secondo termine è l'energia cinetica di un corpo fittizio di massa $\mu$ e
 posizione $\bm{r}$ rispetto all'origine del sistema di riferimento. I momenti
 coniugati alle coordinate $\bm{r}_\textup{g}$ e $\bm{r}$ sono
@@ -802,11 +802,11 @@ potenziale $U$.
 
 L'energia cinetica $T$ è una funzione omogenea di secondo grado della velocità
 generalizzata $\dot{\bm{r}}$ mentre l'energia potenziale $U$ non dipende da
-esse, quindi l'hamiltoniana del sistema rappresenta esattamente l'energia
+essa, quindi l'hamiltoniana del sistema rappresenta esattamente l'energia
 meccanica totale
 \begin{equation}
   \mathcal{H} = \bm{p}\cdot\dot{\bm{r}} - \mathcal{L} = \frac{\bm{p}^2}{2\mu} +
-  U(\bm{r})
+  U(\bm{r}).
 \end{equation}
 L'hamiltoniana non dipende esplicitamente dal tempo, pertanto l'energia del
 sistema è una costante del moto. Le equazioni di Hamilton per la variabili
@@ -860,7 +860,7 @@ coordinata $r$ è
   p = \parder{\mathcal{L}}{\dot{r}} = \mu\dot{r}.
 \end{equation}
 L'hamiltoniana in coordinate polari e con il potenziale
-gravitazionale~\eqref{eq:potenziale-gravitazionale} è data da
+gravitazionale~\eqref{eq:potenziale-gravitazionale} è
 \begin{equation}
   \begin{split}
     \mathcal{H} &= p\dot{r} + p_\theta\dot{\theta} - \mathcal{L} =
