@@ -659,7 +659,7 @@ ma questo non è impossibile.
 \subsubsection{Variazioni dell'energia}
 \label{sec:variazioni energia}
 
-Vogliamo ora vedere come varia il semiasse maggiore di un'orbita ellittica della
+Vogliamo vedere come varia il semiasse maggiore di un'orbita ellittica della
 particella di massa ridotta in funzione dell'energia. Per fare ciò differenziamo
 la~\eqref{eq:energia-ellisse} rispetto ad $a$
 \begin{equation}
@@ -675,6 +675,74 @@ diventa meno negativa, il semiasse maggiore aumenterà e il sistema diventerà
 meno legato. Al limite, se l'energia diventa nulla o positiva il sistema non
 sarà più legato.
 
+Consideriamo ora il caso in cui il sistema sta perdendo energia a causa della
+diminuzione della massa di uno dei corpi, per esempio $m_1$. Supponiamo che i
+due corpi descrivano orbite ellittiche e indichiamo la variazione della massa di
+$m_1$ con $\Delta M = m_1 - m_\textup{R}$, dove $m_\textup{R}$ è la massa
+residua del corpo. Facciamo l'ipotesi semplificatrice ma non del tutto corretta
+che dopo la perdita di massa da parte di $m_1$ la velocità
+\begin{equation}
+  v^2(\theta) = G(m_1 + m_2)
+  \left(
+    \frac{2}{r(\theta)} - \frac{1}{a}
+  \right)
+\end{equation}
+resti invariata, così come il semiasse maggiore $a$ dell'orbita. In questo modo
+l'energia finale del sistema sarà, avendo posto $M'_\textup{T}=m_\textup{R}+m_2$
+e $\mu' = m_\textup{R}m_2/(m_\textup{R} + m_2)$
+\begin{equation}
+  \begin{split}
+    E' &= \frac{1}{2}\mu'v^2 - \frac{GM'_\textup{T}\mu'}{r(\theta)} \\
+    &= \frac{1}{2}\frac{m_\textup{R}m_2}{m_\textup{R} + m_2}G(m_1 + m_2)
+    \left(
+      \frac{2}{r(\theta)} - \frac{1}{a}
+    \right) - G\frac{m_\textup{R}m_2}{r(\theta)} \\
+    &= Gm_\textup{R}m_2
+    \left(
+      \frac{m_1 + m_2}{2(m_\textup{R} + m_2)}
+      \left(
+        \frac{2}{r(\theta)} - \frac{1}{a}
+      \right) - \frac{1}{r(\theta)}
+    \right).
+  \end{split}
+\end{equation}
+Affinché il sistema rimanga legato anche dopo la perdita di massa del corpo
+$m_1$ deve risultare ancora $E' < 0$, invece il sistema si distruggerà se $E'
+\geq 0$, cioè
+\begin{equation}
+  \begin{split}
+    0 &\leq \frac{m_1 + m_2}{2(m_\textup{R} + m_2)}
+    \left(
+      \frac{2}{r(\theta)} - \frac{1}{a}
+    \right) - \frac{1}{r(\theta)} \\
+    &= \frac{1}{r(\theta)}
+    \left(
+      \frac{m_1 + m_2}{m_\textup{R} + m_2} - 1
+    \right) - \frac{m_1 + m_2}{2a(m_\textup{R} + m_2)} \\
+    &= \frac{1}{r(\theta)}\frac{m_1 + m_2 - m_\textup{R} - m_2}{m_\textup{R} +
+      m_2} - \frac{m_1 + m_2}{2a(m_\textup{R} + m_2)} \\
+    &= \frac{1}{r(\theta)}\frac{\Delta M}{m_\textup{R} +
+      m_2} - \frac{m_1 + m_2}{2a(m_\textup{R} + m_2)},
+  \end{split}
+\end{equation}
+da cui
+\begin{equation}
+  \Delta M \geq \frac{1}{2}\frac{r(\theta)}{a}(m_1 + m_2).
+\end{equation}
+Per stimare il valore minimo di $\Delta M$ per il quale il sistema si distrugge
+scegliamo di valutare $r(\theta)$ al periapside, cioè $\theta = \tilde\omega$
+perché quando l'orbita è ancora chiusa il sistema è maggiormente legato in
+questo punto, pertanto
+\begin{equation}
+    \Delta M \geq \frac{1}{2}\frac{r(\tilde\omega)}{a}(m_1 + m_2) =
+    \frac{1}{2}(1 - e)(m_1 + m_2).
+\end{equation}
+Da questa relazione possiamo dedurre che all'aumentare dell'eccentricità
+iniziale $e$ diventa necessaria una minor quantità di massa persa da parte del
+corpo $m_1$ affinché il sistema non sia più stabile. Inoltre nel caso di orbite
+originali circolari, cioè $e=0$, il sistema non potrà distruggersi se il corpo
+che perde massa è il più piccolo dei due perché non può essere soddisfatta
+la condizione $\Delta M \geq (m_1 + m_2)/2$.
 
 \section{Formalismo lagrangiano e hamitoniano}
 \label{sec:formalismo-lagrange}
