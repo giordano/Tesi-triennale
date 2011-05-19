@@ -400,11 +400,10 @@ intorno) abbiamo ricavato la prima legge di Keplero: \emph{I pianeti,
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/velocita}
-  \caption[Andamento della velocità in funzione dell'anomalia]{Andamento
-    qualitativo del modulo quadro della velocità della particella relativa in
-    funzione dell'angolo $\theta$ nel caso di orbita ellittica, per diversi
-    valori dell'eccentricità $e$ e con $a$ fissato. Abbiamo posto
-    $\tilde\omega=0$}
+  \caption[Andamento della velocità in funzione dell'anomalia]{Andamento del
+    modulo quadro della velocità della particella relativa in funzione
+    dell'angolo $\theta$ nel caso di orbita ellittica, per diversi valori
+    dell'eccentricità $e$. In tutte le curve risulta $a=1$ e $\tilde\omega=0$}
   \label{fig:velocita}
 \end{figure}
 Calcoliamo il modulo quadro della velocità del corpo fittizio di massa ridotta
@@ -470,23 +469,6 @@ Questi risultati sono in accordo con la seconda legge di Keplero. L'andamento di
 $v^2$ in funzione della coordinata $\theta$ è riportato nella
 figura~\ref{fig:velocita}.
 
-\begin{figure}
-  \centering
-  \input{Immagini/gnuplot/velocita_los}
-  \caption[Andamento della velocità nella direzione di vista]{Andamento
-    qualitativo del modulo quadro della velocità, lungo la direzione di vista,
-    del corpo di massa ridotta in funzione dell'angolo $\theta$ nel caso di
-    orbita ellittica. Il grafico è stato fatto per gli stessi valori di
-    eccentricità utilizzati nella figura~\ref{fig:velocita}, mantenendo costante
-    il semiasse maggiore. Abbiamo posto $\tilde\omega=0$}
-  \label{fig:velocita-los}
-\end{figure}
-Nelle osservazioni astronomiche di un sistema composta da due corpi celesti
-quello che viene effettivamente misurato non è la velocità data
-dalla~\eqref{eq:velocita-ellisse} ma la sua componente lungo la direzione di
-vista %TODO: aggiungere immagine come la 47 dello Smart e completare il
-      %discorso!
-
 I calcoli svolti per determinare la velocità nel caso di orbite ellittiche sono
 del tutto analoghi a quelli necessari nel caso di orbite paraboliche e
 iperboliche, però per le orbite paraboliche $e=1$ quindi
@@ -504,6 +486,59 @@ dalla~\eqref{eq:semilato-iperbole}, dunque
     \right).
 \end{equation}
 
+\subsubsection{Velocità nella direzione della linea di vista}
+\label{sec:velocita-linea-di-vista}
+
+% TODO: controllare per bene i calcoli, non sono molto sicuro che la funzione
+% finale sia corretta (in particolare ho l'impressione che alpha cambi segno in
+% theta=pi, però poi c'è una strana conca nelle curve con e!=0 dopo theta=pi).
+Nelle osservazioni astronomiche di un sistema composto da due corpi celesti non
+sempre è possibile misurare direttamente la velocità totale il cui modulo quadro
+è dato dalla~\eqref{eq:velocita-ellisse}, ma molto spesso è possibile misurare
+la sua componente nella direzione di vista dell'osservatore
+$v_\textup{los}$. Supponiamo che l'osservatore guardi il sistema dei due corpi
+in moto lungo orbite ellittiche nella direzione dell'asse $\versor{x}$, come
+nella figura.
+% TODO: aggiungere immagine come la 47 dello Smart e il riferimento
+Per calcolare $v_\textup{los}$ facciamo le seguenti osservazioni
+geometriche. Chiamiamo $\alpha(\theta)$ l'angolo compreso fra la direzione di
+$\versor{r}(\theta)$ e del vettore $\dot{\bm{r}}(\theta) \equiv
+\bm{v}(\theta)$. La tangente di questo angolo è data dal rapporto fra la
+componente tangenziale $r(\theta)\dot{\theta}$ della velocità e la componente
+radiale $\dot{r}(\theta)$:
+\begin{equation}
+  \tan(\alpha(\theta)) = \frac{r(\theta)\dot{\theta}}{\dot{r}(\theta)} = \frac{1 +
+    e\cos(\theta-\tilde\omega)}{e\sin(\theta-\tilde\omega)} =
+  \cot(\theta-\tilde\omega) + \frac{\csc(\theta-\tilde\omega)}{e}.
+\end{equation}
+Indichiamo con $\beta(\theta)$ l'angolo compreso fra la direzione del vettore
+velocità $\bm{v}(\theta)$ e la linea di vista, nel nostro caso l'asse
+$\versor{x}$. Come si vede osservando la figura %TODO riferimento alla figura
+abbiamo $\beta(\theta) = \theta + \alpha(\theta)$, quindi il quadrato della
+componente della velocità nella direzione della linea di vista è
+\begin{equation}
+  \begin{split}
+    v_\textup{los}^2 &= v^2(\theta)\cos^2(\beta(\theta)) = GM_\textup{T} \left(
+      \frac{2}{r(\theta)} - \frac{1}{a}
+    \right)\cos^2(\theta + \alpha(\theta)) = \\
+    &= GM_\textup{T}
+    \left(
+      \frac{2(1+e\cos(\theta - \tilde\omega))}{a(1-e^2)} - \frac{1}{a}
+    \right)\cos^2(\theta + \alpha(\theta)).
+  \end{split}
+\end{equation}
+\begin{figure}
+  \centering
+  \input{Immagini/gnuplot/velocita_los}
+  \caption[Andamento della velocità nella direzione della di vista]{Andamento
+    della velocità lungo la direzione della linea di vista del corpo di massa
+    ridotta in funzione dell'angolo $\theta$ nel caso di orbita ellittica. Il
+    grafico è stato fatto per gli stessi valori di eccentricità utilizzati nella
+    figura~\ref{fig:velocita}, con $a=1$ e $\tilde\omega=0$}
+  \label{fig:velocita-los}
+\end{figure}
+Nella figura~\ref{fig:velocita-los} è riportato l'andamento di
+$v_\textup{los}$ in funzione dell'angolo $\theta$.
 
 \subsection{Energia e classificazione energetica delle orbite}
 \label{sec:energia-orbite}
