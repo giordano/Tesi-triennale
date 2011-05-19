@@ -34,7 +34,7 @@ e la forza $\bm{F}_{12}$ che il corpo di massa $m_2$ esercita sull'altro è
 Assumiamo per ipotesi che queste due forze soddisfino il principio di azione e
 reazione nella forma forte:
 \begin{equation}
-  \label{eq:az-reaz}
+  \label{eq:azione-reazione}
   \bm{F}_{12} = -\bm{F}_{21}.
 \end{equation}
 Definiamo il vettore \emph{posizione relativa}
@@ -107,7 +107,8 @@ sottraendo membro a membro le equazioni così ottenute ricaviamo
   \toder[2]{\bm{r}}{t}
 \end{equation}
 in cui abbiamo ricordato che vale il principio di azione e reazione espresso
-dalla~\eqref{eq:az-reaz}. L'equazione precedente può essere riscritta nella forma
+dalla~\eqref{eq:azione-reazione}. L'equazione precedente può essere riscritta
+nella forma
 \begin{equation}
   \label{eq:f21-mu}
   \bm{F}_{21}=\mu\toder[2]{\bm{r}}{t}
@@ -253,38 +254,52 @@ Questa è una equazione differenziale ordinaria lineare del secondo ordine a
 coefficienti costanti, chiamata \emph{equazione di Binet}. Per semplificare i
 calcoli poniamo
 \begin{equation}
-  \label{eq:rec-semilato}
+  \label{eq:reciproco-semilato}
   \frac{GM_\textup{T}\mu^2}{l_0^2} = \frac{1}{p}
 \end{equation}
 e così l'integrale generale dell'equazione di Binet è
 \begin{equation}
-  \label{eq:sol-binet}
+  \label{eq:soluzione-binet}
   u(\theta) = c_0\cos\theta + c_1\sin\theta + \frac{1}{p},
 \end{equation}
-con $c_0$ e $c_1$ costanti determinate dalle condizioni iniziali. La soluzione
-può essere riscritta in maniera diversa se imponiamo
+con $c_0$ e $c_1$ costanti di integrazione. Imponiamo le seguenti condizioni
+iniziali
 \begin{subequations}
-  \label{eq:cost-binet}
+  \label{eq:condizioni-binet}
+  \begin{align}
+    u(\tilde\omega) &= \frac{1+e}{p},\\
+    \toder{u}{\theta}(\tilde\omega) &= 0,
+  \end{align}
+\end{subequations}
+che significano richiedere che il punto $\theta = \tilde\omega$ sia stazionario
+per la funzione $u(\theta)$ e che in questo punto la funzione $u$ assuma il
+valore $(1+e)/p$. Vedremo più avanti il significato delle grandezze $e$ e
+$p$. Osserviamo che riportando queste condizioni alla funzione
+$r(\theta)=1/u(\theta)$ abbiamo
+\begin{subequations}
+  \begin{align}
+    r(\tilde\omega) &= \frac{1}{u(\theta)} = \frac{p}{1+e}, \\
+    \toder{r}{\theta}(\tilde\omega) &= \toder{(1/u)}{\theta}(\tilde\omega) =
+    -\frac{1}{u^2(\tilde\omega)} \toder{u}{\theta}(\tilde\omega) =  0.
+  \end{align}
+\end{subequations}
+Con le condizioni~\eqref{eq:condizioni-binet} le costanti di integrazione
+valgono
+\begin{subequations}
+  \label{eq:costanti-binet}
   \begin{align}
     c_0 &= \frac{e}{p}\cos\tilde\omega, \\
     c_1 &= \frac{e}{p}\sin\tilde\omega,
   \end{align}
 \end{subequations}
-dove $e$ (un'ampiezza) e $\tilde\omega$ (una fase) svolgono il ruolo di nuove
-costanti di integrazione. Le~\eqref{eq:cost-binet} possono essere invertite:
-\begin{subequations}
-  \begin{align}
-    \tilde\omega &= \arctan \frac{c_1}{c_0}, \\
-    e &= \frac{c_0p}{\cos\tilde\omega}.
-  \end{align}
-\end{subequations}
-Dunque fissate $c_0$ e $c_1$, $\tilde\omega$ ed $e$ sono univocamente
-determinate. In questo modo la~\eqref{eq:sol-binet} diventa
+pertanto la soluzione dell'equazione di Binet~\eqref{eq:soluzione-binet} con le
+condizioni~\eqref{eq:condizioni-binet} è
 \begin{equation}
-  u(\theta) = \frac{1}{p}(1+e\cos(\theta-\tilde\omega))
+  u(\theta) = \frac{1}{p}(1+e\cos(\theta-\tilde\omega)).
 \end{equation}
-e ricordando che $u=1/r$ giungiamo all'equazione polare dell'orbita della
-particella relativa nel sistema di riferimento del centro di massa
+Ricordando che $r(\theta)=1/u(\theta)$ giungiamo all'equazione polare
+dell'orbita della particella relativa nel sistema di riferimento del centro di
+massa
 \begin{equation}
   \label{eq:orbita}
   r(\theta) = \frac{p}{1+e\cos(\theta-\tilde\omega)}.
@@ -358,7 +373,7 @@ e per l'iperbole:
 \end{align}
 Osserviamo infine che per tutte le coniche risulta $r(\tilde\omega\pm\pi/2)=p$.
 
-Inserendo la~\eqref{eq:rec-semilato} nella~\eqref{eq:eccentricita-ellisse}
+Inserendo la~\eqref{eq:reciproco-semilato} nella~\eqref{eq:eccentricita-ellisse}
 possiamo ricavare l'eccentricità di un'orbita ellittica legata ai parametri
 fisici del sistema
 \begin{equation}
@@ -396,7 +411,7 @@ Calcoliamo il modulo quadro della velocità del corpo fittizio di massa ridotta
 durante la sua orbita, data dalla~\eqref{eq:velocita-polare}: $v(\theta)^2 =
 \norm{\dot{\bm{r}}(\theta)}^2 = \dot{r}^2(\theta) +
 r^2(\theta)\dot{\theta}^2$. Ricordando le formule~\eqref{eq:derivata1-r}
-e~\eqref{eq:sol-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
+e~\eqref{eq:soluzione-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
 \begin{subequations}
   \begin{align}
     \dot{r}(\theta) &= -\frac{l_0}{\mu}\toder{u}{\theta} = -\frac{l_0}{\mu}
@@ -408,7 +423,7 @@ e~\eqref{eq:sol-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
   \end{align}
 \end{subequations}
 Per quanto riguarda il moto ellittico, mettendo insieme le relazioni appena
-trovate, la~\eqref{eq:rec-semilato} e la~\eqref{eq:orbita} risulta
+trovate, la~\eqref{eq:reciproco-semilato} e la~\eqref{eq:orbita} risulta
 \begin{equation}
   \label{eq:velocita-ellisse}
   \begin{split}
