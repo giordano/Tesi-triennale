@@ -2,6 +2,7 @@
 set term epslatex size 5,2.5
 # imposta il file di output.
 set output 'Immagini/gnuplot/orbite_ellittiche.tex'
+set multiplot layout 1,2 # crea due aree di grafico affiancate
 unset border
 unset xtics
 unset ytics
@@ -20,12 +21,29 @@ mu=m1*m2/(m1+m2)
 r(t)=p/(1+e*cos(t))
 r1(t)=-mu/m1*r(t)
 r2(t)=mu/m2*r(t)
-set xrange [-a*(1+e):a*(1+e)]
-set yrange [-a*(1+e)/2:a*(1+e)/2]
+
+# inizio primo plot
+set key at -0.7*(a+c),1.2*b
+set xrange [-(a+c):1.7*(a-c)]
+set yrange [-b:b]
+set arrow from -1.05*(a+c),0 to 1.7*(a-c),0 filled # asse x
+set label "{\\scriptsize $x$}" at 1.7*(a-c),-0.05
 set arrow from 0,-1.2*b to 0,1.2*b filled # asse y
-#set arrow from -c,-1.2*b to -c,1.2*b filled # asse y'
-set arrow from -1.05*(a+c),0 to .95*(a+c),0 filled # asse x
-set label "{\\scriptsize $x$}" at 1.*(a+c),0
 set label "{\\scriptsize $y$}" at 0.05,1.2*b
-#set label "{\\scriptsize $y\\prime$}" at 0.05-c,1.2*b
-plot r(t) lw 2 title "$\\mu$", r1(t) lw 2 title "$m_1$", r2(t) lw 2 title "$m_2$"
+set label "{\\scriptsize $m_1$}" at -0.07,-0.05
+plot r(t) lw 2 title "$\\mu$"
+unset arrow
+unset label
+# fine primo plot
+
+# inizio secondo plot
+set key at a+c,1.5*b
+set xrange [-1.2*mu/m2*(a+c):1.1*a+c]
+set yrange [-1.1*mu/m1*b:1.1*mu/m1*b]
+set arrow from -1.2*mu/m2*(a+c),0 to .95*(a+c),0 filled # asse x
+set label "{\\scriptsize $x$}" at 0.95*(a+c),-0.05
+set arrow from 0,-1.2*b to 0,1.2*b filled # asse y
+set label "{\\scriptsize $y$}" at 0.05,1.2*b
+plot r1(t) lw 2 title "$m_1$", r2(t) lw 2 title "$m_2$"
+# fine secondo plot
+unset multiplot

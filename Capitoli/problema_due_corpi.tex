@@ -113,11 +113,16 @@ nella forma
   \label{eq:f21-mu}
   \bm{F}_{21}=\mu\toder[2]{\bm{r}}{t}
 \end{equation}
-da cui possiamo dedurre che il problema dei due corpi interagenti si è ridotto
-al problema del moto di un solo corpo puntiforme fittizio di massa $\mu$ e
-posizione $\bm{r}$ nel sistema del centro di massa, che chiameremo a volte
-\emph{particella relativa}, all'interno del campo generato da un altro corpo
-puntiforme fittizio di massa $M_\textup{T}$ fisso nell'origine.
+da cui possiamo dedurre che il problema del moto relativo dei due corpi si è
+ridotto allo studio del moto di un solo corpo fittizio, che chiameremo a volte
+\emph{particella relativa}, di massa $\mu$ all'interno del campo generato da un
+altro corpo fittizio puntiforme di massa $M_\textup{T}$ e fisso istante per
+istante nella posizione di uno dei due corpi. Poiché nel nostro caso abbiamo
+definito la posizione relativa come $\bm{r}=\bm{r}_2 - \bm{r}_1$ abbiamo che il
+corpo fittizio di massa pari alla massa totale occupa la posizione del corpo
+reale di massa $m_1$ e la particella ridotta si trova nella posizione $\bm{r}$
+nel sistema di riferimento di $M_\textup{T}$, ovvero la sua posizione coincide
+istantaneamente con quella di del corpo reale di massa $m_2$.
 
 \subsection{Problema di Keplero}
 \label{sec:problema-keplero}
@@ -156,13 +161,13 @@ $\bm{r}$ e il momento angolare calcolato rispetto allo stesso polo è
 costante.
 
 Ritorniamo al problema di Keplero. Abbiamo appena visto che il momento angolare
-della particella di massa ridotta rispetto al centro di massa del sistema è un
+della particella di massa ridotta rispetto alla particella $M_\textup{T}$ è un
 integrale primo del moto. Notiamo ora che, per definizione di momento angolare,
 i vettori $\bm{r}$ e $\bm{L}\equiv\bm{l}_0$ sono fra loro perpendicolari. La
 costanza del vettore $\bm{l}_0$, e in particolare della sua direzione, allora
 implica che, nel caso $\bm{l}_0\neq\bm{0}$, il vettore $\bm{r}$, che istante per
-istante indica la posizione rispetto al centro di massa della particella
-fittizia di massa $\mu$, giace sempre sullo stesso piano perpendicolare a
+istante indica la posizione della particella fittizia $\mu$ nel sistema di
+riferimento di $M_\textup{T}$, giace sempre sullo stesso piano perpendicolare a
 $\bm{l}_0$. Se invece risulta $\bm{l}_0=\bm{0}$, $\bm{r}$ è parallelo alla
 quantità di moto $\bm{p}$ e il moto è unidimensionale. Da qui in seguito
 supporremo che il momento angolare $\bm{l}_0$ della particella relativa sia non
@@ -170,7 +175,7 @@ nullo.
 
 Dal momento che il moto della particella di massa ridotta si svolge in un piano
 possiamo utilizzare le coordinate polari $r,\theta$ per rappresentare la
-posizione del corpo nel sistema di riferimento del centro di massa. Dalla
+posizione del corpo nel sistema di riferimento di $M_\textup{T}$. Dalla
 meccanica si ricava che per un moto piano la velocità $\dot{\bm{r}}$ e
 l'accelerazione $\ddot{\bm{r}}$ del vettore posizione $\bm{r}=r\versor{r}$ sono
 date da
@@ -210,11 +215,11 @@ quindi la velocità areolare $\ltoder{A}{t}$ è
   \text{costante}.
 \end{equation}
 Abbiamo così ottenuto la seconda legge di Keplero: \emph{il vettore posizione
-  della particella rispetto al centro di massa spazza aree uguali in intervalli
-  di tempo uguali}. Osserviamo che per giungere a questo risultato è stato
-sufficiente utilizzare la costanza del momento angolare che deriva a sua volta
-dal carattere centrale della forza, pertanto questo risultato è valido per tutte
-le forze di questo tipo.
+  della particella rispetto al centro dell'orbita (o della forza) spazza aree
+  uguali in intervalli di tempo uguali}. Osserviamo che per giungere a questo
+risultato è stato sufficiente utilizzare la costanza del momento angolare che
+deriva a sua volta dal carattere centrale della forza, pertanto questo risultato
+è valido per tutte le forze di questo tipo.
 
 \subsection{Equazione dell'orbita}
 \label{sec:equazione-dellorbita}
@@ -244,7 +249,7 @@ Sostituendo la~\eqref{eq:derivata2-r} nella~\eqref{eq:forza-mu-radiale} abbiamo
   -GM_\textup{T}u^2 = -\left(
         \frac{l_0}{\mu} \right)^2u^2\toder[2]{u}{\theta} - \frac{l_0^2u^3}{\mu^2}.
 \end{equation}
-$r$ è la distanza della particella di massa ridotta dal centro di massa, quindi
+$r$ è la distanza della particella di massa ridotta da $M_\textup{T}$, quindi
 assume valori finiti e il suo reciproco $u$ non è mai nullo, allora
 nell'equazione precedente possiamo dividere ambo i membri per $u^2$ e otteniamo
 \begin{equation}
@@ -295,11 +300,12 @@ valgono
 pertanto la soluzione dell'equazione di Binet~\eqref{eq:soluzione-binet} con le
 condizioni~\eqref{eq:condizioni-binet} è
 \begin{equation}
-  u(\theta) = \frac{1}{p}(1+e\cos(\theta-\tilde\omega)).
+  u(\theta) = \frac{1}{p}(1 + e\cos\theta\cos\tilde\omega +
+  e\sin\theta\sin\tilde\omega) =  \frac{1}{p}(1+e\cos(\theta-\tilde\omega)).
 \end{equation}
 Ricordando che $r(\theta)=1/u(\theta)$ giungiamo all'equazione polare
-dell'orbita della particella relativa nel sistema di riferimento del centro di
-massa
+dell'orbita della particella relativa nel sistema di riferimento di
+$M_\textup{T}$
 \begin{equation}
   \label{eq:orbita}
   r(\theta) = \frac{p}{1+e\cos(\theta-\tilde\omega)}.
@@ -324,10 +330,11 @@ modo:
   \centering
   \input{Immagini/gnuplot/ellisse}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
-    del sistema di riferimento è il centro di massa (CDM) che coincide con uno
-    dei fuochi dell'ellisse, $a$ è il semiasse maggiore, $b$ è il semiasse
-    minore, $p$ è il semilato retto, $c$ è l'eccentricità lineare. Nel grafico
-    abbiamo posto $a=1$ ed $e=0.7$}
+    del sistema di riferimento $Oxy$ è la posizione di $M_\textup{T}$ e coincide
+    con uno dei fuochi dell'ellisse, $a$ è il semiasse maggiore, $b$ è il
+    semiasse minore, $p$ è il semilato retto, $c$ è l'eccentricità lineare. Il
+    sistema di riferimento $O'x'y'$ ha origine nel centro dell'ellisse. Nel
+    grafico abbiamo posto $a=1$ ed $e=0.7$}
   \label{fig:ellisse}
 \end{figure}
 
@@ -352,8 +359,8 @@ fuochi e risulta
 Il \emph{periapside} è il punto di un'ellisse più vicino a uno dei due fuochi,
 l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso
 fuoco. Osservando la figura~\ref{fig:ellisse} si riconosce che il periapside
-rispetto al centro di massa è raggiunto in corrispondenza di
-$\theta=\tilde\omega$ e la distanza del periapside dal centro di massa è
+rispetto al fuoco $M_\textup{T}$ è raggiunto in corrispondenza di
+$\theta=\tilde\omega$ e la distanza del periapside da $M_\textup{T}$ è
 $r_\textup{min} = r(\tilde\omega) = a(1-e) = a-c$; l'apoapside è raggiunto per
 $\theta=\tilde\omega+\pi$ e la distanza dell'apoapside dallo stesso fuoco è
 $r_\textup{max} = r(\tilde\omega+\pi) = a(1+e)= a+c$. Si ottiene il caso
@@ -389,9 +396,8 @@ invece utilizzare la~\eqref{eq:eccentricita-iperbole}:
 \end{equation}
 e qui risulta $e>1$.
 
-L'unica conica chiusa è l'ellisse, quindi se uno dei due corpi del sistema è
-molto più massivo dell'altro (per esempio il Sole e un pianeta che gli orbita
-intorno) abbiamo ricavato la prima legge di Keplero: \emph{I pianeti,
+L'unica conica chiusa è l'ellisse, quindi abbiamo ricavato la prima legge di
+Keplero che per i pianeti del Sistema Solare afferma: \emph{i pianeti,
   considerati puntiformi, descrivono orbite ellittiche di cui il Sole occupa uno
   dei fuochi}.
 
@@ -454,14 +460,14 @@ trovate, la~\eqref{eq:reciproco-semilato} e la~\eqref{eq:orbita} risulta
   \end{split}
 \end{equation}
 Questa relazione lega il modulo quadro della velocità alla distanza della
-particella fittizia dal centro di massa. Si può osservare in particolare che
+particella relativa da $M_\textup{T}$. Si può osservare in particolare che
 $v^2(\theta)$ è lineare in $1/r(\theta)$, quindi il modulo della velocità è
 massimo quando la particella relativa si trova nel periapside e vale
 \begin{equation}
   v^2(\tilde\omega) = \frac{GM_\textup{T}}{a}\frac{1+e}{1-e}.
 \end{equation}
-Inoltre il modulo quadro della velocità sarà minimo quando la distanza dal
-centro di massa è massima, cioè all'apoapside
+Inoltre il modulo quadro della velocità sarà minimo quando la distanza da
+$M_\textup{T}$ è massima, cioè all'apoapside
 \begin{equation}
   v^2(\tilde\omega+\pi) = \frac{GM_\textup{T}}{a}\frac{1-e}{1+e}.
 \end{equation}
@@ -597,10 +603,10 @@ un moto unidimensionale lungo la direzione radiale e con un potenziale efficace
   \centering
   \input{Immagini/gnuplot/potenziale_efficace}
   \caption[Andamento del potenziale efficace in funzione della distanza dal
-  centro di massa]{Andamento qualitativo del potenziale efficace nel problema di
-    Keplero in funzione della distanza dal centro di massa. Il grafico
-    rappresenta la funzione $k_1/r^2-k_2/r$, con $k_1$ e $k_2$ costanti positive
-    scelte arbitrariamente}
+  centro del campo]{Andamento qualitativo del potenziale efficace della
+    particella $\mu$ nel problema di Keplero in funzione della distanza dal
+    centro del campo. Il grafico rappresenta la funzione $k_1/r^2-k_2/r$, con
+    $k_1$ e $k_2$ costanti positive scelte arbitrariamente}
   \label{fig:potenziale-efficace}
 \end{figure}
 \begin{equation}
@@ -637,11 +643,11 @@ ed eccentricità dell'orbita
 Si noti che questa relazione è valida anche per le orbite paraboliche perché in
 questo caso l'energia è nulla e l'eccentricità vale $1$.
 
-Il centro di massa esercita un'attrazione sulla particella fittizia di massa
-ridotta, tuttavia la presenza del potenziale centrifugo non
+Il corpo fittizia $M_\textup{T}$ esercita un'attrazione sulla particella
+relativa, tuttavia la presenza del potenziale centrifugo non
 nullo\footnote{Ricorda che abbiamo supposto per ipotesi che sia $l_0\neq 0$.}
-impedisce che la particella relativa possa cadere sul centro di massa se il
-campo generato è quello gravitazionale. Infatti abbiamo
+impedisce che questa possa cadere nel centro della forza se il campo generato è
+quello gravitazionale. Infatti abbiamo
 \begin{equation}
   0\leq \frac{1}{2}\mu\dot{r}^2 = E - U_\textup{eff}(r) = E -
   \frac{1}{2}\frac{l_0^2}{\mu r^2} - \frac{GM_\textup{T}\mu}{r}
@@ -875,12 +881,8 @@ corpi, dunque la lagrangiana del sistema è data da
 \end{equation}
 dove $M_\textup{T}=m_1+m_2$ e $\mu=m_1m_2/(m_1+m_2)$ sono, rispettivamente, la
 massa totale e la massa ridotta già introdotte nel
-paragrafo~\ref{sec:formalismo-newton}. Il primo termine dell'ultimo membro
-della~\eqref{eq:lagrangiana-due-corpi} è l'energia cinetica di un corpo fittizio
-di massa $M_\textup{T}$ la cui posizione è quella del centro di massa, il
-secondo termine è l'energia cinetica di un corpo fittizio di massa $\mu$ e
-posizione $\bm{r}$ rispetto all'origine del sistema di riferimento. I momenti
-coniugati alle coordinate $\bm{r}_\textup{g}$ e $\bm{r}$ sono
+paragrafo~\ref{sec:formalismo-newton}. I momenti coniugati alle coordinate
+$\bm{r}_\textup{g}$ e $\bm{r}$ sono
 \begin{subequations}
   \begin{align}
     \bm{p}_\textup{g} &= \parder{\mathcal{L}}{\dot{\bm{r}}_\textup{g}} =
@@ -899,17 +901,19 @@ La coordinata $\bm{r}_\textup{g}$ è ciclica nella
 lagrangiana~\eqref{eq:lagrangiana-due-corpi} quindi il momento totale
 $\bm{p}_\textup{g}=M_\textup{T}\dot{\bm{r}}_\textup{g}$ è una costante del moto:
 il centro di massa si muove di moto rettilineo uniforme oppure è in quiete,
-comunque il sistema di riferimento in cui esso è a riposo è inerziale. Come
-abbiamo fatto nella sezione~\ref{sec:formalismo-newton} allora scegliamo il
-sistema del centro di massa come nostro sistema di riferimento e la lagrangiana
-così diventa
+comunque il sistema di riferimento in cui esso è a riposo è inerziale. Scegliamo
+allora come nostro sistema di riferimento uno in cui il centro di massa è in
+quiete, cioè $\dot{\bm{r}}_\textup{g} = \bm{0}$, e così la lagrangiana diventa
 \begin{equation}
   \label{eq:lagrangiana2-due-corpi}
   \mathcal{L} = \frac{1}{2}\mu\dot{\bm{r}}^2 - U(\bm{r}).
 \end{equation}
-Il vettore $\bm{r}$ svolge dunque il ruolo di coordinate generalizzate e il
-numero di grandezze indipendenti che lo individuano è uguale al numero di gradi
-di libertà del sistema. L'equazione di Lagrange per la coordinata $\bm{r}$ è
+Il primo termine di questa lagrangiana è l'energia cinetica di un corpo fittizio
+di massa $\mu$ e posizione $\bm{r}$ rispetto all'origine del sistema di
+riferimento. Il vettore $\bm{r}$ svolge dunque il ruolo di coordinate
+generalizzate e il numero di grandezze indipendenti che lo individuano è uguale
+al numero di gradi di libertà del sistema.  L'equazione di Lagrange per la
+coordinata $\bm{r}$ è
 \begin{equation}
   \toder{\bm{p}}{t} = -\toder{U(\bm{r})}{\bm{r}} \iff \mu\toder[2]{\bm{r}}{t} =
   -\nabla U(\bm{r}),
@@ -965,7 +969,7 @@ seconda elegge di Keplero. L'equazione di Lagrange per la coordinata $r$ è
   \mu\ddot{r} = \mu r\dot{\theta}^2 - \parder{U(r)}{r}.
 \end{equation}
 Se il potenziale è quello di attrazione gravitazionale fra la particella
-relativa e la particella del centro di massa, cioè
+relativa e $M_\textup{T}$, cioè
 \begin{equation}
   \label{eq:potenziale-gravitazionale}
   U(r) = -\frac{GM_\textup{T}\mu}{r},
@@ -998,19 +1002,23 @@ stessi risultati trovati usando il formalismo newtoniano.
 
 Nel paragrafo~\ref{sec:equazione-dellorbita} abbiamo ricavato
 l'equazione~\eqref{eq:orbita} dell'orbita della particella di massa ridotta per
-il problema di Keplero, ma nel paragrafo~\ref{chap:due-corpi} abbiamo visto che
-il vettore $\bm{r}$ che individua la posizione della particella relativa è
-legato ai vettori posizione $\bm{r}_1$ e $\bm{r}_2$ delle particelle di massa
-rispettivamente $m_1$ e $m_2$ dalle relazioni~\eqref{eq:r1-r2-nel-cdm}, allora
-sostituendo la~\eqref{eq:orbita} nelle~\eqref{eq:r1-r2-nel-cdm} troviamo che le
-orbite dei due corpi nel sistema di riferimento del centro di massa sono
+il problema di Keplero e nel paragrafo~\ref{chap:due-corpi} abbiamo visto che
+i vettori posizione $\bm{r}_1$ e $\bm{r}_2$, nel sistema di riferimento del
+centro di massa, delle particelle di massa rispettivamente $m_1$ e $m_2$ sono
+legati al vettore $\bm{r}$, che individua la posizione della particella
+relativa, dalle relazioni~\eqref{eq:r1-r2-nel-cdm}. Allora sostituendo
+la~\eqref{eq:orbita} nelle~\eqref{eq:r1-r2-nel-cdm} troviamo che le orbite dei
+due corpi nel sistema di riferimento del centro di massa sono
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/orbite_ellittiche}
-  \caption[Orbite dei due corpi]{Orbite ellittiche dei due corpi e della
-    particella fittizia di massa $\mu$ nel sistema di riferimento del centro di
-    massa. Abbiamo posto $m_1=1$ e $m_2=5$ in unità arbitrarie. I parametri
-    dell'ellisse sono $a=1$ ed $e=0.8$}
+  \caption[Orbite dei due corpi]{Nella figura di destra sono riportate le orbite
+    ellittiche dei due corpi nel sistema di riferimento del centro di
+    massa. Nella figura di sinistra è rappresentata l'orbita della particella
+    relativa nel sistema di riferimento con origine nel corpo di massa
+    $m_1$. Abbiamo posto $m_1=1$ e $m_2=5$ in unità arbitrarie, i parametri
+    delle ellissi sono $a=1$ ed $e=0.8$. Le due figure non sono nella stessa
+    scala}
   \label{fig:orbite-ellittiche}
 \end{figure}
 \begin{subequations}
@@ -1021,11 +1029,15 @@ orbite dei due corpi nel sistema di riferimento del centro di massa sono
     \frac{\mu}{m_2}\frac{p}{1+e\cos(\theta - \tilde\omega)}.
   \end{align}
 \end{subequations}
-Nella figura~\ref{fig:orbite-ellittiche} sono riportate le orbite dei due corpi
-e del corpo di massa ridotta nel caso di orbite ellittiche. Come si può
-osservare, entrambi i corpi orbitano intorno al centro di massa ma mentre il
-corpo più massivo, nell'esempio in figura $m_2$, rimane vicino a questo, il
-corpo meno massivo descrive orbite più larghe.
+Nella figura~\ref{fig:orbite-ellittiche} mostriamo le orbite dei due corpi e del
+corpo di massa ridotta nel caso di orbite ellittiche. Come si può osservare,
+entrambi i corpi ruotano intorno al centro di massa ma mentre il corpo più
+massivo, nell'esempio in figura $m_2$, rimane vicino a questo, il corpo meno
+massivo descrive orbite più larghe. Dalle
+relazioni~\eqref{eq:r1-r2-posizione-relativa-cdm} si vede inoltre che il centro
+di massa giace sempre sulla congiungente $\bm{r}$ dei due corpi, quindi $m_1$ e
+$m_2$ sono sempre opposti rispetto al centro di massa durante loro moto
+orbitale.
 
 %%% Local Variables: 
 %%% mode: latex

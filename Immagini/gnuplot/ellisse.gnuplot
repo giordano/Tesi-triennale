@@ -22,7 +22,8 @@ set arrow from 0,-1.2*b to 0,1.2*b filled # asse y
 set arrow from -c,-1.2*b to -c,1.2*b filled # asse y'
 set arrow from -1.05*(a+c),0 to 1.3*a*(1-e),0 filled # asse x
 set arrow from 0,0 to r(pi/4)*cos(pi/4),r(pi/4)*sin(pi/4) filled
-set label "{\\scriptsize CDM}" at -0.09,-0.03
+set label "{\\scriptsize $O\\equiv M_\\textup{T}$}" at -0.14,-0.03
+set label "{\\scriptsize $O\\prime$}" at -c-0.05,-0.03
 set label "{\\scriptsize $c$}" at -c/2,0.02
 set label "{\\scriptsize $a$}" at -(c+a/2.),-0.03
 set label "{\\scriptsize $b$}" at -(c+0.02),b/2
