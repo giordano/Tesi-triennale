@@ -497,23 +497,27 @@ dalla~\eqref{eq:semilato-iperbole}, dunque
 \subsubsection{Velocità nella direzione della linea di vista}
 \label{sec:velocita-linea-di-vista}
 
-% TODO: controllare per bene i calcoli, non sono molto sicuro che la funzione
-% finale sia corretta (in particolare ho l'impressione che alpha cambi segno in
-% theta=pi, però poi c'è una strana conca nelle curve con e!=0 dopo theta=pi).
+% TODO: i risultati che ottengo adesso sono decisamente più plausibili di quelli
+% precedenti, ma devo ancora ricontrollare i calcoli. COMPLETARE PARAGRAFO
+\begin{figure}
+  \centering
+  \input{Immagini/gnuplot/ellisse_vlos}
+  \caption{Velocità nella direzione della di vista}
+  \label{fig:velocita-los}
+\end{figure}
 Nelle osservazioni astronomiche di un sistema composto da due corpi celesti non
 sempre è possibile misurare direttamente la velocità totale il cui modulo quadro
 è dato dalla~\eqref{eq:velocita-ellisse}, ma molto spesso è possibile misurare
 la sua componente nella direzione di vista dell'osservatore
 $v_\textup{los}$. Supponiamo che l'osservatore guardi il sistema dei due corpi
 in moto lungo orbite ellittiche nella direzione dell'asse $\versor{x}$, come
-nella figura.
-% TODO: aggiungere immagine come la 47 dello Smart e il riferimento
+nella figura.% TODO: aggiungere immagine come la 47 dello Smart e il riferimento
 Per calcolare $v_\textup{los}$ facciamo le seguenti osservazioni
 geometriche. Chiamiamo $\alpha(\theta)$ l'angolo compreso fra la direzione di
 $\versor{r}(\theta)$ e del vettore $\dot{\bm{r}}(\theta) \equiv
 \bm{v}(\theta)$. La tangente di questo angolo è data dal rapporto fra la
 componente tangenziale $r(\theta)\dot{\theta}$ della velocità e la componente
-radiale $\dot{r}(\theta)$:
+radiale $\dot{r}(\theta)$:%TODO: I CALCOLI SONO DA RISCRIVERE
 \begin{equation}
   \tan(\alpha(\theta)) = \frac{r(\theta)\dot{\theta}}{\dot{r}(\theta)} = \frac{1
     + e\cos(\theta-\tilde\omega)}{e\sin(\theta-\tilde\omega)} =
@@ -538,11 +542,12 @@ componente della velocità nella direzione della linea di vista è
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/velocita_los}
-  \caption[Andamento della velocità nella direzione della di vista]{Andamento
-    della velocità lungo la direzione della linea di vista del corpo di massa
-    ridotta in funzione dell'angolo $\theta$ nel caso di orbita ellittica. Il
-    grafico è stato fatto per gli stessi valori di eccentricità utilizzati nella
-    figura~\ref{fig:velocita}, con $a=1$ e $\tilde\omega=0$}
+  \caption[Andamento della velocità nella direzione della di vista in funzione
+  dell'anomalia]{Andamento della velocità lungo la direzione della linea di
+    vista del corpo di massa ridotta in funzione dell'angolo $\theta$ nel caso
+    di orbita ellittica. Il grafico è stato fatto per gli stessi valori di
+    eccentricità utilizzati nella figura~\ref{fig:velocita}, con $a=1$ e
+    $\tilde\omega=0$}
   \label{fig:velocita-los}
 \end{figure}
 Nella figura~\ref{fig:velocita-los} è riportato l'andamento di
