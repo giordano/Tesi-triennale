@@ -7,8 +7,8 @@ interazione dovuta a forze che soddisfano il principio di azione e reazione. In
 particolare ci occuperemo del \emph{problema di Keplero}, ovvero del caso in cui
 l'interazione fra i due corpi è quella gravitazionale che è una forza di tipo
 centrale. Il problema sarà risolto usando il formalismo newtoniano e quelli
-lagrangiano e hamiltoniano, di questi ultimi presenteremo una breve
-introduzione. Riusciremo a determinare analiticamente le equazioni delle orbite
+lagrangiano e hamiltoniano, di questi ultimi daremo una breve
+presentazione. Riusciremo a determinare analiticamente le equazioni delle orbite
 dei due corpi e a dedurre alcune proprietà del sistema. La risoluzione del
 problema di Keplero permette di descrivere, fra le altre cose, il moto di due
 corpi celesti, per esempio un pianeta e la sua stella, che sono soggetti solo
@@ -73,8 +73,8 @@ Definiamo inoltre la \emph{massa totale} $M_\textup{T}$ del sistema
   M_\textup{T}=m_1+m_2.
 \end{equation}
 Dalle definizioni di massa ridotta e totale deriva che
-$M_\textup{T}\mu=m_1m_2$. Se, per esempio, $m_2\gg m_1$ allora $\mu\simeq m_1$ e
-$M_\textup{T}\simeq m_2$. L'equazione del moto del centro di massa può essere
+$M_\textup{T}\mu=m_1m_2$. Se, per esempio, $m_1\gg m_2$ allora $\mu\simeq m_2$ e
+$M_\textup{T}\simeq m_1$. L'equazione del moto del centro di massa può essere
 trovata semplicemente calcolando l'accelerazione di $\bm{r}_\textup{g}$:
 \begin{equation}
   \toder[2]{\bm{r}_\textup{g}}{t} = \frac{1}{M_\textup{T}}
@@ -94,7 +94,7 @@ nuovo sistema le posizioni delle due masse saranno dunque descritte dai vettori
     \bm{r}_2 &= \frac{\mu}{m_2}\bm{r}.
   \end{align}
 \end{subequations}
-Osserviamo che se, per esempio, $m_2\gg m_1$ allora $\bm{r}_2\simeq\bm{0}$, cioè
+Osserviamo che se, per esempio, $m_1\gg m_2$ allora $\bm{r}_1\simeq\bm{0}$, cioè
 il corpo più massivo si trova praticamente nel centro di massa, come è logico
 aspettarsi dalla definizione di centro di massa. Dividendo ambo i membri
 della~\eqref{eq:f21} per $m_2$, ambo i membri della~\eqref{eq:f12} per $m_1$ e
@@ -122,7 +122,7 @@ definito la posizione relativa come $\bm{r}=\bm{r}_2 - \bm{r}_1$ abbiamo che il
 corpo fittizio di massa pari alla massa totale occupa la posizione del corpo
 reale di massa $m_1$ e la particella ridotta si trova nella posizione $\bm{r}$
 nel sistema di riferimento di $M_\textup{T}$, ovvero la sua posizione coincide
-istantaneamente con quella di del corpo reale di massa $m_2$.
+istantaneamente con quella del corpo reale di massa $m_2$.
 
 \subsection{Problema di Keplero}
 \label{sec:problema-keplero}
@@ -147,23 +147,22 @@ nella~\eqref{eq:f21-mu} abbiamo
   -\frac{Gm_1m_2}{r^2}\versor{r} = \mu\toder[2]{\bm{r}}{t}.
 \end{equation}
 
-Per una qualsiasi forza di tipo centrale il momento angolare
-$\bm{L}=\bm{r}\times\bm{p}$ rispetto al centro della forza è una costante del
-moto. Infatti il momento torcente $\bm{N}$ di una forza $\bm{F}$ rispetto a un
-polo $O$ è definito da
+Per una qualsiasi forza di tipo centrale il momento angolare $\bm{l} = \bm{r}
+\times \bm{p}$ rispetto al centro della forza è una costante del moto. Infatti
+il momento torcente $\bm{\tau}$ di una forza $\bm{F}$ rispetto a un polo $O$ è
+definito da
 \begin{equation}
-  \bm{N}= \toder{\bm{L}}{t} = \bm{r}\times\bm{F}
+  \bm{\tau}= \toder{\bm{l}}{t} = \bm{r}\times\bm{F}
 \end{equation}
 dove qui con $\bm{r}$ indichiamo il vettore congiungente il polo con il punto di
 applicazione della forza. Dunque il momento della forza rispetto alla sorgente
-di un campo centrale è nullo essendo in questo caso $\bm{F}$ diretto lungo
-$\bm{r}$ e il momento angolare calcolato rispetto allo stesso polo è
-costante.
+di un campo centrale è nullo, essendo in questo caso $\bm{F}$ diretto lungo
+$\bm{r}$, e il momento angolare calcolato rispetto allo stesso polo è costante.
 
 Ritorniamo al problema di Keplero. Abbiamo appena visto che il momento angolare
-della particella di massa ridotta rispetto alla particella $M_\textup{T}$ è un
+della particella di massa ridotta rispetto alla posizione di $M_\textup{T}$ è un
 integrale primo del moto. Notiamo ora che, per definizione di momento angolare,
-i vettori $\bm{r}$ e $\bm{L}\equiv\bm{l}_0$ sono fra loro perpendicolari. La
+i vettori $\bm{r}$ e $\bm{l}\equiv\bm{l}_0$ sono fra loro perpendicolari. La
 costanza del vettore $\bm{l}_0$, e in particolare della sua direzione, allora
 implica che, nel caso $\bm{l}_0\neq\bm{0}$, il vettore $\bm{r}$, che istante per
 istante indica la posizione della particella fittizia $\mu$ nel sistema di
@@ -198,8 +197,8 @@ allora essere riscritta come due equazioni scalari:
     2\dot{r}\dot{\theta}). \label{eq:forza-mu-azimutale}
   \end{gather}
 \end{subequations}
-Dalla~\eqref{eq:forza-mu-azimutale} si trova nuovamente la costanza del modulo del
-momento angolare $l_0 = \mu r^2\dot{\theta}$, infatti
+Dalla~\eqref{eq:forza-mu-azimutale} si trova nuovamente la costanza del modulo
+del momento angolare $l_0 = \norm{\bm{l}_0} = \mu r^2\dot{\theta}$, infatti
 \begin{equation}
   0 = r\mu(r\ddot{\theta} + 2\dot{r}\dot{\theta}) = \toder{\mu
     r^2\dot{\theta}}{t} = \toder{l_0}{t}.
@@ -246,8 +245,10 @@ $u=1/r$. Espandiamo le derivate temporali di $r$:
 \end{subequations}
 Sostituendo la~\eqref{eq:derivata2-r} nella~\eqref{eq:forza-mu-radiale} abbiamo
 \begin{equation}
-  -GM_\textup{T}u^2 = -\left(
-        \frac{l_0}{\mu} \right)^2u^2\toder[2]{u}{\theta} - \frac{l_0^2u^3}{\mu^2}.
+  -GM_\textup{T}u^2 = -
+  \left(
+    \frac{l_0}{\mu}
+  \right)^2u^2\toder[2]{u}{\theta} - \frac{l_0^2u^3}{\mu^2}.
 \end{equation}
 $r$ è la distanza della particella di massa ridotta da $M_\textup{T}$, quindi
 assume valori finiti e il suo reciproco $u$ non è mai nullo, allora
@@ -300,6 +301,7 @@ valgono
 pertanto la soluzione dell'equazione di Binet~\eqref{eq:soluzione-binet} con le
 condizioni~\eqref{eq:condizioni-binet} è
 \begin{equation}
+  \label{eq:soluzione2-binet}
   u(\theta) = \frac{1}{p}(1 + e\cos\theta\cos\tilde\omega +
   e\sin\theta\sin\tilde\omega) =  \frac{1}{p}(1+e\cos(\theta-\tilde\omega)).
 \end{equation}
@@ -416,7 +418,7 @@ Calcoliamo il modulo quadro della velocità del corpo fittizio di massa ridotta
 durante la sua orbita, data dalla~\eqref{eq:velocita-polare}: $v(\theta)^2 =
 \norm{\dot{\bm{r}}(\theta)}^2 = \dot{r}^2(\theta) +
 r^2(\theta)\dot{\theta}^2$. Ricordando le formule~\eqref{eq:derivata1-r}
-e~\eqref{eq:soluzione-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
+e~\eqref{eq:soluzione2-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
 \begin{subequations}
   \begin{align}
     \dot{r}(\theta) &= -\frac{l_0}{\mu}\toder{u}{\theta} = -\frac{l_0}{\mu}
@@ -513,8 +515,8 @@ $\versor{r}(\theta)$ e del vettore $\dot{\bm{r}}(\theta) \equiv
 componente tangenziale $r(\theta)\dot{\theta}$ della velocità e la componente
 radiale $\dot{r}(\theta)$:
 \begin{equation}
-  \tan(\alpha(\theta)) = \frac{r(\theta)\dot{\theta}}{\dot{r}(\theta)} = \frac{1 +
-    e\cos(\theta-\tilde\omega)}{e\sin(\theta-\tilde\omega)} =
+  \tan(\alpha(\theta)) = \frac{r(\theta)\dot{\theta}}{\dot{r}(\theta)} = \frac{1
+    + e\cos(\theta-\tilde\omega)}{e\sin(\theta-\tilde\omega)} =
   \cot(\theta-\tilde\omega) + \frac{\csc(\theta-\tilde\omega)}{e}.
 \end{equation}
 Indichiamo con $\beta(\theta)$ l'angolo compreso fra la direzione del vettore
@@ -598,7 +600,8 @@ isolato e che l'unica forza agente fosse quella
 gravitazionale.
 
 Dalla~\eqref{eq:energia} possiamo osservare che il moto relativo è equivalente a
-un moto unidimensionale lungo la direzione radiale e con un potenziale efficace
+un moto unidimensionale lungo la direzione radiale e con un \emph{potenziale
+  efficace}
 \begin{figure} %TODO: scegliere valori migliori per il grafico
   \centering
   \input{Immagini/gnuplot/potenziale_efficace}
@@ -616,7 +619,7 @@ un moto unidimensionale lungo la direzione radiale e con un potenziale efficace
 \end{equation}
 Il termine $l_0/(2\mu r^2(\theta))$ è chiamato \emph{potenziale
   centrifugo}. Nella figura~\ref{fig:potenziale-efficace} è riportato il grafico
-della curva del potenziale efficace. Per $r=r_0=l_0/(GM_\textup{T}\mu^2)$ si ha
+della curva del potenziale efficace. In $r=r_0=l_0/(GM_\textup{T}\mu^2)$ si ha
 un punto di minimo per $U_\textup{eff}$ e risulta $U_\textup{eff}(r_0) =
 -G^2M_\textup{T}^2\mu^3/(2l_0^2)$. La differenza fra l'energia e la curva di
 $U_\textup{eff}$ dà $\mu\dot{r}^2/2$, quindi il moto è ammesso solo in quelle
@@ -685,8 +688,8 @@ Consideriamo ora il caso in cui il sistema sta perdendo energia a causa della
 diminuzione della massa di uno dei corpi, per esempio $m_1$. Supponiamo che i
 due corpi descrivano orbite ellittiche e indichiamo la variazione della massa di
 $m_1$ con $\Delta M = m_1 - m_\textup{R}$, dove $m_\textup{R}$ è la massa
-residua del corpo. Facciamo l'ipotesi semplificatrice ma non del tutto corretta
-che dopo la perdita di massa da parte di $m_1$ la velocità
+residua del corpo. Facciamo l'ipotesi semplificatrice, ma non del tutto
+corretta, che dopo la perdita di massa da parte di $m_1$ la velocità
 \begin{equation}
   v^2(\theta) = G(m_1 + m_2)
   \left(
@@ -736,9 +739,9 @@ da cui
   \Delta M \geq \frac{1}{2}\frac{r(\theta)}{a}(m_1 + m_2).
 \end{equation}
 Per stimare il valore minimo di $\Delta M$ per il quale il sistema si distrugge
-scegliamo di valutare $r(\theta)$ al periapside, cioè $\theta = \tilde\omega$
-perché quando l'orbita è ancora chiusa il sistema è maggiormente legato in
-questo punto, pertanto
+scegliamo di valutare $r(\theta)$ al periapside, cioè in $\theta =
+\tilde\omega$, perché quando l'orbita è ancora chiusa il sistema è maggiormente
+legato in questo punto, pertanto
 \begin{equation}
     \Delta M \geq \frac{1}{2}\frac{r(\tilde\omega)}{a}(m_1 + m_2) =
     \frac{1}{2}(1 - e)(m_1 + m_2).
@@ -1016,7 +1019,7 @@ due corpi nel sistema di riferimento del centro di massa sono
     ellittiche dei due corpi nel sistema di riferimento del centro di
     massa. Nella figura di sinistra è rappresentata l'orbita della particella
     relativa nel sistema di riferimento con origine nel corpo di massa
-    $m_1$. Abbiamo posto $m_1=1$ e $m_2=5$ in unità arbitrarie, i parametri
+    $m_1$. Abbiamo posto $m_1=5$ e $m_2=1$ in unità arbitrarie, i parametri
     delle ellissi sono $a=1$ ed $e=0.8$. Le due figure non sono nella stessa
     scala}
   \label{fig:orbite-ellittiche}
@@ -1032,11 +1035,11 @@ due corpi nel sistema di riferimento del centro di massa sono
 Nella figura~\ref{fig:orbite-ellittiche} mostriamo le orbite dei due corpi e del
 corpo di massa ridotta nel caso di orbite ellittiche. Come si può osservare,
 entrambi i corpi ruotano intorno al centro di massa ma mentre il corpo più
-massivo, nell'esempio in figura $m_2$, rimane vicino a questo, il corpo meno
+massivo, nell'esempio in figura $m_1$, rimane vicino a questo, il corpo meno
 massivo descrive orbite più larghe. Dalle
 relazioni~\eqref{eq:r1-r2-posizione-relativa-cdm} si vede inoltre che il centro
 di massa giace sempre sulla congiungente $\bm{r}$ dei due corpi, quindi $m_1$ e
-$m_2$ sono sempre opposti rispetto al centro di massa durante loro moto
+$m_2$ sono sempre opposti rispetto al centro di massa durante il loro moto
 orbitale.
 
 %%% Local Variables: 

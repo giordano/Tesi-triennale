@@ -15,8 +15,8 @@ e=0.8
 b=a*sqrt(1-e**2)
 c=a*e
 p=a*(1-e**2)
-m1=1.
-m2=5.
+m1=5.
+m2=1.
 mu=m1*m2/(m1+m2)
 r(t)=p/(1+e*cos(t))
 r1(t)=-mu/m1*r(t)
@@ -37,11 +37,11 @@ unset label
 # fine primo plot
 
 # inizio secondo plot
-set key at a+c,1.5*b
-set xrange [-1.2*mu/m2*(a+c):1.1*a+c]
-set yrange [-1.1*mu/m1*b:1.1*mu/m1*b]
-set arrow from -1.2*mu/m2*(a+c),0 to .95*(a+c),0 filled # asse x
-set label "{\\scriptsize $x$}" at 0.95*(a+c),-0.05
+set key at -0.7*mu/m2*(a+c),1.2*b
+set xrange [-1.1*mu/m2*(a+c):1.5*mu/m1*(a+c)]
+set yrange [-1.1*mu/m2*b:1.1*mu/m2*b]
+set arrow from -1.1*mu/m2*(a+c),0 to 1.5*mu/m1*(a+c),0 filled # asse x
+set label "{\\scriptsize $x$}" at 1.5*mu/m1*(a+c),-0.05
 set arrow from 0,-1.2*b to 0,1.2*b filled # asse y
 set label "{\\scriptsize $y$}" at 0.05,1.2*b
 plot r1(t) lw 2 title "$m_1$", r2(t) lw 2 title "$m_2$"
