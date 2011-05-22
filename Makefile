@@ -5,19 +5,24 @@ PRINCIPALE		= tesi
 PRINCIPALE_TEX		= $(PRINCIPALE).tex
 PRINCIPALE_PDF		= $(PRINCIPALE).pdf
 BIBLIOGRAFIA		= bibliografia.bib
+FRONTESPIZIO		= frontespizio.tex
+FRONTESPIZIO_FRN	= $(PRINCIPALE)-frn.tex
+FRONTESPIZIO_PDF	= $(patsubst %.tex,%.pdf,$(FRONTESPIZIO_FRN))
 CAPITOLI_TEX		= $(wildcard Capitoli/*.tex)
 IMMAGINI_GNUPLOT	= $(wildcard Immagini/gnuplot/*.gnuplot)
 IMMAGINI_GNUPLOT_PDF	= $(patsubst %.gnuplot,%.pdf,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_EPS	= $(patsubst %.gnuplot,%.eps,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_TEX	= $(patsubst %.gnuplot,%.tex,$(IMMAGINI_GNUPLOT))
 TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
-TUTTI_FILE		= $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF)
+TUTTI_FILE		= $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
+			  $(FRONTESPIZIO_PDF)
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
 			  *.log *.out *.run.xml *.toc *~ \
 			  $(wildcard Capitoli/*.aux) $(wildcard Capitoli/*~) \
 			  $(IMMAGINI_GNUPLOT_EPS) $(wildcard Immagini/gnuplot/*~)
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
-			  $(IMMAGINI_GNUPLOT_TEX)
+			  $(IMMAGINI_GNUPLOT_TEX) $(FRONTESPIZIO_FRN) \
+			  $(FRONTESPIZIO_PDF)
 
 ##### Regole
 
@@ -27,6 +32,10 @@ pdf: $(PRINCIPALE_PDF)
 
 $(PRINCIPALE_PDF): $(TUTTI_FILE)
 	latexmk -pdf $(PRINCIPALE_TEX)
+
+$(FRONTESPIZIO_PDF): $(FRONTESPIZIO)
+	pdflatex $(PRINCIPALE_TEX)
+	pdflatex $(FRONTESPIZIO_FRN)
 
 ### Inizio delle regole per compilare le immagini con gnuplot
 # Per compilare tutte le immagini in formato EPS:
