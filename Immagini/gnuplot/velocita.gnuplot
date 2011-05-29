@@ -6,13 +6,13 @@ set key top center
 unset xtics
 set ytics nomirror
 set format y "$%g$"
-set xtics ("{\\scriptsize periapside: $\\theta=0$}" 0, \
-    "{\\scriptsize apoapside: $\\theta=\\pi$}" pi, \
-    "{\\scriptsize periapside: $\\theta=2\\pi$}" 2*pi) nomirror
+set xtics ("{\\scriptsize periapside: $\\chi=0$}" 0, \
+    "{\\scriptsize apoapside: $\\chi=\\pi$}" pi, \
+    "{\\scriptsize periapside: $\\chi=2\\pi$}" 2*pi) nomirror
 set border 3 # visualizza solo i bordi in basso e a sinistra
 set size 0.9,0.9
-set xlabel "$\\theta$"  # etichetta per l'asse x
-set ylabel "$v^2(\\theta)/GM_\\textup{T}$" # etichetta per l'asse y
+set xlabel "$\\chi$"  # etichetta per l'asse x
+set ylabel "$v^2(\\chi)/GM_\\textup{T}$" # etichetta per l'asse y
 r(a,e,x)=a*(1-e**2)/(1+e*cos(x))
 v(a,e,x)=2./r(a,e,x)-1/a
 a=1

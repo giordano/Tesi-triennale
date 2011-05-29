@@ -29,7 +29,7 @@ set label "{\\scriptsize $a$}" at -(c+a/2.),-0.03
 set label "{\\scriptsize $b$}" at -(c+0.02),b/2
 set label "{\\scriptsize $a-c$}" at a*(1-e)/2.,-0.03
 set label "{\\scriptsize $r$}" at r(pi/4)*cos(pi/4)/2-0.02,r(pi/4)*sin(pi/4)/2+0.02
-set label "{\\scriptsize $\\theta-\\tilde\\omega$}" at a*(1-e)/3+0.1,0.05
+set label "{\\scriptsize $\\theta-\\theta_0$}" at a*(1-e)/3+0.1,0.05
 set label "{\\scriptsize $p$}" at -0.03,p/2.
 set label "{\\scriptsize $x\\equiv x\\prime$}" at 1.5*(a-c),-0.03
 set label "{\\scriptsize $y$}" at 0.05,1.2*b

@@ -5,14 +5,17 @@ In questo capitolo affronteremo il \emph{problema dei due corpi}, cioè lo studi
 del moto di due corpi, supposti puntiformi, soggetti solamente alla mutua
 interazione dovuta a forze che soddisfano il principio di azione e reazione. In
 particolare ci occuperemo del \emph{problema di Keplero}, ovvero del caso in cui
-l'interazione fra i due corpi è quella gravitazionale che è una forza di tipo
-centrale. Il problema sarà risolto usando il formalismo newtoniano e quelli
-lagrangiano e hamiltoniano, di questi ultimi daremo una breve
-presentazione. Riusciremo a determinare analiticamente le equazioni delle orbite
-dei due corpi e a dedurre alcune proprietà del sistema. La risoluzione del
-problema di Keplero permette di descrivere, fra le altre cose, il moto di due
-corpi celesti, per esempio un pianeta e la sua stella, che sono soggetti solo
-alla mutua interazione gravitazionale.
+la forza fra i due corpi è quella gravitazionale, o più in generale dipendente
+dall'inverso del quadrato della distanza fra i due corpi, che è di tipo
+centrale. Il problema sarà risolto usando il formalismo newtoniano (si
+veda~\cites{bradt:processes}{fabrizio:meccanica}{smart:textbook}) e quelli
+lagrangiano e hamiltoniano (si
+veda~\cites{goldstein:meccanica}{landau:meccanica}), di questi ultimi daremo una
+breve presentazione. Riusciremo a determinare analiticamente le equazioni delle
+orbite dei due corpi e a dedurre alcune proprietà del sistema. La risoluzione
+del problema di Keplero permette di descrivere, fra le altre cose, il moto di
+due corpi celesti, per esempio un pianeta e la sua stella, che sono soggetti
+solo alla mutua interazione gravitazionale.
 
 \section{Formalismo newtoniano}
 \label{sec:formalismo-newton}
@@ -45,18 +48,18 @@ Definiamo il vettore \emph{posizione relativa}
 e il \emph{centro di massa}
 \begin{equation}
   \label{eq:centro-di-massa}
-  \bm{r}_\textup{g} = \frac{m_1\bm{r}_1+m_2\bm{r}_2}{m_1+m_2}.
+  \bm{r}_\textup{CM} = \frac{m_1\bm{r}_1+m_2\bm{r}_2}{m_1+m_2}.
 \end{equation}
 Dalle equazioni~\eqref{eq:posizione-relativa} e~\eqref{eq:centro-di-massa}
 possiamo ricavare $\bm{r}_1$ e $\bm{r}_2$ in funzione di $\bm{r}$ e
-$\bm{r}_\textup{g}$:
+$\bm{r}_\textup{CM}$:
 \begin{subequations}
   \label{eq:r1-r2-posizione-relativa-cdm}
   \begin{align}
-    \bm{r}_1 &= \bm{r}_\textup{g} - \frac{m_2}{m_1+m_2}\bm{r} =
-    \bm{r}_\textup{g} - \frac{\mu}{m_1}\bm{r},\\
-    \bm{r}_2 &= \bm{r}_\textup{g} + \frac{m_1}{m_1+m_2}\bm{r} =
-    \bm{r}_\textup{g} + \frac{\mu}{m_2}\bm{r},
+    \bm{r}_1 &= \bm{r}_\textup{CM} - \frac{m_2}{m_1+m_2}\bm{r} =
+    \bm{r}_\textup{CM} - \frac{\mu}{m_1}\bm{r},\\
+    \bm{r}_2 &= \bm{r}_\textup{CM} + \frac{m_1}{m_1+m_2}\bm{r} =
+    \bm{r}_\textup{CM} + \frac{\mu}{m_2}\bm{r},
   \end{align}
 \end{subequations}
 in cui abbiamo introdotto la \emph{massa ridotta} $\mu$ definita dalla metà
@@ -75,9 +78,9 @@ Definiamo inoltre la \emph{massa totale} $M_\textup{T}$ del sistema
 Dalle definizioni di massa ridotta e totale deriva che
 $M_\textup{T}\mu=m_1m_2$. Se, per esempio, $m_1\gg m_2$, allora $\mu\simeq m_2$ e
 $M_\textup{T}\simeq m_1$. L'equazione del moto del centro di massa può essere
-trovata semplicemente calcolando l'accelerazione di $\bm{r}_\textup{g}$:
+trovata semplicemente calcolando l'accelerazione di $\bm{r}_\textup{CM}$:
 \begin{equation}
-  \toder[2]{\bm{r}_\textup{g}}{t} = \frac{1}{M_\textup{T}}
+  \toder[2]{\bm{r}_\textup{CM}}{t} = \frac{1}{M_\textup{T}}
   \left(
     m_1\toder[2]{\bm{r}_1}{t} + m_2\toder[2]{\bm{r}_2}{t}
   \right) = \frac{\bm{F}_{12}+\bm{F}_{21}}{M_\textup{T}} = \bm{0},
@@ -276,20 +279,20 @@ iniziali
 \begin{subequations}
   \label{eq:condizioni-binet}
   \begin{align}
-    u(\tilde\omega) &= \frac{1+e}{p},\\
-    \toder{u}{\theta}(\tilde\omega) &= 0,
+    u(\theta_0) &= \frac{1+e}{p},\\
+    \toder{u}{\theta}(\theta_0) &= 0,
   \end{align}
 \end{subequations}
-che significano richiedere che il punto $\theta = \tilde\omega$ sia stazionario
-per la funzione $u(\theta)$ e che in questo punto la funzione $u$ assuma il
-valore $(1+e)/p$. Vedremo più avanti il significato delle grandezze $e$ e
+che significano richiedere che il punto $\theta = \theta_0$ sia stazionario per
+la funzione $u(\theta)$ e che in questo punto la funzione $u$ assuma il valore
+$(1+e)/p$. Vedremo più avanti il significato delle grandezze $e$ e
 $p$. Osserviamo che riportando queste condizioni alla funzione
 $r(\theta)=1/u(\theta)$ abbiamo
 \begin{subequations}
   \begin{align}
-    r(\tilde\omega) &= \frac{1}{u(\theta)} = \frac{p}{1+e}, \\
-    \toder{r}{\theta}(\tilde\omega) &= \toder{(1/u)}{\theta}(\tilde\omega) =
-    -\frac{1}{u^2(\tilde\omega)} \toder{u}{\theta}(\tilde\omega) =  0.
+    r(\theta_0) &= \frac{1}{u(\theta)} = \frac{p}{1+e}, \\
+    \toder{r}{\theta}(\theta_0) &= \toder{(1/u)}{\theta}(\theta_0) =
+    -\frac{1}{u^2(\theta_0)} \toder{u}{\theta}(\theta_0) = 0.
   \end{align}
 \end{subequations}
 Con le condizioni~\eqref{eq:condizioni-binet} le costanti di integrazione
@@ -297,23 +300,23 @@ valgono
 \begin{subequations}
   \label{eq:costanti-binet}
   \begin{align}
-    c_0 &= \frac{e}{p}\cos\tilde\omega, \\
-    c_1 &= \frac{e}{p}\sin\tilde\omega,
+    c_0 &= \frac{e}{p}\cos\theta_0, \\
+    c_1 &= \frac{e}{p}\sin\theta_0,
   \end{align}
 \end{subequations}
 pertanto la soluzione dell'equazione di Binet~\eqref{eq:soluzione-binet} con le
 condizioni~\eqref{eq:condizioni-binet} è
 \begin{equation}
   \label{eq:soluzione2-binet}
-  u(\theta) = \frac{1}{p}(1 + e\cos\theta\cos\tilde\omega +
-  e\sin\theta\sin\tilde\omega) =  \frac{1}{p}(1+e\cos(\theta-\tilde\omega)).
+  u(\theta) = \frac{1}{p}(1 + e\cos\theta\cos\theta_0 +
+  e\sin\theta\sin\theta_0) =  \frac{1}{p}(1+e\cos(\theta-\theta_0)).
 \end{equation}
 Ricordando che $r(\theta)=1/u(\theta)$ giungiamo all'equazione polare
 dell'orbita della particella relativa nel sistema di riferimento di
 $M_\textup{T}$
 \begin{equation}
   \label{eq:orbita}
-  r(\theta) = \frac{p}{1+e\cos(\theta-\tilde\omega)}.
+  r(\theta) = \frac{p}{1+e\cos(\theta-\theta_0)}.
 \end{equation}
 
 \subsection{Classificazione geometrica delle orbite}
@@ -321,10 +324,11 @@ $M_\textup{T}$
 
 La~\eqref{eq:orbita} è l'equazione polare di una conica con centro nel fuoco o
 uno dei fuochi nel caso dell'ellisse. La costante $e$ è chiamata
-\emph{eccentricità} della conica, la costante $p$ invece è detta \emph{semilato
-  retto}. Entrambe possono assumere valori non negativi. A seconda dei diversi
-valori dell'eccentricità le coniche possono essere classificate nel seguente
-modo:
+\emph{eccentricità} della conica, la costante $p$ invece è detta
+\emph{semilato retto}. Entrambe possono assumere valori non negativi. La
+quantità $\chi = \theta - \theta_0$ è chiamata \emph{anomalia vera} o
+\emph{effettiva}. A seconda dei diversi valori dell'eccentricità le coniche
+possono essere classificate nel seguente modo:
 \begin{itemize}
 \item $0\leq e<1$: \emph{ellisse}. Nel caso particolare $e=0$ si ha una
   \emph{circonferenza};
@@ -365,12 +369,13 @@ Il \emph{periapside} è il punto di un'ellisse più vicino a uno dei due fuochi,
 l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso
 fuoco. Osservando la figura~\ref{fig:ellisse} si riconosce che il periapside
 rispetto al fuoco $M_\textup{T}$ è raggiunto in corrispondenza di
-$\theta=\tilde\omega$ e la distanza del periapside da $M_\textup{T}$ è
-$r_\textup{min} = r(\tilde\omega) = a(1-e) = a-c$; l'apoapside è raggiunto per
-$\theta=\tilde\omega+\pi$ e la distanza dell'apoapside dallo stesso fuoco è
-$r_\textup{max} = r(\tilde\omega+\pi) = a(1+e)= a+c$. Si ottiene il caso
-particolare della circonferenza ponendo nelle equazioni precedenti $e=0$, quindi
-$p=a=b$, $c=e=0$. Per la parabola sussistono le seguenti relazioni:
+$\theta=\theta_0$, cioè quando l'anomalia vera $\chi$ è nulla, e la distanza del
+periapside da $M_\textup{T}$ è $r_\textup{min} = r(\theta_0) = a(1-e) = a-c$;
+l'apoapside è raggiunto per $\theta=\theta_0+\pi$, vale a dire quando l'anomalia
+vera $\chi$ è uguale a $\pi$, e la distanza dell'apoapside dallo stesso fuoco è
+$r_\textup{max} = r(\theta_0+\pi) = a(1+e)= a+c$. Si ottiene il caso particolare
+della circonferenza ponendo nelle equazioni precedenti $e=0$, quindi $p=a=b$,
+$c=e=0$. Per la parabola sussistono le seguenti relazioni:
 \begin{align}
   c &= a,\\
   p &= 2a,
@@ -383,7 +388,7 @@ e per l'iperbole:
   b &= a\sqrt{e^2-1}, \\
   c &= \sqrt{a^2+b^2} = ae.
 \end{align}
-Osserviamo infine che per tutte le coniche risulta $r(\tilde\omega\pm\pi/2)=p$.
+Osserviamo infine che per tutte le coniche risulta $r(\theta_0\pm\pi/2)=p$.
 
 Inserendo la~\eqref{eq:reciproco-semilato} nella~\eqref{eq:eccentricita-ellisse}
 possiamo ricavare l'eccentricità di un'orbita ellittica legata ai parametri
@@ -411,10 +416,10 @@ Keplero che per i pianeti del Sistema Solare afferma: \emph{i pianeti,
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/velocita}
-  \caption[Andamento della velocità in funzione dell'anomalia]{Andamento del
-    modulo quadro della velocità della particella relativa in funzione
-    dell'angolo $\theta$ nel caso di orbita ellittica, per diversi valori
-    dell'eccentricità $e$. In tutte le curve risulta $a=1$ e $\tilde\omega=0$}
+  \caption[Andamento della velocità in funzione dell'anomalia vera]{Andamento
+    del modulo quadro della velocità della particella relativa in funzione
+    dell'anomalia vera $\chi$ nel caso di orbita ellittica, per diversi valori
+    dell'eccentricità $e$. In tutte le curve risulta $a=1$}
   \label{fig:velocita}
 \end{figure}
 Calcoliamo il modulo quadro della velocità del corpo fittizio di massa ridotta
@@ -425,11 +430,11 @@ e~\eqref{eq:soluzione2-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo:
 \begin{subequations}
   \begin{align}
     \dot{r}(\theta) &= -\frac{l_0}{\mu}\toder{u}{\theta} = -\frac{l_0}{\mu}
-    \left( -\frac{1}{p}e\sin(\theta-\tilde\omega)
-    \right) = \frac{l_0}{\mu p}e \sin(\theta -
-    \tilde\omega), \label{eq:velocita-radiale}\\
-    r(\theta)\dot{\theta} &= \frac{l_0}{\mu}u = \frac{l_0}{\mu
-      p}(1+e\cos(\theta-\tilde\omega)).
+    \left( -\frac{1}{p}e\sin(\theta-\theta_0) \right) = \frac{l_0}{\mu p}e
+    \sin(\theta -
+    \theta_0), \label{eq:velocita-radiale}\\
+    r(\theta)\dot{\theta} &= \frac{l_0}{\mu}u =
+    \frac{l_0}{\mu p}(1+e\cos(\theta-\theta_0)).
   \end{align}
 \end{subequations}
 Per quanto riguarda il moto ellittico, mettendo insieme le relazioni appena
@@ -440,17 +445,17 @@ trovate, la~\eqref{eq:reciproco-semilato} e la~\eqref{eq:orbita} risulta
     v^2(\theta) &= \dot{r}^2(\theta) + r^2(\theta)\dot{\theta}^2 \\
     &= \left(
       \frac{l_0}{\mu p}
-    \right)^2(e^2\sin^2(\theta-\tilde\omega) + 1 + 2e\cos(\theta-\tilde\omega) +
-    e^2\cos^2(\theta-\tilde\omega)) \\
+    \right)^2(e^2\sin^2(\theta-\theta_0) + 1 + 2e\cos(\theta-\theta_0) +
+    e^2\cos^2(\theta-\theta_0)) \\
     &= \left(
       \frac{l_0}{\mu p}
-    \right)^2(1+2e\cos(\theta-\tilde\omega)+e^2) \\
+    \right)^2(1+2e\cos(\theta-\theta_0)+e^2) \\
     &= \left(
       \frac{l_0}{\mu p}
-    \right)^2(2(1+e\cos(\theta-\tilde\omega)) + (e^2-1)) \\
+    \right)^2(2(1+e\cos(\theta-\theta_0)) + (e^2-1)) \\
     &= \frac{l_0^2}{\mu^2p}
     \left(
-      2\frac{1+e\cos(\theta-\tilde\omega)}{p} - \frac{1-e^2}{p}
+      2\frac{1+e\cos(\theta-\theta_0)}{p} - \frac{1-e^2}{p}
     \right) = \frac{l_0^2}{\mu^2 p}
     \left(
       \frac{2}{r(\theta)} - \frac{1}{a}
@@ -469,15 +474,15 @@ particella relativa da $M_\textup{T}$. Si può osservare in particolare che
 $v^2(\theta)$ è lineare in $1/r(\theta)$, quindi il modulo della velocità è
 massimo quando la particella relativa si trova nel periapside e vale
 \begin{equation}
-  v^2(\tilde\omega) = \frac{GM_\textup{T}}{a}\frac{1+e}{1-e}.
+  v^2(\theta_0) = \frac{GM_\textup{T}}{a}\frac{1+e}{1-e}.
 \end{equation}
 Inoltre il modulo quadro della velocità sarà minimo quando la distanza da
 $M_\textup{T}$ è massima, cioè all'apoapside
 \begin{equation}
-  v^2(\tilde\omega+\pi) = \frac{GM_\textup{T}}{a}\frac{1-e}{1+e}.
+  v^2(\theta_0+\pi) = \frac{GM_\textup{T}}{a}\frac{1-e}{1+e}.
 \end{equation}
 Questi risultati sono in accordo con la seconda legge di Keplero. L'andamento di
-$v^2$ in funzione della coordinata $\theta$ è riportato nella
+$v^2$ in funzione dell'anomalia vera $\chi$ è riportato nella
 figura~\ref{fig:velocita}.
 
 I calcoli svolti per determinare la velocità nel caso di orbite ellittiche sono
@@ -510,86 +515,126 @@ dalla~\eqref{eq:semilato-iperbole}, dunque
     $\bm{v}_\textup{los}$. I parametri dell'ellisse sono $e=0.7$ e $a=2$}
   \label{fig:ellisse-vlos}
 \end{figure}
-Nelle osservazioni astronomiche di un sistema composto da due corpi celesti in
-moto su orbite ellittiche non sempre è possibile misurare direttamente la
-velocità totale il cui modulo quadro è dato dalla~\eqref{eq:velocita-ellisse},
-ma molto spesso è possibile misurare la sua componente $v_\textup{los}$ nella
-direzione di vista dell'osservatore. Supponiamo che l'osservatore guardi il
-sistema dei due corpi nella direzione dell'asse $\versor{x}$, come nella
-figura~\ref{fig:ellisse-vlos}. Senza perdita di generalità possiamo porre, per
-semplicità, $\tilde\omega=0$. Per calcolare $v_\textup{los}$ facciamo le
-seguenti considerazioni geometriche. Chiamiamo $\alpha(\theta)$ l'angolo
-compreso fra la direzione di $\versor{r}(\theta)$ e del vettore
-$\dot{\bm{r}}(\theta) \equiv \bm{v}(\theta)$ e sia per il momento $\theta \in
-\mathopen{[}0, \pi\mathclose{]}$. La tangente di questo angolo è data dal
-rapporto fra la componente tangenziale $r(\theta)\dot{\theta}$ della velocità e
-la componente radiale $\dot{r}(\theta)$, quindi
+Nelle osservazioni astronomiche di un sistema binario, spesso è possibile
+misurare solo la componente della velocità dei due corpi lungo la direzione di
+vista dell'osservatore. Calcoleremo dapprima la velocità lungo la direzione di
+vista $v_\textup{los}$ per la particella relativa, poi riporteremo i risultati
+ottenuti ai due corpi. Supponiamo che l'osservatore guardi la particella
+relativa nella direzione dell'asse $\versor{x}$, come nella
+figura~\ref{fig:ellisse-vlos}, quindi $v_\textup{los} = \bm{v} \cdot
+\versor{x}$.
+Per semplicità, svolgeremo i calcoli in funzione dell'anomalia vera $\chi$. Per
+calcolare $v_\textup{los}$ facciamo le seguenti considerazioni
+geometriche. Chiamiamo $\alpha(\chi)$ l'angolo compreso fra la direzione di
+$\versor{r}(\chi)$ e del vettore $\dot{\bm{r}}(\chi) \equiv \bm{v}(\chi)$ e sia
+per il momento $\chi \in \mathopen{[}0, \pi\mathclose{]}$. La tangente di questo
+angolo è data dal rapporto fra la componente tangenziale $r(\chi)\dot{\chi}$
+della velocità e la componente radiale $\dot{r}(\chi)$, quindi
 \begin{equation}
   \label{eq:angolo-alpha}
-  \alpha(\theta) = \arctan\frac{r(\theta)\dot{\theta}}{\dot{r}(\theta)} =
-  \arctan\frac{1 + e\cos\theta}{e\sin\theta} = \arctan
+  \alpha(\chi) = \arctan\frac{r(\chi)\dot{\chi}}{\dot{r}(\chi)} =
+  \arctan\frac{1 + e\cos\chi}{e\sin\chi} = \arctan
   \left(
-    \cot\theta + \frac{\csc\theta}{e}
+    \cot\chi + \frac{\csc\chi}{e}
   \right).
 \end{equation}
-Per $\theta \in \mathopen{]}\pi, 2\pi\mathclose{[}$ dobbiamo prendere qualche
+Per $\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$ dobbiamo prendere qualche
 accorgimento. La funzione $\arctan$ ha codominio $\mathopen{]}-\pi/2,
-\pi/2\mathclose{[}$, ma nell'intervallo $\theta \in \mathopen{]}\pi,
-2\pi\mathclose{[}$ la componente radiale $\dot{r}(\theta)$ assume valori
+\pi/2\mathclose{[}$, ma nell'intervallo $\chi \in \mathopen{]}\pi,
+2\pi\mathclose{[}$ la componente radiale $\dot{r}(\chi)$ assume valori
 negativi, come si può vedere dalla~\eqref{eq:velocita-radiale} e nella
-figura~\ref{fig:ellisse-vlos}, quindi l'angolo $\alpha(\theta)$ che la velocità
+figura~\ref{fig:ellisse-vlos}, quindi l'angolo $\alpha(\chi)$ che la velocità
 forma con la direzione radiale positiva è maggiore di $\pi/2$. Per ottenere il
-valore giusto di $\alpha(\theta)$ in questo intervallo dobbiamo aggiungere $\pi$
+valore giusto di $\alpha(\chi)$ in questo intervallo dobbiamo aggiungere $\pi$
 al risultato dato dalla~\eqref{eq:angolo-alpha}, quindi in definitiva
 \begin{equation}
   \label{eq:angolo-alpha2}
-  \alpha(\theta) =
+  \alpha(\chi) =
   \begin{cases}
     \arctan
      \left(
-    \cot\theta + \dfrac{\csc\theta}{e}
-  \right) & \text{se } \theta \in \mathopen{[}0, \pi\mathclose{]},\\[2ex]
+    \cot\chi + \dfrac{\csc\chi}{e}
+  \right) & \text{se } \chi \in \mathopen{[}0, \pi\mathclose{]},\\[2ex]
   \arctan
   \left(
-    \cot\theta + \dfrac{\csc\theta}{e}
-  \right) + \pi & \text{se } \theta \in \mathopen{]}\pi, 2\pi\mathclose{[}.
+    \cot\chi + \dfrac{\csc\chi}{e}
+  \right) + \pi & \text{se } \chi \in \mathopen{]}\pi, 2\pi\mathclose{[}.
   \end{cases}
 \end{equation}
-Si noti che grazie a questa definizione la funzione $\alpha(\theta)$ è continua
-in $\theta = \pi$. Indichiamo con $\beta(\theta)$ l'angolo compreso fra la
-direzione del vettore velocità $\bm{v}(\theta)$ e la linea di vista, nel nostro
-caso l'asse $\versor{x}$. Poiché $\alpha(\theta)$ è l'angolo fra il verso
-positivo della direzione radiale e il vettore $\bm{v}(\theta)$ e la direzione
-radiale forma un angolo $\theta$ con la direzione positiva dell'asse
-$\versor{x}$, abbiamo $\beta(\theta) = \theta + \alpha(\theta)$ e la componente
+Si noti che grazie a questa definizione la funzione $\alpha(\chi)$ è continua
+in $\chi = \pi$. Indichiamo con $\beta(\chi)$ l'angolo compreso fra la
+direzione del vettore velocità $\bm{v}(\chi)$ e la linea di vista, nel nostro
+caso l'asse $\versor{x}$. Poiché $\alpha(\chi)$ è l'angolo fra il verso
+positivo della direzione radiale e il vettore $\bm{v}(\chi)$ e la direzione
+radiale forma un angolo $\chi$ con la direzione positiva dell'asse
+$\versor{x}$, abbiamo $\beta(\chi) = \chi + \alpha(\chi)$ e la componente
 della velocità nella direzione della linea di vista è
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/velocita_los}
   \caption[Andamento della velocità nella direzione della di vista in funzione
-  dell'anomalia]{Andamento della velocità lungo la direzione della linea di
-    vista del corpo di massa ridotta in funzione dell'angolo $\theta$ nel caso
-    di orbita ellittica. Il grafico è stato realizzato per gli stessi valori di
-    eccentricità utilizzati nella figura~\ref{fig:velocita}, con $a=1$ e
-    $\tilde\omega=0$}
+  dell'anomalia
+  vera]{Andamento della velocità lungo la direzione della linea di vista del
+    corpo di massa ridotta in funzione dell'anomalia vera nel caso di orbita
+    ellittica. Il grafico è stato realizzato per gli stessi valori di
+    eccentricità utilizzati nella figura~\ref{fig:velocita}, con $a=1$}
   \label{fig:velocita-los}
 \end{figure}
 \begin{equation}
   \begin{split}
-    v_\textup{los} &= v(\theta)\cos\beta(\theta) = \sqrt{GM_\textup{T} \left(
-      \frac{2}{r(\theta)} - \frac{1}{a}
-    \right)}\cos(\theta + \alpha(\theta)) = \\
+    v_\textup{los} &= v(\chi)\cos\beta(\chi) = \sqrt{GM_\textup{T} \left(
+      \frac{2}{r(\chi)} - \frac{1}{a}
+    \right)}\cos(\chi + \alpha(\chi)) = \\
     &= \sqrt{GM_\textup{T}
     \left(
-      \frac{2(1+e\cos\theta)}{a(1-e^2)} - \frac{1}{a}
-    \right)}\cos(\theta + \alpha(\theta)).
+      \frac{2(1+e\cos\chi)}{a(1-e^2)} - \frac{1}{a}
+    \right)}\cos(\chi + \alpha(\chi)).
   \end{split}
 \end{equation}
 Osserviamo dalla~\eqref{eq:angolo-alpha2} che se $e=0$, cioè per le orbite
-circolari, si ha sempre $\alpha(\theta) = \pi/2$, coerentemente col fatto che
+circolari, si ha sempre $\alpha(\chi) = \pi/2$, coerentemente col fatto che
 per il moto circolare la velocità è sempre tangenziale. Nella
 figura~\ref{fig:velocita-los} è riportato l'andamento di $v_\textup{los}$ in
-funzione dell'angolo $\theta$ per diversi valori dell'eccentricità.
+funzione dell'anomalia $\chi$ per diversi valori dell'eccentricità.
+
+\begin{figure}
+  \centering
+  \input{Immagini/gnuplot/velocita_los_due_corpi}
+  \caption[Andamento della velocità dei due corpi nella direzione della di vista
+  in funzione dell'anomalia
+  vera]{Andamento della velocità dei due corpi lungo la direzione della linea di
+    vista in funzione dell'anomalia vera delle loro orbite. Abbiamo posto
+    $GM_\textup{T} = \SI{5e11}{\cubic\kilo\metre\per\square\second}$,
+    $a = \SI{5e7}{\kilo\metre}$, $e=0.5$ e $m_2/m_1=5$}
+  \label{fig:velocita-los-due-corpi}
+\end{figure}
+Ritorniamo ai due corpi. Per fare questo ci poniamo in un sistema di riferimento
+inerziale con origine nella posizione del centro di massa e indichiamo ancora
+con $\versor{x}$ la direzione della linea di vista che però non sarà più la
+stessa della figura~\ref{fig:ellisse-vlos}, tuttavia i ragionamenti da
+utilizzare sono gli stessi. Osserviamo che $\bm{v}=\dot{\bm{r}}$ e
+dalle~\eqref{eq:r1-r2-posizione-relativa-cdm} abbiamo che le velocità dei corpi
+di massa $m_1$ e $m_2$ sono, rispettivamente,
+$\bm{v}_1 = \bm{v}_\textup{CM}-\mu\bm{v}/m_1$ e
+$\bm{v}_2 = \bm{v}_\textup{CM} + \mu\bm{v}/m_2$, quindi le corrispondenti
+velocità lungo la direzione della linea di vista sono
+$v_{1,\textup{los}} = \bm{v}_1 \cdot \versor{x} = v_\textup{CM,los}-\mu
+v_\textup{los}/m_1$
+e
+$v_{2,\textup{los}} = \bm{v}_2 \cdot \versor{x} = v_\textup{CM,los} + \mu
+v_\textup{los}/m_2$.
+Le curve che compaiono nella figura~\ref{fig:velocita-los} sono centrate attorno
+allo zero perché avevamo richiesto per ipotesi che il centro di massa fosse a
+riposo, ma se il centro di massa possiede una velocità
+$\bm{v}_\textup{CM} = v_\textup{CM,los}\versor{x}$ costante nella direzione
+$\versor{x}$ della linea di vista, alle velocità $v_{1,\textup{los}}$ e
+$v_{2,\textup{los}}$ dovremo aggiungere $v_\textup{CM}$. Dunque misurando
+$v_{1,\textup{los}}$ e $v_{2,\textup{los}}$ in più punti dell'orbita è possibile
+determinare la velocità di allontanamento o avvicinamento di un sistema binario
+rispetto all'osservatore. Nell'esempio della
+figura~\ref{fig:velocita-los-due-corpi} il centro di massa del sistema si sta
+allontanando dall'osservatore con velocità
+$v_\textup{CM} = \SI{40}{\kilo\metre \per\second}$.
 
 \subsection{Energia e classificazione energetica delle orbite}
 \label{sec:energia-orbite}
@@ -727,11 +772,14 @@ semiasse maggiore aumenterà e il sistema diventerà meno legato. Al limite, se
 l'energia diventa nulla o positiva il sistema non sarà più legato.
 
 Consideriamo ora il caso in cui il sistema sta perdendo energia a causa della
-diminuzione della massa di uno dei corpi, per esempio $m_1$. Supponiamo che i
-due corpi descrivano orbite ellittiche e indichiamo la variazione della massa di
-$m_1$ con $\Delta M = m_1 - m_\textup{R}$, dove $m_\textup{R}$ è la massa
-residua del corpo. Facciamo l'ipotesi semplificatrice, ma non del tutto
-corretta, che dopo la perdita di massa da parte di $m_1$ la velocità
+diminuzione della massa di uno dei corpi, per esempio
+$m_1$.\footnote{Per un'applicazione si può
+  consultare~\cite[350]{padmanabhan:stars}.}
+Supponiamo che i due corpi descrivano orbite ellittiche e indichiamo la
+variazione della massa di $m_1$ con $\Delta M = m_1 - m_\textup{R}$, dove
+$m_\textup{R}$ è la massa residua del corpo. Facciamo l'ipotesi semplificatrice,
+ma non del tutto corretta, che dopo la perdita di massa da parte di $m_1$ la
+velocità
 \begin{equation}
   v^2(\theta) = G(m_1 + m_2)
   \left(
@@ -781,10 +829,10 @@ da cui
   \Delta M \geq \frac{1}{2}\frac{r(\theta)}{a}(m_1 + m_2).
 \end{equation}
 Per stimare il valore minimo di $\Delta M$ per il quale il sistema si distrugge,
-scegliamo di valutare $r(\theta)$ al periapside, cioè in $\theta =
-\tilde\omega$, perché il sistema è maggiormente legato in questo punto, pertanto
+scegliamo di valutare $r(\theta)$ al periapside, cioè in $\theta = \theta_0$,
+perché il sistema è maggiormente legato in questo punto, pertanto
 \begin{equation}
-    \Delta M \geq \frac{1}{2}\frac{r(\tilde\omega)}{a}(m_1 + m_2) =
+    \Delta M \geq \frac{1}{2}\frac{r(\theta_0)}{a}(m_1 + m_2) =
     \frac{1}{2}(1 - e)(m_1 + m_2).
 \end{equation}
 Da questa relazione possiamo dedurre che all'aumentare dell'eccentricità
@@ -878,7 +926,7 @@ differenziali del primo ordine, chiamate \emph{equazioni di Hamilton}
 \end{subequations}
 
 Maggiori dettagli su questi formalismi possono essere trovati in qualsiasi libro
-di meccanica classica come~\cite{goldstein:meccanica} e~\cite{landau:meccanica}.
+di meccanica classica come~\cites{goldstein:meccanica}{landau:meccanica}.
 
 \subsection{Risoluzione del problema dei due corpi}
 \label{sec:risoluzione-lagrange}
@@ -912,42 +960,42 @@ corpi, dunque la lagrangiana del sistema è data da
     \frac{1}{2}m_2\dot{\bm{r}}_2^2 - U(\bm{r}) \\
     &= \frac{1}{2}m_1
     \left(
-      \dot{\bm{r}}_\textup{g} -
+      \dot{\bm{r}}_\textup{CM} -
       \frac{\mu}{m_1}\dot{\bm{r}}
     \right)^2 + \frac{1}{2}m_2
     \left(
-      \dot{\bm{r}}_\textup{g} +
+      \dot{\bm{r}}_\textup{CM} +
       \frac{\mu}{m_2}\dot{\bm{r}}
     \right)^2 - U(\bm{r}) \\
-    &= \frac{1}{2}M_\textup{T}\dot{\bm{r}}_\textup{g}^2 +
+    &= \frac{1}{2}M_\textup{T}\dot{\bm{r}}_\textup{CM}^2 +
     \frac{1}{2}\mu\dot{\bm{r}}^2 - U(\bm{r}),
 \end{split}
 \end{equation}
 dove $M_\textup{T}=m_1+m_2$ e $\mu=m_1m_2/(m_1+m_2)$ sono, rispettivamente, la
 massa totale e la massa ridotta già introdotte nel
 paragrafo~\ref{sec:formalismo-newton}. I momenti coniugati alle coordinate
-$\bm{r}_\textup{g}$ e $\bm{r}$ sono
+$\bm{r}_\textup{CM}$ e $\bm{r}$ sono
 \begin{subequations}
   \begin{align}
-    \bm{p}_\textup{g} &= \parder{\mathcal{L}}{\dot{\bm{r}}_\textup{g}} =
-    M_\textup{T}\dot{\bm{r}}_\textup{g} = m_1\dot{\bm{r}}_1+m_2\dot{\bm{r}}_2 =
+    \bm{p}_\textup{CM} &= \parder{\mathcal{L}}{\dot{\bm{r}}_\textup{CM}} =
+    M_\textup{T}\dot{\bm{r}}_\textup{CM} = m_1\dot{\bm{r}}_1+m_2\dot{\bm{r}}_2 =
     \bm{p}_1 + \bm{p}_2, \\
     \bm{p} &= \parder{\mathcal{L}}{\dot{\bm{r}}} = \mu\dot{\bm{r}} =
     \frac{m_2\bm{p}_1 + m_1\bm{p}_2}{m_1 + m_2}. \label{eq:momento-relativo}
   \end{align}
 \end{subequations}
-$\bm{p}_\textup{g}$ è il \emph{momento totale}, $\bm{p}$ il \emph{momento
+$\bm{p}_\textup{CM}$ è il \emph{momento totale}, $\bm{p}$ il \emph{momento
   relativo}. Osserviamo che
 \begin{equation}
   \frac{\bm{p}}{\mu} = \frac{\bm{p}_1}{m_1} + \frac{\bm{p}_2}{m_2}.
 \end{equation}
-La coordinata $\bm{r}_\textup{g}$ è ciclica nella
+La coordinata $\bm{r}_\textup{CM}$ è ciclica nella
 lagrangiana~\eqref{eq:lagrangiana-due-corpi} quindi il momento totale
-$\bm{p}_\textup{g}=M_\textup{T}\dot{\bm{r}}_\textup{g}$ è una costante del moto:
+$\bm{p}_\textup{CM}=M_\textup{T}\dot{\bm{r}}_\textup{CM}$ è una costante del moto:
 il centro di massa si muove di moto rettilineo uniforme oppure è in quiete,
 comunque il sistema di riferimento in cui esso è a riposo è inerziale. Scegliamo
 come nostro sistema di riferimento uno in cui il centro di massa è in quiete,
-cioè $\dot{\bm{r}}_\textup{g} = \bm{0}$, e così la lagrangiana diventa
+cioè $\dot{\bm{r}}_\textup{CM} = \bm{0}$, e così la lagrangiana diventa
 \begin{equation}
   \label{eq:lagrangiana2-due-corpi}
   \mathcal{L} = \frac{1}{2}\mu\dot{\bm{r}}^2 - U(\bm{r}).
@@ -1039,9 +1087,8 @@ cioè l'espressione dell'energia data dalla~\eqref{eq:energia}.
 Naturalmente usando il formalismo lagrangiano e hamiltoniano siamo giunti agli
 stessi risultati trovati con il formalismo newtoniano.
 
-\section{Orbite dei due corpi nel problema di Keplero}
-% TODO: inventarsi un titolo decente
-\label{sec:orbite-corpi}
+\section{Soluzione del problema di Keplero}
+\label{sec:soluzione-problema}
 
 Nel paragrafo~\ref{sec:equazione-dellorbita} abbiamo ricavato
 l'equazione~\eqref{eq:orbita} dell'orbita della particella di massa ridotta per
@@ -1055,20 +1102,20 @@ due corpi nel sistema di riferimento del centro di massa sono
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/orbite_ellittiche}
-  \caption[Orbite dei due corpi]{Nella figura di sinistra sono riportate le orbite
-    ellittiche dei due corpi nel sistema di riferimento del centro di
-    massa. Nella figura di destra è rappresentata l'orbita della particella
-    relativa nel sistema di riferimento con origine nel corpo di massa
-    $m_1$. Abbiamo posto $m_1=5$ e $m_2=1$ in unità arbitrarie, i parametri
-    delle ellissi sono $a=1$ ed $e=0.8$}
+  \caption[Soluzione del problema di Keplero]{Nella figura di sinistra sono
+    riportate le orbite ellittiche dei due corpi nel sistema di riferimento del
+    centro di massa. Nella figura di destra è rappresentata l'orbita della
+    particella relativa nel sistema di riferimento con origine nel corpo di
+    massa $m_1$. Abbiamo posto $m_1=5$ e $m_2=1$ in unità arbitrarie, i
+    parametri delle ellissi sono $a=1$ ed $e=0.8$}
   \label{fig:orbite-ellittiche}
 \end{figure}
 \begin{subequations}
   \begin{align}
     r_1(\theta) &= -\frac{\mu}{m_1}r(\theta) =
-    -\frac{\mu}{m_1}\frac{p}{1+e\cos(\theta - \tilde\omega)},\\
+    -\frac{\mu}{m_1}\frac{p}{1+e\cos(\theta - \theta_0)},\\
     r_2(\theta) &= \frac{\mu}{m_2}r(\theta) =
-    \frac{\mu}{m_2}\frac{p}{1+e\cos(\theta - \tilde\omega)}.
+    \frac{\mu}{m_2}\frac{p}{1+e\cos(\theta - \theta_0)}.
   \end{align}
 \end{subequations}
 Nella figura~\ref{fig:orbite-ellittiche} mostriamo le orbite dei due corpi e del
