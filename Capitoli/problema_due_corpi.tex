@@ -8,14 +8,14 @@ particolare ci occuperemo del \emph{problema di Keplero}, ovvero del caso in cui
 la forza fra i due corpi è quella gravitazionale, o più in generale dipendente
 dall'inverso del quadrato della distanza fra i due corpi, che è di tipo
 centrale. Il problema sarà risolto usando il formalismo newtoniano (si
-veda~\cites{bradt:processes}{fabrizio:meccanica}{smart:textbook}) e quelli
+vedano~\cites{bradt:processes}{fabrizio:meccanica}{smart:textbook}) e quelli
 lagrangiano e hamiltoniano (si
-veda~\cites{goldstein:meccanica}{landau:meccanica}), di questi ultimi daremo una
-breve presentazione. Riusciremo a determinare analiticamente le equazioni delle
-orbite dei due corpi e a dedurre alcune proprietà del sistema. La risoluzione
-del problema di Keplero permette di descrivere, fra le altre cose, il moto di
-due corpi celesti, per esempio un pianeta e la sua stella, che sono soggetti
-solo alla mutua interazione gravitazionale.
+vedano~\cites{goldstein:meccanica}{landau:meccanica}), di questi ultimi daremo
+una breve presentazione. Riusciremo a determinare analiticamente le equazioni
+delle orbite dei due corpi e a dedurre alcune proprietà del sistema. La
+risoluzione del problema di Keplero permette di descrivere, fra le altre cose,
+il moto di due corpi celesti, per esempio un pianeta e la sua stella, che sono
+soggetti solo alla mutua interazione gravitazionale.
 
 \section{Formalismo newtoniano}
 \label{sec:formalismo-newton}
@@ -521,8 +521,7 @@ vista dell'osservatore. Calcoleremo dapprima la velocità lungo la direzione di
 vista $v_\textup{los}$ per la particella relativa, poi riporteremo i risultati
 ottenuti ai due corpi. Supponiamo che l'osservatore guardi la particella
 relativa nella direzione dell'asse $\versor{x}$, come nella
-figura~\ref{fig:ellisse-vlos}, quindi $v_\textup{los} = \bm{v} \cdot
-\versor{x}$.
+figura~\ref{fig:ellisse-vlos}, quindi $v_\textup{los} = \bm{v}\cdot\versor{x}$.
 Per semplicità, svolgeremo i calcoli in funzione dell'anomalia vera $\chi$. Per
 calcolare $v_\textup{los}$ facciamo le seguenti considerazioni
 geometriche. Chiamiamo $\alpha(\chi)$ l'angolo compreso fra la direzione di
@@ -539,14 +538,15 @@ della velocità e la componente radiale $\dot{r}(\chi)$, quindi
   \right).
 \end{equation}
 Per $\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$ dobbiamo prendere qualche
-accorgimento. La funzione $\arctan$ ha codominio $\mathopen{]}-\pi/2,
-\pi/2\mathclose{[}$, ma nell'intervallo $\chi \in \mathopen{]}\pi,
-2\pi\mathclose{[}$ la componente radiale $\dot{r}(\chi)$ assume valori
-negativi, come si può vedere dalla~\eqref{eq:velocita-radiale} e nella
-figura~\ref{fig:ellisse-vlos}, quindi l'angolo $\alpha(\chi)$ che la velocità
-forma con la direzione radiale positiva è maggiore di $\pi/2$. Per ottenere il
-valore giusto di $\alpha(\chi)$ in questo intervallo dobbiamo aggiungere $\pi$
-al risultato dato dalla~\eqref{eq:angolo-alpha}, quindi in definitiva
+accorgimento. La funzione $\arctan$ ha codominio
+$\mathopen{]}-\pi/2, \pi/2\mathclose{[}$, ma nell'intervallo
+$\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$ la componente radiale
+$\dot{r}(\chi)$ assume valori negativi, come si può vedere
+dalla~\eqref{eq:velocita-radiale} e nella figura~\ref{fig:ellisse-vlos}, quindi
+l'angolo $\alpha(\chi)$ che la velocità forma con la direzione radiale positiva
+è maggiore di $\pi/2$. Per ottenere il valore giusto di $\alpha(\chi)$ in questo
+intervallo dobbiamo aggiungere $\pi$ al risultato dato
+dalla~\eqref{eq:angolo-alpha}, in definitiva
 \begin{equation}
   \label{eq:angolo-alpha2}
   \alpha(\chi) =
@@ -605,7 +605,7 @@ funzione dell'anomalia $\chi$ per diversi valori dell'eccentricità.
   vera]{Andamento della velocità dei due corpi lungo la direzione della linea di
     vista in funzione dell'anomalia vera delle loro orbite. Abbiamo posto
     $GM_\textup{T} = \SI{5e11}{\cubic\kilo\metre\per\square\second}$,
-    $a = \SI{5e7}{\kilo\metre}$, $e=0.5$ e $m_2/m_1=5$}
+    $a = \SI{5e7}{\kilo\metre}$, $e=0.5$ e $m_1/m_2=5$}
   \label{fig:velocita-los-due-corpi}
 \end{figure}
 Ritorniamo ai due corpi. Per fare questo ci poniamo in un sistema di riferimento
@@ -634,7 +634,7 @@ determinare la velocità di allontanamento o avvicinamento di un sistema binario
 rispetto all'osservatore. Nell'esempio della
 figura~\ref{fig:velocita-los-due-corpi} il centro di massa del sistema si sta
 allontanando dall'osservatore con velocità
-$v_\textup{CM} = \SI{40}{\kilo\metre \per\second}$.
+$v_\textup{CM,los} = \SI{40}{\kilo\metre \per\second}$.
 
 \subsection{Energia e classificazione energetica delle orbite}
 \label{sec:energia-orbite}

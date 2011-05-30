@@ -5,6 +5,7 @@ set output 'Immagini/gnuplot/velocita_los_due_corpi.tex'
 unset xtics
 set ytics nomirror
 set format y "$%g$"
+set key bottom right
 set xtics ("{\\scriptsize periapside: $\\chi=0$}" 0, \
     "{\\scriptsize apoapside: $\\chi=\\pi$}" pi, \
     "{\\scriptsize periapside: $\\chi=2\\pi$}" 2*pi) nomirror
@@ -22,8 +23,8 @@ beta(x,e)=e==0 ? x+pi/2 : x+alpha(x,e)
 vlos(a,e,x)=v(a,e,x)*(cos(beta(x,e)))
 a=5e7
 e=0.5
-m1=1.
-m2=5.
+m1=5.
+m2=1.
 mu=m1*m2/(m1+m2)
 plot [0:2*pi] -mu/m1*vlos(a,e,x)-40 lw 2 title "$m_1$",\
      mu/m2*vlos(a,e,x)-40 lw 2 title "$m_2$"
