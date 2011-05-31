@@ -1,8 +1,170 @@
 \chapter{Elementi orbitali}
 \label{chap:elementi-orbitali}
 
+Nel precedente capitolo abbiamo determinato l'equazione
+dell'orbita~\eqref{eq:orbita} che lega la coordinata polare $r$ all'altra
+coordinata $\theta$, che dipende dal tempo. La seconda legge di Keplero, però,
+ci dice che $\theta$ non varia in maniera costante con il tempo, eccetto nel
+caso particolare di orbita circolare. In questo capitolo ci occuperemo della
+determinazione della posizione, in un dato istante di tempo, della particella
+relativa che si muove su un'orbita circolare.
+
+\section{Equazione di Keplero}
+\label{sec:equazione-keplero}
+
+La seconda legge di Keplero permette di trovare la posizione relativa di un
+corpo di un sistema binario in un qualsiasi istante di tempo. Con riferimento
+alla figura % TODO: mettere figura e riferimento
+$Q$ indica la posizione del corpo all'istante di tempo $t$ e $P$ la posizione
+del periapside, da cui il corpo passa all'istante $t_0$. Nell'intervallo di
+tempo $t-t_0$ il raggio vettore che congiunge il fuoco $F$ alla posizione del
+corpo sull'ellisse si sposta da $FP$ a $FQ$, spazzando dunque l'area
+$FPQ$. Allora per la seconda legge di Keplero
+\begin{equation}
+  \text{area } FPQ : \text{area ellisse} = t-t_0 : T,
+\end{equation}
+da cui otteniamo
+\begin{equation}
+  \text{area } FPQ = \frac{\pi ab(t-t_0)}{T}.
+\end{equation}
+Definendo la \emph{velocità angolare media} $\omega = 2\pi/T$ questa equazione
+diventa
+\begin{equation}
+  \text{area } FPQ = \frac{1}{2}\omega ab(t-t_0).
+\end{equation}
+Conoscendo l'istante di passaggio al periapside $t_0$, il periodo di rivoluzione
+$T$, il semiasse maggiore $a$ e l'eccentricità $e$, legata al semiasse minore
+dalla~\eqref{eq:semiasse-minore-ellisse}, è possibile calcolare in un qualsiasi
+istante di tempo $t$ l'area $FPQ$ da cui si ricava la posizione $Q$. Sebbene
+questa tecnica sia molto semplice teoricamente, è poco utile nella pratica. Si
+usa invece il metodo che ci apprestiamo a illustrare.
+
+Circoscriviamo all'ellisse una circonferenza ausiliaria di raggio $a$ e
+concentrica con l'ellisse, come nella figura. %TODO: mettere riferimento figura
+Sia $G = (x_Q,y_G)$ l'intersezione con la circonferenza della perpendicolare
+all'asse $x$ innalzata dal punto $Q = (x_Q,y_Q)$. L'angolo $G\widehat{C}P$, dove
+$C$ è il centro della circonferenza, è chiamato \emph{anomalia eccentrica} e lo
+indicheremo con $\psi$. Al periapside si ha $\chi = \psi = 0$ e all'apoapside
+$\chi = \psi = \pi$. L'equazione cartesiana di una circonferenza di raggio $a$ e
+centro l'origine del sistema di riferimento è
+\begin{equation}
+  x_\textup{c}^2 + y_\textup{c}^2 = a^2.
+\end{equation}
+L'equazione di un'ellisse con centro nell'origine del sistema e semiassi
+maggiore $a$, lungo l'asse $x_\textup{e}$, e minore $b$, lungo l'asse
+$y_\textup{e}$, è
+\begin{equation}
+    \frac{x_\textup{e}^2}{a^2} + \frac{y_\textup{e}^2}{b^2} = 1.
+\end{equation}
+Se gli assi dei sistemi di riferimento delle due figure sono coincidenti,
+cerchiamo una relazione fra le ordinate dei punti della circonferenza e
+dell'ellisse che hanno la stessa ascissa:
+\begin{equation}
+  x_\textup{c}^2 = x_\textup{e}^2 \iff a^2 - y_\textup{c}^2 = a^2 -
+  y_\textup{e}^2a^2/b^2 \iff \abs{y_\textup{c}} = \abs{y_\textup{e}}a/b.
+\end{equation}
+All'ora, poiché i punti $Q$ e $G$ hanno la stesa ascissa, le loro ordinate sono
+legate dalla relazione $y_G = y_Qa/b$. D'altra parte, $y_Q = r\sin\chi$ e $y_G =
+a\sin\psi$, dunque
+\begin{equation}
+  \label{eq:r-sin-chi}
+  r\sin\chi = b\sin\psi.
+\end{equation}
+Inoltre $\overline{FR} =
+r\cos\chi$,\footnote{Un
+  valore negativo di $\overline{FR}$ indica che il punto $R$ si trova alla
+  sinistra di $F$ sull'asse $x$.} ma è anche $\overline{FR} = \overline{CR} -
+\overline{CF} = a\cos\psi - ae$, da cui
+\begin{equation}
+  \label{eq:r-cos-chi}
+  r\cos\chi = a(\cos\psi - e).
+\end{equation}
+Sommando membro a membro i quadrati delle equazioni~\eqref{eq:r-sin-chi}
+e~\eqref{eq:r-cos-chi} otteniamo
+\begin{equation}
+  \begin{split}
+    r^2 &= r^2\cos^2\chi + r^2\sin^2\chi = a^2(\cos\psi - e)^2 + b^2\sin^2\psi\\
+    &= a^2\cos^2\psi-2a^2e\cos\psi+a^2e^2+a^2\sin^2\psi-a^2e^2\sin^2\psi\\
+    &= a^2(1+e^2-2e\cos\psi-e^2\sin^2\psi) = a^2(1-2e\cos\psi+e^2\cos^2\psi)\\
+    &= a^2(1 - e\cos\psi)^2,
+  \end{split}
+\end{equation}
+da cui ricaviamo la seguente equazione che lega la coordinata polare $r$ con
+l'anomalia eccentrica $\psi$
+\begin{equation}
+  \label{eq:r-anomalia-eccentrica}
+  r = a(1 - e\cos\psi).
+\end{equation}
+Dall'equazione~\eqref{eq:terza-legge-keplero} che esprime la terza legge di
+Keplero abbiamo
+\begin{equation}
+  \omega^2 = \frac{4\pi^2}{T^2} = \frac{GM_\textup{T}}{a^3}.
+\end{equation}
+Ricordando la~\eqref{eq:reciproco-semilato}, la~\eqref{eq:semilato-ellisse} e la~\eqref{eq:velocita-tangenziale} abbiamo
+\begin{equation}
+  \begin{split}
+    r^2\dot{\chi}^2 &= \frac{l_0^2}{\mu^2p^2}(1 + e\cos\chi)^2 =
+    \frac{l_0^2}{\mu^2p} \frac{(1+e\cos\chi)^2}{a(1-e^2)} \\
+    &= GM_\textup{T} \frac{(1+e\cos\chi)^2}{a(1-e^2)} = \omega^2a^3
+    \frac{(1+e\cos\chi)^2}{a(1-e^2)} \\
+    &= \omega^2a^4 \frac{(1+e\cos\chi)^2}{a^2(1-e^2)^2}(1-e^2) =
+    \frac{\omega^2a^4(1-e^2)}{r^2}.
+  \end{split}
+\end{equation}
+Quindi, dalla~\eqref{eq:velocita-ellisse}, il quadrato della derivata temporale
+di $r$ è
+\begin{equation}
+  \begin{split}
+    \dot{r}^2 &= v^2 - r^2\dot{\chi}^2 = GM_\textup{T}
+    \left(
+      \frac{2}{r} - \frac{1}{a}
+    \right) - \frac{\omega^2a^4(1-e^2)}{r^2} \\
+        &= \omega^2a^3
+    \left(
+      \frac{2}{r} - \frac{1}{a}
+    \right) - \omega^2a^2\frac{(1+e\cos\chi)^2}{1-e^2} \\
+    &= \frac{2\omega^2a^3r-r^2\omega^2a^2-\omega^2a^4-\omega^2a^4e^2}{r^2}\\
+    &= \frac{\omega^2a^2}{r^2}(a^2e^2-(r-a)^2)
+  \end{split}
+\end{equation}
+da cui
+\begin{equation}
+  \toder{r}{t} = \dot{r} = \frac{\omega a}{r}\sqrt{a^2e^2 - (r-a)^2}.
+\end{equation}
+Per risolvere questa equazione differenziale ordinaria cambiamo la funzione
+incognita da $r$ in $\psi$ effettuando la
+sostituzione~\eqref{eq:r-anomalia-eccentrica}. Deriviamo
+la~\eqref{eq:r-anomalia-eccentrica} rispetto al tempo
+\begin{equation}
+  \dot{r} = ae\dot{\psi}\sin\psi.
+\end{equation}
+Sostituiamo la~\eqref{eq:r-anomalia-eccentrica} nell'equazione differenziale
+\begin{equation}
+  r = \frac{\omega a\sqrt{a^2e^2 - a^2e^2\cos^2\psi}}{a(1-e\cos\psi)} =
+  \frac{\omega ae\sin\psi}{1-e\cos\psi}.
+\end{equation}
+Uguagliando le due espressioni di $\dot{r}$ così ottenute ricaviamo
+\begin{equation}
+  \toder{\psi}{t} = \dot{\psi} = \frac{\omega}{1-e\cos\psi}.
+\end{equation}
+Ricordando che al perielio abbiamo $t = t_0$ e $\psi = 0$, integriamo questa
+equazione differenziale fino a un generico istante di tempo $t$
+  \begin{gather}
+    \int_{t_0}^t \omega\dd \tau = \int_0^\psi(1-e\cos\psi')\dd \psi' \iff\\
+    \phi = \omega(t - t_0) = \psi - e\sin\psi, \label{eq:keplero}
+  \end{gather}
+dove $\phi = \omega(t-t_0)$ è chiamata \emph{anomalia media}. Questa equazione è
+detta \emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
+soluzione $\psi$ permette di ricavare, tramite
+la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare $r$.
+% TODO: completare il paragrafo mostrando la relazione fra \psi e \chi
+
 \section{Soluzioni dell'equazione di Keplero}
 \label{sec:soluzioni}
+
+L'equazione di Keplero~\eqref{eq:keplero} è trascendente nell'incognita $\psi$
+per via del termine $\sin\psi$, e non ammette soluzione analitica, ma possono
+essere utilizzati diversi metodi numerici per risolverla.
 
 \subsection{Metodo di Newton~-~Raphson}
 \label{sec:newton}
