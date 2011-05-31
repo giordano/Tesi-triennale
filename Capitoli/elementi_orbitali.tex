@@ -12,14 +12,40 @@ della particella relativa che si muove su un'orbita ellittica.
 \section{Equazione di Keplero}
 \label{sec:equazione-keplero}
 
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[font=\footnotesize,scale=3]
+    % a=1, e=0.8, b=a*sqrt(1-e^2)=0.6, c=ae=0.8, p=a*(1-e^2)=0.36, chi=120,
+    % r(chi)=0.6, x_Q=x_G=c+r(chi)*cos(chi)=0.5,
+    % y_Q=r(chi)*sin(chi)=0.5196, y_G=y_Q*a/b=0.866, psi=60 (deriva dalla relazione
+    % fra anomalia vera ed eccentrica)
+    \draw [->] (-1.2,0) -- (1.2,0) node[right] {$x$}; %asse x
+    \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
+    \draw (0,0) circle (1); % circonferenza ausiliaria
+    \draw (0,0) ellipse (1 and 0.6); %ellisse
+    \draw (0.8,0) -- (0.5,0.5196) node[above right] {$Q$}; % segmento FQ
+    \draw [dashed] (0.5,0.5196) -- (0.5,0.866); % segmento QG
+    \draw (0,0) -- (0.5,0.866) node[above right] {$G$}; % segmento CG
+    \draw (0,0) node[below left] {$C$}; % etichetta del punto C
+    \draw (0.8,0) node[below] {$F$}; % etichetta del punto F
+    \draw (1,0) node[above right] {$P$}; % etichetta del punto P
+    \draw [dashdotted] (0.5,0.5196) -- (0.5,0) node[below] {$R$}; % segmento RQ
+    \draw [->] (0.9,0) arc (0:120:0.1) node[above right] {$\chi$}; % angolo chi
+    \draw [->] (0.1,0) arc (0:60:0.1) node[right] {$\psi$}; % angolo psi
+  \end{tikzpicture}
+  \caption[Ellisse e circonferenza ausiliaria per l'equazione di
+  Keplero]{Ellisse e circonferenza ausiliaria concentrica. Abbiamo posto $a=1$
+    ed $e=0.8$}
+  \label{fig:circonferenza-ausiliaria-keplero}
+\end{figure}
 La seconda legge di Keplero permette di trovare la posizione relativa di un
 corpo di un sistema binario in un qualsiasi istante di tempo. Con riferimento
-alla figura % TODO: mettere figura e riferimento
-$Q$ indica la posizione del corpo all'istante di tempo $t$ e $P$ la posizione
-del periapside, da cui il corpo passa all'istante $t_0$. Nell'intervallo di
-tempo $t-t_0$ il raggio vettore che congiunge il fuoco $F$ alla posizione del
-corpo sull'ellisse si sposta da $FP$ a $FQ$, spazzando dunque l'area
-$FPQ$. Allora per la seconda legge di Keplero
+alla figura~\ref{fig:circonferenza-ausiliaria-keplero}, il punto $Q$
+dell'ellisse indica la posizione del corpo all'istante di tempo $t$ e $P$ la
+posizione del periapside, da cui il corpo passa all'istante
+$t_0$. Nell'intervallo di tempo $t-t_0$ il raggio vettore che congiunge il fuoco
+$F$ alla posizione del corpo sull'ellisse si sposta da $FP$ a $FQ$, spazzando
+dunque l'area $FPQ$. Allora per la seconda legge di Keplero
 \begin{equation}
   \text{area } FPQ : \text{area ellisse} = t-t_0 : T,
 \end{equation}
@@ -40,15 +66,16 @@ questa tecnica sia molto semplice teoricamente, è poco utile nella pratica. Si
 usa invece il metodo che ci apprestiamo a illustrare.
 
 Circoscriviamo all'ellisse una circonferenza ausiliaria di raggio $a$ e
-concentrica con l'ellisse, come nella figura. %TODO: mettere riferimento figura
-Sia $G$ l'intersezione con la circonferenza della perpendicolare all'asse $x$
-innalzata dal punto $Q$. L'angolo $G\widehat{C}P$, dove $C$ è il centro della
-circonferenza, è chiamato \emph{anomalia eccentrica} e lo indicheremo con
-$\psi$. Al periapside si ha $\chi = \psi = 0$ e all'apoapside
-$\chi = \psi = \pi$. I punti $Q=(x_Q,y_Q)$ e $G=(x_Q,y_G)$ hanno la stessa
-ascissa e vogliamo trovare una relazione fra le loro ordinate. Per fare questo
-ricordiamo che l'equazione cartesiana di una circonferenza di raggio $a$ e
-centro l'origine del sistema di riferimento è
+concentrica con l'ellisse, come nella
+figura~\ref{fig:circonferenza-ausiliaria-keplero}.  Sia $G$ l'intersezione con
+la circonferenza della perpendicolare all'asse $x$ innalzata dal punto
+$Q$. L'angolo $G\widehat{C}P$, dove $C$ è il centro della circonferenza, è
+chiamato \emph{anomalia eccentrica} e lo indicheremo con $\psi$. Al periapside
+si ha $\chi = \psi = 0$ e all'apoapside $\chi = \psi = \pi$. I punti
+$Q=(x_Q,y_Q)$ e $G=(x_Q,y_G)$ hanno la stessa ascissa e vogliamo trovare una
+relazione fra le loro ordinate. Per fare questo ricordiamo che l'equazione
+cartesiana di una circonferenza di raggio $a$ e centro l'origine del sistema di
+riferimento è
 \begin{equation}
   x_\textup{c}^2 + y_\textup{c}^2 = a^2.
 \end{equation}
@@ -207,7 +234,7 @@ essere utilizzati diversi metodi numerici per risolverla.
 \subsection{Funzioni di Bessel}
 \label{sec:bessel}
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../tesi"
-%%% End: 
+%%% End:
