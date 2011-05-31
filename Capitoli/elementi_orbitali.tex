@@ -3,11 +3,11 @@
 
 Nel precedente capitolo abbiamo determinato l'equazione
 dell'orbita~\eqref{eq:orbita} che lega la coordinata polare $r$ all'altra
-coordinata $\theta$, che dipende dal tempo. La seconda legge di Keplero, però,
-ci dice che $\theta$ non varia in maniera costante con il tempo, eccetto nel
-caso particolare di orbita circolare. In questo capitolo ci occuperemo della
-determinazione della posizione, in un dato istante di tempo, della particella
-relativa che si muove su un'orbita circolare.
+coordinata $\theta$, che dipende a sua volta dal tempo. La seconda legge di
+Keplero, però, ci dice che $\theta$ non varia in maniera costante con il tempo,
+eccetto nel caso particolare di orbita circolare. In questo capitolo ci
+occuperemo della determinazione della posizione, in un dato istante di tempo,
+della particella relativa che si muove su un'orbita ellittica.
 
 \section{Equazione di Keplero}
 \label{sec:equazione-keplero}
@@ -41,31 +41,31 @@ usa invece il metodo che ci apprestiamo a illustrare.
 
 Circoscriviamo all'ellisse una circonferenza ausiliaria di raggio $a$ e
 concentrica con l'ellisse, come nella figura. %TODO: mettere riferimento figura
-Sia $G = (x_Q,y_G)$ l'intersezione con la circonferenza della perpendicolare
-all'asse $x$ innalzata dal punto $Q = (x_Q,y_Q)$. L'angolo $G\widehat{C}P$, dove
-$C$ è il centro della circonferenza, è chiamato \emph{anomalia eccentrica} e lo
-indicheremo con $\psi$. Al periapside si ha $\chi = \psi = 0$ e all'apoapside
-$\chi = \psi = \pi$. L'equazione cartesiana di una circonferenza di raggio $a$ e
+Sia $G$ l'intersezione con la circonferenza della perpendicolare all'asse $x$
+innalzata dal punto $Q$. L'angolo $G\widehat{C}P$, dove $C$ è il centro della
+circonferenza, è chiamato \emph{anomalia eccentrica} e lo indicheremo con
+$\psi$. Al periapside si ha $\chi = \psi = 0$ e all'apoapside
+$\chi = \psi = \pi$. I punti $Q=(x_Q,y_Q)$ e $G=(x_Q,y_G)$ hanno la stessa
+ascissa e vogliamo trovare una relazione fra le loro ordinate. Per fare questo
+ricordiamo che l'equazione cartesiana di una circonferenza di raggio $a$ e
 centro l'origine del sistema di riferimento è
 \begin{equation}
   x_\textup{c}^2 + y_\textup{c}^2 = a^2.
 \end{equation}
-L'equazione di un'ellisse con centro nell'origine del sistema e semiassi
+Invece, l'equazione di un'ellisse con centro nell'origine del sistema e semiassi
 maggiore $a$, lungo l'asse $x_\textup{e}$, e minore $b$, lungo l'asse
 $y_\textup{e}$, è
 \begin{equation}
     \frac{x_\textup{e}^2}{a^2} + \frac{y_\textup{e}^2}{b^2} = 1.
 \end{equation}
-Se gli assi dei sistemi di riferimento delle due figure sono coincidenti,
-cerchiamo una relazione fra le ordinate dei punti della circonferenza e
-dell'ellisse che hanno la stessa ascissa:
+Se gli assi dei sistemi di riferimento delle due coniche sono coincidenti,
+uguagliando le ascisse risulta
 \begin{equation}
   x_\textup{c}^2 = x_\textup{e}^2 \iff a^2 - y_\textup{c}^2 = a^2 -
   y_\textup{e}^2a^2/b^2 \iff \abs{y_\textup{c}} = \abs{y_\textup{e}}a/b.
 \end{equation}
-All'ora, poiché i punti $Q$ e $G$ hanno la stesa ascissa, le loro ordinate sono
-legate dalla relazione $y_G = y_Qa/b$. D'altra parte, $y_Q = r\sin\chi$ e $y_G =
-a\sin\psi$, dunque
+Allora, per i punti $Q$ e $G$ abbiamo che $y_G = y_Qa/b$. D'altra parte,
+$y_Q = r\sin\chi$ e $y_G = a\sin\psi$, cioè
 \begin{equation}
   \label{eq:r-sin-chi}
   r\sin\chi = b\sin\psi.
@@ -96,7 +96,7 @@ l'anomalia eccentrica $\psi$
   r = a(1 - e\cos\psi).
 \end{equation}
 Dall'equazione~\eqref{eq:terza-legge-keplero} che esprime la terza legge di
-Keplero abbiamo
+Keplero
 \begin{equation}
   \omega^2 = \frac{4\pi^2}{T^2} = \frac{GM_\textup{T}}{a^3}.
 \end{equation}
@@ -122,8 +122,8 @@ di $r$ è
         &= \omega^2a^3
     \left(
       \frac{2}{r} - \frac{1}{a}
-    \right) - \omega^2a^2\frac{(1+e\cos\chi)^2}{1-e^2} \\
-    &= \frac{2\omega^2a^3r-r^2\omega^2a^2-\omega^2a^4-\omega^2a^4e^2}{r^2}\\
+    \right) - \frac{\omega^2a^4(1-e^2)}{r^2} \\
+    &= \frac{2\omega^2a^3r-r^2\omega^2a^2-\omega^2a^4+\omega^2a^4e^2}{r^2}\\
     &= \frac{\omega^2a^2}{r^2}(a^2e^2-(r-a)^2)
   \end{split}
 \end{equation}
@@ -148,16 +148,48 @@ Uguagliando le due espressioni di $\dot{r}$ così ottenute ricaviamo
   \toder{\psi}{t} = \dot{\psi} = \frac{\omega}{1-e\cos\psi}.
 \end{equation}
 Ricordando che al perielio abbiamo $t = t_0$ e $\psi = 0$, integriamo questa
-equazione differenziale fino a un generico istante di tempo $t$
-  \begin{gather}
-    \int_{t_0}^t \omega\dd \tau = \int_0^\psi(1-e\cos\psi')\dd \psi' \iff\\
-    \phi = \omega(t - t_0) = \psi - e\sin\psi, \label{eq:keplero}
-  \end{gather}
+equazione differenziale fino a un generico istante di tempo $t$ in cui
+l'anomalia eccentrica vale $\psi$
+\begin{gather}
+  \int_{t_0}^t \omega\dd \tau = \int_0^\psi(1-e\cos\psi')\dd \psi' \iff\\
+  \phi = \omega(t - t_0) = \psi - e\sin\psi, \label{eq:keplero}
+\end{gather}
 dove $\phi = \omega(t-t_0)$ è chiamata \emph{anomalia media}. Questa equazione è
 detta \emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
 soluzione $\psi$ permette di ricavare, tramite
-la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare $r$.
-% TODO: completare il paragrafo mostrando la relazione fra \psi e \chi
+la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare $r$. Inoltre possiamo
+determinare una relazione tra l'anomalia eccentrica e l'altra coordinata polare
+$\chi$. Infatti, uguagliando i secondi membri delle equazioni~\eqref{eq:orbita}
+e~\eqref{eq:r-anomalia-eccentrica} abbiamo
+\begin{equation}
+  \begin{aligned}
+    a(1-e\cos\psi) &= \frac{a(1-e^2)}{1+e\cos\chi} \iff 1+e\cos\chi =
+    \frac{1-e^2}{1-e\cos\psi} \iff \\
+    e\cos\psi &= \frac{1-e^2-1+e\cos\psi}{1-e\cos\psi} =
+    \frac{e(\cos\psi-e)}{1-e\cos\psi} \iff \\
+    \cos\psi &= \frac{\cos\psi-e}{1-e\cos\psi}.
+  \end{aligned}
+\end{equation}
+Aggiungiamo e sottraiamo ambo i membri dell'ultima equazione da $1$
+\begin{align}
+  \begin{split}
+    1-\cos\chi &= 1-\frac{\cos\psi-e}{1-e\cos\psi} =
+    \frac{1-e\cos\psi-\cos\psi+e}{1-e\cos\psi} \\
+    &= \frac{(1+e)(1-\cos\psi)}{1-e\cos\psi}
+  \end{split} \\
+  \begin{split}
+    1+\cos\chi &= 1+\frac{\cos\psi-e}{1-e\cos\psi} =
+    \frac{1-e\cos\psi+\cos\psi-e}{1-e\cos\psi} \\
+    &= \frac{(1-e)(1+\cos\psi)}{1-e\cos\psi}.
+  \end{split}
+\end{align}
+Facendo il rapporto dei primi e ultimi membri di queste equazioni troviamo
+la relazione cercata
+\begin{gather}
+  \frac{1-\cos\chi}{1+\cos\chi} = \frac{1+e}{1-e}\frac{1-\cos\psi}{1+\cos\psi}
+  \iff \\
+  \tan^2\frac{\chi}{2} = \frac{1+e}{1-e}\tan^2\frac{\psi}{2}.
+\end{gather}
 
 \section{Soluzioni dell'equazione di Keplero}
 \label{sec:soluzioni}
