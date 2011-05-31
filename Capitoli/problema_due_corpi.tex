@@ -216,6 +216,7 @@ sposta di un angolo infinitesimo $\dd\theta$ è espressa da
 \end{equation}
 quindi la velocità areolare $\ltoder{A}{t}$ è
 \begin{equation}
+  \label{eq:velocita-areolare}
   \toder{A}{t} = \frac{1}{2}r^2\dot{\theta} = \frac{1}{2}\frac{l_0}{\mu} =
   \text{costante}.
 \end{equation}
@@ -356,7 +357,7 @@ figura~\ref{fig:ellisse}) il semilato retto $p$ è dato da
 dove $a$ è il \emph{semiasse maggiore} dell'ellisse e $b$ è il \emph{semiasse
   minore}. Dalla~\eqref{eq:semilato-ellisse} ricaviamo inoltre che
 \begin{align}
-  b &= a\sqrt{1-e^2},\\
+  b &= a\sqrt{1-e^2}, \label{eq:semiasse-minore-ellisse}\\
   e &= \sqrt{1-\frac{b^2}{a^2}} =
   \sqrt{1-\frac{p}{a}}. \label{eq:eccentricita-ellisse}
 \end{align}
@@ -729,6 +730,7 @@ nella~\eqref{eq:eccentricita-orbita-iperbole} abbiamo che sia per orbite
 ellittiche sia per orbite iperboliche sussiste la seguente relazione fra energia
 ed eccentricità dell'orbita
 \begin{equation}
+  \label{eq:eccentricita-energia}
   e = \sqrt{1+\frac{2El_0^2}{G^2M_\textup{T}^2\mu^3}}.
 \end{equation}
 Si noti che questa relazione è valida anche per le orbite paraboliche perché in
@@ -752,6 +754,38 @@ e facendo il limite per $r \to 0$ abbiamo
   \frac{1}{2}\frac{l_0^2}{\mu} \leq 0,
 \end{equation}
 ma questo non è possibile.
+
+Prendiamo in considerazione il caso delle orbite
+ellittiche. Dall'espressione~\eqref{eq:velocita-polare} della velocità areolare
+della particella relativa abbiamo
+\begin{equation}
+  l_0 \dd t = 2\mu\dd A.
+\end{equation}
+Indichiamo con $t_0$ l'istante del passaggio del corpo dal periapside e con $T$
+il periodo di rivoluzione. L'area di un'ellisse di semiassi maggiore e minore
+rispettivamente $a$ e $b$ è pari a $\pi ab$ quindi integrando l'equazione
+precedente in un intero periodo ricaviamo
+\begin{equation}
+    \int_{t_0}^{t_0+T} l_0\dd t = Tl_0 = 2\mu\pi ab.
+\end{equation}
+Dal valore~\eqref{eq:energia-ellisse} dell'energia del sistema nel caso di
+orbite ellittiche abbiamo
+\begin{equation}
+  a = \frac{GM_\textup{T}\mu}{2\abs{E}},
+\end{equation}
+dunque, ricordando le~\eqref{eq:semiasse-minore-ellisse}
+e~\eqref{eq:eccentricita-energia}, il quadrato del periodo di rivoluzione è
+\begin{equation}
+  \label{eq:terza-legge-keplero}
+  \begin{split}
+    T^2 &= \frac{4\pi^2\mu^2a^2b^2}{l_0^2} = \frac{4\pi^2\mu^2a^4(1-e^2)}{l_0^2}
+    = \frac{4\pi^2\mu^2a^4}{l_0^2}\frac{2\abs{E}l_0^2}{G^2M_\textup{T}^2\mu^3} \\
+    &= 4\pi^2a^4\frac{1}{aGM_\textup{T}} = \frac{4\pi^2a^3}{GM_\textup{T}}.
+  \end{split}
+\end{equation}
+Questa equazione esprime la terza legge di Keplero: \emph{il quadrato del
+  periodo di rivoluzione di un pianeta è proporzionale al cubo del semiasse
+  maggiore dell'orbita}.
 
 \subsubsection{Variazioni dell'energia}
 \label{sec:variazioni energia}
