@@ -4,6 +4,7 @@
 \usepackage[italian]{babel}
 
 %%%%% Pacchetti caricati
+\usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage[autostyle=true]{csquotes}
@@ -23,6 +24,20 @@
 %%%%% Fine pacchetti
 
 %%%%% Impostazioni
+%% testatine.
+% TODO: decidere se usare `oneside' o `twoside' e adattare il formato della
+% testatina di conseguenza.
+\pagestyle{fancy}
+\fancyhf{} % svuota tutti i campi delle testatine e dei piedi
+% Abbiamo usato l'opzione di classe `oneside', quindi la testatina è la stessa
+% per tutte le pagine.
+% A sinistra (`L') mettiamo il nome del paragrafo (`\rightmark'), non tutto
+% maiuscolo (`\nouppercase').
+\fancyhead[L]{\bfseries\footnotesize\nouppercase{\rightmark}}
+% A destra (`R') mettiamo il numero della pagina (`\thepage').
+\fancyhead[R]{\bfseries\thepage}
+
+
 \graphicspath{{Immagini/}} % cartella in cui cercare le immagini da caricare
 
 % impostazioni per il pacchetto `hyperref'. Per l'elenco di tutte le opzioni del
