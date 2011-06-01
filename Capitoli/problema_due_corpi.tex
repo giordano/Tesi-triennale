@@ -20,11 +20,35 @@ soggetti solo alla mutua interazione gravitazionale.
 \section{Formalismo newtoniano}
 \label{sec:formalismo-newton}
 
+\begin{figure}
+  \centering
+\begin{tikzpicture}[font=\footnotesize,scale=3]
+  % m1=1: y=0.8,  z=0.2,  x=0.2
+  % m2=3: y=0.6,  z=0.8,  x=0.4
+  % cm:   y=0.65, z=0.65, x=0.35
+  \draw [->] (0,0,0) -- (1,0,0) node[right] {$y$}; % asse y
+  \draw [->] (0,0,0) -- (0,1,0) node[above] {$z$}; % asse z
+  \draw [->] (0,0,0) -- (0,0,1) node[below left] {$x$}; % asse x
+  \filldraw [gray] (0.8,0.2,0.2) circle (0.01); % corpo di massa m_1
+  \draw [->] (0,0,0) -- node[below right,fill=white] {$\bm{r}_1$} (0.8,0.2,0.2)
+  node[right] {$m_1$}; % vettore r_1
+  \filldraw [gray] (0.6,0.8,0.4) circle (0.02); % corpo di massa m_2
+  \draw [->] (0,0,0) -- node[above left] {$\bm{r}_2$} (0.6,0.8,0.4) node[above]
+  {$m_2$}; % vettore r_2
+  \draw [->] (0.8,0.2,0.2) -- node[right] {$\bm{r}$} (0.6,0.8,0.4); % vettore
+                                % posizione relativa
+  % vettore posizione del centro di massa
+  \draw [->] (0,0,0) -- node[right] {$\bm{r}_\textup{CM}$} (0.65,0.65,0.35);
+\end{tikzpicture}
+  \caption{Due corpi in un sistema di riferimento inerziale}
+  \label{fig:due-corpi}
+\end{figure}
 Consideriamo un sistema costituito da due corpi puntiformi, di masse $m_1$ e
 $m_2$ e in un fissato sistema di riferimento inerziale indichiamo con $\bm{r}_1$
-e $\bm{r}_2$ i rispettivi vettori posizione. %TODO: inserire figura, magari tikz
-Per la seconda legge di Newton la forza $\bm{F}_{21}$ che il corpo di massa
-$m_1$ esercita sul corpo di massa $m_2$ è data da
+e $\bm{r}_2$ i rispettivi vettori posizione, come nella
+figura~\ref{fig:due-corpi}. Per la seconda legge di Newton la forza
+$\bm{F}_{21}$ che il corpo di massa $m_1$ esercita sul corpo di massa $m_2$ è
+data da
 \begin{equation}
   \label{eq:f21}
   \bm{F}_{21} = m_2\toder[2]{\bm{r}_2}{t}
@@ -965,19 +989,13 @@ di meccanica classica come~\cites{goldstein:meccanica}{landau:meccanica}.
 \subsection{Risoluzione del problema dei due corpi}
 \label{sec:risoluzione-lagrange}
 
-%TODO: mettere un riferimento alla figura che inserirò nel paragrafo sul
-%formalismo newtoniano e riferirsi alle grandezze presenti in quella figura. Ora
-%ricopio l'introduzione della sezione precedente, ricordati di cambiare dopo che
-%ci sarà la figura!
-Consideriamo un sistema costituito da due corpi puntiformi, di masse $m_1$ e
-$m_2$ e in un fissato sistema di riferimento inerziale indichiamo con $\bm{r}_1$
-e $\bm{r}_2$ i rispettivi vettori posizione. Come fatto nel
-paragrafo~\ref{sec:formalismo-newton} introduciamo anche i vettori posizione
-relativa e posizione del centro di massa dati rispettivamente
-dalla~\eqref{eq:posizione-relativa} e dalla~\eqref{eq:centro-di-massa} e quindi
-i vettori di posizione sono legati a questi dalle
-relazioni~\eqref{eq:r1-r2-posizione-relativa-cdm}. Le quantità di moto dei due
-corpi che costituiscono il sistema sono
+Consideriamo il sistema costituito dai due corpi puntiformi della
+figura~\ref{fig:due-corpi}. Come fatto nel paragrafo~\ref{sec:formalismo-newton}
+introduciamo anche i vettori posizione relativa e posizione del centro di massa
+dati rispettivamente dalla~\eqref{eq:posizione-relativa} e
+dalla~\eqref{eq:centro-di-massa} e quindi i vettori di posizione sono legati a
+questi dalle relazioni~\eqref{eq:r1-r2-posizione-relativa-cdm}. Le quantità di
+moto dei due corpi che costituiscono il sistema sono
 \begin{subequations}
   \begin{align}
     \bm{p}_1 &= \toder{m_1\bm{r}_1}{t} = m_1\dot{\bm{r}}_1, \\
