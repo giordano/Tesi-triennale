@@ -233,8 +233,27 @@ $l_0 = \norm{\bm{l}_0} = \mu r^2\dot{\theta}$ del momento angolare. Infatti
   0 = r\mu(r\ddot{\theta} + 2\dot{r}\dot{\theta}) = \toder{\mu
     r^2\dot{\theta}}{t} = \toder{l_0}{t}.
 \end{equation}
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[font=\footnotesize,scale=2]
+    \draw[->] (0.6,1.2) .. controls (0.8,1.19) and (1.1,1.196) .. (1.299,0.75)
+                        .. controls (1.5,0.3)  and (1.7,0.2)   .. (2.0,0.0)
+                        .. controls (2.3,-0.2) and (2.4,-0.2)  .. (2.6,-0.3);
+    \draw (0,0) node[left] {$O$};
+    \draw[->] (0,0) -- node[below] {$r+\dd r$} (2,0);
+    \draw[->] (0,0) -- node[above] {$r$} (1.299,0.75);
+    \draw[dashed] (1.299,0) -- node[left] {$r\dd\theta$} (1.299,0.75);
+    \draw [<-] (0.4,0) node[above right] {$\dd\theta$} arc (0:30:0.4);
+  \end{tikzpicture}
+  \caption[Area spazzata nell'intervallo di tempo $\dd t$ dal vettore
+  posizione]{Area spazzata nell'intervallo di tempo $\dd t$ dal vettore
+    posizione di un corpo in moto lungo una traiettoria generica}
+\label{fig:area-differenziale}
+\end{figure}
 L'area differenziale $\dd A$ spazzata dalla particella di massa ridotta che si
-sposta di un angolo infinitesimo $\dd\theta$ è espressa da
+sposta di un angolo infinitesimo $\dd\theta$ è espressa da (si veda la
+figura~\ref{fig:area-differenziale})
 \begin{equation}
   \dd A = \frac{r\cdot r\dd\theta}{2} = \frac{r^2\dd\theta}{2},
 \end{equation}
@@ -762,7 +781,7 @@ questo caso l'energia è nulla e l'eccentricità vale $1$.
 
 Il corpo fittizio $M_\textup{T}$ esercita un'attrazione sulla particella
 relativa, tuttavia la presenza del potenziale centrifugo non
-nullo\footnote{Ricorda che abbiamo supposto per ipotesi che sia $l_0\neq 0$.}
+nullo\footnote{Si ricordi che abbiamo supposto per ipotesi che sia $l_0\neq 0$.}
 impedisce che questa possa cadere nel centro della forza se il campo generato è
 quello gravitazionale. Infatti abbiamo
 \begin{equation}
