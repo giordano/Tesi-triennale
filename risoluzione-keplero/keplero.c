@@ -2,6 +2,8 @@
  * Scopo: programma per la risoluzione numerica dell'equazione di Keplero con il
  * metodo di Newton-Raphson.
  * Dati di input: eccentricità e periodi delle orbite, velocità angolare media.
+ * Output: file contenenti il tempo t, l'anomalia eccentrica al tempo t,
+ * l'anomalia vera al tempo t.
  * Autore: Mosè Giordano
  * Data: 03/06/2011
  */
@@ -38,43 +40,48 @@ double anomvera(double a, double b)
 
 int main(){
   /* Definizione delle variabili */
-  double e; /* eccentricità dell'orbita */
+  double e[3]={0,0.5,0.8}; /* eccentricità delle orbite */
   double periodo;   /* periodo dell'orbita */
   double t; /* istante di tempo in cui calcolare l'anomalia eccentrica */
   double tmin, tmax; /* istanti di tempo minimo e massimo in cui calcolare
 		      * l'anomalia eccentrica */
   double omega; /* velocità angolare media */
   double psi; /* anomalia eccentrica */
-  char nomefile[20];
-  int i;
-  FILE* pf;
+  char nomefile[20]; /* stringa contenente il nome dei file */
+  int i; /* contatore da usare nel ciclo for */
+  FILE* pf; /* puntatore a file */
 
   /* Inizializzazione delle variabili */
-  e=0.8;
   periodo=10; /* 10 ore */
   tmin=0;
   tmax=periodo;
   omega=2*PI/periodo;
 
-  /* Apro in lettura il file di output */
-  pf=fopen("keplero.dat","w");
-
-  for(t=tmin;t<=tmax;t+=(tmax-tmin)/PUNTI)
+  /* Ripeto tutti i calcoli per i tre valori scelti dell'eccentricità */
+  for(i=0;i<3;i++)
     {
-      /* Pongo come punto iniziale del metodo di newton
-       *     anomalia eccentrica = anomalia media
-       */
-      psi=omega*t;
-      /* Se il valore della funzione valutata nel punto iniziale è maggiore
-       * della precisione desiderata utilizzo il metodo di Newton per trovare un
-       * nuovo punto.
-       */
-      while(fabs(f(psi,e,omega*t))>PRECISIONE)
-	psi-=(psi-e*sin(psi)-omega*t)/(1-e*cos(psi));
-      /* Scrivo su file i risultati */
-      fprintf(pf,"%f\t%f\t%f\n",omega*t,psi,anomvera(e,psi));
+      sprintf(nomefile,"keplero%d.dat",i+1);
+      /* Apro in lettura il file di output */
+      pf=fopen(nomefile,"w");
+
+      /* Cerco il valore */
+      for(t=tmin;t<=tmax;t+=(tmax-tmin)/PUNTI)
+	{
+	  /* Pongo come punto iniziale del metodo di Newton
+	   *     anomalia eccentrica = anomalia media
+	   */
+	  psi=omega*t;
+	  /* Se il valore della funzione valutata nel punto iniziale è maggiore
+	   * della precisione desiderata utilizzo il metodo di Newton per
+	   * trovare un nuovo punto.
+	   */
+	  while(fabs(f(psi,e[i],omega*t))>PRECISIONE)
+	    psi-=(psi-e[i]*sin(psi)-omega*t)/(1-e[i]*cos(psi));
+	  /* Scrivo su file i risultati */
+	  fprintf(pf,"%f\t%f\t%f\n",omega*t,psi,anomvera(e[i],psi));
+	}
+      /* Chiudo il file */
+      fclose(pf);
     }
-  /* Chiudo il file */
-  fclose(pf);
   return 0;
 }
