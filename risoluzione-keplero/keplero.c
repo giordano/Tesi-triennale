@@ -20,6 +20,8 @@
 #define PI 3.141592653589793
 /* Numero di punti in cui vogliamo trovare il valore dell'anomalie eccentrica */
 #define PUNTI 1000
+/* Dimensione del vettore `e' */
+#define N 3
 
 /* Funzione di cui vogliamo trovare le radici. Il primo argomento è l'anomalia
  * eccentrica, il secondo argomento è l'eccentricità, il terzo è l'anomalia
@@ -43,7 +45,7 @@ double anomvera(double a, double b)
 
 int main(){
   /* Definizione delle variabili */
-  double e[3]={0,0.5,0.8}; /* eccentricità delle orbite */
+  double e[N]={0,0.5,0.8}; /* eccentricità delle orbite */
   double periodo;   /* periodo dell'orbita */
   double t; /* istante di tempo in cui calcolare l'anomalia eccentrica */
   double tmin, tmax; /* istanti di tempo minimo e massimo in cui calcolare
@@ -72,7 +74,7 @@ int main(){
       psi=omega*t;
       fprintf(pf,"%f",omega*t);
       /* Ripeto i calcoli per tutti e tre i valori dell'eccentricità */
-      for(i=0;i<3;i++)
+      for(i=0;i<N;i++)
 	{
 	  /* Se il valore della funzione valutata nel punto iniziale è maggiore
 	   * della precisione desiderata utilizzo il metodo di Newton per
