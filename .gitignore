@@ -18,3 +18,6 @@ auto/
 Immagini/gnuplot/*.eps
 Immagini/gnuplot/*.pdf
 Immagini/gnuplot/*.tex
+risoluzione-keplero/keplero
+risoluzione-keplero/keplero.dat
+risoluzione-keplero/nul
