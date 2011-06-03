@@ -1,9 +1,12 @@
-/* Nome: keplero.c
+/* Nome del file sorgente: keplero.c
  * Scopo: programma per la risoluzione numerica dell'equazione di Keplero con il
  * metodo di Newton-Raphson.
  * Dati di input: eccentricità e periodi delle orbite, velocità angolare media.
- * Output: file contenenti il tempo t, l'anomalia eccentrica al tempo t,
- * l'anomalia vera al tempo t.
+ * Output: un file così organizzato: è suddiviso in sette colonne, nella prima
+ * c'è il tempo, nelle sei successive ci sono i valori delle anomalie
+ * eccentriche e vere al tempo t per i tre differenti valori
+ * dell'eccentricità. In questo modo può essere letto da un programma per la
+ * realizzazione di grafici.
  * Autore: Mosè Giordano
  * Data: 03/06/2011
  */
@@ -20,14 +23,14 @@
 
 /* Funzione di cui vogliamo trovare le radici. Il primo argomento è l'anomalia
  * eccentrica, il secondo argomento è l'eccentricità, il terzo è l'anomalia
- * media.
+ * media, cioè il prodotto della velocità angolare media e del tempo.
  */
 double f(double x,double a,double b)
 {
   return x-a*sin(x)-b;
 }
 
-/* Funzione che restituise il valore dell'anomalia vera. Il primo argomento è
+/* Funzione che restituisce il valore dell'anomalia vera. Il primo argomento è
  * l'eccentricità, il secondo è l'anomalia eccentrica.
  */
 double anomvera(double a, double b)
@@ -47,9 +50,8 @@ int main(){
 		      * l'anomalia eccentrica */
   double omega; /* velocità angolare media */
   double psi; /* anomalia eccentrica */
-  char nomefile[20]; /* stringa contenente il nome dei file */
   int i; /* contatore da usare nel ciclo for */
-  FILE* pf; /* puntatore a file */
+  FILE *pf; /* puntatore a file */
 
   /* Inizializzazione delle variabili */
   periodo=10; /* 10 ore */
@@ -57,20 +59,21 @@ int main(){
   tmax=periodo;
   omega=2*PI/periodo;
 
-  /* Ripeto tutti i calcoli per i tre valori scelti dell'eccentricità */
-  for(i=0;i<3;i++)
+  /* Apro il file su cui scrivere i risultati */
+  pf=fopen("keplero.dat","w");
+  /* Cerco il valore dell'anomalia eccentrica nei PUNTI punti dell'intervallo
+   * [tmin,tmax]
+   */
+  for(t=tmin;t<=tmax;t+=(tmax-tmin)/PUNTI)
     {
-      sprintf(nomefile,"keplero%d.dat",i+1);
-      /* Apro in lettura il file di output */
-      pf=fopen(nomefile,"w");
-
-      /* Cerco il valore */
-      for(t=tmin;t<=tmax;t+=(tmax-tmin)/PUNTI)
+      /* Pongo come punto iniziale del metodo di Newton
+       *     anomalia eccentrica = anomalia media
+       */
+      psi=omega*t;
+      fprintf(pf,"%f",omega*t);
+      /* Ripeto i calcoli per tutti e tre i valori dell'eccentricità */
+      for(i=0;i<3;i++)
 	{
-	  /* Pongo come punto iniziale del metodo di Newton
-	   *     anomalia eccentrica = anomalia media
-	   */
-	  psi=omega*t;
 	  /* Se il valore della funzione valutata nel punto iniziale è maggiore
 	   * della precisione desiderata utilizzo il metodo di Newton per
 	   * trovare un nuovo punto.
@@ -78,10 +81,11 @@ int main(){
 	  while(fabs(f(psi,e[i],omega*t))>PRECISIONE)
 	    psi-=(psi-e[i]*sin(psi)-omega*t)/(1-e[i]*cos(psi));
 	  /* Scrivo su file i risultati */
-	  fprintf(pf,"%f\t%f\t%f\n",omega*t,psi,anomvera(e[i],psi));
+	  fprintf(pf,"\t%f\t%f",psi,anomvera(e[i],psi));
 	}
-      /* Chiudo il file */
-      fclose(pf);
+      fprintf(pf,"\n");
     }
+  /* Chiudo il file */
+  fclose(pf);
   return 0;
 }

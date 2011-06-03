@@ -1,3 +1,4 @@
+SHELL		= /bin/sh
 SORGENTE	= keplero.c
 EXE		= keplero
 DISTCLEAN_FILES	= $(EXE) keplero*.dat *~
