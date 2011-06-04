@@ -1,7 +1,7 @@
 SHELL		= /bin/sh
 SORGENTE	= keplero.c
 EXE		= keplero
-DISTCLEAN_FILES	= $(EXE) keplero*.dat *~
+DISTCLEAN_FILE	= $(EXE) keplero.dat
 
 .PHONY: exe distclean check-syntax
 
@@ -11,7 +11,7 @@ $(EXE): $(SORGENTE)
 	gcc -lm -Wall -pedantic -o $(EXE) $(SORGENTE)
 
 distclean:
-	rm -f $(DISTCLEAN_FILES)
+	rm -f $(DISTCLEAN_FILE)
 
 # per effettuare il controllo della sintassi in Emacs con Flymake
 check-syntax:

@@ -20,4 +20,7 @@ Immagini/gnuplot/*.pdf
 Immagini/gnuplot/*.tex
 risoluzione-keplero/keplero
 risoluzione-keplero/keplero*.dat
+risoluzione-keplero/*.eps
+risoluzione-keplero/*.pdf
+risoluzione-keplero/*.tex
 risoluzione-keplero/nul

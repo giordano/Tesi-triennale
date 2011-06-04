@@ -9,10 +9,15 @@
 \usepackage{tikz}
 \usepackage[autostyle=true]{csquotes}
 \usepackage[style=numeric,backref,hyperref,abbreviate=false,backend=biber]{biblatex}
+\usepackage{listings}
+% `listingsutf8' serve per risolvere il problema di `listings' con gli
+% accenti. Per un workaround alternativo vedi il sito
+% http://stackoverflow.com/questions/1116266/
+\usepackage{listingsutf8}
 % `mathtools' serve per definire la norma e il valore assoluto
 \usepackage{mathtools}
 \usepackage{frontespizio}
-\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
 % `bm' serve per scrivere i vettori in corsivo con il comando
 % `\bm{vettore}'. Deve sostituire il comando `\mathbf{vettore}' perché questo
 % restituisce erroneamente lettere in tondo, non in corsivo e non funziona con
@@ -57,6 +62,15 @@
 
 \bibliography{bibliografia} % nome del file contenente la bibliografia
 \defbibheading{subbibliography}{\section*{#1}\markboth{#1}{#1}}
+
+\theoremstyle{plain}
+\newtheorem*{teorema}{Teorema}
+
+% impostazioni del pacchetto `listings'.
+\lstset{basicstyle=\small\ttfamily,
+  showstringspaces=false,
+  frame=lines,
+  inputencoding=utf8/latin1}
 %%%%% Fine impostazioni
 
 %%%%% Comandi personalizzati
@@ -107,7 +121,7 @@
 % Derivata totale: \ltoder[ordine]{funzione}{variabile}
 \newcommand*{\ltoder}[3][]{\mathrm{d}^{#1}#2 / \mathrm{d} {#3}^{#1}}
 % Derivata parziale: \lparder[ordine]{funzione}{variabile}
-\newcommand*{\lparder}[3][]{\partial^{#1} #2 / \partial {#3}^{#1}} 
+\newcommand*{\lparder}[3][]{\partial^{#1} #2 / \partial {#3}^{#1}}
 % NOTA: `\parder' e `\lparder' non sono completamente interscambiabili, il primo
 % comando è molto più complesso e permette di inserire le derivate miste, a
 % differenza del secondo.
@@ -130,6 +144,10 @@
 \newenvironment{sistema}%
 {\left\lbrace\begin{array}{@{}l@{}}}%
     {\end{array}\right.}
+
+%% Campi notevoli
+\let\numberset\mathbb
+\newcommand{\R}{\numberset{R}}	% Reali \R
 %%%%% Fine comandi personalizzati
 
 \begin{document}
@@ -147,6 +165,9 @@
 \include{Capitoli/problema_due_corpi}
 \include{Capitoli/elementi_orbitali}
 \include{Capitoli/applicazioni_astrofisiche}
+
+\appendix{}
+\include{Capitoli/risoluzione_keplero}
 
 \backmatter{}
 \clearpage{}

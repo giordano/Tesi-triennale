@@ -2,12 +2,12 @@
 \label{chap:elementi-orbitali}
 
 Nel precedente capitolo abbiamo determinato l'equazione
-dell'orbita~\eqref{eq:orbita} che lega la coordinata polare $r$ all'altra
-coordinata $\theta$, che dipende a sua volta dal tempo. La seconda legge di
-Keplero, però, ci dice che $\theta$ non varia in maniera costante con il tempo,
-eccetto nel caso particolare di orbita circolare. In questo capitolo ci
-occuperemo della determinazione della posizione, in un dato istante di tempo,
-della particella relativa che si muove su un'orbita ellittica.
+dell'orbita~\eqref{eq:orbita} che lega la coordinata polare $r$ all'anomalia
+vera $\chi$, che dipende a sua volta dal tempo. La seconda legge di Keplero,
+però, ci dice che $\chi$ non varia in maniera costante con il tempo, eccetto nel
+caso particolare di orbita circolare. In questo capitolo ci occuperemo della
+determinazione della posizione, in un dato istante di tempo, della particella
+relativa che si muove su un'orbita ellittica.
 
 \section{Equazione di Keplero}
 \label{sec:equazione-keplero}
@@ -43,9 +43,10 @@ corpo di un sistema binario in un qualsiasi istante di tempo. Con riferimento
 alla figura~\ref{fig:circonferenza-ausiliaria-keplero}, il punto $Q$
 dell'ellisse indica la posizione del corpo all'istante di tempo $t$ e $P$ la
 posizione del periapside, da cui il corpo passa all'istante
-$t_0$. Nell'intervallo di tempo $t-t_0$ il raggio vettore che congiunge il fuoco
-$F$ alla posizione del corpo sull'ellisse si sposta da $FP$ a $FQ$, spazzando
-dunque l'area $FPQ$. Allora per la seconda legge di Keplero
+$t_0$. Nell'intervallo di tempo $\mathopen{[}t_0, t\mathclose{]}$ il raggio
+vettore che congiunge il fuoco $F$ alla posizione del corpo sull'ellisse si
+sposta da $FP$ a $FQ$, spazzando dunque l'area $FPQ$. Allora per la seconda
+legge di Keplero
 \begin{equation}
   \text{area } FPQ : \text{area ellisse} = t-t_0 : T,
 \end{equation}
@@ -70,12 +71,12 @@ concentrica con l'ellisse, come nella
 figura~\ref{fig:circonferenza-ausiliaria-keplero}.  Sia $G$ l'intersezione con
 la circonferenza della perpendicolare all'asse $x$ innalzata dal punto
 $Q$. L'angolo $G\widehat{C}P$, dove $C$ è il centro della circonferenza, è
-chiamato \emph{anomalia eccentrica} e lo indicheremo con $\psi$. Al periapside
-si ha $\chi = \psi = 0$ e all'apoapside $\chi = \psi = \pi$. I punti
-$Q=(x_Q,y_Q)$ e $G=(x_Q,y_G)$ hanno la stessa ascissa e vogliamo trovare una
-relazione fra le loro ordinate. Per fare questo ricordiamo che l'equazione
-cartesiana di una circonferenza di raggio $a$ e centro l'origine del sistema di
-riferimento è
+chiamato \emph{anomalia eccentrica} e lo indicheremo con $\psi$. L'anomalia
+eccentrica può assumere valori fra $0$ e $2\pi$ e al periapside si ha
+$\psi = \chi = 0$, all'apoapside $\psi = \chi = \pi$. I punti $Q=(x_Q,y_Q)$ e
+$G=(x_Q,y_G)$ hanno la stessa ascissa e vogliamo trovare una relazione fra le
+loro ordinate. Per fare questo ricordiamo che l'equazione cartesiana di una
+circonferenza di raggio $a$ e centro l'origine del sistema di riferimento è
 \begin{equation}
   x_\textup{c}^2 + y_\textup{c}^2 = a^2.
 \end{equation}
@@ -182,8 +183,11 @@ l'anomalia eccentrica vale $\psi$
   \int_{t_0}^t \omega\dd \tau = \int_0^\psi(1-e\cos\psi')\dd \psi' \iff\\
   \phi = \omega(t - t_0) = \psi - e\sin\psi, \label{eq:keplero}
 \end{gather}
-dove $\phi = \omega(t-t_0)$ è chiamata \emph{anomalia media}. Questa equazione è
-detta \emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
+dove $\phi = \omega(t-t_0)$ è chiamata \emph{anomalia media}. Anche l'anomalia
+media varia fra $0$, valore raggiunto per $t = t_0$ cioè al periapside, e
+$2\pi$. Il corpo relativo passa all'apoapside all'istante $t = t_0 + T/2$,
+quindi in questo punto $\phi = \psi = \chi = \pi$. La~\eqref{eq:keplero} è detta
+\emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
 soluzione $\psi$ permette di ricavare, tramite
 la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare $r$. Inoltre possiamo
 determinare una relazione tra l'anomalia eccentrica e l'altra coordinata polare
@@ -229,6 +233,89 @@ essere utilizzati diversi metodi numerici per risolverla.
 \subsection{Metodo di Newton~-~Raphson}
 \label{sec:newton}
 
+Il primo metodo che utilizzeremo per determinare il valore dell'anomalia
+eccentrica $\psi$ in corrispondenza di un fissato istante di tempo $t$ è quello
+di Newton~-~Raphson, chiamato anche \emph{metodo delle tangenti}, descritto nel
+seguente
+\begin{teorema}[di Newton~-~Raphson]
+  Sia $f\in C^2(\mathopen{[}a,b\mathclose{]})$, con
+  $\mathopen{[}a,b\mathclose{]}\subset\R$. Se
+  \begin{subequations}
+    \begin{gather}
+      f(a)f(b) <0, \label{eq:esistenza-zero}\\
+      f'(x) \neq 0 \quad \forall x \in \mathopen{[}a,b\mathclose{]},\\
+      f''(x) \neq 0 \quad \forall x \in \mathopen{[}a,b\mathclose{]},
+    \end{gather}
+  \end{subequations}
+  allora, posto
+  \begin{subequations}
+    \begin{align}
+      x_0 &=
+      \begin{cases}
+        a & \text{se $ f(a)f''(a)>0$,}\\
+        b & \text{se $f(b)f''(b)>0$,}
+      \end{cases}\\
+      x_{n+1} &= x_n - \frac{f(x_n)}{f'(x_n)} \label{eq:formula-newton}
+    \end{align}
+  \end{subequations}
+  si ha che
+  \begin{subequations}
+    \begin{gather}
+      \lim_n x_n = \tilde{x},\\
+      f(\tilde{x}) = 0.
+    \end{gather}
+  \end{subequations}
+\end{teorema}
+Se la radice cercata ha molteplicità $1$ l'ordine di convergenza di questo
+metodo è quadratico, altrimenti è lineare. Il teorema enunciato fornisce una
+condizione sufficiente, ma non necessaria, per la convergenza della
+successione~\eqref{eq:formula-newton} a una radice della funzione
+$f$. Utilizzeremo il metodo iterativo descritto nel teorema senza preoccuparci
+di verificare che tutte le ipotesi siano soddisfatte.
+
+Fissate l'eccentricità $e$ e la velocità angolare media $\omega$, indichiamo con
+$f(\psi) = \psi -e\sin\psi-\omega t$, $\psi\in\mathopen{[}0, 2\pi\mathclose{]}$,
+la funzione di cui vogliamo trovare le radici $\psi$ in corrispondenza di un
+istante di tempo $t$. Osserviamo che $f''(\psi) = e\sin\psi$, quindi
+$f\in C^2(\R)$. Inoltre $f(0)f(2\pi) <
+0$,\footnote{Si
+  ha $f(0)f(2\pi) = 0$ solo se $\omega t = 0$ oppure $\omega t = 2\pi$, ma in
+  questi casi si può verificare per sostituzione che la radice della funzione è
+  $\psi = \omega t$, pertanto possiamo escludere queste situazioni.}
+quindi per il teorema di esistenza degli zeri, di cui la
+condizione~\eqref{eq:esistenza-zero} è una delle ipotesi, all'interno
+dell'intervallo $\mathopen{[}0, 2\pi\mathclose{]}$ esiste almeno una radice
+della funzione $f$. Poiché
+$f'(\psi) = 1 - e\cos\psi > 0 \quad \forall \psi\in\R$ e $f'$ è continua, la
+soluzione è unica. Dall'equazione di Keplero abbiamo che $\psi$ differisce da
+$\omega t$ per un termine dell'ordine di $e$, quindi poniamo come punto iniziale
+$\psi_0 = \omega t$. Se $f(\psi_0)\neq 0$, cerchiamo un nuovo punto $\psi_1$ con
+la formula~\eqref{eq:formula-newton} e valutiamo $f$ in $\psi_1$. Se è uguale a
+$0$ allora abbiamo trovato la radice, altrimenti continuiamo nello stesso modo
+finché non troviamo lo zero della funzione.
+
+Ho scritto un programma con il linguaggio C che risolve l'equazione di Keplero
+in più istanti del moto di rivoluzione della particella relativa e per diversi
+valori dell'eccentricità dell'orbita. Il codice sorgente del programma è
+riportato nell'appendice~\ref{cha:soluzione-keplero}.
+\begin{figure}
+  \centering
+  \input{risoluzione-keplero/keplero1}
+  \caption{}
+  \label{fig:keplero1}
+\end{figure}
+\begin{figure}
+  \centering
+  \input{risoluzione-keplero/keplero2}
+  \caption{}
+  \label{fig:keplero2}
+\end{figure}
+\begin{figure}
+  \centering
+  \input{risoluzione-keplero/keplero3}
+  \caption{}
+  \label{fig:keplero3}
+\end{figure}
 \subsection{Integrali ellittici}
 \label{sec:integrali-ellittici}
 
