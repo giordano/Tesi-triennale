@@ -72,7 +72,7 @@ int main(){
        *     anomalia eccentrica = anomalia media
        */
       psi=omega*t;
-      fprintf(pf,"%f",omega*t);
+      fprintf(pf,"%f",t);
       /* Ripeto i calcoli per tutti e tre i valori dell'eccentricità */
       for(i=0;i<N;i++)
 	{
