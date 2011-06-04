@@ -1,14 +1,16 @@
 /* Nome del file sorgente: keplero.c
  * Scopo: programma per la risoluzione numerica dell'equazione di Keplero con il
  * metodo di Newton-Raphson.
- * Dati di input: eccentricità e periodi delle orbite, velocità angolare media.
- * Output: un file così organizzato: è suddiviso in sette colonne, nella prima
- * c'è il tempo, nelle sei successive ci sono i valori delle anomalie
- * eccentriche e vere al tempo t per i tre differenti valori
- * dell'eccentricità. In questo modo può essere letto da un programma per la
- * realizzazione di grafici.
+
+ * Dati di input: semiasse maggiore, eccentricità e periodo delle orbite,
+ * velocità angolare media.
+ * Output: un file così organizzato: è suddiviso in dieci colonne, nella prima
+ * c'è il tempo t, nelle nove successive ci sono i valori delle anomalie
+ * eccentriche, distanze dal fuoco e anomalie vere  al tempo t per i tre
+ * differenti valori dell'eccentricità. Il file può essere letto da un programma
+ * per la realizzazione di grafici.
  * Autore: Mosè Giordano
- * Data: 03/06/2011
+ * Data: 04/06/2011
  */
 
 #include <stdio.h>
@@ -27,24 +29,34 @@
  * eccentrica, il secondo argomento è l'eccentricità, il terzo è l'anomalia
  * media, cioè il prodotto della velocità angolare media e del tempo.
  */
-double f(double x,double a,double b)
+double f(double x, double y, double z)
 {
-  return x-a*sin(x)-b;
+  return x-y*sin(x)-z;
+}
+
+/* Funzione che restituisce il valore della distanza dal fuoco. Il primo
+ * argomento è la lunghezza del semiasse maggiore, il secondo è l'eccentricità
+ * dell'orbita, il terzo è il valore dell'anomalia eccentrica.
+ */
+double r(double x, double y, double z)
+{
+  return x*(1-y*cos(z));
 }
 
 /* Funzione che restituisce il valore dell'anomalia vera. Il primo argomento è
  * l'eccentricità, il secondo è l'anomalia eccentrica.
  */
-double anomvera(double a, double b)
+double anomvera(double x, double y)
 {
-  if(b<=PI)
-    return 2*atan(sqrt((1+a)/(1-a))*tan(b/2));
+  if(y<=PI)
+    return 2*atan(sqrt((1+x)/(1-x))*tan(y/2));
   else
-    return 2*(atan(sqrt((1+a)/(1-a))*tan(b/2))+PI);
+    return 2*(atan(sqrt((1+x)/(1-x))*tan(y/2))+PI);
 }
 
 int main(){
   /* Definizione delle variabili */
+  double a; /* semiasse maggiore dell'orbita */
   double e[N]={0,0.5,0.8}; /* eccentricità delle orbite */
   double periodo;   /* periodo dell'orbita */
   double t; /* istante di tempo in cui calcolare l'anomalia eccentrica */
@@ -56,8 +68,9 @@ int main(){
   FILE *pf; /* puntatore a file */
 
   /* Inizializzazione delle variabili */
+  a=5;
   periodo=10; /* 10 ore */
-  tmin=0;
+  tmin=0; /* Abbiamo supposto che al periapside t=0 */
   tmax=periodo;
   omega=2*PI/periodo;
 
@@ -83,7 +96,7 @@ int main(){
 	  while(fabs(f(psi,e[i],omega*t))>PRECISIONE)
 	    psi-=(psi-e[i]*sin(psi)-omega*t)/(1-e[i]*cos(psi));
 	  /* Scrivo su file i risultati */
-	  fprintf(pf,"\t%f\t%f",psi,anomvera(e[i],psi));
+	  fprintf(pf,"\t%f\t%f\t%f",psi,r(a,e[i],psi),anomvera(e[i],psi));
 	}
       fprintf(pf,"\n");
     }
