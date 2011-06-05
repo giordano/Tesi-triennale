@@ -69,31 +69,33 @@ usa invece il metodo che ci apprestiamo a illustrare.
 Circoscriviamo all'ellisse una circonferenza ausiliaria di raggio $a$ e
 concentrica con l'ellisse, come nella
 figura~\ref{fig:circonferenza-ausiliaria-keplero}.  Sia $G$ l'intersezione con
-la circonferenza della perpendicolare all'asse $x$ innalzata dal punto
-$Q$. L'angolo $G\widehat{C}P$, dove $C$ è il centro della circonferenza, è
-chiamato \emph{anomalia eccentrica} e lo indicheremo con $\psi$. L'anomalia
-eccentrica può assumere valori fra $0$ e $2\pi$ e al periapside si ha
-$\psi = \chi = 0$, all'apoapside $\psi = \chi = \pi$. I punti $Q=(x_Q,y_Q)$ e
-$G=(x_Q,y_G)$ hanno la stessa ascissa e vogliamo trovare una relazione fra le
-loro ordinate. Per fare questo ricordiamo che l'equazione cartesiana di una
-circonferenza di raggio $a$ e centro l'origine del sistema di riferimento è
+la circonferenza della perpendicolare all'asse $x$ innalzata dal punto $Q$. Se
+$\chi > \pi$, il punto $G$ apparterrà alla semicirconferenza inferiore. L'angolo
+$G\widehat{C}P$, dove $C$ è il centro della circonferenza, è chiamato
+\emph{anomalia eccentrica} e lo indicheremo con $\psi$. L'anomalia eccentrica
+può assumere valori fra $0$ e $2\pi$ e al periapside si ha $\psi = \chi = 0$,
+all'apoapside $\psi = \chi = \pi$. I punti $Q=(x_Q,y_Q)$ e $G=(x_Q,y_G)$ hanno
+la stessa ascissa e vogliamo trovare una relazione fra le loro ordinate. Per
+fare questo ricordiamo che l'equazione cartesiana di una circonferenza di raggio
+$a$ e centro l'origine del sistema di riferimento $x_\textup{c}Oy_\textup{c}$ è
 \begin{equation}
   x_\textup{c}^2 + y_\textup{c}^2 = a^2.
 \end{equation}
-Invece, l'equazione di un'ellisse con centro nell'origine del sistema e semiassi
-maggiore $a$, lungo l'asse $x_\textup{e}$, e minore $b$, lungo l'asse
-$y_\textup{e}$, è
+Invece, l'equazione di un'ellisse con centro nell'origine del sistema
+$x_\textup{e}O'y_\textup{e}$ e semiassi maggiore $a$, lungo l'asse
+$x_\textup{e}$, e minore $b$, lungo l'asse $y_\textup{e}$, è
 \begin{equation}
     \frac{x_\textup{e}^2}{a^2} + \frac{y_\textup{e}^2}{b^2} = 1.
 \end{equation}
-Se gli assi dei sistemi di riferimento delle due coniche sono coincidenti,
-uguagliando le ascisse risulta
+Se gli assi dei sistemi di riferimento delle due coniche sono coincidenti, come
+nel nostro caso, uguagliando le ascisse risulta
 \begin{equation}
   x_\textup{c}^2 = x_\textup{e}^2 \iff a^2 - y_\textup{c}^2 = a^2 -
   y_\textup{e}^2a^2/b^2 \iff \abs{y_\textup{c}} = \abs{y_\textup{e}}a/b.
 \end{equation}
-Allora, per i punti $Q$ e $G$ abbiamo che $y_G = y_Qa/b$. D'altra parte,
-$y_Q = r\sin\chi$ e $y_G = a\sin\psi$, cioè
+Allora, per i punti $Q$ e $G$ abbiamo che $y_G = y_Qa/b$, poiché $y_G$ e $y_Q$
+hanno sempre lo stesso segno. D'altra parte, $y_Q = r\sin\chi$ e
+$y_G = a\sin\psi$, cioè
 \begin{equation}
   \label{eq:r-sin-chi}
   r\sin\chi = b\sin\psi.
@@ -337,7 +339,10 @@ figure~\ref{fig:keplero-anomalia_eccentrica}, \ref{fig:keplero-raggio}
 e~\ref{fig:keplero-anomalia_vera}, realizzate con il softawre \verb|gnuplot|,
 sono rappresentati i risultati della simulazione. Per tutti i grafici, il
 periodo di rivoluzione è $T = \SI{10}{\hour}$, l'istante di passaggio dal
-periapside è $t_0 = 0$ e il semiasse maggiore vale $a = \SI{5}{\kilo\metre}$.
+periapside è $t_0 = 0$ e il semiasse maggiore vale $a =
+\SI{2.5e6}{\kilo\metre}$,
+quindi per la terza legge di Keplero
+$GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
 \begin{figure}
   \centering
   \input{risoluzione-keplero/keplero-anomalia_eccentrica}

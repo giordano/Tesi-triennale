@@ -71,7 +71,7 @@ int main(){
   FILE *pf; /* puntatore a file */
 
   /* Inizializzazione delle variabili */
-  a=5;
+  a=2.5; /* 2.5·10^6 Km */
   periodo=10; /* 10 ore */
   tmin=0; /* Abbiamo supposto che al periapside t=0 */
   tmax=periodo;

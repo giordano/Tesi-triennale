@@ -4,12 +4,10 @@ set term epslatex
 set output 'Immagini/gnuplot/velocita.tex'
 set key top center
 unset xtics
-set ytics nomirror
 set format y "$%g$"
 set xtics ("{\\scriptsize periapside: $\\chi=0$}" 0, \
     "{\\scriptsize apoapside: $\\chi=\\pi$}" pi, \
-    "{\\scriptsize periapside: $\\chi=2\\pi$}" 2*pi) nomirror
-set border 3 # visualizza solo i bordi in basso e a sinistra
+    "{\\scriptsize periapside: $\\chi=2\\pi$}" 2*pi)
 set size 0.9,0.9
 set xlabel "$\\chi$"  # etichetta per l'asse x
 set ylabel "$v^2(\\chi)/GM_\\textup{T}$" # etichetta per l'asse y

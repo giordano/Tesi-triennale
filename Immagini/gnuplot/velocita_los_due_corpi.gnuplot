@@ -3,13 +3,12 @@ set term epslatex
 # imposta il file di output
 set output 'Immagini/gnuplot/velocita_los_due_corpi.tex'
 unset xtics
-set ytics nomirror
+#set ytics nomirror
 set format y "$%g$"
 set key bottom right
 set xtics ("{\\scriptsize periapside: $\\chi=0$}" 0, \
     "{\\scriptsize apoapside: $\\chi=\\pi$}" pi, \
-    "{\\scriptsize periapside: $\\chi=2\\pi$}" 2*pi) nomirror
-set border 3 # visualizza solo i bordi in basso e a sinistra
+    "{\\scriptsize periapside: $\\chi=2\\pi$}" 2*pi)
 set xlabel "$\\chi$"  # etichetta per l'asse x
 set ylabel "$v_\\textup{los}(\\chi)$ (\\si{\\kilo\\metre\\per\\second})"
 r(a,e,x)=a*(1-e**2)/(1+e*cos(x))
