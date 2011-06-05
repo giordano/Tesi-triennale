@@ -72,7 +72,7 @@ $(KEPLERO)/immagini-keplero: $(KEPLERO)/keplero.dat $(KEPLERO)/keplero.gnuplot
 $(KEPLERO)/keplero.dat: $(KEPLERO)/keplero
 	cd $(KEPLERO) && ./keplero
 
-$(KEPLERO)/$(EXE): $(KEPLERO)/keplero.c
+$(KEPLERO)/keplero: $(KEPLERO)/keplero.c
 	@cd $(KEPLERO) && make exe
 ### Fine delle regole per le immagini
 

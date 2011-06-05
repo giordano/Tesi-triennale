@@ -222,6 +222,35 @@ la relazione cercata
   \iff \\
   \tan^2\frac{\chi}{2} = \frac{1+e}{1-e}\tan^2\frac{\psi}{2}.
 \end{gather}
+In questa equazione possiamo esplicitare $\chi$ in funzione di $\psi$
+\begin{equation}
+  \chi = 2\arctan
+  \left(
+    \sqrt{\frac{1+e}{1-e}}\tan\frac{\psi}{2}
+  \right).
+\end{equation}
+Il risultato è corretto, però con questa definizione di $\chi$ c'è una
+discontinuità di prima specie in $\psi = \pi$ perché la tangente è discontinua
+in $\pi/2$. Per rendere continua $\chi$ in funzione di $\psi$ dobbiamo
+aggiungere $\pi$ al valore dell'arcotangente se $\psi > \pi$, cioè
+\begin{equation}
+  \label{eq:anoamlie-vera-eccentrica}
+  \chi =
+  \begin{cases}
+    2\arctan
+  \left(
+    \sqrt{\dfrac{1+e}{1-e}}\tan\dfrac{\psi}{2}
+  \right) & \text{se $0 \leq \psi \leq \pi$,}
+    \\[2.0ex]
+  2
+  \left(
+    \arctan
+    \left(
+      \sqrt{\dfrac{1+e}{1-e}}\tan\dfrac{\psi}{2}
+    \right) + \pi
+  \right) & \text{se $\pi < \psi \leq 2\pi$.}
+  \end{cases}
+\end{equation}
 
 \section{Soluzioni dell'equazione di Keplero}
 \label{sec:soluzioni}
@@ -281,40 +310,51 @@ $f\in C^2(\R)$. Inoltre $f(0)f(2\pi) <
 0$,\footnote{Si
   ha $f(0)f(2\pi) = 0$ solo se $\omega t = 0$ oppure $\omega t = 2\pi$, ma in
   questi casi si può verificare per sostituzione che la radice della funzione è
-  $\psi = \omega t$, pertanto possiamo escludere queste situazioni.}
+  $\psi = \omega t$, pertanto possiamo escluderli.}
 quindi per il teorema di esistenza degli zeri, di cui la
 condizione~\eqref{eq:esistenza-zero} è una delle ipotesi, all'interno
 dell'intervallo $\mathopen{[}0, 2\pi\mathclose{]}$ esiste almeno una radice
 della funzione $f$. Poiché
 $f'(\psi) = 1 - e\cos\psi > 0 \quad \forall \psi\in\R$ e $f'$ è continua, la
-soluzione è unica. Dall'equazione di Keplero abbiamo che $\psi$ differisce da
+radice è unica. Dall'equazione di Keplero abbiamo che $\psi$ differisce da
 $\omega t$ per un termine dell'ordine di $e$, quindi poniamo come punto iniziale
 $\psi_0 = \omega t$. Se $f(\psi_0)\neq 0$, cerchiamo un nuovo punto $\psi_1$ con
 la formula~\eqref{eq:formula-newton} e valutiamo $f$ in $\psi_1$. Se è uguale a
 $0$ allora abbiamo trovato la radice, altrimenti continuiamo nello stesso modo
-finché non troviamo lo zero della funzione.
+finché non troviamo lo zero della funzione. Dopo aver determinato il valore di
+$\psi$ al tempo $t$ possiamo anche ricavare la distanza $r$ dal fuoco con
+la~\eqref{eq:r-anomalia-eccentrica} e l'anomalia vera $\chi$ con
+la~\eqref{eq:anoamlie-vera-eccentrica}.
 
 Ho scritto un programma con il linguaggio C che risolve l'equazione di Keplero
 in più istanti del moto di rivoluzione della particella relativa e per diversi
-valori dell'eccentricità dell'orbita. Il codice sorgente del programma è
-riportato nell'appendice~\ref{cha:soluzione-keplero}.
+valori dell'eccentricità dell'orbita. Il programma restituisce come output un
+file contenente i valori dell'anomalia eccentrica, della distanza dal fuoco e
+dell'anomalia vera in funzione del tempo per le differenti eccentricità fornite
+come input. Il codice sorgente del programma è riportato
+nell'appendice~\ref{cha:soluzione-keplero}. Nelle
+figure~\ref{fig:keplero-anomalia_eccentrica}, \ref{fig:keplero-raggio}
+e~\ref{fig:keplero-anomalia_vera}, realizzate con il softawre \verb|gnuplot|,
+sono rappresentati i risultati della simulazione. Per tutti i grafici, il
+periodo di rivoluzione è $T = \SI{10}{\hour}$, l'istante di passaggio dal
+periapside è $t_0 = 0$ e il semiasse maggiore vale $a = \SI{5}{\kilo\metre}$.
 \begin{figure}
   \centering
-  \input{risoluzione-keplero/keplero1}
-  \caption{}
-  \label{fig:keplero1}
+  \input{risoluzione-keplero/keplero-anomalia_eccentrica}
+  \caption{Anomalia eccentrica in funzione del tempo}
+  \label{fig:keplero-anomalia_eccentrica}
 \end{figure}
 \begin{figure}
   \centering
-  \input{risoluzione-keplero/keplero2}
-  \caption{}
-  \label{fig:keplero2}
+  \input{risoluzione-keplero/keplero-raggio}
+  \caption{Distanza dal fuoco in funzione del tempo}
+  \label{fig:keplero-raggio}
 \end{figure}
 \begin{figure}
   \centering
-  \input{risoluzione-keplero/keplero3}
-  \caption{}
-  \label{fig:keplero3}
+  \input{risoluzione-keplero/keplero-anomalia_vera}
+  \caption{Anomalia vera in funzione del tempo}
+  \label{fig:keplero-anomalia_vera}
 \end{figure}
 \subsection{Integrali ellittici}
 \label{sec:integrali-ellittici}
