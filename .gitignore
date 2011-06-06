@@ -18,10 +18,10 @@ auto/
 Immagini/gnuplot/*.eps
 Immagini/gnuplot/*.pdf
 Immagini/gnuplot/*.tex
-risoluzione-keplero/keplero
-risoluzione-keplero/keplero*.dat
-risoluzione-keplero/*.eps
-risoluzione-keplero/*.pdf
-risoluzione-keplero/*.tex
-risoluzione-keplero/immagini-keplero
-risoluzione-keplero/nul
+newton/newton
+newton/newton.dat
+newton/*.eps
+newton/*.pdf
+newton/*.tex
+newton/immagini-newton
+newton/nul

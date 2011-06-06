@@ -266,8 +266,8 @@ essere utilizzati diversi metodi numerici per risolverla.
 
 Il primo metodo che utilizzeremo per determinare il valore dell'anomalia
 eccentrica $\psi$ in corrispondenza di un fissato istante di tempo $t$ è quello
-di Newton~-~Raphson, chiamato anche \emph{metodo delle tangenti}, descritto nel
-seguente
+di Newton~-~Raphson~\cite[30]{brugnano:calcolo-numerico}, chiamato anche
+\emph{metodo delle tangenti}, descritto nel seguente
 \begin{teorema}[di Newton~-~Raphson]
   Sia $f\in C^2(\mathopen{[}a,b\mathclose{]})$, con
   $\mathopen{[}a,b\mathclose{]}\subset\R$. Se
@@ -335,8 +335,8 @@ file contenente i valori dell'anomalia eccentrica, della distanza dal fuoco e
 dell'anomalia vera in funzione del tempo per le differenti eccentricità fornite
 come input. Il codice sorgente del programma è riportato
 nell'appendice~\ref{cha:soluzione-keplero}. Nelle
-figure~\ref{fig:keplero-anomalia_eccentrica}, \ref{fig:keplero-raggio}
-e~\ref{fig:keplero-anomalia_vera}, realizzate con il softawre \verb|gnuplot|,
+figure~\ref{fig:newton-anomalia_eccentrica}, \ref{fig:newton-raggio}
+e~\ref{fig:newton-anomalia_vera}, realizzate con il softawre \verb|gnuplot|,
 sono rappresentati i risultati della simulazione. Per tutti i grafici, il
 periodo di rivoluzione è $T = \SI{10}{\hour}$, l'istante di passaggio dal
 periapside è $t_0 = 0$ e il semiasse maggiore vale $a =
@@ -345,24 +345,22 @@ quindi per la terza legge di Keplero
 $GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
 \begin{figure}
   \centering
-  \input{risoluzione-keplero/keplero-anomalia_eccentrica}
+  \input{newton/newton-anomalia_eccentrica}
   \caption{Anomalia eccentrica in funzione del tempo}
-  \label{fig:keplero-anomalia_eccentrica}
+  \label{fig:newton-anomalia_eccentrica}
 \end{figure}
 \begin{figure}
   \centering
-  \input{risoluzione-keplero/keplero-raggio}
+  \input{newton/newton-raggio}
   \caption{Distanza dal fuoco in funzione del tempo}
-  \label{fig:keplero-raggio}
+  \label{fig:newton-raggio}
 \end{figure}
 \begin{figure}
   \centering
-  \input{risoluzione-keplero/keplero-anomalia_vera}
+  \input{newton/newton-anomalia_vera}
   \caption{Anomalia vera in funzione del tempo}
-  \label{fig:keplero-anomalia_vera}
+  \label{fig:newton-anomalia_vera}
 \end{figure}
-\subsection{Integrali ellittici}
-\label{sec:integrali-ellittici}
 
 \subsection{Funzioni di Bessel}
 \label{sec:bessel}

@@ -10,7 +10,7 @@
  * valori dell'eccentricità. Il file può essere letto da un
  * programma per la realizzazione di grafici.
  * Autore: Mosè Giordano
- * Data: 04/06/2011
+ * Data: 06/06/2011
  */
 
 #include <stdio.h>
@@ -78,7 +78,7 @@ int main(){
   omega=2*PI/periodo;
 
   /* Apro il file su cui scrivere i risultati */
-  pf=fopen("keplero.dat","w");
+  pf=fopen("newton.dat","w");
   /* Cerco il valore dell'anomalia eccentrica nei PUNTI punti
    * dell'intervallo [tmin,tmax]
    */
@@ -100,7 +100,8 @@ int main(){
 	  while(fabs(f(psi,e[i],omega*t))>PRECISIONE)
 	    psi-=(psi-e[i]*sin(psi)-omega*t)/(1-e[i]*cos(psi));
 	  /* Scrivo su file i risultati */
-	  fprintf(pf,"\t%f\t%f\t%f",psi,r(a,e[i],psi),anomvera(e[i],psi));
+	  fprintf(pf,"\t%f\t%f\t%f",psi,r(a,e[i],psi),
+		  anomvera(e[i],psi));
 	}
       fprintf(pf,"\n");
     }

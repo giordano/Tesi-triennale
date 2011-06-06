@@ -1,7 +1,7 @@
 SHELL		= /bin/sh
-SORGENTE	= keplero.c
-EXE		= keplero
-DISTCLEAN_FILE	= $(EXE) keplero.dat
+SORGENTE	= newton.c
+EXE		= newton
+DISTCLEAN_FILE	= $(EXE) newton.dat
 
 .PHONY: exe distclean check-syntax
 
