@@ -365,6 +365,183 @@ $GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
 \subsection{Funzioni di Bessel}
 \label{sec:bessel}
 
+Per risolvere l'equazione di Keplero utilizzeremo in questo paragrafo le
+\emph{funzioni di Bessel di ordine intero}, o \emph{funzioni
+  cilindriche}~\cites[355]{abramowitz:handbook}[355]{whittaker:modern-analysis},
+che ora introdurremo.
+
+La funzione $f(x,z)\colon\C\times\C\to\C$ definita da
+\begin{equation}
+  f(x,z) = \e^{(x/2)(z - 1/z)}
+\end{equation}
+è olomorfa in $\C\setminus 0$ rispetto alla variabile $z$, quindi può essere
+espansa in serie di Laurent di potenze di $z$
+\begin{equation}
+  f(x,z) = \sum_{n = -\infty}^{+\infty} c_n(x) z^n,
+\end{equation}
+dove, per il teorema di Laurent, i coefficienti $c_n$, che indicheremo d'ora in
+poi con $J_n(x)$, sono dati da
+\begin{equation}
+  J_n(x) = \frac{1}{2\pi\uimm}\int_\gamma \frac{\e^{(x/2)(z-1/z)}}{z^{n+1}}\dd z,
+  \quad n\in\Z,
+\end{equation}
+dove $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra che
+\begin{equation}
+  J_n (x) = \sum_{m = 0}^{+\infty}\frac{(-1)^m(x/2)^{n+2m}}{m!(n+m)!}, \quad
+  \text{se $n\geq 0$}.
+\end{equation}
+Per ottenere l'espressione di $J_n(x)$ con $n < 0$ osserviamo che $f(x,z) =
+f(x,-1/z)$, quindi, espandendo in serie di Laurent,
+\begin{equation}
+  \begin{split}
+    f(x,-1/z) &= \sum_{n = -\infty}^{+\infty}J_n(x)
+    \left(
+      -\frac{1}{z}
+    \right)^n = \sum_{n = -\infty}^{+\infty}J_n(x)(-1)^nz^{-n} \\
+    &= \sum_{n = -\infty}^{+\infty}J_{-n}(x)z^{-n}
+  \end{split}
+\end{equation}
+da cui ricaviamo la formula
+\begin{equation}
+  J_{-n}(x) = (-1)^nJ_n(x).
+\end{equation}
+La funzione $J_n(x)$ è chiamata \emph{funzione di Bessel di argomento $x$ e
+  ordine $n$}, mentre la funzione $f(x,z)$ è la \emph{funzione generatrice della
+  funzione di Bessel}. Si dimostrano inoltre le seguenti proprietà
+\begin{subequations}
+  \begin{gather}
+    \frac{2n}{x} J_n(x) = J_{n-1}(x) + J_{n+1}(x),\\
+    \toder{J_n(x)}{x} = \frac{J_{n-1}(x) - J_{n+1}(x)}{2},\\
+    \toder[2]{J_n(x)}{x} = \frac{n^2}{x}J_n(x) - J_n(x) -
+    \frac{1}{x}\toder{J_n(x)}{x}.
+  \end{gather}
+\end{subequations}
+Si può verificare per sostituzione che la funzione $J_n(x)$, insieme alle sue
+derivate qui sopra riportate, soddisfa la seguente equazione differenziale
+nell'incognita $y(x)$
+\begin{equation}
+  \toder[2]{y}{x} + \frac{1}{x}\toder{y}{x} +
+  \left(
+    1 - \frac{n^2}{x^2}
+  \right)y = 0.
+\end{equation}
+Questa equazione è chiamata \emph{equazione differenziale di Bessel di ordine
+  $n$}. Si può dare la seguente \emph{rappresentazione integrale delle funzioni
+  di Bessel}
+\begin{equation}
+  \label{eq:bessel-integrale}
+  J_n(x) = \frac{1}{\pi} \int_0^\pi\cos(n\theta - x\sin\theta)\dd\theta,
+\end{equation}
+quindi abbiamo anche
+\begin{equation}
+  \label{eq:bessel-derivata-integrale}
+  \toder{J_n(x)}{x} = \frac{1}{\pi}\int_0^\pi\sin(n\theta -
+  x\sin\theta)\sin\theta\dd\theta.
+\end{equation}
+
+Ritorniamo al problema fisico. Definiamo la funzione $G(\psi,\phi) = \psi -
+e\sin\psi - \psi$, con $\psi,\phi\in\mathopen{[}0,
+2\pi\mathclose{]}$. Dall'equazione di Keplero abbiamo $G(\psi(t),\phi(t)) = 0$
+in ogni istante di tempo $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$ e inoltre
+$G_\psi(\psi(t),\phi(t)) = 1 - e\cos\psi(t) \neq 0$,
+$\forall\psi\in\mathopen{[}0, 2\pi\mathclose{]}$ e $G_\psi\in C^1(\mathopen{[}0,
+2\pi\mathclose{]}^2)$, quindi per il teorema del
+Dini~\cite[267]{demarco:analisi2} esiste un'unica funzione di classe $C^1$ che
+esplicita $\psi(t)$ rispetto a $\phi(t)$, per ogni
+$t\in\mathopen{[}t_0,T+t_0\mathclose{]}$. Tuttavia, come già detto, non possiamo
+dare un'espressione analitica della funzione $\psi(\phi)$, però possiamo notare
+che $\psi$ è una funzione dispari di $\phi$. Finora ci siamo limitati a
+considerare gli intervalli $\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però
+il moto della particella relativa è periodico, quindi anche la funzione
+$\psi(\phi)$ è periodica, di periodo $2\pi$.  La funzione
+$\ltoder{\psi(\phi)}{\phi}$ è integrabile nell'intervallo $\mathopen{[}-\pi,
+\pi\mathclose{]}$ essendo continua, quindi è sviluppabile in serie di
+Fourier~\cite[440]{demarco:analisi2} in media quadratica in $\mathopen{[}-\pi,
+\pi\mathclose{]}$. Inoltre, poiché $\psi(\phi)$ è dispari,
+$\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello sviluppo compariranno solo il
+termine costante e quelli in coseno, cioè
+\begin{equation}
+  \toder{\psi}{\phi} = \frac{a_0}{2} + \sum_{n=1}^{+\infty}a_n\cos(n\phi),
+\end{equation}
+dove
+\begin{align}
+  a_0 &= \frac{1}{\pi}\int_{-\pi}^{\pi}\toder{\psi}{\phi}\dd\phi =
+  \frac{2}{\pi}\int_0^\pi\dd\psi = 2,\\
+  \begin{split}
+    a_n &= \frac{1}{\pi}\int_{-\pi}^\pi\toder{\psi}{\phi}\cos(n\phi)\dd\phi =
+    \frac{2}{\pi}\int_0^\pi\cos(n\psi - en\sin\psi)\dd\psi \\
+    &= 2J_n(ne),
+  \end{split}
+\end{align}
+avendo ricordato l'equazione di Keplero~\eqref{eq:keplero} e la rappresentazione
+integrale delle funzioni di Bessel~\eqref{eq:bessel-integrale}. Dunque
+\begin{equation}
+  \toder{\psi}{\phi} = 1 + \sum_{n=1}^{+\infty}2J_n(x)\cos(n\phi).
+\end{equation}
+Integriamo questa equazione con la condizione iniziale del periapside $\psi(0) =
+0$
+\begin{equation}
+  \psi = \phi + \sum_{n=1}^{+\infty}\frac{2J_n(ne)\sin(n\phi)}{n}.
+\end{equation}
+
+Un'altra quantità importante nelle applicazioni astrofisiche è il rapporto
+$r/a$. Dalla~\eqref{eq:keplero} abbiamo
+\begin{equation}
+  \toder{\phi}{\psi} = 1 -e\cos\psi,
+\end{equation}
+quindi per la proprietà della derivata della funzione inversa
+\begin{equation}
+  \toder{\psi}{\phi} =
+  \left(
+    \toder{\phi}{\psi}
+  \right)^{-1} = \frac{1}{1 - e\cos\psi}.
+\end{equation}
+Dalla~\eqref{eq:r-anomalia-eccentrica} abbiamo
+\begin{equation}
+  \toder{r}{\phi} = ae\sin\psi\toder{\psi}{\phi} = \frac{ae\sin\psi}{1-e\cos\psi}.
+\end{equation}
+La funzione $\ltoder{r}{\phi}$ è continua quindi integrabile in $\mathopen{[}-\pi,
+\pi\mathclose{]}$, dunque sviluppabile in serie di Fourier in media quadratica
+in questo intervallo. Inoltre è dispari rispetto a $\phi$ perché $\psi(\phi)$ è
+pari, quindi nello sviluppo compariranno solo i termini in seno, cioè
+\begin{equation}
+  \toder{r}{\phi} = \sum_{n=1}^{+\infty}b_n\sin(n\phi),
+\end{equation}
+dove
+\begin{equation}
+  \begin{split}
+    b_n &= \frac{1}{\pi}\int_{-\pi}^\pi \toder{r}{\phi}\sin(n\phi)\dd\phi =
+    \frac{2}{\pi}\int_0^\pi ae\sin\psi\toder{\psi}{\phi}\sin(n\phi)\dd\phi \\
+    &= \frac{2ae}{\pi}\int_0^\pi \sin\psi\sin(n\phi)\dd\psi = \frac{2ae}{\pi}
+    \int_0^\pi \sin\psi\sin(n\psi - ne\sin\psi)\dd\psi \\
+    &= 2ae\toder{J_n(ne)}{x},
+  \end{split}
+\end{equation}
+avendo ricordato nuovamente l'equazione di Keplero e la rappresentazione
+integrale delle derivate delle funzioni di
+Bessel~\eqref{eq:bessel-derivata-integrale}. Dunque abbiamo trovato
+\begin{equation}
+  \toder{r}{\phi} = \sum_{n=1}^{+\infty} 2ae\toder{J_n(ne)}{x}\sin(n\phi).
+\end{equation}
+Integriamo questa equazione differenziale con le condizioni iniziali al
+periapside $r(\phi=0) = a(1-e)$, $\psi(\phi=0)=0$
+\begin{equation}
+  r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} - 2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x}\cos(n\phi).
+\end{equation}
+Si dimostra che
+\begin{equation}
+  \sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} = \frac{1}{2} + \frac{e}{4},
+\end{equation}
+quindi
+\begin{equation}
+  \frac{r}{a} = 1 + \frac{e^2}{2} - 2ae \sum_{n=1}^{+\infty} \frac{1}{n}
+  \toder{J_n(ne)}{x} \cos(n\phi).
+\end{equation}
+La media di $r/a$ rispetto all'anomalia media $\phi$ vale allora
+\begin{equation}
+  \langle \frac{r}{a} \rangle_\phi = 1 + \frac{e^2}{2}.
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../tesi"
