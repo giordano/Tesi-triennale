@@ -1,14 +1,14 @@
 SHELL		= /bin/sh
-SORGENTE	= newton.c
-EXE		= newton
-DISTCLEAN_FILE	= $(EXE) newton.dat
+SORGENTE	= keplero.c
+EXE		= keplero
+DISTCLEAN_FILE	= $(EXE) *.dat
 
 .PHONY: exe distclean check-syntax
 
 exe: $(EXE)
 
 $(EXE): $(SORGENTE)
-	gcc -lm -Wall -pedantic -o $(EXE) $(SORGENTE)
+	gcc -lm -Wall -pedantic -lgsl -lgslcblas -o $(EXE) $(SORGENTE)
 
 distclean:
 	rm -f $(DISTCLEAN_FILE)

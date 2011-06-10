@@ -345,19 +345,19 @@ quindi per la terza legge di Keplero
 $GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
 \begin{figure}
   \centering
-  \input{newton/newton-anomalia_eccentrica}
+  \input{keplero/newton-anomalia_eccentrica}
   \caption{Anomalia eccentrica in funzione del tempo}
   \label{fig:newton-anomalia_eccentrica}
 \end{figure}
 \begin{figure}
   \centering
-  \input{newton/newton-raggio}
+  \input{keplero/newton-raggio}
   \caption{Distanza dal fuoco in funzione del tempo}
   \label{fig:newton-raggio}
 \end{figure}
 \begin{figure}
   \centering
-  \input{newton/newton-anomalia_vera}
+  \input{keplero/newton-anomalia_vera}
   \caption{Anomalia vera in funzione del tempo}
   \label{fig:newton-anomalia_vera}
 \end{figure}
@@ -526,7 +526,8 @@ Bessel~\eqref{eq:bessel-derivata-integrale}. Dunque abbiamo trovato
 Integriamo questa equazione differenziale con le condizioni iniziali al
 periapside $r(\phi=0) = a(1-e)$, $\psi(\phi=0)=0$
 \begin{equation}
-  r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} - 2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x}\cos(n\phi).
+  r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} -
+  2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x}\cos(n\phi).
 \end{equation}
 Si dimostra che
 \begin{equation}
@@ -534,7 +535,7 @@ Si dimostra che
 \end{equation}
 quindi
 \begin{equation}
-  \frac{r}{a} = 1 + \frac{e^2}{2} - 2ae \sum_{n=1}^{+\infty} \frac{1}{n}
+  \frac{r}{a} = 1 + \frac{e^2}{2} - 2e \sum_{n=1}^{+\infty} \frac{1}{n}
   \toder{J_n(ne)}{x} \cos(n\phi).
 \end{equation}
 La media di $r/a$ rispetto all'anomalia media $\phi$ vale allora

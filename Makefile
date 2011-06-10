@@ -13,27 +13,23 @@ IMMAGINI_GNUPLOT	= $(wildcard Immagini/gnuplot/*.gnuplot)
 IMMAGINI_GNUPLOT_PDF	= $(patsubst %.gnuplot,%.pdf,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_EPS	= $(patsubst %.gnuplot,%.eps,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_TEX	= $(patsubst %.gnuplot,%.tex,$(IMMAGINI_GNUPLOT))
-NEWTON			= newton
-IMMAGINI_NEWTON_PDF	= $(NEWTON)/newton-anomalia_eccentrica.pdf \
-			  $(NEWTON)/newton-raggio.pdf \
-			  $(NEWTON)/newton-anomalia_vera.pdf
-IMMAGINI_NEWTON_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_NEWTON_PDF))
-IMMAGINI_NEWTON_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_NEWTON_PDF))
+KEPLERO			= keplero
+IMMAGINI_KEPLERO_PDF	= $(KEPLERO)/newton-anomalia_eccentrica.pdf \
+	$(KEPLERO)/newton-raggio.pdf $(KEPLERO)/newton-anomalia_vera.pdf
+IMMAGINI_KEPLERO_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_KEPLERO_PDF))
+IMMAGINI_KEPLERO_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_KEPLERO_PDF))
 TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
-TUTTI_FILE		= $(NEWTON)/immagini-newton $(NEWTON)/newton.c\
-			  $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF)\
-			  $(FRONTESPIZIO_PDF)
+TUTTI_FILE		= $(KEPLERO)/immagini-keplero $(KEPLERO)/keplero.c\
+	$(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) $(FRONTESPIZIO_PDF)
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
-			  *.log *.out *.run.xml *.toc *~ \
-			  $(wildcard Capitoli/*.aux) $(wildcard Capitoli/*~) \
-			  $(IMMAGINI_GNUPLOT_EPS) $(wildcard Immagini/gnuplot/*~) \
-			  $(wildcard $(NEWTON)/*~) \
-			  $(wildcard $(NEWTON)/*.eps)
+	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*.aux) \
+	$(wildcard Capitoli/*~) $(IMMAGINI_GNUPLOT_EPS) \
+	$(wildcard Immagini/gnuplot/*~) $(wildcard $(KEPLERO)/*~) \
+	$(wildcard $(KEPLERO)/*.eps)
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
-			  $(IMMAGINI_GNUPLOT_TEX) $(FRONTESPIZIO_FRN) \
-			  $(FRONTESPIZIO_PDF) $(NEWTON)/newton.dat \
-			  $(NEWTON)/immagini-newton \
-			  $(IMMAGINI_NEWTON_PDF) $(IMMAGINI_NEWTON_TEX)
+	$(IMMAGINI_GNUPLOT_TEX) $(FRONTESPIZIO_FRN) $(FRONTESPIZIO_PDF) \
+	$(KEPLERO)/newton.dat $(KEPLERO)/immagini-keplero $(IMMAGINI_KEPLERO_PDF) \
+	$(IMMAGINI_KEPLERO_TEX)
 
 ##### Regole
 
@@ -61,20 +57,20 @@ Immagini/gnuplot/%.tex: Immagini/gnuplot/%.gnuplot
 Immagini/gnuplot/%.pdf: Immagini/gnuplot/%.eps
 	epstopdf $<
 
-## Immagini da produrre nella cartella newton/
-$(NEWTON)/immagini-newton: $(NEWTON)/newton.dat $(NEWTON)/newton.gnuplot
-	gnuplot $(NEWTON)/newton.gnuplot
-	for file in $(IMMAGINI_NEWTON_EPS); do \
+## Immagini da produrre nella cartella keplero/
+$(KEPLERO)/immagini-keplero: $(KEPLERO)/newton.dat $(KEPLERO)/keplero.gnuplot
+	gnuplot $(KEPLERO)/keplero.gnuplot
+	for file in $(IMMAGINI_KEPLERO_EPS); do \
 		epstopdf $${file}; \
 	done
-	rm -f $(IMMAGINI_NEWTON_EPS)
-	touch $(NEWTON)/immagini-newton
+	rm -f $(IMMAGINI_KEPLERO_EPS)
+	touch $(KEPLERO)/immagini-keplero
 
-$(NEWTON)/newton.dat: $(NEWTON)/newton
-	cd $(NEWTON) && ./newton
+$(KEPLERO)/newton.dat: $(KEPLERO)/keplero
+	cd $(KEPLERO) && ./keplero
 
-$(NEWTON)/newton: $(NEWTON)/newton.c
-	@cd $(NEWTON) && make exe
+$(KEPLERO)/keplero: $(KEPLERO)/keplero.c
+	@cd $(KEPLERO) && make exe
 ### Fine delle regole per le immagini
 
 # Per fare pulizia dei file temporanei generati:
