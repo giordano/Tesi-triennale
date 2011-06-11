@@ -381,13 +381,29 @@ possono essere classificate nel seguente modo:
 \end{itemize}
 \begin{figure}
   \centering
-  \input{Immagini/gnuplot/ellisse}
+  \begin{tikzpicture}[font=\scriptsize,scale=5]
+    % a=1, e=0.8, b=a*sqrt(1-e^2)=0.6, c=a*e=0.8, p=a*(1-e^2)=0.36
+    \draw [->] (-1.1,0) -- (1.1,0) node[right] {$x\equiv x'$}; %assi x e x'
+    \draw [->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
+    \draw [->] (0.8,-0.7) -- (0.8,0.7) node[above] {$y$}; %asse y
+    \draw (0,0) ellipse (1 and 0.6); %ellisse 1
+    \draw (0,0) node[below left] {$O'$};
+    \draw (0.8,0) node[below left] {$O\equiv M_{\textup{T}}$};
+    \draw [->] (0.9,0) arc (0:45:0.1) node[right] {$\theta -
+      \theta_0$};
+    \draw [->] (0.8,0) -- node[above] {$r$} (0.962586,0.162586);
+    \draw (0,0) -- node[below] {$a$} (-1,0); %TODO: sistemare
+    \draw (0,0) -- node[above] {$c$} (0.8,0); %TODO: sistemare
+    \draw (0,0) -- node[left] {$b$} (0,0.6); %TODO: sistemare
+    \draw (0.8,0) -- node[left] {$p$} (0.8,0.36); %TODO: sistemare
+    \draw (0.8,0) -- node[below] {$a-c$} (1,0); %TODO: sistemare
+  \end{tikzpicture}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
     del sistema di riferimento $xOy$ è la posizione di $M_\textup{T}$ e coincide
     con uno dei fuochi dell'ellisse, $a$ è il semiasse maggiore, $b$ è il
     semiasse minore, $p$ è il semilato retto, $c$ è l'eccentricità lineare. Il
     sistema di riferimento $x'O'y'$ ha origine nel centro dell'ellisse. Nel
-    grafico abbiamo posto $a=1$ ed $e=0.7$}
+    grafico abbiamo posto $a=1$ ed $e=0.8$}
   \label{fig:ellisse}
 \end{figure}
 
