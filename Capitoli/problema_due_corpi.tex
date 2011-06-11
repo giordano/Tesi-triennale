@@ -425,6 +425,28 @@ abbiamo che l'apoapside viene raggiunto nell'istante $t_0 + T/2$. Infatti il
 vettore posizione, partendo dal periapside, all'apoapside avrà spazzato metà
 della superficie totale dell'ellisse, impiegando dunque metà del periodo totale
 di rivoluzione.
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[font=\footnotesize,scale=2]
+    % Semiasse delle tre ellissi: a=1.
+    % e_1=0.2 --> b_1=a*sqrt(1-e_1^2)=0.979796, c_1=a*e_1=0.2.
+    % e_2=0.5 --> b_2=a*sqrt(1-e_2^2)=0.866025, c_2=a*e_2=0.5.
+    % e_3=0.9 --> b_3=a*sqrt(1-e_3^2)=0.435890, c_3=a*e_3=0.9.
+    % Fisso il fuoco nell'origine, quindi i centri si trovano in (-c_i,0).
+    \draw [->] (-2,0) -- (1.1,0) node[right] {$x$}; %asse x
+    \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
+    \draw (-0.2,0) ellipse (1 and 0.979796); %ellisse 1
+    \draw (0.8,0.8) node {$e=0.2$};
+    \draw (-0.5,0) ellipse (1 and 0.866025); %ellisse 2
+    \draw (-1.2,0.7) node[left] {$e=0.5$};
+    \draw (-0.9,0) ellipse (1 and 0.435890); %ellisse 3
+    \draw (-1.8,0.2) node[left] {$e=0.9$};
+  \end{tikzpicture}
+  \caption[Ellissi con diversi valori di eccentricità]{Ellissi con fuoco comune
+    nell'origine del sistema di riferimento, stesso semiasse maggiore $a=1$ ed
+    eccentricità differenti}
+  \label{fig:ellissi-eccentricita}
+\end{figure}
 
 Per la parabola sussistono le seguenti relazioni:
 \begin{align}
