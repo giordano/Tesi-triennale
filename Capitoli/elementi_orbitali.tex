@@ -258,8 +258,8 @@ aggiungere $\pi$ al valore dell'arcotangente se $\psi > \pi$, cioè
 \label{sec:soluzioni}
 
 L'equazione di Keplero~\eqref{eq:keplero} è trascendente nell'incognita $\psi$
-per via del termine $\sin\psi$, e non ammette soluzione analitica, ma possono
-essere utilizzati diversi metodi numerici per risolverla.
+per via del termine $\sin\psi$, e non ammette soluzione analitica elementare, ma
+possono essere utilizzati diversi metodi numerici per risolverla.
 
 \subsection{Metodo di Newton~-~Raphson}
 \label{sec:newton}
@@ -375,25 +375,25 @@ $GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
 
 Per risolvere l'equazione di Keplero utilizzeremo in questo paragrafo le
 \emph{funzioni di Bessel di ordine intero}, o \emph{funzioni
-  cilindriche}~\cites[355]{abramowitz:handbook}[355]{whittaker:modern-analysis},
-che ora introdurremo.
+  cilindriche}~\cites{abramowitz:handbook}{watson:bessel}%
+{whittaker:modern-analysis}, che ora introdurremo.
 
 La funzione $f(x,z)\colon\C\times\C\to\C$ definita da
 \begin{equation}
   f(x,z) = \e^{(x/2)(z - 1/z)}
 \end{equation}
 è olomorfa in $\C\setminus 0$ rispetto alla variabile $z$, quindi può essere
-espansa in serie di Laurent di potenze di $z$
+espansa in serie di Laurent di potenze di $z$ intorno a $z=0$
 \begin{equation}
-  f(x,z) = \sum_{n = -\infty}^{+\infty} c_n(x) z^n,
+  f(x,z) = \sum_{n = -\infty}^{+\infty} c_n(x) z^n.
 \end{equation}
-dove, per il teorema di Laurent, i coefficienti $c_n(x)$, che indicheremo d'ora
-in poi con $J_n(x)$, sono dati da
+Per il teorema di Laurent, i coefficienti $c_n(x)$, che indicheremo d'ora in poi
+con $J_n(x)$, sono dati da
 \begin{equation}
   J_n(x) = \frac{1}{2\pi\uimm}\int_\gamma \frac{\e^{(x/2)(z-1/z)}}{z^{n+1}}\dd z,
   \quad n\in\Z,
 \end{equation}
-dove $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra che
+in cui $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra che
 \begin{equation}
   J_n (x) = \sum_{m = 0}^{+\infty}\frac{(-1)^m(x/2)^{n+2m}}{m!(n+m)!}, \quad
   \text{se $n\geq 0$}.
@@ -415,13 +415,16 @@ da cui ricaviamo la formula
 \end{equation}
 La funzione $J_n(x)$ è chiamata \emph{funzione di Bessel di argomento $x$ e
   ordine $n$}, mentre la funzione $f(x,z)$ è la \emph{funzione generatrice della
-  funzione di Bessel}. Si dimostrano inoltre le seguenti proprietà
+  funzione di Bessel}. Si dimostrano inoltre le seguenti formule ricorsive
 \begin{subequations}
   \begin{gather}
     \frac{2n}{x} J_n(x) = J_{n-1}(x) + J_{n+1}(x),\\
-    \toder{J_n(x)}{x} = \frac{J_{n-1}(x) - J_{n+1}(x)}{2},\\
-    \toder[2]{J_n(x)}{x} = \frac{n^2}{x}J_n(x) - J_n(x) -
-    \frac{1}{x}\toder{J_n(x)}{x}.
+    \toder{J_n(x)}{x} = \frac{J_{n-1}(x) - J_{n+1}(x)}{2} = \frac{n}{x}J_n(x) -
+    J_{n+1} = J_{n-1} - \frac{n}{z}J_n,\\
+    \toder[2]{J_n(x)}{x} = \frac{n^2}{x^2}J_n(x) - J_n(x) -
+    \frac{1}{x}\toder{J_n(x)}{x},\\
+    \toder{}{x}(x^nJ_n(x)) = x^nJ_{n-1}(x),\\
+    \toder{}{x}(x^{-n}J_n(x)) = -xJ_{n+1}(x).
   \end{gather}
 \end{subequations}
 Si può verificare per sostituzione che la funzione $J_n(x)$, insieme alle sue
@@ -457,7 +460,7 @@ $\forall\psi\in\mathopen{[}0, 2\pi\mathclose{]}$ e $G_\psi\in C^1(\mathopen{[}0,
 Dini~\cite[267]{demarco:analisi2} esiste un'unica funzione di classe $C^1$ che
 esplicita $\psi(t)$ rispetto a $\phi(t)$, per ogni
 $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$. Tuttavia, come già detto, non possiamo
-dare un'espressione analitica della funzione $\psi(\phi)$, però possiamo notare
+dare un'espressione elementare della funzione $\psi(\phi)$, però possiamo notare
 che $\psi$ è una funzione dispari di $\phi$. Finora ci siamo limitati a
 considerare gli intervalli $\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però
 il moto della particella relativa è periodico, quindi anche la funzione
@@ -537,7 +540,7 @@ periapside $r(\phi=0) = a(1-e)$, $\psi(\phi=0)=0$
   r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} -
   2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x}\cos(n\phi).
 \end{equation}
-Si dimostra che
+Si dimostra che~\cite[555]{watson:bessel}
 \begin{equation}
   \sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} = \frac{1}{2} + \frac{e}{4},
 \end{equation}

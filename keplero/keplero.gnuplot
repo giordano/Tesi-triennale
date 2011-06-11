@@ -11,12 +11,10 @@ set key bottom center # posizione legenda
 set ylabel "$r$ (\\SI{e6}{\\kilo\\metre})" # etichetta asse y
 set format y "$%g$" # formato dei tic dell'asse y
 
-# imposta il file di output
 set output 'keplero/newton-raggio.tex'
 plot 'keplero/newton.dat' using 1:3 title "$e=0$",\
      'keplero/newton.dat' using 1:6 title "$e=0.5$",\
      'keplero/newton.dat' using 1:9 title "$e=0.8$"
-# imposta il file di output
 set output 'keplero/bessel-raggio.tex'
 plot 'keplero/bessel.dat' using 1:3 title "$e=0$",\
      'keplero/bessel.dat' using 1:6 title "$e=0.5$",\
@@ -31,12 +29,10 @@ set ytics ("$0$" 0, "$\\pi/4$" pi/4, "$\\pi/2$" pi/2, \
 
 # etichetta asse y per i due grafici successivi
 set ylabel "$\\psi$"
-# imposta il file di output
 set output 'keplero/newton-anomalia_eccentrica.tex'
 plot 'keplero/newton.dat' using 1:2 title "$e=0$",\
      'keplero/newton.dat' using 1:5 title "$e=0.5$",\
      'keplero/newton.dat' using 1:8 title "$e=0.8$"
-# imposta il file di output
 set output 'keplero/bessel-anomalia_eccentrica.tex'
 plot 'keplero/bessel.dat' using 1:2 title "$e=0$",\
      'keplero/bessel.dat' using 1:5 title "$e=0.5$",\
@@ -44,12 +40,10 @@ plot 'keplero/bessel.dat' using 1:2 title "$e=0$",\
 
 # etichetta asse y per i due grafici successivi
 set ylabel "$\\chi$"
-# imposta il file di output
 set output 'keplero/newton-anomalia_vera.tex'
 plot 'keplero/newton.dat' using 1:4 title "$e=0$",\
      'keplero/newton.dat' using 1:7 title "$e=0.5$",\
      'keplero/newton.dat' using 1:10 title "$e=0.8$"
-# imposta il file di output
 set output 'keplero/bessel-anomalia_vera.tex'
 plot 'keplero/bessel.dat' using 1:4 title "$e=0$",\
      'keplero/bessel.dat' using 1:7 title "$e=0.5$",\

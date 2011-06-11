@@ -3,7 +3,7 @@
  * dell'equazione di Keplero con il metodo di Newton-Raphson
  * e con quello delle funzioni di Bessel.
  * Dati di input: semiasse maggiore, eccentricità e periodo
- * delle orbite, velocità angolare media.
+ * delle orbite.
  * Output: due file con i risultati ottenuti con i due metodi
  * differenti. I file sono così organizzati: sono suddiviso in
  * dieci colonne, nella prima c'è il tempo t, nelle nove
