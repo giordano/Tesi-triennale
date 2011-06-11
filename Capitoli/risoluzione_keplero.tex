@@ -2,16 +2,33 @@
 \label{cha:soluzione-keplero}
 
 Di seguito è riportato il codice sorgente del programma usato per risolvere
-l'equazione di Keplero con il metodo numerico di Newton~-~Raphson.
+l'equazione di Keplero con i metodi numeric di Newton~-~Raphson e delle funzioni
+di Bessel, illustrati nel paragrafo~\ref{sec:soluzioni}. Per calcolare le
+funzioni di Bessel ho utilizzato la GNU Scientifc Library.\footnote{La GNU
+  Scientifc Library è software libero e il codice sorgente può essere scaricato
+  e consultato da Internet
+  all'indirizzo~\url{http://www.gnu.org/software/gsl/}.} Per compilare il
+programma in ambiente GNU/Linux ho usato il seguente comando da terminale
+\begin{verbatim}
+gcc -lm -Wall -pedantic -lgsl -lgslcblas -o keplero keplero.c
+\end{verbatim}
+L'esecuzione del programma genera due file di testo, \verb|bessel.dat| e
+\verb|newton.dat|, contenenti i risultati delle simulazioni effettuate con i due
+diversi metodi.
 % TODO: ho commentato l'inserimento del codice per accelerare i tempi di
 % compilazione del documento, ricordarsi di decommentare nella versione finale!
 % \lstinputlisting[language=C,%
 % numbers=left,numberstyle=\tiny]{keplero/keplero.c}
 
 Qui riportiamo inoltre il codice dello script \verb|gnuplot| utilizzato per
-ottenere le figure~\ref{fig:newton-anomalia_eccentrica},
-\ref{fig:newton-raggio} e~\ref{fig:newton-anomalia_vera} a partire dal file di
-output generato dall'esecuzione del programma.
+ottenere le figure del paragrafo~\ref{sec:soluzioni} a partire dai file di
+output generati dall'esecuzione del programma. Per generare i grafici ho
+utilizzato il seguente comando da terminale
+\begin{verbatim}
+gnuplot keplero/keplero.gnuplot
+\end{verbatim}
+che ho eseguito nella cartella superiore rispetto a quella in cui si trova lo
+script \verb|keplero.gnuplot|.
 \lstinputlisting[language=gnuplot,
 numbers=left,numberstyle=\tiny]{keplero/keplero.gnuplot}
 

@@ -23,7 +23,7 @@ keplero/*.dat
 keplero/*.eps
 keplero/*.pdf
 keplero/*.tex
-keplero/immagini-keplero
+keplero/keplero-*
 keplero/nul
 keplero/bessj.c
 keplero/bessj0.c

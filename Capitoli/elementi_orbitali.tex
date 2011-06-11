@@ -346,19 +346,27 @@ $GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
 \begin{figure}
   \centering
   \input{keplero/newton-anomalia_eccentrica}
-  \caption{Anomalia eccentrica in funzione del tempo}
+  \caption[Anomalia eccentrica in funzione del tempo con il metodo di
+  Newton~-~Raphson]{Anomalia eccentrica in funzione del tempo calcolata
+    utilizzando il metodo di Newton~-~Raphson}
   \label{fig:newton-anomalia_eccentrica}
 \end{figure}
 \begin{figure}
   \centering
   \input{keplero/newton-raggio}
-  \caption{Distanza dal fuoco in funzione del tempo}
+  \caption[Distanza dal fuoco in funzione del tempo con il metodo di
+  Newton~-~Raphson]{Distanza dal fuoco in funzione del tempo calcolata con
+    la~\eqref{eq:r-anomalia-eccentrica} dopo aver trovato l'anomalia eccentrica
+    con il metodo di Newton~-~Raphson}
   \label{fig:newton-raggio}
 \end{figure}
 \begin{figure}
   \centering
   \input{keplero/newton-anomalia_vera}
-  \caption{Anomalia vera in funzione del tempo}
+  \caption[Anomalia vera in funzione del tempo con il metodo di
+  Newton~-~Raphson]{Anomalia vera in funzione del tempo calcolata con
+    la~\eqref{eq:anoamlie-vera-eccentrica} dopo aver trovato l'anomalia
+    eccentrica con il metodo di Newton~-~Raphson}
   \label{fig:newton-anomalia_vera}
 \end{figure}
 
@@ -379,8 +387,8 @@ espansa in serie di Laurent di potenze di $z$
 \begin{equation}
   f(x,z) = \sum_{n = -\infty}^{+\infty} c_n(x) z^n,
 \end{equation}
-dove, per il teorema di Laurent, i coefficienti $c_n$, che indicheremo d'ora in
-poi con $J_n(x)$, sono dati da
+dove, per il teorema di Laurent, i coefficienti $c_n(x)$, che indicheremo d'ora
+in poi con $J_n(x)$, sono dati da
 \begin{equation}
   J_n(x) = \frac{1}{2\pi\uimm}\int_\gamma \frac{\e^{(x/2)(z-1/z)}}{z^{n+1}}\dd z,
   \quad n\in\Z,
@@ -535,13 +543,49 @@ Si dimostra che
 \end{equation}
 quindi
 \begin{equation}
+  \label{eq:r-su-a-bessel}
   \frac{r}{a} = 1 + \frac{e^2}{2} - 2e \sum_{n=1}^{+\infty} \frac{1}{n}
   \toder{J_n(ne)}{x} \cos(n\phi).
 \end{equation}
 La media di $r/a$ rispetto all'anomalia media $\phi$ vale allora
 \begin{equation}
-  \langle \frac{r}{a} \rangle_\phi = 1 + \frac{e^2}{2}.
+  \left\langle \frac{r}{a} \right\rangle_\phi = 1 + \frac{e^2}{2}.
 \end{equation}
+
+Nello stesso programma riportato nell'appendice~\ref{cha:soluzione-keplero} ho
+calcolato con il metodo delle funzioni di Bessel le stesse grandezze calcolate
+con il metodo di Newton~-~Raphson, ovvero anomalia eccentrica, distanza dal
+fuoco e anomalia vera in funzione del tempo. I grafici ottenuti con questa
+simulazione sono riportati nelle figure~\ref{fig:bessel-anomalia_eccentrica},
+\ref{fig:bessel-raggio} e~\ref{fig:bessel-anomalia_vera}. I valori delle
+grandezze in input, cioè semiasse maggiore, eccentricità e periodo, sono gli
+stessi elencati nel paragrafo~\ref{sec:newton}.
+
+\begin{figure}
+  \centering
+  \input{keplero/bessel-anomalia_eccentrica}
+  \caption[Anomalia eccentrica in funzione del tempo con il metodo delle
+  funzioni di Bessel]{Anomalia eccentrica in funzione del tempo calcolata
+    utilizzando il metodo delle funzioni di Bessel}
+  \label{fig:bessel-anomalia_eccentrica}
+\end{figure}
+\begin{figure}
+  \centering
+  \input{keplero/bessel-raggio}
+  \caption[Distanza dal fuoco in funzione del tempo con il metodo delle funzioni
+  di Bessel]{Distanza dal fuoco in funzione del tempo calcolata con
+    la~\eqref{eq:r-su-a-bessel}}
+  \label{fig:bessel-raggio}
+\end{figure}
+\begin{figure}
+  \centering
+  \input{keplero/bessel-anomalia_vera}
+  \caption[Anomalia vera in funzione del tempo con il metodo delle funzioni di
+  Bessel]{Anomalia vera in funzione del tempo calcolata con
+    la~\eqref{eq:anoamlie-vera-eccentrica} dopo aver trovato l'anomalia
+    eccentrica con il metodo delle funzioni di Bessel}
+  \label{fig:bessel-anomalia_vera}
+\end{figure}
 
 %%% Local Variables:
 %%% mode: latex

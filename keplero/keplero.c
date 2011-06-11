@@ -9,8 +9,8 @@
  * dieci colonne, nella prima c'è il tempo t, nelle nove
  * successive ci sono i valori delle anomalie eccentriche,
  * distanze dal fuoco e anomalie vere al tempo t per i tre
- * differenti valori dell'eccentricità. Il file può essere letto
- * da un programma per la realizzazione di grafici.
+ * differenti valori dell'eccentricità. I file possono essere
+ * letti da un programma per la realizzazione di grafici.
  * Autore: Mosè Giordano
  * Data: 11/06/2011
  */

@@ -14,13 +14,17 @@ IMMAGINI_GNUPLOT_PDF	= $(patsubst %.gnuplot,%.pdf,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_EPS	= $(patsubst %.gnuplot,%.eps,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_TEX	= $(patsubst %.gnuplot,%.tex,$(IMMAGINI_GNUPLOT))
 KEPLERO			= keplero
+KEPLERO_DAT		= $(KEPLERO)/newton.dat $(KEPLERO)/bessel.dat
 IMMAGINI_KEPLERO_PDF	= $(KEPLERO)/newton-anomalia_eccentrica.pdf \
-	$(KEPLERO)/newton-raggio.pdf $(KEPLERO)/newton-anomalia_vera.pdf
+	$(KEPLERO)/newton-raggio.pdf $(KEPLERO)/newton-anomalia_vera.pdf \
+	$(KEPLERO)/bessel-anomalia_eccentrica.pdf $(KEPLERO)/bessel-raggio.pdf \
+	$(KEPLERO)/bessel-anomalia_vera.pdf
 IMMAGINI_KEPLERO_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_KEPLERO_PDF))
 IMMAGINI_KEPLERO_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_KEPLERO_PDF))
 TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
-TUTTI_FILE		= $(KEPLERO)/immagini-keplero $(KEPLERO)/keplero.c\
-	$(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) $(FRONTESPIZIO_PDF)
+TUTTI_FILE		= $(KEPLERO)/keplero-immagini $(KEPLERO)/keplero-dat \
+	$(KEPLERO)/keplero.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
+	$(FRONTESPIZIO_PDF)
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
 	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*.aux) \
 	$(wildcard Capitoli/*~) $(IMMAGINI_GNUPLOT_EPS) \
@@ -28,8 +32,8 @@ CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
 	$(wildcard $(KEPLERO)/*.eps)
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
 	$(IMMAGINI_GNUPLOT_TEX) $(FRONTESPIZIO_FRN) $(FRONTESPIZIO_PDF) \
-	$(KEPLERO)/newton.dat $(KEPLERO)/immagini-keplero $(IMMAGINI_KEPLERO_PDF) \
-	$(IMMAGINI_KEPLERO_TEX)
+	$(KEPLERO_DAT) $(KEPLERO)/keplero-immagini $(KEPLERO)/keplero-dat \
+	$(IMMAGINI_KEPLERO_PDF) $(IMMAGINI_KEPLERO_TEX)
 
 ##### Regole
 
@@ -58,16 +62,17 @@ Immagini/gnuplot/%.pdf: Immagini/gnuplot/%.eps
 	epstopdf $<
 
 ## Immagini da produrre nella cartella keplero/
-$(KEPLERO)/immagini-keplero: $(KEPLERO)/newton.dat $(KEPLERO)/keplero.gnuplot
+$(KEPLERO)/keplero-immagini: $(KEPLERO)/keplero-dat $(KEPLERO)/keplero.gnuplot
 	gnuplot $(KEPLERO)/keplero.gnuplot
 	for file in $(IMMAGINI_KEPLERO_EPS); do \
 		epstopdf $${file}; \
 	done
 	rm -f $(IMMAGINI_KEPLERO_EPS)
-	touch $(KEPLERO)/immagini-keplero
+	touch $(KEPLERO)/keplero-immagini
 
-$(KEPLERO)/newton.dat: $(KEPLERO)/keplero
+$(KEPLERO)/keplero-dat: $(KEPLERO)/keplero
 	cd $(KEPLERO) && ./keplero
+	touch $(KEPLERO)/keplero-dat
 
 $(KEPLERO)/keplero: $(KEPLERO)/keplero.c
 	@cd $(KEPLERO) && make exe
@@ -81,7 +86,7 @@ clean:
 # sorgente:
 distclean: clean
 	rm -f $(DISTCLEAN_FILE)
-	@cd $(NEWTON) && make distclean
+	@cd $(KEPLERO) && make distclean
 
 # Per creare un archivio compresso contenente il sorgente e il repository di git:
 dist: $(TUTTI_TEX) $(BIBLIOGRAFIA) distclean
