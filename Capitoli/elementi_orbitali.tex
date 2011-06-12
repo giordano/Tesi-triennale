@@ -266,8 +266,8 @@ possono essere utilizzati diversi metodi numerici per risolverla.
 
 Il primo metodo che utilizzeremo per determinare il valore dell'anomalia
 eccentrica $\psi$ in corrispondenza di un fissato istante di tempo $t$ è quello
-di Newton~-~Raphson (si veda \textcite[30]{brugnano:calcolo-numerico}), chiamato
-anche \emph{metodo delle tangenti}, descritto nel seguente
+di Newton~-~Raphson (\textcite[30]{brugnano:calcolo-numerico}), chiamato anche
+\emph{metodo delle tangenti}, descritto nel seguente
 \begin{teorema}[di Newton~-~Raphson]
   Sia $f\in C^2(\mathopen{[}a,b\mathclose{]})$, con
   $\mathopen{[}a,b\mathclose{]}\subset\R$. Se
@@ -370,7 +370,7 @@ $GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
   \label{fig:newton-anomalia_vera}
 \end{figure}
 
-\subsection{Funzioni di Bessel}
+\subsection{Coefficienti di Bessel}
 \label{sec:bessel}
 
 Per risolvere l'equazione di Keplero utilizzeremo in questo paragrafo le
@@ -383,7 +383,8 @@ La funzione $f(x,z)\colon\C\times\C\to\C$ definita da
   f(x,z) = \e^{(x/2)(z - 1/z)}
 \end{equation}
 è olomorfa in $\C\setminus 0$ rispetto alla variabile $z$, quindi può essere
-espansa in serie di Laurent di potenze di $z$ intorno a $z=0$
+espansa in serie di Laurent (\textcite[673]{demarco:analisi2}) di potenze di $z$
+intorno a $z=0$
 \begin{equation}
   f(x,z) = \sum_{n = -\infty}^{+\infty} c_n(x) z^n.
 \end{equation}
@@ -393,14 +394,13 @@ con $J_n(x)$, sono dati da
   J_n(x) = \frac{1}{2\pi\uimm}\int_\gamma \frac{\e^{(x/2)(z-1/z)}}{z^{n+1}}\dd z,
   \quad n\in\Z,
 \end{equation}
-in cui $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra
-che (si veda \textcite[355]{whittaker:modern-analysis})
+in cui $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra che se
+$n$ è un intero non negativo si ha (\textcite[355]{whittaker:modern-analysis})
 \begin{equation}
-  J_n (x) = \sum_{m = 0}^{+\infty}\frac{(-1)^m(x/2)^{n+2m}}{m!(n+m)!}, \quad
-  \text{se $n\geq 0$}.
+  J_n (x) = \sum_{m = 0}^{+\infty}\frac{(-1)^m(x/2)^{n+2m}}{m!(n+m)!}.
 \end{equation}
-Per ottenere l'espressione di $J_n(x)$ con $n < 0$ osserviamo che $f(x,z) =
-f(x,-1/z)$, quindi, espandendo in serie di Laurent,
+Per ottenere l'espressione di $J_n(x)$ con $n$ intero negativo osserviamo che
+$f(x,z) = f(x,-1/z)$, quindi, espandendo in serie di Laurent,
 \begin{equation}
   \begin{split}
     f(x,-1/z) &= \sum_{n = -\infty}^{+\infty}J_n(x)
@@ -414,32 +414,32 @@ da cui ricaviamo la formula
 \begin{equation}
   J_{-n}(x) = (-1)^nJ_n(x).
 \end{equation}
-La funzione $J_n(x)$ è chiamata \emph{funzione di Bessel di argomento $x$ e
-  ordine $n$}, mentre la funzione $f(x,z)$ è la \emph{funzione generatrice della
-  funzione di Bessel}. Si dimostrano inoltre le seguenti formule ricorsive (si
-vedano \textcites[17]{watson:bessel}[359]{whittaker:modern-analysis})
+La funzione $J_n(x)$ è chiamata \emph{coefficiente di Bessel di argomento $x$ e
+  ordine $n$}, mentre la funzione $f(x,z)$ è la \emph{funzione generatrice del
+  coefficiente di Bessel}. Si dimostrano inoltre le seguenti formule ricorsive
+(\textcites[17]{watson:bessel}[359]{whittaker:modern-analysis})
 \begin{subequations}
   \begin{gather}
     \frac{2n}{x} J_n(x) = J_{n-1}(x) + J_{n+1}(x),\\
-    \toder{J_n(x)}{x} = \frac{J_{n-1}(x) - J_{n+1}(x)}{2} = \frac{n}{x}J_n(x) -
-    J_{n+1} = J_{n-1} - \frac{n}{z}J_n,\\
-    \toder[2]{J_n(x)}{x} = \frac{n^2}{x^2}J_n(x) - J_n(x) -
-    \frac{1}{x}\toder{J_n(x)}{x},\\
+    J_n'(x) = \frac{J_{n-1}(x) - J_{n+1}(x)}{2} = \frac{n}{x}J_n(x) - J_{n+1} =
+    J_{n-1} - \frac{n}{z}J_n,\\
+    J_n''(x) = \frac{n^2}{x^2}J_n(x) - J_n(x) - \frac{1}{x}J_n'(x),\\
     \toder{}{x}(x^nJ_n(x)) = x^nJ_{n-1}(x),\\
     \toder{}{x}(x^{-n}J_n(x)) = -xJ_{n+1}(x).
   \end{gather}
 \end{subequations}
-Si può verificare grazie relazioni appena riportate che la funzione $J_n(x)$
-soddisfa la seguente equazione differenziale nell'incognita $y(x)$
+Si può verificare, grazie alle relazioni appena riportate, che la funzione
+$J_n(x)$ soddisfa la seguente equazione differenziale nell'incognita $y(x)$
 \begin{equation}
   \toder[2]{y}{x} + \frac{1}{x}\toder{y}{x} +
   \left(
     1 - \frac{n^2}{x^2}
   \right)y = 0.
 \end{equation}
-Questa equazione è chiamata \emph{equazione differenziale di Bessel di ordine
-  $n$}. Si può dare la seguente \emph{rappresentazione integrale delle funzioni
-  di Bessel}
+Questa è l'\emph{equazione differenziale di Bessel per funzioni di ordine
+  $n$}. Si può dare la seguente \emph{rappresentazione integrale dei
+  coefficienti di Bessel}
+(\textcites[20]{watson:bessel}[362]{whittaker:modern-analysis})
 \begin{equation}
   \label{eq:bessel-integrale}
   J_n(x) = \frac{1}{\pi} \int_0^\pi\cos(n\theta - x\sin\theta)\dd\theta,
@@ -447,8 +447,8 @@ Questa equazione è chiamata \emph{equazione differenziale di Bessel di ordine
 quindi, derivando sotto il segno di integrale, abbiamo anche
 \begin{equation}
   \label{eq:bessel-derivata-integrale}
-  \toder{J_n(x)}{x} = \frac{1}{\pi}\int_0^\pi\sin(n\theta -
-  x\sin\theta)\sin\theta\dd\theta.
+  J_n'(x) = \frac{1}{\pi}\int_0^\pi\sin(n\theta - x\sin\theta)
+  \sin\theta\dd\theta.
 \end{equation}
 
 Ritorniamo al problema fisico. Definiamo la funzione $G(\psi,\phi) = \psi -
@@ -457,22 +457,22 @@ e\sin\psi - \psi$, con $\psi,\phi\in\mathopen{[}0,
 in ogni istante di tempo $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$ e inoltre
 $G_\psi(\psi(t),\phi(t)) = 1 - e\cos\psi(t) \neq 0$,
 $\forall\psi\in\mathopen{[}0, 2\pi\mathclose{]}$ e $G\in C^1(\mathopen{[}0,
-2\pi\mathclose{]}^2)$, quindi per il teorema del Dini (si veda
-\textcite[267]{demarco:analisi2}) esiste un'unica funzione di classe $C^1$ che
+2\pi\mathclose{]}^2)$, quindi per il teorema del Dini
+(\textcite[267]{demarco:analisi2}) esiste un'unica funzione di classe $C^1$ che
 esplicita $\psi(t)$ rispetto a $\phi(t)$, per ogni
 $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$. Tuttavia, come già detto, non possiamo
 dare un'espressione elementare della funzione $\psi(\phi)$, però possiamo
-cercare un'espressione che contiene i coefficienti di Bessel, che sono funzioni
+cercare un'espressione che coinvolga i coefficienti di Bessel, che sono funzioni
 speciali. Notiamo innanzitutto che $\psi$ è una funzione dispari di
 $\phi$. Finora ci siamo limitati a considerare gli intervalli
 $\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però il moto della particella
 relativa è periodico, quindi anche la funzione $\psi(\phi)$ è periodica, di
 periodo $2\pi$.  La funzione $\ltoder{\psi(\phi)}{\phi}$ è integrabile
 nell'intervallo $\mathopen{[}-\pi, \pi\mathclose{]}$ essendo continua, quindi è
-sviluppabile in serie di Fourier (si veda \textcite[440]{demarco:analisi2}) in
-media quadratica in $\mathopen{[}-\pi, \pi\mathclose{]}$. Inoltre, poiché
-$\psi(\phi)$ è dispari, $\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello
-sviluppo compariranno solo il termine costante e quelli in coseno, cioè
+sviluppabile in serie di Fourier (\textcite[440]{demarco:analisi2}) in media
+quadratica in $\mathopen{[}-\pi, \pi\mathclose{]}$. Inoltre, poiché $\psi(\phi)$
+è dispari, $\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello sviluppo
+compariranno solo il termine costante e quelli in coseno, cioè
 \begin{equation}
   \toder{\psi}{\phi} = \frac{a_0}{2} + \sum_{n=1}^{+\infty}a_n\cos(n\phi),
 \end{equation}
@@ -487,14 +487,14 @@ dove
   \end{split}
 \end{align}
 avendo ricordato l'equazione di Keplero~\eqref{eq:keplero} e la rappresentazione
-integrale delle funzioni di Bessel~\eqref{eq:bessel-integrale}. Dunque
+integrale dei coefficienti di Bessel~\eqref{eq:bessel-integrale}. Dunque
 \begin{equation}
   \toder{\psi}{\phi} = 1 + \sum_{n=1}^{+\infty}2J_n(x)\cos(n\phi).
 \end{equation}
 Integriamo questa equazione con la condizione iniziale del periapside $\psi(0) =
 0$
 \begin{equation}
-  \psi = \phi + \sum_{n=1}^{+\infty}\frac{2J_n(ne)\sin(n\phi)}{n}.
+  \psi = \phi + \sum_{n=1}^{+\infty}\frac{2}{n}J_n(ne)\sin(n\phi).
 \end{equation}
 Questa è l'espressione analitica cercata, che lega l'anomalia eccentrica
 all'anomalia media e quindi, in definitiva, al tempo.
@@ -529,30 +529,30 @@ dove
     \frac{2}{\pi}\int_0^\pi ae\sin\psi\toder{\psi}{\phi}\sin(n\phi)\dd\phi \\
     &= \frac{2ae}{\pi}\int_0^\pi \sin\psi\sin(n\phi)\dd\psi = \frac{2ae}{\pi}
     \int_0^\pi \sin\psi\sin(n\psi - ne\sin\psi)\dd\psi \\
-    &= 2ae\toder{J_n(ne)}{x},
+    &= 2aeJ_n'(ne),
   \end{split}
 \end{equation}
 avendo ricordato nuovamente l'equazione di Keplero e la rappresentazione
-integrale delle derivate delle funzioni di
+integrale delle derivate dei coefficienti di
 Bessel~\eqref{eq:bessel-derivata-integrale}. Dunque abbiamo trovato
 \begin{equation}
-  \toder{r}{\phi} = \sum_{n=1}^{+\infty} 2ae\toder{J_n(ne)}{x}\sin(n\phi).
+  \toder{r}{\phi} = \sum_{n=1}^{+\infty} 2aeJ_n'(ne)\sin(n\phi).
 \end{equation}
 Integriamo questa equazione differenziale con le condizioni iniziali al
 periapside $r(\phi=0) = a(1-e)$, $\psi(\phi=0)=0$
 \begin{equation}
-  r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} -
-  2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x}\cos(n\phi).
+  r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne) -
+  2ae\sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne)\cos(n\phi).
 \end{equation}
-Si dimostra che (si veda \textcite[555]{watson:bessel})
+Si dimostra che (\textcite[555]{watson:bessel})
 \begin{equation}
-  \sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} = \frac{1}{2} + \frac{e}{4},
+  \sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne) = \frac{1}{2} + \frac{e}{4},
 \end{equation}
 quindi
 \begin{equation}
   \label{eq:r-su-a-bessel}
-  \frac{r}{a} = 1 + \frac{e^2}{2} - 2e \sum_{n=1}^{+\infty} \frac{1}{n}
-  \toder{J_n(ne)}{x} \cos(n\phi).
+  \frac{r}{a} = 1 + \frac{e^2}{2} - 2e \sum_{n=1}^{+\infty} \frac{1}{n} J_n'(ne)
+  \cos(n\phi).
 \end{equation}
 La media di $r/a$ rispetto all'anomalia media $\phi$ vale allora
 \begin{equation}
@@ -560,7 +560,7 @@ La media di $r/a$ rispetto all'anomalia media $\phi$ vale allora
 \end{equation}
 
 Nello stesso programma riportato nell'appendice~\ref{cha:soluzione-keplero} ho
-calcolato con il metodo delle funzioni di Bessel le stesse grandezze calcolate
+calcolato con il metodo dei coefficienti di Bessel le stesse grandezze calcolate
 con il metodo di Newton~-~Raphson, ovvero anomalia eccentrica, distanza dal
 fuoco e anomalia vera in funzione del tempo. I grafici ottenuti con questa
 simulazione sono riportati nelle figure~\ref{fig:bessel-anomalia_eccentrica},
@@ -571,26 +571,26 @@ stessi elencati nel paragrafo~\ref{sec:newton}.
 \begin{figure}
   \centering
   \input{keplero/bessel-anomalia_eccentrica}
-  \caption[Anomalia eccentrica in funzione del tempo con il metodo delle
-  funzioni di Bessel]{Anomalia eccentrica in funzione del tempo calcolata
-    utilizzando il metodo delle funzioni di Bessel}
+  \caption[Anomalia eccentrica in funzione del tempo con il metodo dei
+  coefficienti di Bessel]{Anomalia eccentrica in funzione del tempo calcolata
+    utilizzando il metodo dei coefficienti di Bessel}
   \label{fig:bessel-anomalia_eccentrica}
 \end{figure}
 \begin{figure}
   \centering
   \input{keplero/bessel-raggio}
-  \caption[Distanza dal fuoco in funzione del tempo con il metodo delle funzioni
-  di Bessel]{Distanza dal fuoco in funzione del tempo calcolata con
+  \caption[Distanza dal fuoco in funzione del tempo con il metodo dei
+  coefficienti di Bessel]{Distanza dal fuoco in funzione del tempo calcolata con
     la~\eqref{eq:r-su-a-bessel}}
   \label{fig:bessel-raggio}
 \end{figure}
 \begin{figure}
   \centering
   \input{keplero/bessel-anomalia_vera}
-  \caption[Anomalia vera in funzione del tempo con il metodo delle funzioni di
+  \caption[Anomalia vera in funzione del tempo con il metodo dei coefficienti di
   Bessel]{Anomalia vera in funzione del tempo calcolata con
     la~\eqref{eq:anoamlie-vera-eccentrica} dopo aver trovato l'anomalia
-    eccentrica con il metodo delle funzioni di Bessel}
+    eccentrica con il metodo dei coefficienti di Bessel}
   \label{fig:bessel-anomalia_vera}
 \end{figure}
 
