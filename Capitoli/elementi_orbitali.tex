@@ -258,7 +258,7 @@ aggiungere $\pi$ al valore dell'arcotangente se $\psi > \pi$, cioè
 \label{sec:soluzioni}
 
 L'equazione di Keplero~\eqref{eq:keplero} è trascendente nell'incognita $\psi$
-per via del termine $\sin\psi$, e non ammette soluzione analitica elementare, ma
+per via del termine $\sin\psi$, e non ammette una soluzione elementare, ma
 possono essere utilizzati diversi metodi numerici per risolverla.
 
 \subsection{Metodo di Newton~-~Raphson}
@@ -266,8 +266,8 @@ possono essere utilizzati diversi metodi numerici per risolverla.
 
 Il primo metodo che utilizzeremo per determinare il valore dell'anomalia
 eccentrica $\psi$ in corrispondenza di un fissato istante di tempo $t$ è quello
-di Newton~-~Raphson~\cite[30]{brugnano:calcolo-numerico}, chiamato anche
-\emph{metodo delle tangenti}, descritto nel seguente
+di Newton~-~Raphson (si veda \textcite[30]{brugnano:calcolo-numerico}), chiamato
+anche \emph{metodo delle tangenti}, descritto nel seguente
 \begin{teorema}[di Newton~-~Raphson]
   Sia $f\in C^2(\mathopen{[}a,b\mathclose{]})$, con
   $\mathopen{[}a,b\mathclose{]}\subset\R$. Se
@@ -374,9 +374,9 @@ $GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
 \label{sec:bessel}
 
 Per risolvere l'equazione di Keplero utilizzeremo in questo paragrafo le
-\emph{funzioni di Bessel di ordine intero}, o \emph{funzioni
-  cilindriche}~\cites{abramowitz:handbook}{watson:bessel}%
-{whittaker:modern-analysis}, che ora introdurremo.
+\emph{funzioni di Bessel di ordine intero}, o \emph{coefficienti di
+  Bessel} (si vedano \textcites{abramowitz:handbook}{watson:bessel}%
+{whittaker:modern-analysis}), che ora introdurremo.
 
 La funzione $f(x,z)\colon\C\times\C\to\C$ definita da
 \begin{equation}
@@ -393,7 +393,8 @@ con $J_n(x)$, sono dati da
   J_n(x) = \frac{1}{2\pi\uimm}\int_\gamma \frac{\e^{(x/2)(z-1/z)}}{z^{n+1}}\dd z,
   \quad n\in\Z,
 \end{equation}
-in cui $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra che
+in cui $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra
+che (si veda \textcite[355]{whittaker:modern-analysis})
 \begin{equation}
   J_n (x) = \sum_{m = 0}^{+\infty}\frac{(-1)^m(x/2)^{n+2m}}{m!(n+m)!}, \quad
   \text{se $n\geq 0$}.
@@ -415,7 +416,8 @@ da cui ricaviamo la formula
 \end{equation}
 La funzione $J_n(x)$ è chiamata \emph{funzione di Bessel di argomento $x$ e
   ordine $n$}, mentre la funzione $f(x,z)$ è la \emph{funzione generatrice della
-  funzione di Bessel}. Si dimostrano inoltre le seguenti formule ricorsive
+  funzione di Bessel}. Si dimostrano inoltre le seguenti formule ricorsive (si
+vedano \textcites[17]{watson:bessel}[359]{whittaker:modern-analysis})
 \begin{subequations}
   \begin{gather}
     \frac{2n}{x} J_n(x) = J_{n-1}(x) + J_{n+1}(x),\\
@@ -427,9 +429,8 @@ La funzione $J_n(x)$ è chiamata \emph{funzione di Bessel di argomento $x$ e
     \toder{}{x}(x^{-n}J_n(x)) = -xJ_{n+1}(x).
   \end{gather}
 \end{subequations}
-Si può verificare per sostituzione che la funzione $J_n(x)$, insieme alle sue
-derivate qui sopra riportate, soddisfa la seguente equazione differenziale
-nell'incognita $y(x)$
+Si può verificare grazie relazioni appena riportate che la funzione $J_n(x)$
+soddisfa la seguente equazione differenziale nell'incognita $y(x)$
 \begin{equation}
   \toder[2]{y}{x} + \frac{1}{x}\toder{y}{x} +
   \left(
@@ -443,7 +444,7 @@ Questa equazione è chiamata \emph{equazione differenziale di Bessel di ordine
   \label{eq:bessel-integrale}
   J_n(x) = \frac{1}{\pi} \int_0^\pi\cos(n\theta - x\sin\theta)\dd\theta,
 \end{equation}
-quindi abbiamo anche
+quindi, derivando sotto il segno di integrale, abbiamo anche
 \begin{equation}
   \label{eq:bessel-derivata-integrale}
   \toder{J_n(x)}{x} = \frac{1}{\pi}\int_0^\pi\sin(n\theta -
@@ -455,22 +456,23 @@ e\sin\psi - \psi$, con $\psi,\phi\in\mathopen{[}0,
 2\pi\mathclose{]}$. Dall'equazione di Keplero abbiamo $G(\psi(t),\phi(t)) = 0$
 in ogni istante di tempo $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$ e inoltre
 $G_\psi(\psi(t),\phi(t)) = 1 - e\cos\psi(t) \neq 0$,
-$\forall\psi\in\mathopen{[}0, 2\pi\mathclose{]}$ e $G_\psi\in C^1(\mathopen{[}0,
-2\pi\mathclose{]}^2)$, quindi per il teorema del
-Dini~\cite[267]{demarco:analisi2} esiste un'unica funzione di classe $C^1$ che
+$\forall\psi\in\mathopen{[}0, 2\pi\mathclose{]}$ e $G\in C^1(\mathopen{[}0,
+2\pi\mathclose{]}^2)$, quindi per il teorema del Dini (si veda
+\textcite[267]{demarco:analisi2}) esiste un'unica funzione di classe $C^1$ che
 esplicita $\psi(t)$ rispetto a $\phi(t)$, per ogni
 $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$. Tuttavia, come già detto, non possiamo
-dare un'espressione elementare della funzione $\psi(\phi)$, però possiamo notare
-che $\psi$ è una funzione dispari di $\phi$. Finora ci siamo limitati a
-considerare gli intervalli $\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però
-il moto della particella relativa è periodico, quindi anche la funzione
-$\psi(\phi)$ è periodica, di periodo $2\pi$.  La funzione
-$\ltoder{\psi(\phi)}{\phi}$ è integrabile nell'intervallo $\mathopen{[}-\pi,
-\pi\mathclose{]}$ essendo continua, quindi è sviluppabile in serie di
-Fourier~\cite[440]{demarco:analisi2} in media quadratica in $\mathopen{[}-\pi,
-\pi\mathclose{]}$. Inoltre, poiché $\psi(\phi)$ è dispari,
-$\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello sviluppo compariranno solo il
-termine costante e quelli in coseno, cioè
+dare un'espressione elementare della funzione $\psi(\phi)$, però possiamo
+cercare un'espressione che contiene i coefficienti di Bessel, che sono funzioni
+speciali. Notiamo innanzitutto che $\psi$ è una funzione dispari di
+$\phi$. Finora ci siamo limitati a considerare gli intervalli
+$\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però il moto della particella
+relativa è periodico, quindi anche la funzione $\psi(\phi)$ è periodica, di
+periodo $2\pi$.  La funzione $\ltoder{\psi(\phi)}{\phi}$ è integrabile
+nell'intervallo $\mathopen{[}-\pi, \pi\mathclose{]}$ essendo continua, quindi è
+sviluppabile in serie di Fourier (si veda \textcite[440]{demarco:analisi2}) in
+media quadratica in $\mathopen{[}-\pi, \pi\mathclose{]}$. Inoltre, poiché
+$\psi(\phi)$ è dispari, $\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello
+sviluppo compariranno solo il termine costante e quelli in coseno, cioè
 \begin{equation}
   \toder{\psi}{\phi} = \frac{a_0}{2} + \sum_{n=1}^{+\infty}a_n\cos(n\phi),
 \end{equation}
@@ -494,6 +496,8 @@ Integriamo questa equazione con la condizione iniziale del periapside $\psi(0) =
 \begin{equation}
   \psi = \phi + \sum_{n=1}^{+\infty}\frac{2J_n(ne)\sin(n\phi)}{n}.
 \end{equation}
+Questa è l'espressione analitica cercata, che lega l'anomalia eccentrica
+all'anomalia media e quindi, in definitiva, al tempo.
 
 Un'altra quantità importante nelle applicazioni astrofisiche è il rapporto
 $r/a$. Dalla~\eqref{eq:keplero} abbiamo
@@ -540,7 +544,7 @@ periapside $r(\phi=0) = a(1-e)$, $\psi(\phi=0)=0$
   r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} -
   2ae\sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x}\cos(n\phi).
 \end{equation}
-Si dimostra che~\cite[555]{watson:bessel}
+Si dimostra che (si veda \textcite[555]{watson:bessel})
 \begin{equation}
   \sum_{n=1}^{+\infty}\frac{1}{n}\toder{J_n(ne)}{x} = \frac{1}{2} + \frac{e}{4},
 \end{equation}
