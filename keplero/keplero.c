@@ -21,8 +21,6 @@
 
 /* Specifico il valore della precisione desiderata */
 #define PRECISIONE 1e-12
-/* Definisco una macro con il valore del numero pi */
-#define PI 3.141592653589793
 /* Numero di punti in cui trovare l'anomalia eccentrica */
 #define PUNTI 1000
 /* Dimensione del vettore `e' */
@@ -90,7 +88,7 @@ double psi_bessel(double phi, double e)
 double r_bessel(double phi, double semiasse, double e)
 {
   int n;
-  double distanza=semiasse*(1+pow(e,2)/2.);
+  double distanza=semiasse*(1+e*e/2.);
   for(n=1;n<=MAX_BESSEL;n++)
     distanza-=2*semiasse*e*diff_besselj(n,n*e)*cos(n*phi)/n;
   return distanza;
@@ -112,10 +110,10 @@ double r(double semiasse, double e, double psi)
  */
 double anomvera(double e, double psi)
 {
-  if(psi<=PI)
+  if(psi<=M_PI)
     return 2*atan(sqrt((1+e)/(1-e))*tan(psi/2));
   else
-    return 2*(atan(sqrt((1+e)/(1-e))*tan(psi/2))+PI);
+    return 2*(atan(sqrt((1+e)/(1-e))*tan(psi/2))+M_PI);
 }
 
 int main(){
@@ -136,7 +134,7 @@ int main(){
   periodo=10; /* 10 ore */
   tmin=0; /* Abbiamo supposto che al periapside t=0 */
   tmax=periodo;
-  omega=2*PI/periodo;
+  omega=2*M_PI/periodo;
 
   /* Apro i file su cui scrivere i risultati */
   newton=fopen("newton.dat","w");
