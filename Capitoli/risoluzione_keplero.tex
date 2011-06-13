@@ -3,12 +3,14 @@
 
 Di seguito è riportato il codice sorgente del programma usato per risolvere
 l'equazione di Keplero con i metodi numeric di Newton~-~Raphson e dei
-coefficienti di Bessel, illustrati nel paragrafo~\ref{sec:soluzioni}. Per
-calcolare i coefficienti di Bessel ho utilizzato la GNU Scientifc
+coefficienti di Bessel, illustrati nel
+paragrafo~\ref{sec:soluzione-keplero}. Per calcolare i coefficienti di Bessel ho
+utilizzato la GNU Scientifc
 Library.\footnote{La GNU Scientifc Library è software libero e il codice
   sorgente può essere scaricato e consultato da Internet
-  all'indirizzo~\url{http://www.gnu.org/software/gsl/}.} Per compilare il
-programma in ambiente GNU/Linux ho usato il seguente comando da terminale
+  all'indirizzo~\url{http://www.gnu.org/software/gsl/}.}
+Per compilare il programma in ambiente GNU/Linux ho usato il seguente comando da
+terminale
 \begin{verbatim}
 gcc -lm -Wall -pedantic -lgsl -lgslcblas -o keplero keplero.c
 \end{verbatim}
@@ -21,8 +23,8 @@ diversi metodi.
 % numbers=left,numberstyle=\tiny]{keplero/keplero.c}
 
 Qui riportiamo inoltre il codice dello script \verb|gnuplot| utilizzato per
-ottenere le figure del paragrafo~\ref{sec:soluzioni} a partire dai file di
-output generati dall'esecuzione del programma. Per generare i grafici ho
+ottenere le figure del paragrafo~\ref{sec:soluzione-keplero} a partire dai file
+di output generati dall'esecuzione del programma. Per generare i grafici ho
 utilizzato il seguente comando da terminale
 \begin{verbatim}
 gnuplot keplero/keplero.gnuplot
