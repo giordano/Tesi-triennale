@@ -46,7 +46,7 @@ solo alla mutua interazione gravitazionale.
 Consideriamo un sistema costituito da due corpi puntiformi, di masse $m_1$ e
 $m_2$ e in un fissato sistema di riferimento inerziale indichiamo con $\bm{r}_1$
 e $\bm{r}_2$ i rispettivi vettori posizione, come nella
-figura~\ref{fig:due-corpi}. Per la seconda legge di Newton la forza
+Figura~\ref{fig:due-corpi}. Per la seconda legge di Newton, la forza
 $\bm{F}_{21}$ che il corpo di massa $m_1$ esercita sul corpo di massa $m_2$ è
 data da
 \begin{equation}
@@ -69,7 +69,7 @@ Definiamo il vettore \emph{posizione relativa}
   \label{eq:posizione-relativa}
   \bm{r}=\bm{r}_2-\bm{r}_1
 \end{equation}
-e il \emph{centro di massa}
+e il vettore di posizione del \emph{centro di massa}
 \begin{equation}
   \label{eq:centro-di-massa}
   \bm{r}_\textup{CM} = \frac{m_1\bm{r}_1+m_2\bm{r}_2}{m_1+m_2}.
@@ -93,8 +93,9 @@ della media armonica fra $m_1$ e $m_2$
 \end{equation}
 Osserviamo che la massa ridotta è sempre minore delle due masse, infatti
 \begin{equation}
-  \mu =\frac{m_1}{m_1/m_2+1} = \frac{m_2}{1+m_2/m_1}.
+  \mu =\frac{m_1}{m_1/m_2+1} = \frac{m_2}{1+m_2/m_1},
 \end{equation}
+di modo che $\mu < m_1,m_2$ per qualsiasi valore positivo delle due masse.
 Definiamo inoltre la \emph{massa totale} $M_\textup{T}$ del sistema
 \begin{equation}
   M_\textup{T}=m_1+m_2.
@@ -109,12 +110,11 @@ trovata semplicemente calcolando l'accelerazione di $\bm{r}_\textup{CM}$:
     m_1\toder[2]{\bm{r}_1}{t} + m_2\toder[2]{\bm{r}_2}{t}
   \right) = \frac{\bm{F}_{12}+\bm{F}_{21}}{M_\textup{T}} = \bm{0},
 \end{equation}
-quindi il centro di massa è in quiete o si muove di moto rettilineo uniforme. A
-ogni modo il sistema in cui il centro di massa è a riposo è un sistema
-inerziale, allora lo scegliamo come nostro nuovo sistema di riferimento e in
-particolare fissiamo come origine del sistema la posizione del centro di
-massa. In questo nuovo sistema le posizioni delle due masse saranno dunque
-descritte dai vettori
+da cui deriva che il centro di massa è in quiete o si muove di moto rettilineo
+uniforme. Poiché il sistema in cui il centro di massa è a riposo è un sistema
+inerziale, questo può essere scelto come nostro nuovo sistema di riferimento.
+In particolare, fissiamo come origine del sistema il centro di massa. In questo
+nuovo sistema le posizioni delle due masse saranno dunque descritte dai vettori
 \begin{subequations}
   \label{eq:r1-r2-nel-cdm}
   \begin{align}
@@ -150,9 +150,9 @@ altro corpo fittizio puntiforme di massa $M_\textup{T}$ e fisso, istante per
 istante, nella posizione di uno dei due corpi. Poiché nel nostro caso abbiamo
 definito la posizione relativa come $\bm{r}=\bm{r}_2 - \bm{r}_1$, abbiamo che il
 corpo fittizio di massa pari alla massa totale occupa la posizione del corpo
-reale di massa $m_1$ e la particella ridotta si trova nella posizione $\bm{r}$
-nel sistema di riferimento di $M_\textup{T}$, ovvero la sua posizione coincide
-istantaneamente con quella del corpo reale di massa $m_2$.
+reale di massa $m_1$. Istante per istante il vettore $\bm{r}$ indica la
+posizione della particella fittizia $\mu$ nel sistema di riferimento di
+$M_\textup{T}$.
 
 \subsection{Problema di Keplero}
 \label{sec:problema-keplero}
@@ -178,7 +178,7 @@ abbiamo
   -\frac{Gm_1m_2}{r^2}\versor{r} = \mu\toder[2]{\bm{r}}{t}.
 \end{equation}
 
-Per una qualsiasi forza di tipo centrale il momento angolare $\bm{l} = \bm{r}
+Per una qualsiasi forza di tipo centrale, il momento angolare $\bm{l} = \bm{r}
 \times \bm{p}$ rispetto al centro della forza è una costante del moto. Infatti
 il momento torcente $\bm{\tau}$ di una forza $\bm{F}$ rispetto a un polo $O$ è
 definito da
@@ -186,22 +186,20 @@ definito da
   \bm{\tau}= \toder{\bm{l}}{t} = \bm{r}\times\bm{F}.
 \end{equation}
 Qui con $\bm{r}$ indichiamo il vettore congiungente il polo con il punto di
-applicazione della forza. Dunque il momento della forza rispetto alla sorgente
-di un campo centrale è nullo, essendo in questo caso $\bm{F}$ diretto lungo
-$\bm{r}$, e il momento angolare calcolato rispetto allo stesso polo è costante.
+applicazione della forza. Poiché la forza $\bm{F}$ è radiale, il momento
+torcente associato è nullo, implicando quindi la costanza nel tempo del momento
+angolare $\bm{l}$ calcolato rispetto allo stesso polo.
 
-Ritorniamo al problema di Keplero. Abbiamo appena visto che il momento angolare
+Ritornando al problema di Keplero, abbiamo appena visto che il momento angolare
 della particella di massa ridotta rispetto alla posizione di $M_\textup{T}$ è un
 integrale primo del moto. Notiamo ora che, per definizione di momento angolare,
 i vettori $\bm{r}$ e $\bm{l}\equiv\bm{l}_0$ sono fra loro perpendicolari. Allora
 la costanza del vettore $\bm{l}_0$, e in particolare della sua direzione,
-implica che, nel caso $\bm{l}_0\neq\bm{0}$, il vettore $\bm{r}$, che istante per
-istante indica la posizione della particella fittizia $\mu$ nel sistema di
-riferimento di $M_\textup{T}$, giace sempre sullo stesso piano perpendicolare a
-$\bm{l}_0$. Se invece risulta $\bm{l}_0=\bm{0}$, $\bm{r}$ è parallelo alla
-quantità di moto $\bm{p}$ e il moto è unidimensionale. Da qui in seguito
-supporremo che il momento angolare $\bm{l}_0$ della particella relativa sia non
-nullo.
+implica che, nel caso $\bm{l}_0\neq\bm{0}$, il vettore $\bm{r}$, giace sempre
+sullo stesso piano perpendicolare a $\bm{l}_0$. Se invece risulta
+$\bm{l}_0=\bm{0}$, $\bm{r}$ è parallelo alla quantità di moto $\bm{p}$ e il moto
+è unidimensionale. Da qui in seguito supporremo che il momento angolare
+$\bm{l}_0$ della particella relativa sia non nullo.
 
 Dal momento che il moto della particella di massa ridotta si svolge in un piano,
 possiamo utilizzare le coordinate polari $r,\theta$ per rappresentare la
@@ -254,7 +252,7 @@ $l_0 = \norm{\bm{l}_0} = \mu r^2\dot{\theta}$ del momento angolare. Infatti
 \end{figure}
 L'area differenziale $\dd A$ spazzata dalla particella di massa ridotta che si
 sposta di un angolo infinitesimo $\dd\theta$ è espressa da (si veda la
-figura~\ref{fig:area-differenziale})
+Figura~\ref{fig:area-differenziale})
 \begin{equation}
   \dd A = \frac{r\cdot r\dd\theta}{2} = \frac{r^2\dd\theta}{2},
 \end{equation}
@@ -277,7 +275,7 @@ deriva a sua volta dal carattere centrale della forza; pertanto questa legge
 Nel problema di Keplero, vogliamo ora cercare un'espressione esplicita della
 coordinata polare $r$ in funzione dell'altra coordinata $\theta$, che a sua
 volta dipenderà dal tempo. Per fare ciò è conveniente effettuare la sostituzione
-$u=1/r$. Espandiamo le derivate temporali di $r$:
+$u=1/r$. Calcolando le derivate temporali di $r$ otteniamo che
 \begin{subequations}
   \begin{align}
     \dot{r} &= \toder{r}{t} = \toder{r}{\theta}\toder{\theta}{t} =
@@ -301,9 +299,10 @@ Sostituendo la~\eqref{eq:derivata2-r} nella~\eqref{eq:forza-mu-radiale} abbiamo
     \frac{l_0}{\mu}
   \right)^2u^2\toder[2]{u}{\theta} - \frac{l_0^2u^3}{\mu^2}.
 \end{equation}
-$r$ è la distanza della particella di massa ridotta da $M_\textup{T}$, quindi
-assume valori finiti e il suo reciproco $u$ non è mai nullo, allora
-nell'equazione precedente possiamo dividere ambo i membri per $u^2$ e otteniamo
+Poiché $r$ rappresenta la distanza della particella di massa ridotta da
+$M_\textup{T}$, essa assume valori finiti e il suo reciproco $u$ non è mai
+nullo. Nell'equazione precedente possiamo quindi dividere ambo i membri per
+$u^2$ ottenendo
 \begin{equation}
   \toder[2]{u}{\theta} + u = \frac{GM_\textup{T}\mu^2}{l_0^2}.
 \end{equation}
@@ -312,9 +311,9 @@ coefficienti costanti, chiamata \emph{equazione di Binet}. Per semplificare i
 calcoli poniamo
 \begin{equation}
   \label{eq:reciproco-semilato}
-  \frac{GM_\textup{T}\mu^2}{l_0^2} = \frac{1}{p}
+  \frac{GM_\textup{T}\mu^2}{l_0^2} = \frac{1}{p},
 \end{equation}
-e così l'integrale generale dell'equazione di Binet è
+di modo che l'integrale generale dell'equazione di Binet diventa
 \begin{equation}
   \label{eq:soluzione-binet}
   u(\theta) = c_0\cos\theta + c_1\sin\theta + \frac{1}{p},
@@ -331,8 +330,7 @@ iniziali
 che significano richiedere che il punto $\theta = \theta_0$ sia stazionario per
 la funzione $u(\theta)$ e che in questo punto la funzione $u$ assuma il valore
 $(1+e)/p$. Vedremo più avanti il significato delle grandezze $e$ e
-$p$. Osserviamo che riportando queste condizioni alla funzione
-$r(\theta)=1/u(\theta)$ abbiamo
+$p$. Osserviamo che queste condizioni equivalgono a richiedere
 \begin{subequations}
   \begin{align}
     r(\theta_0) &= \frac{1}{u(\theta)} = \frac{p}{1+e}, \\
@@ -356,7 +354,7 @@ condizioni~\eqref{eq:condizioni-binet} è
   u(\theta) = \frac{1}{p}(1 + e\cos\theta\cos\theta_0 +
   e\sin\theta\sin\theta_0) =  \frac{1}{p}(1+e\cos(\theta-\theta_0)).
 \end{equation}
-Ricordando che $r(\theta)=1/u(\theta)$ giungiamo all'equazione polare
+Ricordando che $r(\theta)=1/u(\theta)$ giungiamo, infine, all'equazione polare
 dell'orbita della particella relativa nel sistema di riferimento di
 $M_\textup{T}$
 \begin{equation}
@@ -409,7 +407,7 @@ possono essere classificate nel seguente modo:
 \end{figure}
 
 Ricordiamo alcune proprietà geometriche delle coniche. Per l'ellisse (vedi la
-figura~\ref{fig:ellisse}) il semilato retto $p$ è dato da
+Figura~\ref{fig:ellisse}) il semilato retto $p$ è dato da
 \begin{equation}
   \label{eq:semilato-ellisse}
   p = a(1-e^2) = \frac{b^2}{a},
@@ -428,7 +426,7 @@ fuochi e risulta
 \end{equation}
 Il \emph{periapside} è il punto di un'ellisse più vicino a uno dei due fuochi,
 l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso
-fuoco. Osservando la figura~\ref{fig:ellisse} si riconosce che il periapside
+fuoco. Osservando la Figura~\ref{fig:ellisse} si riconosce che il periapside
 rispetto al fuoco $M_\textup{T}$ è raggiunto in corrispondenza di
 $\theta=\theta_0$, cioè quando l'anomalia vera $\chi$ è nulla, e la distanza del
 periapside da $M_\textup{T}$ è $r_\textup{min} = r(\theta_0) = a(1-e) = a-c$;
@@ -573,7 +571,7 @@ $M_\textup{T}$ è massima, cioè all'apoapside
 \end{equation}
 Questi risultati sono in accordo con la seconda legge di Keplero. L'andamento di
 $v^2$ in funzione dell'anomalia vera $\chi$ è riportato nella
-figura~\ref{fig:velocita}.
+Figura~\ref{fig:velocita}.
 
 I calcoli svolti per determinare la velocità nel caso di orbite ellittiche sono
 del tutto analoghi a quelli necessari nel caso di orbite paraboliche e
@@ -582,8 +580,8 @@ iperboliche, però per le orbite paraboliche $e=1$ quindi
   \label{eq:velocita-parabola}
   v^2(\theta) = \frac{2GM_\textup{T}}{r(\theta)},
 \end{equation}
-mentre per le orbite iperboliche semilato retto ed eccentricità sono legati
-dalla~\eqref{eq:semilato-iperbole}, dunque
+mentre per le orbite iperboliche, per le quali il semilato retto e
+l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
 \begin{equation}
   \label{eq:velocita-iperbole}
   v^2(\theta) = GM_\textup{T}
@@ -611,7 +609,7 @@ vista dell'osservatore. Calcoleremo dapprima la velocità lungo la direzione di
 vista $v_\textup{los}$ per la particella relativa, poi riporteremo i risultati
 ottenuti ai due corpi. Supponiamo che l'osservatore guardi la particella
 relativa nella direzione dell'asse $\versor{x}$, come nella
-figura~\ref{fig:ellisse-vlos}, quindi $v_\textup{los} = \bm{v}\cdot\versor{x}$.
+Figura~\ref{fig:ellisse-vlos}, quindi $v_\textup{los} = \bm{v}\cdot\versor{x}$.
 Per semplicità, svolgeremo i calcoli in funzione dell'anomalia vera $\chi$. Per
 calcolare $v_\textup{los}$ facciamo le seguenti considerazioni
 geometriche. Chiamiamo $\alpha(\chi)$ l'angolo compreso fra la direzione di
@@ -632,7 +630,7 @@ accorgimento. La funzione $\arctan$ ha codominio
 $\mathopen{]}-\pi/2, \pi/2\mathclose{[}$, ma nell'intervallo
 $\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$ la componente radiale
 $\dot{r}(\chi)$ assume valori negativi, come si può vedere
-dalla~\eqref{eq:velocita-radiale} e nella figura~\ref{fig:ellisse-vlos}, quindi
+dalla~\eqref{eq:velocita-radiale} e nella Figura~\ref{fig:ellisse-vlos}, quindi
 l'angolo $\alpha(\chi)$ che la velocità forma con la direzione radiale positiva
 è maggiore di $\pi/2$. Per ottenere il valore giusto di $\alpha(\chi)$ in questo
 intervallo dobbiamo aggiungere $\pi$ al risultato dato
@@ -667,7 +665,7 @@ della velocità nella direzione della linea di vista è
   vera]{Andamento della velocità lungo la direzione della linea di vista del
     corpo di massa ridotta in funzione dell'anomalia vera nel caso di orbita
     ellittica. Il grafico è stato realizzato per gli stessi valori di
-    eccentricità utilizzati nella figura~\ref{fig:velocita}, con $a=1$}
+    eccentricità utilizzati nella Figura~\ref{fig:velocita}, con $a=1$}
   \label{fig:velocita-los}
 \end{figure}
 \begin{equation}
@@ -684,7 +682,7 @@ della velocità nella direzione della linea di vista è
 Osserviamo dalla~\eqref{eq:angolo-alpha2} che se $e=0$, cioè per le orbite
 circolari, si ha sempre $\alpha(\chi) = \pi/2$, coerentemente col fatto che
 per il moto circolare la velocità è sempre tangenziale. Nella
-figura~\ref{fig:velocita-los} è riportato l'andamento di $v_\textup{los}$ in
+Figura~\ref{fig:velocita-los} è riportato l'andamento di $v_\textup{los}$ in
 funzione dell'anomalia $\chi$ per diversi valori dell'eccentricità.
 
 \begin{figure}
@@ -701,7 +699,7 @@ funzione dell'anomalia $\chi$ per diversi valori dell'eccentricità.
 Ritorniamo ai due corpi. Per fare questo ci poniamo in un sistema di riferimento
 inerziale con origine nella posizione del centro di massa e indichiamo ancora
 con $\versor{x}$ la direzione della linea di vista che però non sarà più la
-stessa della figura~\ref{fig:ellisse-vlos}, tuttavia i ragionamenti da
+stessa della Figura~\ref{fig:ellisse-vlos}, tuttavia i ragionamenti da
 utilizzare sono gli stessi. Osserviamo che $\bm{v}=\dot{\bm{r}}$ e
 dalle~\eqref{eq:r1-r2-posizione-relativa-cdm} abbiamo che le velocità dei corpi
 di massa $m_1$ e $m_2$ sono, rispettivamente,
@@ -713,7 +711,7 @@ v_\textup{los}/m_1$
 e
 $v_{2,\textup{los}} = \bm{v}_2 \cdot \versor{x} = v_\textup{CM,los} + \mu
 v_\textup{los}/m_2$.
-Le curve che compaiono nella figura~\ref{fig:velocita-los} sono centrate attorno
+Le curve che compaiono nella Figura~\ref{fig:velocita-los} sono centrate attorno
 allo zero perché avevamo richiesto per ipotesi che il centro di massa fosse a
 riposo, ma se il centro di massa possiede una velocità
 $\bm{v}_\textup{CM} = v_\textup{CM,los}\versor{x}$ costante nella direzione
@@ -722,14 +720,17 @@ $v_{2,\textup{los}}$ dovremo aggiungere $v_\textup{CM}$. Dunque misurando
 $v_{1,\textup{los}}$ e $v_{2,\textup{los}}$ in più punti dell'orbita è possibile
 determinare la velocità di allontanamento o avvicinamento di un sistema binario
 rispetto all'osservatore. Nell'esempio della
-figura~\ref{fig:velocita-los-due-corpi} il centro di massa del sistema si sta
+Figura~\ref{fig:velocita-los-due-corpi} il centro di massa del sistema si sta
 allontanando dall'osservatore con velocità
 $v_\textup{CM,los} = \SI{-40}{\kilo\metre\per\second}$.
 
 \subsection{Energia e classificazione energetica delle orbite}
 \label{sec:energia-orbite}
 
-Possiamo ora calcolare l'energia meccanica del sistema costituito dai due corpi:
+Possiamo ora calcolare l'energia meccanica del sistema costituito dai due
+corpi. Essa è data dalla somma di due termini: l'energia cinetica $T$ associata
+al moto di ciascun corpo e l'energia potenziale gravitazionale $U$. In
+definitiva si ha che
 \begin{equation}
   \label{eq:energia}
   \begin{split}
@@ -747,8 +748,8 @@ Possiamo ora calcolare l'energia meccanica del sistema costituito dai due corpi:
     r^2(\theta)\dot{\theta}^2) - \frac{GM_\textup{T}\mu}{r(\theta)}.
   \end{split}
 \end{equation}
-Per le orbite ellittiche sostituiamo al posto della velocità l'espressione data
-dalla~\eqref{eq:velocita-ellisse}
+Per le orbite ellittiche, sostituendo nella relazione precedente al posto della
+velocità l'espressione data dalla~\eqref{eq:velocita-ellisse} si ha
 \begin{equation}
   \label{eq:energia-ellisse}
   E = \frac{1}{2}GM_\textup{T}\mu
@@ -756,12 +757,13 @@ dalla~\eqref{eq:velocita-ellisse}
     \frac{2}{r(\theta)} - \frac{1}{a}
   \right) - \frac{GM_\textup{T}\mu}{r(\theta)} = -\frac{GM_\textup{T}\mu}{2a}.
 \end{equation}
-Per le orbite paraboliche usiamo la~\eqref{eq:velocita-parabola}:
+Per le orbite paraboliche, usando la~\eqref{eq:velocita-parabola}, si ottiene
 \begin{equation}
   E = \frac{1}{2}\frac{2GM_\textup{T}\mu}{r(\theta)} -
   \frac{GM_\textup{T}\mu}{r(\theta)} = 0.
 \end{equation}
-Infine per le orbite iperboliche usiamo la~\eqref{eq:velocita-iperbole}:
+Infine per le orbite iperboliche, tramite la~\eqref{eq:velocita-iperbole},
+ricaviamo
 \begin{equation}
     \label{eq:energia-iperbole}
   E = \frac{1}{2}GM_\textup{T}\mu
@@ -770,16 +772,15 @@ Infine per le orbite iperboliche usiamo la~\eqref{eq:velocita-iperbole}:
   \right) - \frac{GM_\textup{T}\mu}{r(\theta)} = \frac{GM_\textup{T}\mu}{2a}.
 \end{equation}
 Dunque in tutti i casi l'energia è una costante del moto e dipende solo dalle
-masse $m_1$ e $m_2$ dei due corpi, attraverso $M_\textup{T}$ e $\mu$, e dal
+masse $m_1$ e $m_2$ dei due corpi (attraverso $M_\textup{T}$ e $\mu$) e dal
 semiasse maggiore dell'ellisse descritta dal loro moto relativo, ma non
 dall'eccentricità di questa. Naturalmente il fatto che l'energia si conserva non
 deve sorprendere perché abbiamo supposto per ipotesi che il sistema fosse
-isolato e che l'unica forza agente fosse quella
-gravitazionale.
+isolato e che l'unica forza agente fosse quella gravitazionale.
 
-Dalla~\eqref{eq:energia} possiamo osservare che il moto relativo è equivalente a
-un moto unidimensionale lungo la direzione radiale e con un \emph{potenziale
-  efficace}
+Dalla~\eqref{eq:energia} possiamo inoltre osservare che il moto relativo è
+equivalente a un moto unidimensionale lungo la direzione radiale e con un
+\emph{potenziale efficace}
 \begin{figure} %TODO: scegliere valori migliori per il grafico
   \centering
   \input{Immagini/gnuplot/potenziale_efficace}
@@ -795,8 +796,8 @@ un moto unidimensionale lungo la direzione radiale e con un \emph{potenziale
   \frac{GM_\textup{T}\mu}{r(\theta)} = \frac{1}{2}\frac{l_0^2}{\mu r^2(\theta)} -
   \frac{GM_\textup{T}\mu}{r(\theta)}.
 \end{equation}
-Il termine $l_0/(2\mu r^2(\theta))$ è chiamato \emph{potenziale
-  centrifugo}. Nella figura~\ref{fig:potenziale-efficace} è riportato il grafico
+nel quale il termine $l_0/(2\mu r^2(\theta))$ è chiamato \emph{potenziale
+  centrifugo}. Nella Figura~\ref{fig:potenziale-efficace} è riportato il grafico
 della curva del potenziale efficace. In $r=r_0=l_0/(GM_\textup{T}\mu^2)$ si ha
 un punto di minimo per $U_\textup{eff}$ e risulta $U_\textup{eff}(r_0) =
 -G^2M_\textup{T}^2\mu^3/(2l_0^2)$. La differenza fra l'energia e
@@ -842,7 +843,8 @@ e facendo il limite per $r \to 0$ abbiamo
 \begin{equation}
   \frac{1}{2}\frac{l_0^2}{\mu} \leq 0,
 \end{equation}
-ma questo non è possibile.
+ma questo non è possibile poiché tutte le variabili che compaiono al primo
+membro sono definite positive.
 
 Prendiamo in considerazione il caso delle orbite
 ellittiche. Dall'espressione~\eqref{eq:velocita-areolare} della velocità
@@ -878,7 +880,7 @@ Questa equazione esprime la terza legge di Keplero: \emph{il quadrato del
 \subsubsection{Variazioni dell'energia}
 \label{sec:variazioni energia}
 
-Vogliamo vedere come varia il semiasse maggiore di un'orbita ellittica della
+Vogliamo ora vedere come varia il semiasse maggiore di un'orbita ellittica della
 particella di massa ridotta in funzione dell'energia. Per fare ciò differenziamo
 la~\eqref{eq:energia-ellisse} rispetto ad $a$
 \begin{equation}
@@ -896,7 +898,7 @@ l'energia diventa nulla o positiva il sistema non sarà più legato.
 Consideriamo ora il caso in cui il sistema sta perdendo energia a causa della
 diminuzione della massa di uno dei corpi, per esempio
 $m_1$.\footnote{Per un'applicazione si può
-  consultare \textcite[350]{padmanabhan:stars}.}
+  consultare \textcite{padmanabhan:stars}.}
 Supponiamo che i due corpi descrivano orbite ellittiche e indichiamo la
 variazione della massa di $m_1$ con $\Delta M = m_1 - m_\textup{R}$, dove
 $m_\textup{R}$ è la massa residua del corpo. Facciamo l'ipotesi semplificatrice,
@@ -1054,7 +1056,7 @@ di meccanica classica come \textcites{goldstein:meccanica}{landau:meccanica}.
 \label{sec:risoluzione-lagrange}
 
 Consideriamo il sistema costituito dai due corpi puntiformi della
-figura~\ref{fig:due-corpi}. Come fatto nel paragrafo~\ref{sec:formalismo-newton}
+Figura~\ref{fig:due-corpi}. Come fatto nel paragrafo~\ref{sec:formalismo-newton}
 introduciamo anche i vettori posizione relativa e posizione del centro di massa
 dati rispettivamente dalla~\eqref{eq:posizione-relativa} e
 dalla~\eqref{eq:centro-di-massa} e quindi i vettori di posizione sono legati a
@@ -1100,18 +1102,18 @@ $\bm{r}_\textup{CM}$ e $\bm{r}$ sono
     \frac{m_2\bm{p}_1 + m_1\bm{p}_2}{m_1 + m_2}. \label{eq:momento-relativo}
   \end{align}
 \end{subequations}
-$\bm{p}_\textup{CM}$ è il \emph{momento totale}, $\bm{p}$ il \emph{momento
-  relativo}. Osserviamo che
+dove $\bm{p}_\textup{CM}$ è il \emph{momento totale} e $\bm{p}$ il \emph{momento
+  relativo}. Osserviamo infine che
 \begin{equation}
   \frac{\bm{p}}{\mu} = \frac{\bm{p}_1}{m_1} + \frac{\bm{p}_2}{m_2}.
 \end{equation}
-La coordinata $\bm{r}_\textup{CM}$ è ciclica nella
-lagrangiana~\eqref{eq:lagrangiana-due-corpi} quindi il momento totale
-$\bm{p}_\textup{CM}=M_\textup{T}\dot{\bm{r}}_\textup{CM}$ è una costante del moto:
-il centro di massa si muove di moto rettilineo uniforme oppure è in quiete,
-comunque il sistema di riferimento in cui esso è a riposo è inerziale. Scegliamo
-come nostro sistema di riferimento uno in cui il centro di massa è in quiete,
-cioè $\dot{\bm{r}}_\textup{CM} = \bm{0}$, e così la lagrangiana diventa
+Poiché la coordinata $\bm{r}_\textup{CM}$ è ciclica nella
+lagrangiana~\eqref{eq:lagrangiana-due-corpi}, il momento totale
+$\bm{p}_\textup{CM}=M_\textup{T}\dot{\bm{r}}_\textup{CM}$ è una costante del
+moto: il centro di massa si muove di moto rettilineo uniforme oppure è in
+quiete. Scegliamo come nostro sistema di riferimento uno in cui il centro di
+massa è in quiete, cioè $\dot{\bm{r}}_\textup{CM} = \bm{0}$, di modo che la
+lagrangiana diventa
 \begin{equation}
   \label{eq:lagrangiana2-due-corpi}
   \mathcal{L} = \frac{1}{2}\mu\dot{\bm{r}}^2 - U(\bm{r}).
@@ -1126,9 +1128,9 @@ coordinata $\bm{r}$ è
   \toder{\bm{p}}{t} = -\toder{U(\bm{r})}{\bm{r}} \iff \mu\toder[2]{\bm{r}}{t} =
   -\nabla U(\bm{r}),
 \end{equation}
-cioè la~\eqref{eq:f21-mu} ricordando che $\bm{F}_{21} = -\nabla U(\bm{r})$,
-perché abbiamo supposto che le forze agenti nel sistema derivino dall'unico
-potenziale $U$.
+che è equivalente alla~\eqref{eq:f21-mu} ricordando che $\bm{F}_{21} =
+-\nabla U(\bm{r})$, perché abbiamo supposto che le forze agenti nel sistema
+derivino dall'unico potenziale $U$.
 
 L'energia cinetica $T$ è una funzione omogenea di secondo grado della velocità
 generalizzata $\dot{\bm{r}}$, mentre l'energia potenziale $U$ non dipende da
@@ -1149,7 +1151,7 @@ moto. Le equazioni di Hamilton per le variabili canoniche $(\bm{r},\bm{p})$ sono
   \end{align}
 \end{subequations}
 La prima equazione di Hamilton è equivalente alla~\eqref{eq:momento-relativo},
-la seconda è equivalente alla~\eqref{eq:f21-mu}.
+mentre la seconda è equivalente alla~\eqref{eq:f21-mu}.
 
 Supponiamo ora che il potenziale dipenda in particolare dalla distanza $r$ fra i
 due corpi e non dalla direzione del vettore $\bm{r}$, cioè $U=U(r)$. Questo
@@ -1163,14 +1165,15 @@ polari $r,\theta$
 \begin{equation}
   \mathcal{L} = \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2) - U(r).
 \end{equation}
-La coordinata $\theta$ è ciclica, quindi il suo momento coniugato
+La coordinata $\theta$ è ciclica e quindi il suo momento coniugato
 \begin{equation}
   p_\theta = \parder{\mathcal{L}}{\dot{\theta}} = \mu r^2\dot{\theta} = l_0
 \end{equation}
 è una costante del moto. Abbiamo così trovato nuovamente che il modulo del
-vettore momento angolare è costante e ricordiamo che grazie a questo risultato
-nel paragrafo~\ref{sec:problema-keplero} siamo stati in grado di dimostrare la
-seconda legge di Keplero. L'equazione di Lagrange per la coordinata $r$ è
+vettore momento angolare è costante e, ricordando il risultato del
+paragrafo~\ref{sec:problema-keplero}, siamo stati in grado di dimostrare la
+validità della seconda legge di Keplero. L'equazione di Lagrange per la
+coordinata $r$ è
 \begin{equation}
   \label{eq:eq-lagrange-due-corpi}
   \mu\ddot{r} = \mu r\dot{\theta}^2 - \parder{U(r)}{r}.
@@ -1186,10 +1189,10 @@ l'equazione del moto~\eqref{eq:forza-mu-radiale} e si può ricavare l'equazione
 dell'orbita~\eqref{eq:orbita} nello stesso modo. Il momento coniugato alla
 coordinata $r$ è
 \begin{equation}
-  p = \parder{\mathcal{L}}{\dot{r}} = \mu\dot{r}.
+  p = \parder{\mathcal{L}}{\dot{r}} = \mu\dot{r}
 \end{equation}
-L'hamiltoniana in coordinate polari e con il potenziale
-gravitazionale~\eqref{eq:potenziale-gravitazionale} è
+e pertanto l'hamiltoniana in coordinate polari e con il potenziale
+gravitazionale~\eqref{eq:potenziale-gravitazionale} è data da
 \begin{equation}
   \begin{split}
     \mathcal{H} &= p\dot{r} + p_\theta\dot{\theta} - \mathcal{L} =
@@ -1198,7 +1201,7 @@ gravitazionale~\eqref{eq:potenziale-gravitazionale} è
     \frac{GM_\textup{T}\mu}{r},
   \end{split}
 \end{equation}
-cioè l'espressione dell'energia data dalla~\eqref{eq:energia}.
+che è equivalente all'espressione dell'energia data nella~\eqref{eq:energia}.
 
 Naturalmente usando il formalismo lagrangiano e hamiltoniano siamo giunti agli
 stessi risultati trovati con il formalismo newtoniano.
@@ -1234,7 +1237,7 @@ due corpi nel sistema di riferimento del centro di massa sono
     \frac{\mu}{m_2}\frac{p}{1+e\cos(\theta - \theta_0)}.
   \end{align}
 \end{subequations}
-Nella figura~\ref{fig:orbite-ellittiche} mostriamo le orbite dei due corpi e del
+Nella Figura~\ref{fig:orbite-ellittiche} mostriamo le orbite dei due corpi e del
 corpo di massa ridotta nel caso di orbite ellittiche. Come si può osservare,
 entrambi i corpi ruotano intorno al centro di massa ma mentre il corpo più
 massivo, nell'esempio in figura $m_1$, rimane vicino a questo, il corpo meno

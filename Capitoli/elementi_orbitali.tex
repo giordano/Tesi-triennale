@@ -40,7 +40,7 @@ relativa che si muove su un'orbita ellittica.
 \end{figure}
 La seconda legge di Keplero permette di trovare la posizione relativa di un
 corpo di un sistema binario in un qualsiasi istante di tempo. Con riferimento
-alla figura~\ref{fig:circonferenza-ausiliaria-keplero}, il punto $Q$
+alla Figura~\ref{fig:circonferenza-ausiliaria-keplero}, il punto $Q$
 dell'ellisse indica la posizione del corpo all'istante di tempo $t$ e $P$ la
 posizione del periapside, da cui il corpo passa all'istante
 $t_0$. Nell'intervallo di tempo $\mathopen{[}t_0, t\mathclose{]}$ il raggio
@@ -68,7 +68,7 @@ usa invece il metodo che ci apprestiamo a illustrare.
 
 Circoscriviamo all'ellisse una circonferenza ausiliaria di raggio $a$ e
 concentrica con l'ellisse, come nella
-figura~\ref{fig:circonferenza-ausiliaria-keplero}.  Sia $G$ l'intersezione con
+Figura~\ref{fig:circonferenza-ausiliaria-keplero}. Sia $G$ l'intersezione con
 la circonferenza della perpendicolare all'asse $x$ innalzata dal punto $Q$. Se
 $\chi > \pi$, il punto $G$ apparterrà alla semicirconferenza inferiore. L'angolo
 $G\widehat{C}P$, dove $C$ è il centro della circonferenza, è chiamato
@@ -169,7 +169,8 @@ la~\eqref{eq:r-anomalia-eccentrica} rispetto al tempo
 \begin{equation}
   \dot{r} = ae\dot{\psi}\sin\psi.
 \end{equation}
-Sostituiamo la~\eqref{eq:r-anomalia-eccentrica} nell'equazione differenziale
+Sostituendo la~\eqref{eq:r-anomalia-eccentrica} nell'equazione differenziale si
+ottiene infine
 \begin{equation}
   r = \frac{\omega a\sqrt{a^2e^2 - a^2e^2\cos^2\psi}}{a(1-e\cos\psi)} =
   \frac{\omega ae\sin\psi}{1-e\cos\psi}.
@@ -192,8 +193,8 @@ quindi in questo punto $\phi = \psi = \chi = \pi$. La~\eqref{eq:keplero} è dett
 \emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
 soluzione $\psi$ permette di ricavare, tramite
 la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare $r$. Inoltre possiamo
-determinare una relazione tra l'anomalia eccentrica e l'altra coordinata polare
-$\chi$. Infatti, uguagliando i secondi membri delle equazioni~\eqref{eq:orbita}
+determinare una relazione tra l'anomalia eccentrica e l'anomalia vera $\chi$.
+Infatti, uguagliando i secondi membri delle equazioni~\eqref{eq:orbita}
 e~\eqref{eq:r-anomalia-eccentrica} abbiamo
 \begin{equation}
   \begin{aligned}
@@ -204,7 +205,7 @@ e~\eqref{eq:r-anomalia-eccentrica} abbiamo
     \cos\psi &= \frac{\cos\psi-e}{1-e\cos\psi}.
   \end{aligned}
 \end{equation}
-Aggiungiamo e sottraiamo ambo i membri dell'ultima equazione da $1$
+Aggiungiamo e sottraiamo ambo i membri dell'ultima equazione a $1$ ottenendo
 \begin{align}
   \begin{split}
     1-\cos\chi &= 1-\frac{\cos\psi-e}{1-e\cos\psi} =
@@ -224,14 +225,14 @@ la relazione cercata
   \iff \\
   \tan^2\frac{\chi}{2} = \frac{1+e}{1-e}\tan^2\frac{\psi}{2}.
 \end{gather}
-In questa equazione possiamo esplicitare $\chi$ in funzione di $\psi$
+In questa equazione possiamo esplicitare $\chi$ in funzione di $\psi$ ottenendo
 \begin{equation}
   \chi = 2\arctan
   \left(
     \sqrt{\frac{1+e}{1-e}}\tan\frac{\psi}{2}
   \right).
 \end{equation}
-Il risultato è corretto, però con questa definizione di $\chi$ c'è una
+Il risultato seppur corretto, presenta con questa definizione di $\chi$ una
 discontinuità di prima specie in $\psi = \pi$ perché la tangente è discontinua
 in $\pi/2$. Per rendere continua $\chi$ in funzione di $\psi$ dobbiamo
 aggiungere $\pi$ al valore dell'arcotangente se $\psi > \pi$, cioè
@@ -266,7 +267,7 @@ possono essere utilizzati diversi metodi numerici per risolverla.
 
 Il primo metodo che utilizzeremo per determinare il valore dell'anomalia
 eccentrica $\psi$ in corrispondenza di un fissato istante di tempo $t$ è quello
-di Newton~-~Raphson (\textcite[30]{brugnano:calcolo-numerico}), chiamato anche
+di Newton~-~Raphson (\textcite{brugnano:calcolo-numerico}), chiamato anche
 \emph{metodo delle tangenti}, descritto nel seguente
 \begin{teorema}[di Newton~-~Raphson]
   Sia $f\in C^2(\mathopen{[}a,b\mathclose{]})$, con
@@ -335,7 +336,7 @@ file contenente i valori dell'anomalia eccentrica, della distanza dal fuoco e
 dell'anomalia vera in funzione del tempo per le differenti eccentricità fornite
 come input. Il codice sorgente del programma è riportato
 nell'appendice~\ref{cha:soluzione-keplero}. Nelle
-figure~\ref{fig:newton-anomalia_eccentrica}, \ref{fig:newton-raggio}
+Figure~\ref{fig:newton-anomalia_eccentrica}, \ref{fig:newton-raggio}
 e~\ref{fig:newton-anomalia_vera}, realizzate con il softawre \verb|gnuplot|,
 sono rappresentati i risultati della simulazione. Per tutti i grafici, il
 periodo di rivoluzione è $T = \SI{10}{\hour}$, l'istante di passaggio dal
@@ -383,7 +384,7 @@ La funzione $f(x,z)\colon\C\times\C\to\C$ definita da
   f(x,z) = \e^{(x/2)(z - 1/z)}
 \end{equation}
 è olomorfa in $\C\setminus 0$ rispetto alla variabile $z$, quindi può essere
-espansa in serie di Laurent (\textcite[673]{demarco:analisi2}) di potenze di $z$
+espansa in serie di Laurent (\textcite{demarco:analisi2}) di potenze di $z$
 intorno a $z=0$
 \begin{equation}
   f(x,z) = \sum_{n = -\infty}^{+\infty} c_n(x) z^n.
@@ -395,7 +396,7 @@ con $J_n(x)$, sono dati da
   \quad n\in\Z,
 \end{equation}
 in cui $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra che se
-$n$ è un intero non negativo si ha (\textcite[355]{whittaker:modern-analysis})
+$n$ è un intero non negativo si ha (\textcite{whittaker:modern-analysis})
 \begin{equation}
   J_n (x) = \sum_{m = 0}^{+\infty}\frac{(-1)^m(x/2)^{n+2m}}{m!(n+m)!}.
 \end{equation}
@@ -417,7 +418,7 @@ da cui ricaviamo la formula
 La funzione $J_n(x)$ è chiamata \emph{coefficiente di Bessel di argomento $x$ e
   ordine $n$}, mentre la funzione $f(x,z)$ è la \emph{funzione generatrice del
   coefficiente di Bessel}. Si dimostrano inoltre le seguenti formule ricorsive
-(\textcites[17]{watson:bessel}[359]{whittaker:modern-analysis})
+(\textcites{watson:bessel}{whittaker:modern-analysis})
 \begin{subequations}
   \begin{gather}
     \frac{2n}{x} J_n(x) = J_{n-1}(x) + J_{n+1}(x),\\
@@ -437,9 +438,9 @@ $J_n(x)$ soddisfa la seguente equazione differenziale nell'incognita $y(x)$
   \right)y = 0.
 \end{equation}
 Questa è l'\emph{equazione differenziale di Bessel per funzioni di ordine
-  $n$}. Si può dare la seguente \emph{rappresentazione integrale dei
-  coefficienti di Bessel}
-(\textcites[20]{watson:bessel}[362]{whittaker:modern-analysis})
+  $n$}.
+Si può dare la seguente \emph{rappresentazione integrale dei coefficienti di
+  Bessel} (\textcites{watson:bessel}{whittaker:modern-analysis})
 \begin{equation}
   \label{eq:bessel-integrale}
   J_n(x) = \frac{1}{\pi} \int_0^\pi\cos(n\theta - x\sin\theta)\dd\theta,
@@ -458,7 +459,7 @@ in ogni istante di tempo $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$ e inoltre
 $G_\psi(\psi(t),\phi(t)) = 1 - e\cos\psi(t) \neq 0$,
 $\forall\psi\in\mathopen{[}0, 2\pi\mathclose{]}$ e $G\in C^1(\mathopen{[}0,
 2\pi\mathclose{]}^2)$, quindi per il teorema del Dini
-(\textcite[267]{demarco:analisi2}) esiste un'unica funzione di classe $C^1$ che
+(\textcite{demarco:analisi2}) esiste un'unica funzione di classe $C^1$ che
 esplicita $\psi(t)$ rispetto a $\phi(t)$, per ogni
 $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$. Tuttavia, come già detto, non possiamo
 dare un'espressione elementare della funzione $\psi(\phi)$, però possiamo
@@ -469,7 +470,7 @@ $\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però il moto della particella
 relativa è periodico, quindi anche la funzione $\psi(\phi)$ è periodica, di
 periodo $2\pi$.  La funzione $\ltoder{\psi(\phi)}{\phi}$ è integrabile
 nell'intervallo $\mathopen{[}-\pi, \pi\mathclose{]}$ essendo continua, quindi è
-sviluppabile in serie di Fourier (\textcite[440]{demarco:analisi2}) in media
+sviluppabile in serie di Fourier (\textcite{demarco:analisi2}) in media
 quadratica in $\mathopen{[}-\pi, \pi\mathclose{]}$. Inoltre, poiché $\psi(\phi)$
 è dispari, $\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello sviluppo
 compariranno solo il termine costante e quelli in coseno, cioè
@@ -544,7 +545,7 @@ periapside $r(\phi=0) = a(1-e)$, $\psi(\phi=0)=0$
   r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne) -
   2ae\sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne)\cos(n\phi).
 \end{equation}
-Si dimostra che (\textcite[555]{watson:bessel})
+Si dimostra che (\textcite{watson:bessel})
 \begin{equation}
   \sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne) = \frac{1}{2} + \frac{e}{4},
 \end{equation}
@@ -563,7 +564,7 @@ Nello stesso programma riportato nell'appendice~\ref{cha:soluzione-keplero} ho
 calcolato con il metodo dei coefficienti di Bessel le stesse grandezze calcolate
 con il metodo di Newton~-~Raphson, ovvero anomalia eccentrica, distanza dal
 fuoco e anomalia vera in funzione del tempo. I grafici ottenuti con questa
-simulazione sono riportati nelle figure~\ref{fig:bessel-anomalia_eccentrica},
+simulazione sono riportati nelle Figure~\ref{fig:bessel-anomalia_eccentrica},
 \ref{fig:bessel-raggio} e~\ref{fig:bessel-anomalia_vera}. I valori delle
 grandezze in input, cioè semiasse maggiore, eccentricità e periodo, sono gli
 stessi elencati nel paragrafo~\ref{sec:newton}.
