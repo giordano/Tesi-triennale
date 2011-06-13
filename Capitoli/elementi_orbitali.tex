@@ -569,6 +569,29 @@ simulazione sono riportati nelle Figure~\ref{fig:bessel-anomalia_eccentrica},
 grandezze in input, cioè semiasse maggiore, eccentricità e periodo, sono gli
 stessi elencati nel paragrafo~\ref{sec:newton}.
 
+Come si può osservare confrontando le figure prodotte dalla simulazione
+eseguita, i due metodi utilizzati per risolvere numericamente l'equazione di
+Keplero danno, naturalmente, gli stessi risultati. Nelle due figure relative
+all'andamento temporale dell'anomalia vera, cioè
+la~\ref{fig:newton-anomalia_vera} e la~\ref{fig:bessel-anomalia_vera}, troviamo
+una conferma della validità della seconda legge di Keplero. Infatti, se $e=0$,
+cioè se l'orbita è circolare, la particella relativa si muove di moto circolare
+uniforme quindi l'anomalia vera aumenta linearmente con il tempo, mentre per
+eccentricità $e\neq 0$ la particella fittizia si trova meno tempo nei pressi del
+periapside e più tempo intorno all'apoapside poiché nel primo caso la velocità
+areolare è minima e nel secondo è massima. Questo comportamento diventa più
+evidente all'aumentare dell'eccentricità.
+
+Abbiamo risolto l'equazione del moto usando la meccanica newtoniana e quella
+analitica giungendo all'equazione di Keplero che abbiamo risolto in due
+differenti modi. Segnaliamo, però, che esistono degli approcci differenti e più
+eleganti per studiare il problema dei due corpi: metodo odografico (molto usato
+in fluidodinamica, meccanica orbitale e dinamica delle popolazioni), uso di
+coordinate complesse oppure coordinate cartesiane tridimensionali e metodo dei
+quaternioni. Gli ultimi due metodi sono spesso sfruttati nella dinamica dei
+satelliti. Per maggiori informazioni su questi metodi si può consultare
+\textcite{tan:orbital-motion}.
+
 \begin{figure}
   \centering
   \input{keplero/bessel-anomalia_eccentrica}
