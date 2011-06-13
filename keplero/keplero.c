@@ -1,7 +1,7 @@
 /* Nome del file sorgente: keplero.c
  * Scopo: programma per la risoluzione numerica
  * dell'equazione di Keplero con il metodo di Newton-Raphson
- * e con quello delle funzioni di Bessel.
+ * e con quello dei coefficienti di Bessel.
  * Dati di input: semiasse maggiore, eccentricità e periodo
  * delle orbite.
  * Output: due file con i risultati ottenuti con i due metodi
@@ -28,6 +28,8 @@
 /* Numero di iterazioni da compiere con il metodo di Bessel
  * prima di fermarsi */
 #define MAX_BESSEL 200
+/* La GNU Scientific Library definisce la macro M_PI con il
+ * valore di pi greco */
 
 /* Funzione di cui vogliamo trovare le radici. Il primo
  * argomento è l'anomalia eccentrica, il secondo argomento
@@ -39,10 +41,10 @@ double f(double psi, double e, double phi)
   return psi-e*sin(psi)-phi;
 }
 
-/* Funzione che restituisce la derivata rispetto a x della
- * funzione di Bessel J_n(x) sfruttando le proprietà delle
- * funzioni di Bessel. Il primo argomento è l'ordine della
- * funzione di Bessel, il secondo è il suo argomento
+/* Funzione che restituisce la derivata rispetto a x del
+ * coefficiente di Bessel J_n(x) sfruttando le proprietà dei
+ * coefficienti di Bessel. Il primo argomento è l'ordine del
+ * coefficiente di Bessel, il secondo è il suo argomento
  */
 double diff_besselj(int n, double x)
 {
@@ -68,7 +70,7 @@ double psi_newton(double phi, double e)
 
 /* Funzione che restituisce il valore dell'anomalia eccentrica
  * psi in corrispondenza dell'anomalia media phi calcolata
- * usando il metodo delle funzioni di Bessel. Il primo argomento
+ * usando il metodo dei coefficienti di Bessel. Il primo argomento
  * è l'anomalia media, il secondo l'eccentricità
  */
 double psi_bessel(double phi, double e)
@@ -81,7 +83,7 @@ double psi_bessel(double phi, double e)
 }
 
 /* Funzione che restituisce il valore della distanza r da
- * fuoco al tempo t, calcolata con il metodo delle funzioni
+ * fuoco al tempo t, calcolata con il metodo dei coefficienti
  * di Bessel. Il primo argomento è l'anomalia media, il
  * secondo il semiasse maggiore, il terzo l'eccentricità
  */
@@ -149,13 +151,13 @@ int main(){
       /* Ripeto calcoli per tutti i valori dell'eccentricità */
       for(i=0;i<N;i++)
 	{
-	  /* Scrivo su file i risultati del metodo di Newton*/
+	  /* Scrivo su file i risultati del metodo di Newton */
 	  psi=psi_newton(omega*t,e[i]);
 	  fprintf(newton,"\t%f\t%f\t%f",psi,
 		  r(a,e[i],psi),
 		  anomvera(e[i],psi));
-	  /* Scrivo su file i risultati del metodo delle
-	   * funzioni di Bessel */
+	  /* Scrivo su file i risultati del metodo dei
+	   * coefficienti di Bessel */
 	  psi=psi_bessel(omega*t,e[i]);
 	  fprintf(bessel,"\t%f\t%f\t%f",psi,
 		  r_bessel(omega*t,a,e[i]),
