@@ -22,24 +22,24 @@ solo alla mutua interazione gravitazionale.
 
 \begin{figure}
   \centering
-\begin{tikzpicture}[font=\footnotesize,scale=3]
-  % m1=1: y=0.8,  z=0.2,  x=0.2
-  % m2=3: y=0.6,  z=0.8,  x=0.4
-  % cm:   y=0.65, z=0.65, x=0.35
-  \draw [->] (0,0,0) -- (1,0,0) node[right] {$y$}; % asse y
-  \draw [->] (0,0,0) -- (0,1,0) node[above] {$z$}; % asse z
-  \draw [->] (0,0,0) -- (0,0,1) node[below left] {$x$}; % asse x
-  \filldraw [gray] (0.8,0.2,0.2) circle (0.01); % corpo di massa m_1
-  \draw [->] (0,0,0) -- node[below right,fill=white] {$\bm{r}_1$} (0.8,0.2,0.2)
-  node[right] {$m_1$}; % vettore r_1
-  \filldraw [gray] (0.6,0.8,0.4) circle (0.02); % corpo di massa m_2
-  \draw [->] (0,0,0) -- node[above left] {$\bm{r}_2$} (0.6,0.8,0.4) node[above]
-  {$m_2$}; % vettore r_2
-  \draw [->] (0.8,0.2,0.2) -- node[right] {$\bm{r}$} (0.6,0.8,0.4); % vettore
-                                % posizione relativa
-  % vettore posizione del centro di massa
-  \draw [->] (0,0,0) -- node[right] {$\bm{r}_\textup{CM}$} (0.65,0.65,0.35);
-\end{tikzpicture}
+  \begin{tikzpicture}[font=\footnotesize,scale=3]
+    % m1=1: y=0.8,  z=0.2,  x=0.2
+    % m2=3: y=0.6,  z=0.8,  x=0.4
+    % cm:   y=0.65, z=0.65, x=0.35
+    \draw [->] (0,0,0) -- (1,0,0) node[right] {$y$}; % asse y
+    \draw [->] (0,0,0) -- (0,1,0) node[above] {$z$}; % asse z
+    \draw [->] (0,0,0) -- (0,0,1) node[below left] {$x$}; % asse x
+    \filldraw [gray] (0.8,0.2,0.2) circle (0.01); % corpo di massa m_1
+    \draw [->] (0,0,0) -- node[below right,fill=white] {$\bm{r}_1$}
+               (0.8,0.2,0.2) node[right] {$m_1$}; % vettore r_1
+    \filldraw [gray] (0.6,0.8,0.4) circle (0.02); % corpo di massa m_2
+    \draw [->] (0,0,0) -- node[above left] {$\bm{r}_2$} (0.6,0.8,0.4)
+               node[above] {$m_2$}; % vettore r_2
+    \draw [->] (0.8,0.2,0.2) -- node[right] {$\bm{r}$} (0.6,0.8,0.4); % vettore
+    % posizione relativa
+    % vettore posizione del centro di massa
+    \draw [->] (0,0,0) -- node[right] {$\bm{r}_\textup{CM}$} (0.65,0.65,0.35);
+  \end{tikzpicture}
   \caption{Due corpi in un sistema di riferimento inerziale}
   \label{fig:due-corpi}
 \end{figure}
@@ -69,7 +69,7 @@ Definiamo il vettore \emph{posizione relativa}
   \label{eq:posizione-relativa}
   \bm{r}=\bm{r}_2-\bm{r}_1
 \end{equation}
-e il vettore di posizione del \emph{centro di massa}
+e il vettore posizione del \emph{centro di massa}
 \begin{equation}
   \label{eq:centro-di-massa}
   \bm{r}_\textup{CM} = \frac{m_1\bm{r}_1+m_2\bm{r}_2}{m_1+m_2}.
@@ -110,7 +110,7 @@ trovata semplicemente calcolando l'accelerazione di $\bm{r}_\textup{CM}$:
     m_1\toder[2]{\bm{r}_1}{t} + m_2\toder[2]{\bm{r}_2}{t}
   \right) = \frac{\bm{F}_{12}+\bm{F}_{21}}{M_\textup{T}} = \bm{0},
 \end{equation}
-da cui deriva che il centro di massa è in quiete o si muove di moto rettilineo
+cioè il centro di massa è in quiete o si muove di moto rettilineo
 uniforme. Poiché il sistema in cui il centro di massa è a riposo è un sistema
 inerziale, questo può essere scelto come nostro nuovo sistema di riferimento.
 In particolare, fissiamo come origine del sistema il centro di massa. In questo
@@ -178,7 +178,7 @@ abbiamo
   -\frac{Gm_1m_2}{r^2}\versor{r} = \mu\toder[2]{\bm{r}}{t}.
 \end{equation}
 
-Per una qualsiasi forza di tipo centrale, il momento angolare $\bm{l} = \bm{r}
+Per una qualsiasi forza di tipo centrale il momento angolare $\bm{l} = \bm{r}
 \times \bm{p}$ rispetto al centro della forza è una costante del moto. Infatti
 il momento torcente $\bm{\tau}$ di una forza $\bm{F}$ rispetto a un polo $O$ è
 definito da
@@ -283,12 +283,12 @@ $u=1/r$. Calcolando le derivate temporali di $r$ otteniamo che
     -\frac{\dot{\theta}}{u^2}\toder{u}{\theta}
     = -\frac{l_0}{\mu}\toder{u}{\theta}, \label{eq:derivata1-r}\\
     \begin{split}
-      \ddot{r} &= \toder[2]{r}{t} = \toder{}{\theta} \left( \toder{r}{t}
-      \right)\toder{\theta}{t} = \toder{}{\theta} \left(
-        -\frac{l_0}{\mu}\toder{u}{\theta} \right)\dot{\theta} =
+      \ddot{r} &= \toder[2]{r}{t} = \toder{}{\theta}
+      \left( \toder{r}{t} \right)\toder{\theta}{t} = \toder{}{\theta}
+      \left( -\frac{l_0}{\mu}\toder{u}{\theta} \right)\dot{\theta} =
       -\frac{l_0\dot{\theta}}{\mu}\toder[2]{u}{\theta} \\
-      &= - \left(
-        \frac{l_0}{\mu} \right)^2u^2\toder[2]{u}{\theta}. \label{eq:derivata2-r}
+      &= - \left( \frac{l_0}{\mu}
+      \right)^2u^2\toder[2]{u}{\theta}. \label{eq:derivata2-r}
     \end{split}
   \end{align}
 \end{subequations}
@@ -898,8 +898,8 @@ l'energia diventa nulla o positiva il sistema non sarà più legato.
 
 Consideriamo ora il caso in cui il sistema sta perdendo energia a causa della
 diminuzione della massa di uno dei corpi, per esempio
-$m_1$.\footnote{Per un'applicazione si può
-  consultare \textcite{padmanabhan:stars}.}
+$m_1$.\footnote{Per un'applicazione si può consultare
+  \textcite{padmanabhan:stars}.}
 Supponiamo che i due corpi descrivano orbite ellittiche e indichiamo la
 variazione della massa di $m_1$ con $\Delta M = m_1 - m_\textup{R}$, dove
 $m_\textup{R}$ è la massa residua del corpo. Facciamo l'ipotesi semplificatrice,
