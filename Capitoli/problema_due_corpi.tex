@@ -435,8 +435,8 @@ vera $\chi$ è uguale a $\pi$, e la distanza dell'apoapside dallo stesso fuoco �
 $r_\textup{max} = r(\theta_0+\pi) = a(1+e)= a+c$. Si ottiene il caso particolare
 della circonferenza ponendo nelle equazioni precedenti $e=0$, quindi $p=a=b$,
 $c=e=0$. Se indichiamo con $t_0$ l'istante del passaggio del corpo dal
-periapside e con $T$ il periodo di rivoluzione, dalla seconda legge di Keplero
-abbiamo che l'apoapside viene raggiunto nell'istante $t_0 + T/2$. Infatti il
+periapside e con $P$ il periodo di rivoluzione, dalla seconda legge di Keplero
+abbiamo che l'apoapside viene raggiunto nell'istante $t_0 + P/2$. Infatti il
 vettore posizione, partendo dal periapside, all'apoapside avrà spazzato metà
 della superficie totale dell'ellisse, impiegando dunque metà del periodo totale
 di rivoluzione. Nella Figura~\ref{fig:ellissi-eccentricita} sono riportate tre
@@ -453,10 +453,10 @@ ellissi con lo stesso semiasse maggiore ma con eccentricità differenti.
     \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
     \draw (-0.2,0) ellipse (1 and 0.979796); %ellisse 1
     \draw (0.8,0.8) node {$e=0.2$};
-    \draw (-0.5,0) ellipse (1 and 0.866025); %ellisse 2
+    \draw[dashed] (-0.5,0) ellipse (1 and 0.866025); %ellisse 2
     \draw (-1.2,0.7) node[left] {$e=0.5$};
-    \draw (-0.9,0) ellipse (1 and 0.435890); %ellisse 3
-    \draw (-1.8,0.2) node[left] {$e=0.9$};
+    \draw[dashdotted] (-0.9,0) ellipse (1 and 0.435890); %ellisse 3
+    \draw (-1.9,0.2) node[left] {$e=0.9$};
   \end{tikzpicture}
   \caption[Ellissi con diversi valori di eccentricità]{Ellissi con fuoco comune
     nell'origine del sistema di riferimento, stesso semiasse maggiore $a=1$ ed
@@ -857,7 +857,7 @@ L'area di un'ellisse di semiassi maggiore e minore rispettivamente $a$ e $b$ è
 pari a $\pi ab$ quindi integrando l'equazione precedente in un intero periodo
 ricaviamo
 \begin{equation}
-    \int_{t_0}^{t_0+T} l_0\dd t = Tl_0 = 2\mu\pi ab.
+    \int_{t_0}^{t_0+P} l_0\dd t = Pl_0 = 2\mu\pi ab.
 \end{equation}
 Dal valore~\eqref{eq:energia-ellisse} dell'energia del sistema nel caso di
 orbite ellittiche abbiamo
@@ -869,7 +869,7 @@ e~\eqref{eq:eccentricita-energia}, il quadrato del periodo di rivoluzione è
 \begin{equation}
   \label{eq:terza-legge-keplero}
   \begin{split}
-    T^2 &= \frac{4\pi^2\mu^2a^2b^2}{l_0^2} = \frac{4\pi^2\mu^2a^4(1-e^2)}{l_0^2}
+    P^2 &= \frac{4\pi^2\mu^2a^2b^2}{l_0^2} = \frac{4\pi^2\mu^2a^4(1-e^2)}{l_0^2}
     = \frac{4\pi^2\mu^2a^4}{l_0^2}\frac{2\abs{E}l_0^2}{G^2M_\textup{T}^2\mu^3} \\
     &= 4\pi^2a^4\frac{1}{aGM_\textup{T}} = \frac{4\pi^2a^3}{GM_\textup{T}}.
   \end{split}

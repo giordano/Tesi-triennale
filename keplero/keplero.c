@@ -12,7 +12,7 @@
  * differenti valori dell'eccentricità. I file possono essere
  * letti da un programma per la realizzazione di grafici.
  * Autore: Mosè Giordano
- * Data: 11/06/2011
+ * Data: 17/06/2011
  */
 
 #include <stdio.h>
@@ -59,9 +59,9 @@ double diff_besselj(int n, double x)
 double psi_newton(double phi, double e)
 {
   double psi=phi; /* anomalia eccentrica. Punto iniziale = phi */
-  /* Se il valore della funzione valutata nel punto iniziale
-   * è maggiore della precisione desiderata utilizzo il metodo
-   * di Newton per cercare un nuovo punto.
+  /* Se il valore assoluto della funzione valutata nel punto
+   * iniziale è maggiore della precisione desiderata utilizzo
+   * il metodo di Newton per cercare un nuovo punto.
    */
   while(fabs(f(psi,e,phi))>PRECISIONE)
     psi-=(psi-e*sin(psi)-phi)/(1-e*cos(psi));
@@ -151,13 +151,14 @@ int main(){
       /* Ripeto calcoli per tutti i valori dell'eccentricità */
       for(i=0;i<N;i++)
 	{
-	  /* Scrivo su file i risultati del metodo di Newton */
+	  /* Calcolo l'anomalia eccentrica con il metodo di
+	   * Newton e scrivo su file i risultati */
 	  psi=psi_newton(omega*t,e[i]);
 	  fprintf(newton,"\t%f\t%f\t%f",psi,
 		  r(a,e[i],psi),
 		  anomvera(e[i],psi));
-	  /* Scrivo su file i risultati del metodo dei
-	   * coefficienti di Bessel */
+	  /* Calcolo l'anomalia eccentrica con il metodo dei
+	   * coefficienti di Bessel e scrivo su file i risultati */
 	  psi=psi_bessel(omega*t,e[i]);
 	  fprintf(bessel,"\t%f\t%f\t%f",psi,
 		  r_bessel(omega*t,a,e[i]),

@@ -48,19 +48,19 @@ vettore che congiunge il fuoco $F$ alla posizione del corpo sull'ellisse si
 sposta da $FP$ a $FQ$, spazzando dunque l'area $FPQ$. Allora per la seconda
 legge di Keplero
 \begin{equation}
-  \text{area } FPQ : \text{area ellisse} = t-t_0 : T,
+  \text{area } FPQ : \text{area ellisse} = t-t_0 : P,
 \end{equation}
 da cui otteniamo
 \begin{equation}
-  \text{area } FPQ = \frac{\pi ab(t-t_0)}{T}.
+  \text{area } FPQ = \frac{\pi ab(t-t_0)}{P}.
 \end{equation}
-Definendo la \emph{velocità angolare media} $\omega = 2\pi/T$ questa equazione
+Definendo la \emph{velocità angolare media} $\omega = 2\pi/P$ questa equazione
 diventa
 \begin{equation}
   \text{area } FPQ = \frac{1}{2}\omega ab(t-t_0).
 \end{equation}
 Conoscendo l'istante di passaggio al periapside $t_0$, il periodo di rivoluzione
-$T$, il semiasse maggiore $a$ e l'eccentricità $e$, legata al semiasse minore
+$P$, il semiasse maggiore $a$ e l'eccentricità $e$, legata al semiasse minore
 dalla~\eqref{eq:semiasse-minore-ellisse}, è possibile calcolare in un qualsiasi
 istante di tempo $t$ l'area $FPQ$ da cui si ricava la posizione $Q$. Le
 grandezze $t_0$, $a$ ed $e$ sono chiamate \emph{elementi dell'orbita
@@ -129,7 +129,7 @@ l'anomalia eccentrica $\psi$
 Dall'equazione~\eqref{eq:terza-legge-keplero} che esprime la terza legge di
 Keplero
 \begin{equation}
-  \omega^2 = \frac{4\pi^2}{T^2} = \frac{GM_\textup{T}}{a^3}.
+  \omega^2 = \frac{4\pi^2}{P^2} = \frac{GM_\textup{T}}{a^3}.
 \end{equation}
 Ricordando la~\eqref{eq:reciproco-semilato}, la~\eqref{eq:semilato-ellisse} e
 la~\eqref{eq:velocita-tangenziale} abbiamo
@@ -189,7 +189,7 @@ l'anomalia eccentrica vale $\psi$
 \end{gather}
 dove $\phi = \omega(t-t_0)$ è chiamata \emph{anomalia media}. Anche l'anomalia
 media varia fra $0$, valore raggiunto per $t = t_0$ cioè al periapside, e
-$2\pi$. Il corpo relativo passa all'apoapside all'istante $t = t_0 + T/2$,
+$2\pi$. Il corpo relativo passa all'apoapside all'istante $t = t_0 + P/2$,
 quindi in questo punto $\phi = \psi = \chi = \pi$. La~\eqref{eq:keplero} è detta
 \emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
 soluzione $\psi$ permette di ricavare, tramite
@@ -340,7 +340,7 @@ nell'appendice~\ref{cha:soluzione-keplero}. Nelle
 Figure~\ref{fig:newton-anomalia_eccentrica}, \ref{fig:newton-raggio}
 e~\ref{fig:newton-anomalia_vera}, realizzate con il softawre \verb|gnuplot|,
 sono rappresentati i risultati della simulazione. Per tutti i grafici, il
-periodo di rivoluzione è $T = \SI{10}{\hour}$, l'istante di passaggio dal
+periodo di rivoluzione è $P = \SI{10}{\hour}$, l'istante di passaggio dal
 periapside è $t_0 = 0$ e il semiasse maggiore vale $a =
 \SI{2.5e6}{\kilo\metre}$,
 quindi per la terza legge di Keplero
@@ -456,13 +456,13 @@ quindi, derivando sotto il segno di integrale, abbiamo anche
 Ritorniamo al problema fisico. Definiamo la funzione $G(\psi,\phi) = \psi -
 e\sin\psi - \psi$, con $\psi,\phi\in\mathopen{[}0,
 2\pi\mathclose{]}$. Dall'equazione di Keplero abbiamo $G(\psi(t),\phi(t)) = 0$
-in ogni istante di tempo $t\in\mathopen{[}t_0,T+t_0\mathclose{]}$ e inoltre
+in ogni istante di tempo $t\in\mathopen{[}t_0,P+t_0\mathclose{]}$ e inoltre
 $G_\psi(\psi(t),\phi(t)) = 1 - e\cos\psi(t) \neq 0$,
 $\forall\psi\in\mathopen{[}0, 2\pi\mathclose{]}$ e $G\in C^1(\mathopen{[}0,
 2\pi\mathclose{]}^2)$, quindi per il teorema del Dini
 (\textcite{demarco:analisi2}) esiste un'unica funzione di classe $C^1$ che
 esplicita $\psi(t)$ rispetto a $\phi(t)$, per ogni
-$t\in\mathopen{[}t_0,T+t_0\mathclose{]}$. Tuttavia, come già detto, non possiamo
+$t\in\mathopen{[}t_0,P+t_0\mathclose{]}$. Tuttavia, come già detto, non possiamo
 dare un'espressione elementare della funzione $\psi(\phi)$, però possiamo
 cercare un'espressione che coinvolga i coefficienti di Bessel, che sono funzioni
 speciali. Notiamo innanzitutto che $\psi$ è una funzione dispari di
