@@ -1,18 +1,26 @@
 SHELL		= /bin/sh
-SORGENTE	= keplero.c
+SOURCE		= keplero.c
 EXE		= keplero
-DISTCLEAN_FILE	= $(EXE) *.dat
+HEADER		= kepler_functions.h
+OBJECT_SOURCE	= kepler_functions.c
+OBJECT		= $(patsubst %.c,%.o,$(OBJECT_SOURCE))
+CFLAGS		= -Wall -pedantic
+LIBRARIES	= -lm -lgsl -lgslcblas
+DISTCLEAN_FILES	= $(EXE) $(OBJECT) *.dat *~
 
 .PHONY: exe distclean check-syntax
 
 exe: $(EXE)
 
-$(EXE): $(SORGENTE)
-	gcc -lm -Wall -pedantic -lgsl -lgslcblas -o $(EXE) $(SORGENTE)
+$(EXE): $(SOURCE) $(HEADER) $(OBJECT)
+	gcc $(CFLAGS) $(LIBRARIES) -o $(EXE) $(SOURCE) $(OBJECT)
+
+$(OBJECT): $(OBJECT_SOURCE) $(HEADER)
+	gcc -c $(CFLAGS) $(LIBRARIES) $(OBJECT_SOURCE)
 
 distclean:
-	rm -f $(DISTCLEAN_FILE)
+	rm -f $(DISTCLEAN_FILES)
 
 # per effettuare il controllo della sintassi in Emacs con Flymake
 check-syntax:
-	gcc -o nul -Wall -pedantic -S $(CHK_SOURCES)
+	gcc -o nul $(CFLAGS) -S $(CHK_SOURCES)

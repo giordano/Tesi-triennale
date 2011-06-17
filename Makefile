@@ -70,12 +70,15 @@ $(KEPLERO)/keplero-immagini: $(KEPLERO)/keplero-dat $(KEPLERO)/keplero.gnuplot
 	rm -f $(IMMAGINI_KEPLERO_EPS)
 	touch $(KEPLERO)/keplero-immagini
 
-$(KEPLERO)/keplero-dat: $(KEPLERO)/keplero
+$(KEPLERO)/keplero-dat: $(KEPLERO)/keplero $(KEPLERO)/keplero.c
 	cd $(KEPLERO) && ./keplero
 	touch $(KEPLERO)/keplero-dat
 
-$(KEPLERO)/keplero: $(KEPLERO)/keplero.c
+$(KEPLERO)/keplero: $(KEPLERO)/keplero.c $(KEPLERO)/kepler_functions.h $(KEPLERO)/kepler_functions.o
 	@cd $(KEPLERO) && make exe
+
+$(KEPLERO)/kepler_functions.o: $(KEPLERO)/kepler_functions.c $(KEPLERO)/kepler_functions.h
+	@cd $(KEPLERO) && make kepler_functions.o
 ### Fine delle regole per le immagini
 
 # Per fare pulizia dei file temporanei generati:

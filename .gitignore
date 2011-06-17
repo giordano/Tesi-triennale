@@ -21,6 +21,7 @@ Immagini/gnuplot/*.tex
 keplero/keplero
 keplero/*.dat
 keplero/*.eps
+keplero/*.o
 keplero/*.pdf
 keplero/*.tex
 keplero/keplero-*
