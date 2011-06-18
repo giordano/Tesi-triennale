@@ -26,17 +26,18 @@ solo alla mutua interazione gravitazionale.
     % m1=1: y=0.8,  z=0.2,  x=0.2
     % m2=3: y=0.6,  z=0.8,  x=0.4
     % cm:   y=0.65, z=0.65, x=0.35
-    \draw [->] (0,0,0) -- (1,0,0) node[right] {$y$}; % asse y
-    \draw [->] (0,0,0) -- (0,1,0) node[above] {$z$}; % asse z
-    \draw [->] (0,0,0) -- (0,0,1) node[below left] {$x$}; % asse x
+    \node (O) at (0,0,0) [label=left:$O$] {};
+    \draw [->] (O) -- (1,0,0) node[right] {$y$}; % asse y
+    \draw [->] (O) -- (0,1,0) node[above] {$z$}; % asse z
+    \draw [->] (O) -- (0,0,1) node[below left] {$x$}; % asse x
     \filldraw [gray] (0.8,0.2,0.2) circle (0.01); % corpo di massa m_1
     \draw [->] (0,0,0) -- node[below right,fill=white] {$\bm{r}_1$}
                (0.8,0.2,0.2) node[right] {$m_1$}; % vettore r_1
     \filldraw [gray] (0.6,0.8,0.4) circle (0.02); % corpo di massa m_2
     \draw [->] (0,0,0) -- node[above left] {$\bm{r}_2$} (0.6,0.8,0.4)
                node[above] {$m_2$}; % vettore r_2
-    \draw [->] (0.8,0.2,0.2) -- node[right] {$\bm{r}$} (0.6,0.8,0.4); % vettore
-    % posizione relativa
+    % vettore posizione relativa
+    \draw [->] (0.8,0.2,0.2) -- node[right] {$\bm{r}$} (0.6,0.8,0.4);
     % vettore posizione del centro di massa
     \draw [->] (0,0,0) -- node[right] {$\bm{r}_\textup{CM}$} (0.65,0.65,0.35);
   \end{tikzpicture}
@@ -243,7 +244,8 @@ $l_0 = \norm{\bm{l}_0} = \mu r^2\dot{\theta}$ del momento angolare. Infatti
     \draw[->] (0,0) -- node[below] {$r+\dd r$} (2,0);
     \draw[->] (0,0) -- node[above] {$r$} (1.299,0.75);
     \draw[dashed] (1.299,0) -- node[left] {$r\dd\theta$} (1.299,0.75);
-    \draw [<-] (0.4,0) node[above right] {$\dd\theta$} arc (0:30:0.4);
+    \draw[->] ($0.4*cos(30)*(1,0)+ 0.4*sin(30)*(0,1)$) to [out=-60,in=90]
+              node[right] {$\dd\theta$} (0.4,0);
   \end{tikzpicture}
   \caption[Area spazzata nell'intervallo di tempo $\dd t$ dal vettore
   posizione]{Area spazzata nell'intervallo di tempo $\dd t$ dal vettore
@@ -382,20 +384,20 @@ possono essere classificate nel seguente modo:
   \centering
   \begin{tikzpicture}[font=\scriptsize,scale=5]
     % a=1, e=0.8, b=a*sqrt(1-e^2)=0.6, c=a*e=0.8, p=a*(1-e^2)=0.36
-    \draw [->] (-1.1,0) -- (1.1,0) node[right] {$x\equiv x'$}; %assi x e x'
-    \draw [->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
-    \draw [->] (0.8,-0.7) -- (0.8,0.7) node[above] {$y$}; %asse y
+    \draw[->] (-1.1,0) -- (1.1,0) node[right] {$x\equiv x'$}; %assi x e x'
+    \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
+    \draw[->] (0.8,-0.7) -- (0.8,0.7) node[above] {$y$}; %asse y
     \draw (0,0) ellipse (1 and 0.6); %ellisse 1
     \draw (0,0) node[below left] {$O'$};
     \draw (0.8,0) node[below left] {$O\equiv M_{\textup{T}}$};
-    \draw [->] (0.9,0) arc (0:45:0.1) node[right] {$\theta -
-      \theta_0$};
-    \draw [->] (0.8,0) -- node[above] {$r$} (0.962586,0.162586);
-    \draw (0,0) -- node[below] {$a$} (-1,0); %TODO: sistemare
-    \draw (0,0) -- node[above] {$c$} (0.8,0); %TODO: sistemare
-    \draw (0,0) -- node[left] {$b$} (0,0.6); %TODO: sistemare
-    \draw (0.8,0) -- node[left] {$p$} (0.8,0.36); %TODO: sistemare
-    \draw (0.8,0) -- node[below] {$a-c$} (1,0); %TODO: sistemare
+    \draw[->] (0.9,0) to [out=90,in=-45] node[right] {$\theta - \theta_0$}
+              ($(0.8,0) + cos(45)*(0.1,0) + sin(45)*(0,0.1)$);
+    \draw[->] (0.8,0) -- node[above] {$r$} (0.962586,0.162586);
+    \node [below] at ($(0,0)!.5!(-1,0)$) {$a$};
+    \node [above] at ($(0,0)!.5!(0.8,0)$) {$c$};
+    \node [left] at ($(0,0)!.5!(0,0.6)$) {$b$};
+    \node [left] at ($(0.8,0)!.5!(0.8,0.36)$) {$p$};
+    \node [below] at ($(0.8,0)!.5!(1,0)$) {$a-c$};
   \end{tikzpicture}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
     del sistema di riferimento $xOy$ è la posizione di $M_\textup{T}$ e coincide
