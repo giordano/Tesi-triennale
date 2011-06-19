@@ -17,8 +17,8 @@ relativa che si muove su un'orbita ellittica.
   \begin{tikzpicture}[font=\footnotesize,scale=3]
     % a=1, e=0.8, b=a*sqrt(1-e^2)=0.6, c=ae=0.8, p=a*(1-e^2)=0.36, chi=120,
     % r(chi)=0.6, x_Q=x_G=c+r(chi)*cos(chi)=0.5,
-    % y_Q=r(chi)*sin(chi)=0.5196, y_G=y_Q*a/b=0.866, psi=60 (deriva dalla relazione
-    % fra anomalia vera ed eccentrica)
+    % y_Q=r(chi)*sin(chi)=0.5196, y_G=y_Q*a/b=0.866, psi=60 (deriva dalla
+    % relazione fra anomalia vera ed eccentrica)
     \draw [->] (-1.2,0) -- (1.2,0) node[right] {$x$}; %asse x
     \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
     \draw (0,0) circle (1); % circonferenza ausiliaria
@@ -30,7 +30,8 @@ relativa che si muove su un'orbita ellittica.
     \draw (0.8,0) node[below] {$F$}; % etichetta del punto F
     \draw (1,0) node[above right] {$P$}; % etichetta del punto P
     \draw [dashdotted] (0.5,0.5196) -- (0.5,0) node[below] {$R$}; % segmento RQ
-    \draw [->] (0.9,0) arc (0:120:0.1) node[above right] {$\chi$}; % angolo chi
+    \draw [->] (0.9,0) to [out=90,in=30] node[above] {$\chi$} ($(0.8,0) +
+               cos(120)*(0.1,0) + sin(120)*(0,0.1)$) ; % angolo chi
     \draw [->] (0.1,0) arc (0:60:0.1) node[right] {$\psi$}; % angolo psi
   \end{tikzpicture}
   \caption[Ellisse e circonferenza ausiliaria per l'equazione di
@@ -233,7 +234,7 @@ In questa equazione possiamo esplicitare $\chi$ in funzione di $\psi$ ottenendo
     \sqrt{\frac{1+e}{1-e}}\tan\frac{\psi}{2}
   \right).
 \end{equation}
-Il risultato seppur corretto, presenta con questa definizione di $\chi$ una
+Il risultato, seppur corretto, presenta con questa definizione di $\chi$ una
 discontinuità di prima specie in $\psi = \pi$ perché la tangente è discontinua
 in $\pi/2$. Per rendere continua $\chi$ in funzione di $\psi$ dobbiamo
 aggiungere $\pi$ al valore dell'arcotangente se $\psi > \pi$, cioè
