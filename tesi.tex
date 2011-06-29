@@ -36,12 +36,12 @@
 \fancyhf{} % svuota tutti i campi delle testatine e dei piedi
 % Abbiamo usato l'opzione di classe `oneside', quindi la testatina è la stessa
 % per tutte le pagine.
-% A sinistra (`L') mettiamo il nome del paragrafo (`\rightmark'), non tutto
-% maiuscolo (`\nouppercase').
-\fancyhead[L]{\bfseries\footnotesize\nouppercase{\leftmark}}
-% A destra (`R') mettiamo il numero della pagina (`\thepage').
-\fancyhead[R]{\bfseries\thepage}
-
+% Nella testatina (`head') a destra (`R') mettiamo il nome del paragrafo
+% (`\rightmark'), non tutto maiuscolo (`\nouppercase').
+\fancyhead[R]{\slshape\nouppercase{\leftmark}}
+% Nel piede (`foot') al centro (`C') mettiamo il numero della pagina
+% (`\thepage').
+\fancyfoot[C]{\thepage}
 
 \graphicspath{{Immagini/}} % cartella in cui cercare le immagini da caricare
 
