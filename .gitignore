@@ -8,7 +8,7 @@ tesi-frn.tex
 *.log
 *.lof
 *.out
-*.pdf
+tesi*.pdf
 *.run.xml
 *.toc
 *~

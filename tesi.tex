@@ -5,7 +5,8 @@
 
 %%%%% Pacchetti caricati
 \usepackage{fancyhdr}
-\usepackage{graphicx}
+% per tabelle e figure
+\usepackage{booktabs,graphicx}
 \usepackage{tikz}
 \usepackage[autostyle=true]{csquotes}
 \usepackage[style=numeric,backref,hyperref,abbreviate=false,backend=biber]{biblatex}
@@ -18,6 +19,9 @@
 \usepackage{mathtools}
 \usepackage{frontespizio}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
+% Per il simbolo del sole `\astrosun'. TODO: ricordarsi di eliminarlo se non si
+% usa più il comando.
+\usepackage{wasysym}
 % `bm' serve per scrivere i vettori in corsivo con il comando
 % `\bm{vettore}'. Deve sostituire il comando `\mathbf{vettore}' perché questo
 % restituisce erroneamente lettere in tondo, non in corsivo e non funziona con
@@ -59,6 +63,19 @@
   exponent-product=\cdot,
   output-product=\cdot
 }
+
+% Posiziona le didascalie sopra le tabelle
+\captionsetup[table]{position=top}
+
+%% Nuove unità di misura
+\DeclareSIUnit\parsec{pc}
+\DeclareSIUnit\year{yr}
+% TODO controllare questa definizione, se non usi più il comando `\astrosun'
+% ricordati di togliere il pacchetto che lo fornisce
+\DeclareSIUnit\solarmass{M_\astrosun}
+% C'era già l'arcosecondo, però lo ridefinisco per essere coerente con gli
+% articoli che cito
+\DeclareSIUnit\arcsecond{as}
 
 \bibliography{bibliografia} % nome del file contenente la bibliografia
 \defbibheading{subbibliography}{\section*{#1}\markboth{#1}{#1}}
