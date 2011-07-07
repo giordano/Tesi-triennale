@@ -1269,6 +1269,58 @@ di massa giace sempre sulla congiungente $\bm{r}$ dei due corpi, quindi $m_1$ e
 $m_2$ sono sempre opposti rispetto al centro di massa durante il loro moto
 orbitale.
 
+\subsection{Integrali primi del moto}
+\label{sec:integrali-primi}
+
+Si dimostra che in un sistema con $n$ gradi di libertà esistono $2n+1$ integrali
+primi del moto indipendenti. Abbiamo visto che il problema di Keplero ha due
+gradi di libertà e finora abbiamo trovati quattro costanti: l'energia e le tre
+componenti del vettore momento angolare $\bm{l}_0$. Per tutti i campi centrali
+con forza del tipo $\bm{F} = -k/r^2\versor{r}$, agente su un corpo di massa
+$\mu$, esiste un altro vettore costante chiamato
+\emph{vettore di Laplace-Runge-Lenz} e definito da
+\begin{equation}
+  \bm{A} = \bm{p}\times\bm{l} - \mu k\versor{r}.
+\end{equation}
+Per il campo gravitazionale naturalmente abbiamo $k=GM_\textup{T}\mu$, dove
+$M_\textup{T}$ è la massa del corpo che genera il campo. Verifichiamo che il
+vettore $\bm{A}$ è una costante del moto
+\begin{equation}
+  \begin{split}
+    \toder{\bm{A}}{t} &= \dot{\bm{p}}\times\bm{l}_0 + \bm{p}\times\dot{\bm{l}_0}
+    - \mu k\toder{\versor{r}}{t} = \bm{F}\times\bm{l}_0 - \mu
+    k\dot{\theta}\versor{\theta} \\
+    &= -\frac{k}{r^2}\versor{r}\times \mu r^2\dot{\theta}\versor{z} -
+    \mu k\dot{\theta}\versor{\theta} = \mu k\dot{\theta}\versor{\theta} -
+    \mu k\dot{\theta}\versor{\theta} = \bm{0}.
+  \end{split}
+\end{equation}
+I vettori $\bm{A}$ e $\bm{l}_0$ sono perpendicolari, infatti
+$\bm{A}\cdot\bm{l}_0 = (\bm{p}\times\bm{l}_0)\cdot\bm{l}_0 - (\mu
+k\versor{r})\cdot\bm{l}_0 = 0$.
+Dunque da ciò deriva che $\bm{A}$ giace nel piano orbitale. Questo vettore
+permette inoltre di ricavare facilmente l'equazione dell'orbita, infatti
+indicando con $\theta$ l'angolo fra il vettore posizione $\bm{r}$ e la direzione
+fissa del vettore $\bm{A}$ abbiamo
+$\bm{A}\cdot\bm{r} = Ar\cos\theta = \bm{r}\cdot(\bm{p}\times\bm{l}_0) - \mu kr =
+\bm{l}_0\cdot(\bm{r}\times\bm{p}) - \mu kr$, da cui
+\begin{equation}
+  \frac{1}{r} = \frac{\mu k}{l_0^2}
+  \left(
+    1 + \frac{A}{\mu k}\cos\theta
+  \right).
+\end{equation}
+Confrontando questa equazione con la~\eqref{eq:orbita} notiamo che $\bm{A}$ è
+diretto parallelamente al vettore posizione $\bm{r}$ nel punto di periapside e
+che ha modulo $A = \mu ke$.
+
+Adesso conosciamo sette costanti del moto, ma non sono tutte fra loro
+indipendenti. Un prima relazione che lega queste costanti è l'ortogonalità fra
+$\bm{A}$ e $\bm{l}_0$, l'altra deriva da $A = \mu ke$, dove l'eccentricità $e$ è
+data dalla~\eqref{eq:eccentricita-energia}, quindi $A^2 = \mu^2k^2e^2 = \mu^2k^2
++ 2\mu El_0^2$. Questo prova l'esistenza di cinque costanti indipendenti fra le
+sette complessivamente trovate.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../tesi"
