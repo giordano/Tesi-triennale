@@ -399,10 +399,10 @@ possono essere classificate nel seguente modo:
     \node [below] at ($(0.8,0)!.5!(1,0)$) {$a-c$};
   \end{tikzpicture}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
-    del sistema di riferimento $xOy$ è la posizione di $M_\textup{T}$ e coincide
+    del sistema di riferimento $Oxy$ è la posizione di $M_\textup{T}$ e coincide
     con uno dei fuochi dell'ellisse, $a$ è il semiasse maggiore, $b$ è il
     semiasse minore, $p$ è il semilato retto, $c$ è l'eccentricità lineare. Il
-    sistema di riferimento $x'O'y'$ ha origine nel centro dell'ellisse. Nel
+    sistema di riferimento $O'x'y'$ ha origine nel centro dell'ellisse. Nel
     grafico abbiamo posto $a=1$ ed $e=0.8$}
   \label{fig:ellisse}
 \end{figure}
@@ -1310,8 +1310,8 @@ $\bm{A}\cdot\bm{r} = Ar\cos\theta = \bm{r}\cdot(\bm{p}\times\bm{l}_0) - \mu kr =
     1 + \frac{A}{\mu k}\cos\theta
   \right).
 \end{equation}
-Confrontando questa equazione con la~\eqref{eq:orbita} notiamo che $\bm{A}$ è
-diretto parallelamente al vettore posizione $\bm{r}$ nel punto di periapside e
+Confrontando questa equazione con la~\eqref{eq:soluzione2-binet} notiamo che
+$\bm{A}$ è diretto parallelamente al vettore $\bm{r}$ nel punto di periapside e
 che ha modulo $A = \mu ke$.
 
 Adesso conosciamo sette costanti del moto, ma non sono tutte fra loro
@@ -1320,6 +1320,83 @@ $\bm{A}$ e $\bm{l}_0$, l'altra deriva da $A = \mu ke$, dove l'eccentricità $e$ 
 data dalla~\eqref{eq:eccentricita-energia}, quindi $A^2 = \mu^2k^2e^2 = \mu^2k^2
 + 2\mu El_0^2$. Questo prova l'esistenza di cinque costanti indipendenti fra le
 sette complessivamente trovate.
+
+\section{Geometria del sistema binario}
+\label{sec:geometria-sistema}
+
+In questo paragrafo ci proponiamo di determinare come un osservatore vede un
+sistema binario nel proprio cielo. Per fare ciò consideriamo il sistema di
+riferimento destrorso $Ox'y'z'$ intrinseco al sistema binario, cioè con origine
+nel fuoco dell'orbita, assi $x'$ e $y'$ complanari al piano dell'orbita e $z'$
+ortogonale a questo. Gli assi $x'$ e $y'$ sono diretti, rispettivamente, come
+gli assi $x$ e $y$ della figura~\ref{fig:ellisse}. Consideriamo ora il sistema
+di riferimento ausiliario $Oxyz$, ottenuto ruotando attorno all'asse
+$z\equiv z'$ il sistema $Ox'y'z'$ di un angolo $\phi_0$. Le coordinate nel
+sistema di riferimento ausiliario possono essere ottenute da quelle del sistema
+di riferimento intrinseco con la seguente trasformazione scritta in forma
+matriciale (si veda~\textcite{goldstein:meccanica})
+\begin{equation}
+  \begin{pmatrix}
+    x \\
+    y \\
+    z \\
+  \end{pmatrix} =
+  \begin{pmatrix}
+    \cos\phi_0 & -\sin\phi_0 & 0 \\
+    \sin\phi_0 & \cos\phi_0  & 0 \\
+    0          & 0           & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x' \\
+    y' \\
+    z'
+  \end{pmatrix}.
+\end{equation}
+Supponiamo ora che un osservatore, posto a distanza $D$ dal sistema, si trovi
+nel piano $xz$ e guardi il piano dell'orbita lungo un asse $x''$ che forma un
+angolo $i$ con la direzione dell'asse $z\equiv z'$. Consideriamo dunque un nuovo
+sistema di riferimento destrorso $Ox''y''z''$, ottenuto ruotando attorno
+all'asse $y''\equiv y$ il sistema $Oxyz$ di un angolo $\pi/2 - i$. La
+trasformazione che permette di passare dal sistema di riferimento ausiliario a
+questo nuovo sistema è la seguente
+\begin{equation}
+  \begin{pmatrix}
+    x'' \\
+    y'' \\
+    z''
+  \end{pmatrix} =
+  \begin{pmatrix}
+    \sin i  & 0 & \cos i \\
+    0       & 1 & 0      \\
+    -\cos i & 0 & \sin i
+  \end{pmatrix}
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix}.
+\end{equation}
+L'osservatore vede il sistema lungo l'asse $x''$, che prende il nome di
+\emph{direzione di vista}, rivolto verso di sé e il piano orbitale è proiettato
+nel suo piano $y''z''$ che si chiama \emph{piano del cielo}. Le uniche grandezze
+che possono essere effettivamente misurate dall'osservatore sono le coordinate
+$y''$ e $z''$, mentre $x''$ non può essere determinata perché si trova lungo la
+direzione di vista. Notiamo che, poiché il moto orbitale si svolge nel piano
+$x'y'$, la coordinata $z'$ dei due corpi è identicamente nulla.
+
+Definiamo la \emph{distanza proiettata} come la distanza che l'osservatore vede
+fra i due corpi nel piano del cielo. Se indichiamo con $(y'',z'')$ le coordinate
+della particella relativa nel piano del cielo allora la distanza proiettata vale
+\begin{equation}
+  d = \sqrt{(y'')^2 + (z'')^2}.
+\end{equation}
+Se invece vogliamo riferirci ai due corpi reali dobbiamo, come al solito,
+utilizzare le relazioni~\eqref{eq:r1-r2-nel-cdm} per ottenere le coordinate dei
+due corpi conoscendo quelle della particella relativa. Indicando con
+$(y_1'',z_1'')$ e $(y_2'',z_2'')$ le coordinate così ottenute abbiamo
+\begin{equation}
+  d = \sqrt{(y_1'' - y_2'')^2 + (z_1''-z_2'')^2}.
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
