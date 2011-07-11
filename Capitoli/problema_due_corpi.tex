@@ -1273,18 +1273,18 @@ orbitale.
 \label{sec:integrali-primi}
 
 Si dimostra che in un sistema con $n$ gradi di libertà esistono $2n+1$ integrali
-primi del moto indipendenti. Abbiamo visto che il problema di Keplero ha due
-gradi di libertà e finora abbiamo trovati quattro costanti: l'energia e le tre
-componenti del vettore momento angolare $\bm{l}_0$. Per tutti i campi centrali
-con forza del tipo $\bm{F} = -k/r^2\versor{r}$, agente su un corpo di massa
-$\mu$, esiste un altro vettore costante chiamato
-\emph{vettore di Laplace-Runge-Lenz} e definito da
+primi del moto indipendenti (si veda \textcite{landau:meccanica}). Abbiamo visto
+che il problema di Keplero ha due gradi di libertà e finora abbiamo trovati
+quattro costanti: l'energia $E$ del sistema e le tre componenti del vettore
+momento angolare $\bm{l}_0$. Per tutti i campi centrali con forza del tipo
+$\bm{F} = -k/r^2\versor{r}$, agente su un corpo di massa $\mu$, esiste un altro
+vettore costante chiamato \emph{vettore di Laplace-Runge-Lenz} e definito da
 \begin{equation}
-  \bm{A} = \bm{p}\times\bm{l} - \mu k\versor{r}.
+  \bm{A} = \bm{p}\times\bm{l}_0 - \mu k\versor{r}.
 \end{equation}
-Per il campo gravitazionale naturalmente abbiamo $k=GM_\textup{T}\mu$, dove
-$M_\textup{T}$ è la massa del corpo che genera il campo. Verifichiamo che il
-vettore $\bm{A}$ è una costante del moto
+Per il campo gravitazionale abbiamo $k=GM_\textup{T}\mu$, dove $M_\textup{T}$ è
+la massa del corpo che genera il campo. Verifichiamo che il vettore $\bm{A}$ è
+una costante del moto
 \begin{equation}
   \begin{split}
     \toder{\bm{A}}{t} &= \dot{\bm{p}}\times\bm{l}_0 + \bm{p}\times\dot{\bm{l}_0}
@@ -1329,12 +1329,13 @@ sistema binario nel proprio cielo. Per fare ciò consideriamo il sistema di
 riferimento destrorso $Ox'y'z'$ intrinseco al sistema binario, cioè con origine
 nel fuoco dell'orbita, assi $x'$ e $y'$ complanari al piano dell'orbita e $z'$
 ortogonale a questo. Gli assi $x'$ e $y'$ sono diretti, rispettivamente, come
-gli assi $x$ e $y$ della figura~\ref{fig:ellisse}. Consideriamo ora il sistema
-di riferimento ausiliario $Oxyz$, ottenuto ruotando attorno all'asse
-$z\equiv z'$ il sistema $Ox'y'z'$ di un angolo $\phi_0$. Le coordinate nel
-sistema di riferimento ausiliario possono essere ottenute da quelle del sistema
-di riferimento intrinseco con la seguente trasformazione scritta in forma
-matriciale (si veda~\textcite{goldstein:meccanica})
+gli assi $x$ e $y$ della figura~\ref{fig:ellisse}, con $x'$ diretto verso il
+periapside. Consideriamo ora il sistema di riferimento ausiliario $Oxyz$,
+ottenuto ruotando attorno all'asse $z\equiv z'$ il sistema $Ox'y'z'$ di un
+angolo $\phi_0$. Le coordinate nel sistema di riferimento ausiliario possono
+essere ottenute da quelle del sistema di riferimento intrinseco con la seguente
+trasformazione scritta in forma matriciale (si
+veda~\textcite{goldstein:meccanica})
 \begin{equation}
   \begin{pmatrix}
     x \\
@@ -1376,6 +1377,49 @@ questo nuovo sistema è la seguente
     z
   \end{pmatrix}.
 \end{equation}
+Possiamo passare direttamente dal sistema di riferimento intrinseco al piano del
+cielo combinando le due trasformazioni
+\begin{equation}
+  \begin{split}
+    \begin{pmatrix}
+      x'' \\
+      y'' \\
+      z''
+    \end{pmatrix} &=
+    \begin{pmatrix}
+      \sin i  & 0 & \cos i \\
+      0       & 1 & 0      \\
+      -\cos i & 0 & \sin i
+    \end{pmatrix}
+    \begin{pmatrix}
+      \cos\phi_0 & -\sin\phi_0 & 0 \\
+      \sin\phi_0 & \cos\phi_0  & 0 \\
+      0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      x' \\
+      y' \\
+      z'
+    \end{pmatrix} \\
+    &=
+    \begin{pmatrix}
+      \sin i \cos\phi_0 & -\sin i\sin\phi_0 & \cos i \\
+      \sin\phi_0        & \sin\phi_0        & 0      \\
+      -\cos i\cos\phi_0 & \cos i\cos\phi_0  & \sin i
+    \end{pmatrix}
+    \begin{pmatrix}
+      x' \\
+      y' \\
+      z'
+    \end{pmatrix} \\
+    &=
+    \begin{pmatrix}
+      \sin i(x'\cos\phi_0 - y'\sin\phi_0) + z'\cos i \\
+      x'\sin\phi_0 + y'\cos\phi_0                    \\
+      \cos i(y'\sin\phi_0 - x'\cos\phi_0) + z'\sin i
+    \end{pmatrix}.
+  \end{split}
+\end{equation}
 L'osservatore vede il sistema lungo l'asse $x''$, che prende il nome di
 \emph{direzione di vista}, rivolto verso di sé e il piano orbitale è proiettato
 nel suo piano $y''z''$ che si chiama \emph{piano del cielo}. Le uniche grandezze
@@ -1397,6 +1441,9 @@ $(y_1'',z_1'')$ e $(y_2'',z_2'')$ le coordinate così ottenute abbiamo
 \begin{equation}
   d = \sqrt{(y_1'' - y_2'')^2 + (z_1''-z_2'')^2}.
 \end{equation}
+
+Il formalismo introdotto in questo paragrafo sarà usato in seguito per lo studio
+dei pianeti extrasolari.
 
 %%% Local Variables:
 %%% mode: latex
