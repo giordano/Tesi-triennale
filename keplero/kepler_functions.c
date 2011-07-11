@@ -94,7 +94,7 @@ double anomvera(double e, double psi)
  * Goldstein, Poole e Safko (vedi la bibliografia). `phi' e `i' sono gli angoli
  * delle rotazioni effettuate.
  */
-void pianodelcielo(double Qa[3], double phi, double i, Qb[3])
+void pianodelcielo(double Qa[3], double phi, double i, double Qb[3])
 {
   Qb[0]=sin(i)*(Qa[0]*cos(phi)-Qa[1]*sin(phi))+Qa[2]*cos(i);
   Qb[1]=Qa[0]*sin(phi)+Qa[1]*cos(phi);
