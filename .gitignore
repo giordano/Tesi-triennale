@@ -25,9 +25,3 @@ keplero/*.o
 keplero/*.pdf
 keplero/*.tex
 keplero/keplero-*
-keplero/nul
-keplero/bessj.c
-keplero/bessj0.c
-keplero/bessj1.c
-keplero/nrutil.c
-keplero/nrutil.h

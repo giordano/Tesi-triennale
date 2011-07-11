@@ -86,3 +86,17 @@ double anomvera(double e, double psi)
   else
     return 2*(atan(sqrt((1+e)/(1-e))*tan(psi/2))+PI);
 }
+
+/* Funzione che trasforma le coordinate del punto Qa del sistema di riferimento
+ * intrinseco al sistema binario nelle coordinate del punto Qb visto da un
+ * osservatore nel proprio piano del cielo. Abbiamo sfruttato la formula (1.97)
+ * di pagina 23 della tesi e le trasformazioni discusse nel capitolo 4 del
+ * Goldstein, Poole e Safko (vedi la bibliografia). `phi' e `i' sono gli angoli
+ * delle rotazioni effettuate.
+ */
+void pianodelcielo(double Qa[3], double phi, double i, Qb[3])
+{
+  Qb[0]=sin(i)*(Qa[0]*cos(phi)-Qa[1]*sin(phi))+Qa[2]*cos(i);
+  Qb[1]=Qa[0]*sin(phi)+Qa[1]*cos(phi);
+  Qb[2]=cos(i)*(Qa[1]*sin(phi)-Qa[0]*cos(phi))+Qa[2]*sin(i);
+}

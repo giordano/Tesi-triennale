@@ -23,4 +23,4 @@ distclean:
 
 # per effettuare il controllo della sintassi in Emacs con Flymake
 check-syntax:
-	gcc -o nul $(CFLAGS) -S $(CHK_SOURCES)
+	gcc -o /dev/null $(CFLAGS) -S $(CHK_SOURCES)
