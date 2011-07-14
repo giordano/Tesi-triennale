@@ -1,8 +1,8 @@
 SHELL		= /bin/sh
 SOURCE		= keplero.c
 EXE		= keplero
-HEADER		= kepler_functions.h
-OBJECT_SOURCE	= kepler_functions.c
+HEADER		= libreria.h
+OBJECT_SOURCE	= libreria.c
 OBJECT		= $(patsubst %.c,%.o,$(OBJECT_SOURCE))
 CFLAGS		= -Wall -pedantic
 LIBRARIES	= -lm -lgsl -lgslcblas

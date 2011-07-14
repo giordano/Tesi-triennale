@@ -18,10 +18,10 @@ auto/
 Immagini/gnuplot/*.eps
 Immagini/gnuplot/*.pdf
 Immagini/gnuplot/*.tex
-keplero/keplero
-keplero/*.dat
-keplero/*.eps
-keplero/*.o
-keplero/*.pdf
-keplero/*.tex
-keplero/keplero-*
+programmi/keplero
+programmi/*.dat
+programmi/*.eps
+programmi/*.o
+programmi/*.pdf
+programmi/*.tex
+programmi/keplero-*

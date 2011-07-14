@@ -5,18 +5,16 @@ Di seguito è riportato il codice sorgente del programma usato per risolvere
 l'equazione di Keplero con i metodi numeric di Newton~-~Raphson e dei
 coefficienti di Bessel, illustrati nel
 paragrafo~\ref{sec:soluzione-keplero}. Per calcolare i coefficienti di Bessel ho
-utilizzato la GNU Scientific
-Library.\footnote{La GNU Scientific Library è software libero e il codice
-  sorgente può essere scaricato e consultato da Internet
-  all'indirizzo~\url{http://www.gnu.org/software/gsl/}.}
-Il programma è suddiviso in tre file: \verb|keplero.c| che contiene il
-\verb|main|, l'header \verb|kepler_functions.h| e la libreria
-\verb|kepler_functions.c|. Per compilare il programma in ambiente GNU/Linux ho
-usato i seguenti comandi da terminale
+utilizzato la GNU Scientific Library.\footnote{La GNU Scientific Library è
+  software libero e il codice sorgente può essere scaricato e consultato da
+  Internet all'indirizzo~\url{http://www.gnu.org/software/gsl/}.}  Il programma
+è suddiviso in tre file: \verb|keplero.c| che contiene il \verb|main|, l'header
+\verb|libreria.h| e la libreria \verb|libreria.c|. Per compilare il programma in
+ambiente GNU/Linux ho usato i seguenti comandi da terminale
 \begin{verbatim}
-$ gcc -c -Wall -pedantic -lm -lgsl -lgslcblas kepler_functions.c
+$ gcc -c -Wall -pedantic -lm -lgsl -lgslcblas libreria.c
 $ gcc -Wall -pedantic -lm -lgsl -lgslcblas -o keplero \
-  keplero.c kepler_functions.o
+  keplero.c libreria.o
 \end{verbatim}
 L'esecuzione del programma genera due file di testo, \verb|bessel.dat| e
 \verb|newton.dat|, contenenti i risultati delle simulazioni effettuate con i due
@@ -24,26 +22,23 @@ diversi metodi.
 % TODO: ho commentato l'inserimento del codice per accelerare i tempi di
 % compilazione del documento, ricordarsi di decommentare nella versione finale!
 % \lstinputlisting[language=C,numbers=left,numberstyle=\tiny,
-% caption={File keplero.c}]{keplero/keplero.c}
-% TODO: listings non sembra gradire i nomi dei file seguenti (sembra che non
-% apprezzi l'underscore), risolvere il problema in qualche modo (a mali estremi
-% dovrò rinominare i file).
+% caption={File keplero.c}]{programmi/keplero.c}
 % \lstinputlisting[language=C,numbers=left,numberstyle=\tiny,
-% caption={File kepler_functions.h}]{{keplero/keplero/kepler_functions.h}}
+% caption={File libreria.h}]{{programmi/libreria.h}}
 % \lstinputlisting[language=C,numbers=left,numberstyle=\tiny,
-% caption={File kepler_functions.c}]{{keplero/kepler_functions.c}}
+% caption={File libreria.c}]{{programmi/libreria.c}}
 
 Qui riportiamo inoltre il codice dello script \verb|gnuplot| utilizzato per
 ottenere le figure del paragrafo~\ref{sec:soluzione-keplero} a partire dai file
 di output generati dall'esecuzione del programma. Per generare i grafici ho
 utilizzato il seguente comando da terminale
 \begin{verbatim}
-gnuplot keplero/keplero.gnuplot
+gnuplot programmi/keplero.gnuplot
 \end{verbatim}
 che ho eseguito nella cartella superiore rispetto a quella in cui si trova lo
 script \verb|keplero.gnuplot|.
 \lstinputlisting[language=gnuplot,
-numbers=left,numberstyle=\tiny]{keplero/keplero.gnuplot}
+numbers=left,numberstyle=\tiny]{programmi/keplero.gnuplot}
 
 %%% Local Variables:
 %%% mode: latex

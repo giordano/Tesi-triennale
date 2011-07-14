@@ -16,7 +16,7 @@
  */
 
 #include <stdio.h>
-#include "kepler_functions.h"
+#include "libreria.h"
 
 /* Numero di punti in cui trovare l'anomalia eccentrica */
 #define PUNTI 1000
