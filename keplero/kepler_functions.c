@@ -91,8 +91,9 @@ double anomvera(double e, double psi)
  * intrinseco al sistema binario nelle coordinate del punto Qb visto da un
  * osservatore nel proprio piano del cielo. Abbiamo sfruttato la formula (1.97)
  * di pagina 23 della tesi e le trasformazioni discusse nel capitolo 4 del
- * Goldstein, Poole e Safko (vedi la bibliografia). `phi' e `i' sono gli angoli
- * delle rotazioni effettuate.
+ * Goldstein, Poole e Safko (vedi la bibliografia). `phi' è l'angolo fra l'asse
+ * x' e l'asse x, `i' è l'angolo fra l'asse z'' e x'', così come spiegato nella
+ * tesi.
  */
 void pianodelcielo(double Qa[3], double phi, double i, double Qb[3])
 {
