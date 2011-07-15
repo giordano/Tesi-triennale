@@ -1,19 +1,25 @@
 SHELL		= /bin/sh
-SOURCE		= keplero.c
-EXE		= keplero
+KEPLERO		= keplero
+KEPLERO_SOURCE	= $(KEPLERO).c
+PIANETI		= pianeti
+PIANETI_SOURCE	= $(PIANETI).c
+EXES		= $(KEPLERO) $(PIANETI)
 HEADER		= libreria.h
 OBJECT_SOURCE	= libreria.c
 OBJECT		= $(patsubst %.c,%.o,$(OBJECT_SOURCE))
 CFLAGS		= -Wall -pedantic
 LIBRARIES	= -lm -lgsl -lgslcblas
-DISTCLEAN_FILES	= $(EXE) $(OBJECT) *.dat *~
+DISTCLEAN_FILES	= $(EXES) $(OBJECT) *.dat *~
 
-.PHONY: exe distclean check-syntax
+.PHONY: all distclean check-syntax
 
-exe: $(EXE)
+all: $(EXES)
 
-$(EXE): $(SOURCE) $(HEADER) $(OBJECT)
-	gcc $(CFLAGS) $(LIBRARIES) -o $(EXE) $(SOURCE) $(OBJECT)
+$(KEPLERO): $(KEPLERO_SOURCE) $(HEADER) $(OBJECT)
+	gcc $(CFLAGS) $(LIBRARIES) -o $(KEPLERO) $(KEPLERO_SOURCE) $(OBJECT)
+
+$(PIANETI): $(PIANETI_SOURCE) $(HEADER) $(OBJECT)
+	gcc $(CFLAGS) $(LIBRARIES) -o $(PIANETI) $(PIANETI_SOURCE) $(OBJECT)
 
 $(OBJECT): $(OBJECT_SOURCE) $(HEADER)
 	gcc -c $(CFLAGS) $(LIBRARIES) $(OBJECT_SOURCE)

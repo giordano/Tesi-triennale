@@ -75,7 +75,7 @@ $(PROG)/keplero-dat: $(PROG)/keplero $(PROG)/keplero.c
 	touch $(PROG)/keplero-dat
 
 $(PROG)/keplero: $(PROG)/keplero.c $(PROG)/libreria.h $(PROG)/libreria.o
-	@cd $(PROG) && make exe
+	@cd $(PROG) && make all
 
 $(PROG)/libreria.o: $(PROG)/libreria.c $(PROG)/libreria.h
 	@cd $(PROG) && make libreria.o

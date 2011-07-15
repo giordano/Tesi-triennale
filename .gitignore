@@ -19,6 +19,7 @@ Immagini/gnuplot/*.eps
 Immagini/gnuplot/*.pdf
 Immagini/gnuplot/*.tex
 programmi/keplero
+programmi/pianeti
 programmi/*.dat
 programmi/*.eps
 programmi/*.o
