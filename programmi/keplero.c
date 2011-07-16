@@ -41,7 +41,7 @@ int main(){
   periodo=10; /* 10 ore */
   tmin=0; /* Abbiamo supposto che al periapside t=0 */
   tmax=periodo;
-  omega=2*PI/periodo;
+  omega=2*M_PI/periodo;
 
   /* Apro i file su cui scrivere i risultati */
   newton=fopen("newton.dat","w");

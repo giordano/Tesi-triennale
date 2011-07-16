@@ -81,10 +81,10 @@ double r(double semiasse, double e, double psi)
  */
 double anomvera(double e, double psi)
 {
-  if(psi<=PI)
+  if(psi<=M_PI)
     return 2*atan(sqrt((1+e)/(1-e))*tan(psi/2));
   else
-    return 2*(atan(sqrt((1+e)/(1-e))*tan(psi/2))+PI);
+    return 2*(atan(sqrt((1+e)/(1-e))*tan(psi/2))+M_PI);
 }
 
 /* Funzione che trasforma le coordinate del punto Qa del sistema di riferimento

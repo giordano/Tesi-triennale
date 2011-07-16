@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <gsl/gsl_const_mksa.h> /* header della GSL contenente il valore di
-				 * alcune costanti fisiche espresse in MKSA */
+				 * alcune costanti fisiche in unità MKSA */
 #include "libreria.h"
 
 /* Numero di punti in cui trovare l'anomalia eccentrica */
@@ -41,15 +41,15 @@ int main(){
   periodo=10.0*3.6e3; /* 10 ore = 10*36000 secondi */
   tmin=0; /* Abbiamo supposto che al periapside t=0 */
   tmax=2*periodo;
-  omega=2*PI/periodo;
+  omega=2*M_PI/periodo;
   m1=5.0*GSL_CONST_MKSA_SOLAR_MASS; /* 5 masse solari */
-  m2=GSL_CONST_MKSA_SOLAR_MASS; /* una massa solare */
+  m2=GSL_CONST_MKSA_SOLAR_MASS;     /* una massa solare */
   mt=m1+m2;
   mu=m1*m2/mt;
   /* calcolo il semiasse maggiore usando la terza legge di Keplero */
-  a=cbrt(periodo*periodo*GSL_CONST_MKSA_GRAVITATIONAL_CONSTANT*mt/(4*PI*PI));
-  phi=0;
-  i=PI/2;
+  a=cbrt(periodo*periodo*GSL_CONST_MKSA_GRAVITATIONAL_CONSTANT*mt/(4*M_PI*M_PI));
+  phi=M_PI/6;
+  i=2*M_PI/5;
   /* la coordinata z della particella fittizia e dei due corpi è sempre nulla */
   ppf[2]=0;
   p1[2]=0;
@@ -75,8 +75,7 @@ int main(){
       pianodelcielo(ppf, phi, i, ppfpc);
       pianodelcielo(p1, phi, i, p1pc);
       pianodelcielo(p2, phi, i, p2pc);
-      /* calcolo la distanza fra i due corpi proiettata nel piano del cielo*/
-      d=sqrt(ppfpc[1]*ppfpc[1]+ppfpc[2]*ppfpc[2]);
+      d=hypot(ppfpc[1],ppfpc[2]); /* calcolo la distanza proiettata */
       /* scrivo su file i risultati */
       fprintf(pianeti,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",t,ppf[0],ppf[1],ppf[2],
 	      ppfpc[0],ppfpc[1],ppfpc[2],d);

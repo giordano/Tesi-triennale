@@ -6,9 +6,6 @@
 #define MAX_BESSEL 200
 /* Specifico il valore della precisione desiderata */
 #define PRECISIONE 1e-12
-/* La GNU Scientific Library definisce la macro M_PI con il
- * valore di pi greco */
-#define PI M_PI
 
 double f(double, double, double);
 double diff_besselj(int, double);
