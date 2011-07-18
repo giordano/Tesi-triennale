@@ -2,7 +2,7 @@
  * Scopo:
  * Output:
  * Autore: Mosè Giordano
- * Data: 16/07/2011
+ * Data: 18/07/2011
  */
 
 #include <stdio.h>
@@ -16,7 +16,7 @@
 int main(){
   /* Definizione delle variabili */
   double a; /* semiasse maggiore dell'orbita */
-  double e=0.8; /* eccentricità dell'orbita */
+  double e; /* eccentricità dell'orbita */
   double periodo; /* periodo dell'orbita */
   double t;
   double tmin, tmax; /* istanti di tempo minimo e massimo in
@@ -27,17 +27,15 @@ int main(){
   /* vettori di posizione della particella fittizia rispettivamente nel piano
    * solidale al sistema binario e nel piano del cielo */
   double ppf[3], ppfpc[3];
-  /* vettori di posizione della particella di massa m1 rispettivamente nel piano
-   * solidale al sistema binario e nel piano del cielo */
-  double p1[3], p1pc[3];
-  /* vettori di posizione della particella di massa m2 rispettivamente nel piano
-   * solidale al sistema binario e nel piano del cielo */
-  double p2[3], p2pc[3];
+  /* vettori di posizione, nel piano del cielo, rispettivamente
+   * della particella di massa m1 e di massa m2 */
+  double p1pc[3], p2pc[3];
   double phi, i; /* angoli delle rotazioni */
   double d; /* distanza proiettatia nel piano del cielo */
   FILE *pianeti; /* puntatore a file */
 
   /* Inizializzazione delle variabili */
+  e=0.8;
   periodo=10.0*3.6e3; /* 10 ore = 10*36000 secondi */
   tmin=0; /* Abbiamo supposto che al periapside t=0 */
   tmax=2*periodo;
@@ -50,10 +48,8 @@ int main(){
   a=cbrt(periodo*periodo*GSL_CONST_MKSA_GRAVITATIONAL_CONSTANT*mt/(4*M_PI*M_PI));
   phi=M_PI/6;
   i=2*M_PI/5;
-  /* la coordinata z della particella fittizia e dei due corpi è sempre nulla */
+  /* la coordinata z della particella fittizia è sempre nulla */
   ppf[2]=0;
-  p1[2]=0;
-  p2[2]=0;
 
   /* apro il file su cui scrivere i dati */
   pianeti=fopen("pianeti.dat","w");
@@ -66,19 +62,16 @@ int main(){
       theta=anomvera(e,psi);     /* calcolo l'anomalia vera */
       ppf[0]=r*cos(theta); /* coordinata x della particella fittizia */
       ppf[1]=r*sin(theta); /* coordinata y della particella fittizia */
-      p1[0]=-mu/m1*ppf[0]; /* coordinata x della particella m1 */
-      p1[1]=-mu/m1*ppf[1]; /* coordinata y della particella m1 */
-      p2[0]=mu/m2*ppf[0];  /* coordinata x della particella m2 */
-      p2[1]=mu/m2*ppf[1];  /* coordinata y della particella m2 */
       /* calcolo le coordinate della particella fittizia e dei due corpi nel
        * piano del cielo */
       pianodelcielo(ppf, phi, i, ppfpc);
-      pianodelcielo(p1, phi, i, p1pc);
-      pianodelcielo(p2, phi, i, p2pc);
+      vettore_scalare(3,ppfpc,p1pc,-mu/m1);
+      vettore_scalare(3,ppfpc,p2pc,mu/m2);
       d=hypot(ppfpc[1],ppfpc[2]); /* calcolo la distanza proiettata */
       /* scrivo su file i risultati */
-      fprintf(pianeti,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",t,ppf[0],ppf[1],ppf[2],
-	      ppfpc[0],ppfpc[1],ppfpc[2],d);
+      fprintf(pianeti,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
+	      t,ppf[0],ppf[1],ppf[2],ppfpc[0],ppfpc[1],ppfpc[2],
+	      p1pc[0],p1pc[1],p1pc[2],p2pc[0],p2pc[1],p2pc[2],d);
     }
   fclose(pianeti);
   return 0;
