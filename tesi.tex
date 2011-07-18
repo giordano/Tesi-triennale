@@ -19,9 +19,6 @@
 \usepackage{mathtools}
 \usepackage{frontespizio}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
-% Per il simbolo del sole `\astrosun'. TODO: ricordarsi di eliminarlo se non si
-% usa più il comando.
-\usepackage{wasysym}
 % `bm' serve per scrivere i vettori in corsivo con il comando
 % `\bm{vettore}'. Deve sostituire il comando `\mathbf{vettore}' perché questo
 % restituisce erroneamente lettere in tondo, non in corsivo e non funziona con
@@ -70,9 +67,7 @@
 %% Nuove unità di misura
 \DeclareSIUnit\parsec{pc}
 \DeclareSIUnit\year{yr}
-% TODO controllare questa definizione, se non usi più il comando `\astrosun'
-% ricordati di togliere il pacchetto che lo fornisce
-\DeclareSIUnit\solarmass{M_\astrosun}
+\DeclareSIUnit\solarmass{M\ensuremath{_\odot}}
 % C'era già l'arcosecondo, però lo ridefinisco per essere coerente con gli
 % articoli che cito
 \DeclareSIUnit\arcsecond{as}
