@@ -2,12 +2,12 @@
  * Scopo:
  * Output:
  * Autore: Mosè Giordano
- * Data: 18/07/2011
+ * Data: 04/08/2011
  */
 
 #include <stdio.h>
-#include <gsl/gsl_const_mksa.h> /* header della GSL contenente il valore di
-				 * alcune costanti fisiche in unità MKSA */
+#include <gsl/gsl_const_cgsm.h> /* header della GSL contenente il valore di
+				 * alcune costanti fisiche in unità CGSM */
 #include "libreria.h"
 
 /* Numero di punti in cui trovare l'anomalia eccentrica */
@@ -40,12 +40,12 @@ int main(){
   tmin=0; /* Abbiamo supposto che al periapside t=0 */
   tmax=2*periodo;
   omega=2*M_PI/periodo;
-  m1=5.0*GSL_CONST_MKSA_SOLAR_MASS; /* 5 masse solari */
-  m2=GSL_CONST_MKSA_SOLAR_MASS;     /* una massa solare */
+  m1=5.0*GSL_CONST_CGSM_SOLAR_MASS; /* 5 masse solari */
+  m2=GSL_CONST_CGSM_SOLAR_MASS;     /* una massa solare */
   mt=m1+m2;
   mu=m1*m2/mt;
   /* calcolo il semiasse maggiore usando la terza legge di Keplero */
-  a=cbrt(periodo*periodo*GSL_CONST_MKSA_GRAVITATIONAL_CONSTANT*mt/(4*M_PI*M_PI));
+  a=cbrt(periodo*periodo*GSL_CONST_CGSM_GRAVITATIONAL_CONSTANT*mt/(4*M_PI*M_PI));
   phi=M_PI/6;
   i=2*M_PI/5;
   /* la coordinata z della particella fittizia è sempre nulla */
