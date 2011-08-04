@@ -80,13 +80,102 @@ delle deviazioni dall'orbita puramente kepleriana previste dalla teoria della
 relatività le quali permetterebbero di effettuare una diversa stima della massa
 del buco nero.
 
-\section{La funzione di massa. Sistemi binari X}
-\label{sec:funzione-massa}
-
 \section{I pianeti extrasolari}
 \label{sec:extrasolari}
 
-%%% Local Variables: 
+\section{La funzione di massa. Sistemi binari X}
+\label{sec:funzione-massa}
+
+Vediamo ora un nuovo modo per stimare la massa di un corpo celeste sfruttando la
+terza legge di Keplero. Sappiamo che
+\begin{equation}
+  \label{eq:terza-legge-keplero2}
+  G(m_1 + m_2)  P^2 = 4\pi^2a^3,
+\end{equation}
+dove $a$ è il semiasse maggiore dell'ellisse descritta dalla particella
+relativa. Per ragioni di similitudine, il rapporto $a_1/a$, con $a_1$ semiasse
+maggiore dell'orbita descritta dal corpo di massa $m_1$, è uguale al rapporto
+$\norm{\bm{r}_1/\bm{r}}$, cioè dalla~\eqref{eq:r1-nel-cdm}
+\begin{equation}
+  \label{eq:semiasse-m1}
+  a_1 = \frac{\mu}{m_1}a = \frac{m_2}{m_1 + m_2}a.
+\end{equation}
+Quindi, sostituendo la~\eqref{eq:semiasse-m1}
+nella~\eqref{eq:terza-legge-keplero2} abbiamo
+\begin{equation}
+  GP^2\frac{m_2^3}{(m_1 + m_2)^3} = 4\pi^2a_1^3.
+\end{equation}
+Nelle osservazioni spettroscopiche non possono essere misurati separatamente il
+semiasse maggiore $a_1$ e l'angolo di inclinazione $i$, ma la proiezione di
+$a_1$ nel piano del cielo data da $a_1\sin i$. Moltiplicando ambo i membri per
+$\sin^3 i$ e portando al secondo membro tutte le quantità misurabili risulta
+\begin{equation}
+  \label{eq:valore-funzione-massa}
+  \frac{(m_2\sin i)^3}{(m_1 + m_2)^2} = \frac{4\pi^2}{GP^2}(a_1\sin i)^3.
+\end{equation}
+Il primo membro dell'equazione prende il nome di \emph{funzione di massa} per il
+corpo $1$
+\begin{equation}
+  f_1(m_1,m_2,i) = \frac{(m_2\sin i)^3}{(m_1 + m_2)^2}.
+\end{equation}
+Il valore della funzione di massa è noto quando si misurano il periodo orbitale
+$P$ e il semiasse maggiore proiettato $a_1\sin i$. È possibile fare questo, in
+particolare misurare $a_1\sin i$, solo nei sistemi visuali, quelli cioè in cui
+entrambi i corpi che costituiscono sono visibili. Vedremo più avanti come si può
+calcolare la funzione di massa negli altri casi. Ragionando in maniera analoga
+per il corpo di massa $m_2$ possiamo definire la funzione di massa $f_2$
+\begin{equation}
+  f_2(m_1,m_2,i) \equiv \frac{(m_1\sin i)^3}{(m_1 + m_2)^2} =
+  \frac{4\pi^2}{GP^2}(a_2\sin i)^3,
+\end{equation}
+con $a_2$ semiasse maggiore dell'ellisse descritta dal corpo di massa
+$m_2$. Conoscendo solo le funzioni di massa non è possibile determinare
+univocamente le due masse se l'angolo di inclinazione non è noto. Sarà quindi
+necessaria un'altra equazione per poter fissare i valori di tutte e tre queste
+grandezze. Tuttavia, dato un qualsiasi valore di $m_1$ e $i$, la funzione di
+massa $f_1$ fornisce il minimo valore della massa $m_2$. Allo stesso modo, il
+valore di $f_2$ è un limite inferiore per la massa del corpo $1$.
+
+Utilizziamo la funzione di massa per stimare la massa di un corpo non visibile
+che costituisce insieme alla stella variabile supergigante HD 226868 il sistema
+binario
+Cygnus-X1.\footnote{I dati riportati di seguito sono presi
+  da~\textcite{melia:astrophysics}.} Poiché il corpo non emette nella banda
+ottica sicuramente non è una stella. È noto che l'eccentricità del sistema è
+molto piccola ($e \lesssim 0.02$), quindi possiamo considerare l'orbita
+circolare. Misure basate sull'effetto Doppler forniscono la velocità orbitale
+proiettata $v_1$ della stella e risulta $v_1 =
+\SI{75}{\kilo\metre\per\second}$. Inoltre le variazioni periodiche del flusso
+misurato della stella fornisce il periodo di rotazione $P =
+\SI{5.6}{\day}$. Possiamo scrivere la velocità orbitale proiettata come
+\begin{equation}
+  \label{eq:velocità-proiettata}
+  v_1 = \frac{2\pi}{P}a_1\sin i,
+\end{equation}
+con $a_1$ semiasse maggiore dell'orbita della stella. Inserendo
+la~\eqref{eq:velocità-proiettata} nella~\eqref{eq:valore-funzione-massa} abbiamo
+\begin{equation}
+  f_1(m_1,m_2,i) \equiv \frac{(m_2\sin i)^3}{(m_1 + m_2)^2} = \frac{v_1^3P}{2\pi
+    G}.
+\end{equation}
+Poiché per questo sistema si hanno delle eclissi l'angolo di inclinazione vale
+$i \simeq \pi/2$, quindi $\sin \simeq 1$. Da osservazioni nella banda ottica si
+è trovato
+\begin{equation}
+  f_1 = \SI{0.252(10)}{\solarmass}.
+\end{equation}
+Si stima che la stella abbia una massa $m_1 \gtrsim \SI{8.5}{\solarmass}$,
+quindi la sua compagna ha una massa
+\begin{equation}
+  m_2 \gtrsim \SI{4}{\solarmass}.
+\end{equation}
+Poiché questo valore è maggiore del limite di Chandrasekhar % TODO: mettere un
+                                % riferimento bibliografico.
+$M_\textup{Ch} \simeq \SI{3}{\solarmass}$ per una stella di neutroni in
+rotazione, dobbiamo concludere che il corpo non visibile del sistema Cygnus-X1 è
+un buco nero.
+
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../tesi"
-%%% End: 
+%%% End:

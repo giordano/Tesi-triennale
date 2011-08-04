@@ -58,7 +58,8 @@
 \sisetup{per-mode=symbol,
   inter-unit-separator={}\cdot{},
   exponent-product=\cdot,
-  output-product=\cdot
+  output-product=\cdot,
+  separate-uncertainty=true
 }
 
 % Posiziona le didascalie sopra le tabelle
@@ -67,7 +68,7 @@
 %% Nuove unità di misura
 \DeclareSIUnit\parsec{pc}
 \DeclareSIUnit\year{yr}
-\DeclareSIUnit\solarmass{M\ensuremath{_\odot}}
+\DeclareSIUnit\solarmass{\ensuremath{M_\odot}}
 % C'era già l'arcosecondo, però lo ridefinisco per essere coerente con gli
 % articoli che cito
 \DeclareSIUnit\arcsecond{as}
@@ -189,7 +190,6 @@
 \backmatter{}
 \clearpage{}
 \phantomsection{}
-\nocite{*} % TODO: citare i libri
 \addcontentsline{toc}{chapter}{Riferimenti bibliografici}
 \printbibliography[title=Riferimenti bibliografici]
 
