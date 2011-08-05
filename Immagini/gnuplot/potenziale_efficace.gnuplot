@@ -9,6 +9,10 @@ unset ytics
 set size 0.8,0.8
 set xrange [-0.2:8]
 set yrange [-30:30]
+set tmargin 0
+set rmargin 0
+set bmargin 0
+set lmargin 0
 set arrow from 0,-30 to 0,30 filled # asse y
 set arrow from 0,0 to 8,0 filled # asse x
 set arrow from 1,0 to 1,-25 nohead lt 0 lw 5

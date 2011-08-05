@@ -10,6 +10,10 @@ set size ratio -1
 set polar	# per poter inserire l'equazione polare dell'ellisse...
 set trange [0:2*pi] 	# ...con la variabile t che va da 0 a 2*pi
 set samples 1000 # imposta il numero di punti a 1000
+set tmargin 0
+set rmargin 0
+set bmargin 0
+set lmargin 0
 a=2.
 e=0.7
 b=a*sqrt(1.-e**2)
@@ -28,8 +32,8 @@ vry(t)=e*sin(t)*sin(t)
 vl(t)=(1.+e*cos(t))/sqrt(p)
 vlx(t)=vl(t)*cos(t+pi/2)
 vly(t)=vl(t)*sin(t+pi/2)
-set xrange [-(a+c):2.5*(a-c)]
-set yrange [-1.3*b:1.3*b]
+set xrange [-1.05*(a+c):2.5*(a-c)]
+set yrange [-1.2*b:1.2*b]
 set arrow from 0,-1.2*b to 0,1.2*b filled # asse y
 set arrow from -1.05*(a+c),0 to 1.3*a*(1-e),0 filled # asse x
 
