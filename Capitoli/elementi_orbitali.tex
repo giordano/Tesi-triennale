@@ -32,7 +32,9 @@ relativa che si muove su un'orbita ellittica.
     \draw [dashdotted] (0.5,0.5196) -- (0.5,0) node[below] {$R$}; % segmento RQ
     \draw [->] (0.9,0) to [out=90,in=30] node[above] {$\chi$} ($(0.8,0) +
                cos(120)*(0.1,0) + sin(120)*(0,0.1)$) ; % angolo chi
-    \draw [->] (0.1,0) arc (0:60:0.1) node[right] {$\psi$}; % angolo psi
+    \draw [->] (0.1,0) to [out=90,in=-30] node[above right=-4] {$\psi$} ($(0,0)
+               + cos(60)*(0.1,0) + sin(60)*(0,0.1)$) ; % angolo psi
+
   \end{tikzpicture}
   \caption[Ellisse e circonferenza ausiliaria per l'equazione di
   Keplero]{Ellisse e circonferenza ausiliaria concentrica. Abbiamo posto $a=1$

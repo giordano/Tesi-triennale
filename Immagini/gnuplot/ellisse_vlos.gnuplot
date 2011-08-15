@@ -33,7 +33,7 @@ vl(t)=(1.+e*cos(t))/sqrt(p)
 vlx(t)=vl(t)*cos(t+pi/2)
 vly(t)=vl(t)*sin(t+pi/2)
 set xrange [-1.05*(a+c):2.5*(a-c)]
-set yrange [-1.2*b:1.2*b]
+set yrange [-1.2*b:1.35*b]
 set arrow from 0,-1.2*b to 0,1.2*b filled # asse y
 set arrow from -1.05*(a+c),0 to 1.3*a*(1-e),0 filled # asse x
 
