@@ -83,6 +83,86 @@ del buco nero.
 \section{I pianeti extrasolari}
 \label{sec:extrasolari}
 
+In questo paragrafo vedremo come è possibile ottenere alcune proprietà dei
+pianeti extrasolari studiando le eclissi delle stelle intorno a cui orbitano e
+con cui costituiscono quindi un sistema binario, almeno in prima
+approssimazione.
+
+Vediamo sotto quali condizioni è possibile per un osservatore esterno vedere
+un'eclissi della stella dietro al pianeta studiato. Per semplicità Assumiamo che
+le orbite dei due corpi siano circolari, quindi $e \approx 0$, che questi siano
+perfettamente sferici e che possano essere trascurati gli effetti dovuti
+all'atmosfera. Con riferimento alla Figura % TODO: creare figura, scrivere
+                                % didascalia che faccia riferimento al fatto che
+                                % il piano in cui si svolgono le orbite dei due
+                                % corpi è ortogonale al piano della figura e
+                                % inserire riferimento nel testo
+il corpo di massa $m_1$ è la stella, di raggio $R$, e quello di massa $m_2$ è il
+pianeta, il cui raggio è $r$. La distanza reciproca fra i centri dei due corpi
+vale $a$. Se indichiamo con $i \in \mathopen{[}0, \pi/2\mathclose{]}$ l'angolo
+di inclinazione sotto il quale l'osservatore vede il sistema, l'angolo minimo
+che permette all'osservatore di assistere a un'eclissi è quello rappresentato
+nella figura, cioè con l'asse $x''$ passante per il centro della stella e
+tangente alla superficie del pianeta. Dunque
+\begin{equation}
+  \cos(\pi/2 - i) = \frac{\sqrt{a^2 - r^2}}{a} = \sqrt{1 - \frac{r^2}{a^2}}.
+\end{equation}
+Generalmente si ha $a \gg R \gg r$, quindi $\cos(\pi/2 - i) \approx 1$, cioè
+$i \approx \pi/2$.
+
+Nella Figura % TODO: creare figura, scrivere didascalia descrittiva che faccia
+             % riferimento anche alla curva di luminosità e inserire riferimento
+è rappresentata una schematizzazione di un'eclissi della stella, nel caso in cui
+$i = \pi/2$. L'osservatore è fisso davanti alla stella e vede il pianeta che le
+passa davanti, in vari istanti. Quando il pianeta non copre la stella la
+luminosità del sistema è massima, quando inizia a nasconderla parzialmente
+(istante di \emph{ingresso iniziale}, $t_{\textup{ii}}$) la luminosità decresce
+fino a raggiungere un minimo nell'istante in cui si trova completamente davanti
+alla stella (\emph{ingresso finale}, $t_{\textup{if}}$). La luminosità rimane
+minima per tutto il tempo in cui il pianeta si trova davanti alla stella,
+successivamente aumenta quando il pianeta esce parzialmente dalla stella
+(\emph{egresso iniziale}, $t_{\textup{ei}}$) e ritorna massima non appena il
+pianeta non copre più la stella (\emph{egresso finale}, $t_{\textup{ef}}$). Gli
+istanti fin qui definiti sono detti \emph{punti di contatto}. Esistono poi i
+\emph{punti di mezzo ingresso} che sono quelli in cui la curva di luminosità
+raggiunge il valore intermedio fra il massimo e il minimo. In particolare
+abbiamo il \emph{mezzo ingresso iniziale} ($t_{\textup{mi}}$) quando la
+luminosità sta diminuendo e il \emph{mezzo ingresso finale} ($t_{\textup{mf}}$)
+quando la luminosità ricomincia ad aumentare. Definiamo la
+\emph{durata dell'eclissi} $\Delta t$ come il tempo che intercorre fra
+l'ingresso iniziale e l'egresso finale:
+$\Delta t = t_{\textup{ef}} - t_{\textup{ii}}$. La velocità di rivoluzione del
+pianeta intorno alla stella è $P/(2\pi a)$, avendo indicato con $P$ il periodo
+di rivoluzione del pianeta intorno alla stella, e, sempre nell'approssimazione
+$a \gg R \gg r$, lo spazio percorso dal pianeta fra gli istanti
+$t_{\textup{ii}}$ e $t_{\textup{ef}}$ è $2(R + r)$. Allora la durata
+dell'eclissi è
+\begin{equation}
+  \Delta t \approx \frac{P}{2\pi a}2(R + r) = \frac{P(R + r)}{\pi a}.
+\end{equation}
+
+Se l'angolo di inclinazione $i$ non vale esattamente $\pi/2$, anche, come
+abbiamo visto, per poter osservare un'eclissi deve comunque aversi $i \approx
+\pi/2$, l'osservatore non vede il pianeta passare esattamente davanti
+all'equatore della stella ma leggermente più spostato, come nella Figura % TODO:
+                                % inserire figura e riferimento.
+. Per calcolare lo spostamento apparente del pianeta rispetto all'equatore si
+può vedere la Figura. % TODO: inserire figura e riferimento (se riesci puoi
+                      % mettere questa figura e la precedente insieme).
+Da semplici calcoli trigonometrici si ricava che lo spostamento apparente vale
+$a \cos i$. Le definizioni dei punti di contatto e di mezzo ingresso valgono
+anche per questo caso. Osservando la Figura % TODO: inserire riferimento
+                                % all'ultima figura
+si ricava, con semplici ragionamenti trigonometrici, che lo spazio percorso dal
+pianeta fra gli istanti $t_{\textup{ii}}$ e $t_{\textup{ef}}$ è $2(R + r)$ è
+circa $2\sqrt{(R + r)^2 - a^2\cos^2 i}$, quindi la durata dell'eclissi in questo
+caso è
+\begin{equation}
+  \Delta t \approx \frac{P}{2\pi a} 2\sqrt{(R + r)^2 - a^2\cos^2 i} =
+  \frac{P}{\pi} \sqrt{\left(\frac{R + r}{a}\right)^2 - \cos^2 i}.
+\end{equation}
+Per $i = \pi/2$ si riottiene il risultato precedente.
+
 \section{La funzione di massa. Sistemi binari X}
 \label{sec:funzione-massa}
 
