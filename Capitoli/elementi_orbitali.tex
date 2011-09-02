@@ -243,20 +243,19 @@ aggiungere $\pi$ al valore dell'arcotangente se $\psi > \pi$, cioè
 \begin{equation}
   \label{eq:anoamlie-vera-eccentrica}
   \chi =
-  \begin{cases}
+  \begin{dcases}
     2\arctan
-  \left(
-    \sqrt{\dfrac{1+e}{1-e}}\tan\dfrac{\psi}{2}
-  \right) & \text{se $0 \leq \psi \leq \pi$,}
-    \\[2.0ex]
-  2
-  \left(
-    \arctan
     \left(
-      \sqrt{\dfrac{1+e}{1-e}}\tan\dfrac{\psi}{2}
-    \right) + \pi
-  \right) & \text{se $\pi < \psi \leq 2\pi$.}
-  \end{cases}
+      \sqrt{\frac{1+e}{1-e}}\tan\frac{\psi}{2}
+    \right) & \text{se $0 \leq \psi \leq \pi$,} \\
+    2
+    \left(
+      \arctan
+      \left(
+        \sqrt{\frac{1+e}{1-e}}\tan\frac{\psi}{2}
+      \right) + \pi
+    \right) & \text{se $\pi < \psi \leq 2\pi$.}
+  \end{dcases}
 \end{equation}
 
 \section{Soluzione dell'equazione di Keplero}
@@ -287,10 +286,10 @@ di Newton~-~Raphson (\textcite{brugnano:calcolo-numerico}), chiamato anche
   \begin{subequations}
     \begin{align}
       x_0 &=
-      \begin{cases}
-        a & \text{se $ f(a)f''(a)>0$,}\\
+      \begin{dcases}
+        a & \text{se $f(a)f''(a)>0$,}\\
         b & \text{se $f(b)f''(b)>0$,}
-      \end{cases}\\
+      \end{dcases}\\
       x_{n+1} &= x_n - \frac{f(x_n)}{f'(x_n)} \label{eq:formula-newton}
     \end{align}
   \end{subequations}

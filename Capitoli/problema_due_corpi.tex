@@ -641,16 +641,16 @@ dalla~\eqref{eq:angolo-alpha}, in definitiva
 \begin{equation}
   \label{eq:angolo-alpha2}
   \alpha(\chi) =
-  \begin{cases}
+  \begin{dcases}
     \arctan
-     \left(
-    \cot\chi + \dfrac{\csc\chi}{e}
-  \right) & \text{se $\chi \in \mathopen{[}0, \pi\mathclose{]}$,}\\[2ex]
-  \arctan
-  \left(
-    \cot\chi + \dfrac{\csc\chi}{e}
-  \right) + \pi & \text{se $\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$.}
-  \end{cases}
+    \left(
+      \cot\chi + \frac{\csc\chi}{e}
+    \right) & \text{se $\chi \in \mathopen{[}0, \pi\mathclose{]}$,}\\
+    \arctan
+    \left(
+      \cot\chi + \frac{\csc\chi}{e}
+    \right) + \pi & \text{se $\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$.}
+  \end{dcases}
 \end{equation}
 Si noti che grazie a questa definizione la funzione $\alpha(\chi)$ è continua
 in $\chi = \pi$. Indichiamo con $\beta(\chi)$ l'angolo compreso fra la
