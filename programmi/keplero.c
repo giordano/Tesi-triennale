@@ -12,7 +12,7 @@
  * differenti valori dell'eccentricità. I file possono essere
  * letti da un programma per la realizzazione di grafici.
  * Autore: Mosè Giordano
- * Data: 15/07/2011
+ * Data: 02/09/2011
  */
 
 #include <stdio.h>
@@ -46,9 +46,8 @@ int main(){
   /* Apro i file su cui scrivere i risultati */
   newton=fopen("newton.dat","w");
   bessel=fopen("bessel.dat","w");
-  /* Cerco il valore dell'anomalia eccentrica nei PUNTI punti
-   * dell'intervallo [tmin,tmax]
-   */
+  /* Cerco il valore dell'anomalia eccentrica nei PUNTI istanti
+   * dell'intervallo di tempo [tmin,tmax] */
   for(t=tmin;t<=tmax;t+=(tmax-tmin)/PUNTI)
     {
       fprintf(newton,"%f",t);

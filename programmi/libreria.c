@@ -113,3 +113,31 @@ void vettore_scalare(int n, double a[], double b[], double c)
   for (i=0; i<n; i++)
     b[i]=c*a[i];
 }
+
+/* Funzione che restituisce, per la simulazione di un'eclissi,
+ * l'area di di sovrapposizione fra i due corpi. `r1' è il
+ * raggio del pianeta, `r2' della stella, `d' è la loro distanza
+ * proiettata, `x1' e `x2' sono le coordinate, rispettivamente del
+ * pianeta e della stella, nel piano del cielo dell'osservatore.
+ */
+double area_coperta(double r1, double r2, double d, double x1, double x2)
+{
+  double theta1, theta2; /* vedi figura (TODO: mettere riferimento) della tesi */
+  double A; /* area coperta */
+  theta1=2*acos((r2*r2-r1*r1+d*d)/(2*r2*d));
+  theta2=2*acos((r1*r1-r2*r2+d*d)/(2*r1*d));
+  if(x2 >= x1) /* se la stella è davanti al pianeta rispetto all'osservatore... */
+    A=0; /* ...non si verifica l'eclissi (l'area coperta cioè è nulla) */
+  else
+    {
+      if(d > r2+r1)
+	A=0;
+      else if(sqrt(r2*r2-r1*r1) <= d)
+	A=r2*r2/2*(theta1-sin(theta1))+r1*r1/2*(theta2-sin(theta2));
+      else if(r2-r1 <= d)
+	A=r2*r2/2*(theta1-sin(theta1))+r1*r1/2*(2*M_PI-theta2+sin(theta2));
+      else
+	A=M_PI*r1*r1;
+    }
+  return A;
+}

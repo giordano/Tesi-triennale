@@ -2,7 +2,7 @@
  * Scopo:
  * Output:
  * Autore: Mosè Giordano
- * Data: 04/08/2011
+ * Data: 02/09/2011
  */
 
 #include <stdio.h>
@@ -53,8 +53,8 @@ int main(){
 
   /* apro il file su cui scrivere i dati */
   pianeti=fopen("pianeti.dat","w");
-  /* Cerco il valore dell'anomalia eccentrica nei PUNTI punti
-   * dell'intervallo [tmin,tmax] */
+  /* Eseguo la simulazione per ognuno dei PUNTI istanti dell'intervallo
+   * di tempo [tmin,tmax] */
   for(t=tmin;t<=tmax;t+=(tmax-tmin)/PUNTI)
     {
       psi=psi_bessel(omega*t,e); /* calolo l'anomalia eccentrica */
