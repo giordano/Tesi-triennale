@@ -21,6 +21,8 @@ int main(){
   double t;
   double tmin, tmax; /* istanti di tempo minimo e massimo in
 		      * cui effettuare i calcoli */
+  double r1, r2; /* r1 = raggio stella, r2 = raggio pianeta */
+  double lum; /* luminosità intrinseca della stella */
   double omega; /* velocità angolare media */
   double psi, theta, r; /* anomalie eccentrica e vera e distanza dal fuoco */
   double m1, m2, mt, mu; /* masse dei due corpi, massa totale e massa ridotta */
@@ -32,6 +34,8 @@ int main(){
   double p1pc[3], p2pc[3];
   double phi, i; /* angoli delle rotazioni */
   double d; /* distanza proiettatia nel piano del cielo */
+  double dA; /* area della stella coperta dal pianeta */
+  double F; /* flusso luminoso */
   FILE *pianeti; /* puntatore a file */
 
   /* Inizializzazione delle variabili */
@@ -39,15 +43,18 @@ int main(){
   periodo=10.0*3.6e3; /* 10 ore = 10*36000 secondi */
   tmin=0; /* Abbiamo supposto che al periapside t=0 */
   tmax=2*periodo;
+  r1=0.4*6.59e11;
+  r2=0.3*6.59e11;
+  lum=1;
   omega=2*M_PI/periodo;
-  m1=5.0*GSL_CONST_CGSM_SOLAR_MASS; /* 5 masse solari */
-  m2=GSL_CONST_CGSM_SOLAR_MASS;     /* una massa solare */
+  m1=0.6*GSL_CONST_CGSM_SOLAR_MASS; /* 5 masse solari */
+  m2=0.1*GSL_CONST_CGSM_SOLAR_MASS;     /* una massa solare */
   mt=m1+m2;
   mu=m1*m2/mt;
   /* calcolo il semiasse maggiore usando la terza legge di Keplero */
   a=cbrt(periodo*periodo*GSL_CONST_CGSM_GRAVITATIONAL_CONSTANT*mt/(4*M_PI*M_PI));
-  phi=M_PI/6;
-  i=2*M_PI/5;
+  phi=M_PI/4.;
+  i=85./180.*M_PI;
   /* la coordinata z della particella fittizia è sempre nulla */
   ppf[2]=0;
 
@@ -68,10 +75,12 @@ int main(){
       vettore_scalare(3,ppfpc,p1pc,-mu/m1);
       vettore_scalare(3,ppfpc,p2pc,mu/m2);
       d=hypot(ppfpc[1],ppfpc[2]); /* calcolo la distanza proiettata */
+      dA=area_coperta(r1, r2, d, p1pc[0], p2pc[0]);
+      F=flusso(4,lum,r1,dA);
       /* scrivo su file i risultati */
-      fprintf(pianeti,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
+      fprintf(pianeti,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
 	      t,ppf[0],ppf[1],ppf[2],ppfpc[0],ppfpc[1],ppfpc[2],
-	      p1pc[0],p1pc[1],p1pc[2],p2pc[0],p2pc[1],p2pc[2],d);
+	      p1pc[0],p1pc[1],p1pc[2],p2pc[0],p2pc[1],p2pc[2],d,dA,F);
     }
   fclose(pianeti);
   return 0;

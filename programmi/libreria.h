@@ -17,3 +17,4 @@ double anomvera(double, double);
 void pianodelcielo(double Qa[3], double, double, double Qb[3]);
 void vettore_scalare(int, double a[], double b[], double);
 double area_coperta(double, double, double, double, double);
+double flusso(double, double, double, double);
