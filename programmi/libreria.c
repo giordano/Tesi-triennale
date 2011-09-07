@@ -134,10 +134,8 @@ double area_coperta(double r1, double r2, double d, double x1, double x2)
     {
       if(d > r1+r2)
 	dA=0;
-      else if(sqrt(r1*r1-r2*r2) <= d)
-	dA=r1*r1/2*(theta1-sin(theta1))+r2*r2/2*(theta2-sin(theta2));
       else if(r1-r2 <= d)
-	dA=r1*r1/2*(theta1-sin(theta1))+r2*r2/2*(2*M_PI-theta2+sin(theta2));
+	dA=r1*r1/2*(theta1-sin(theta1))+r2*r2/2*(theta2-sin(theta2));
       else
 	dA=M_PI*r2*r2;
     }

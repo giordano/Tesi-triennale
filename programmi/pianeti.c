@@ -78,9 +78,9 @@ int main(){
       dA=area_coperta(r1, r2, d, p1pc[0], p2pc[0]);
       F=flusso(4,lum,r1,dA);
       /* scrivo su file i risultati */
-      fprintf(pianeti,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
+      fprintf(pianeti,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
 	      t,ppf[0],ppf[1],ppf[2],ppfpc[0],ppfpc[1],ppfpc[2],
-	      p1pc[0],p1pc[1],p1pc[2],p2pc[0],p2pc[1],p2pc[2],d,dA,F);
+	      p1pc[0],p1pc[1],p1pc[2],p2pc[0],p2pc[1],p2pc[2],d,F);
     }
   fclose(pianeti);
   return 0;

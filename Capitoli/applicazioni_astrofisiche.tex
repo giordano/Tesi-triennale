@@ -201,10 +201,17 @@ Dunque in questo caso l'area di sovrapposizione $\delta A$ vale
   \delta A = S_1 + S_2 = \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) +
   \frac{r^2}{2}(\theta_2 - \sin\theta_2).
 \end{equation}
-Se $r_\star - r \leq d < \sqrt{r_\star^2 - r^2}$ l'area di sovrapposizione diventa
+Se $r_\star - r \leq d < \sqrt{r_\star^2 - r^2}$ risulta $\theta_2 > \pi$,
+quindi $S_2$ è la somma del settore circolare di angolo $\theta_2$ e del
+triangolo isoscele con vertice nel centro del disco del pianeta e angolo al
+vertice di $2\pi - \theta_2$. Così l'area di sovrapposizione diventa
 \begin{equation}
-  \delta A = \pi r^2 - S_1  + S_2 = \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) +
-  \frac{r^2}{2}(2\pi - \theta_2 + \sin\theta_2).
+  \begin{split}
+    \delta A &= S_1 + S_2 = \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) +
+    \frac{r^2}{2}(\theta_2 + \sin(2\pi -\theta_2)) \\
+    &= \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) + \frac{r^2}{2}(\theta_2 -
+    \sin\theta_2).
+  \end{split}
 \end{equation}
 Infine se $d < r_\star - r$ significa che il pianeta si trova completamente
 davanti alla stella rispetto all'osservatore quindi l'area di sovrapposizione è
@@ -218,10 +225,7 @@ Riepilogando
   \begin{dcases}
     0 & \text{se $d > r_\star + r$}, \\
     \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) + \frac{r^2}{2}(\theta_2 -
-    \sin\theta_2) & \text{se $\sqrt{r_\star^2 - r^2} \leq d \leq r_\star + r$},
-    \\
-    \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) + \frac{r^2}{2}(2\pi - \theta_2 +
-    \sin\theta_2) & \text{se $r_\star - r \leq d < \sqrt{r_\star^2 - r^2}$}, \\
+    \sin\theta_2) & \text{se $r_\star - r \leq d \leq r_\star + r$}, \\
     \pi r^2 & \text{se $d < r_\star - r$}.
   \end{dcases}
 \end{equation}
