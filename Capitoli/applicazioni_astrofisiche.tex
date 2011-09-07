@@ -89,7 +89,7 @@ con cui costituiscono quindi un sistema binario, almeno in prima
 approssimazione.
 
 Vediamo sotto quali condizioni è possibile per un osservatore esterno vedere
-un'eclissi della stella dietro al pianeta studiato. Per semplicità Assumiamo che
+un'eclissi della stella dietro al pianeta studiato. Per semplicità assumiamo che
 le orbite dei due corpi siano circolari, quindi $e \approx 0$, che questi siano
 perfettamente sferici e che possano essere trascurati gli effetti dovuti
 all'atmosfera. Con riferimento alla Figura % TODO: creare figura, scrivere
@@ -97,18 +97,18 @@ all'atmosfera. Con riferimento alla Figura % TODO: creare figura, scrivere
                                 % il piano in cui si svolgono le orbite dei due
                                 % corpi è ortogonale al piano della figura e
                                 % inserire riferimento nel testo
-il corpo di massa $m_1$ è la stella, di raggio $R$, e quello di massa $m_2$ è il
-pianeta, il cui raggio è $r$. La distanza reciproca fra i centri dei due corpi
-vale $a$. Se indichiamo con $i \in \mathopen{[}0, \pi/2\mathclose{]}$ l'angolo
-di inclinazione sotto il quale l'osservatore vede il sistema, l'angolo minimo
-che permette all'osservatore di assistere a un'eclissi è quello rappresentato
-nella figura, cioè con l'asse $x''$ passante per il centro della stella e
-tangente alla superficie del pianeta. Dunque
+il corpo di massa $m_1$ è la stella, di raggio $r_\star$, e quello di massa
+$m_2$ è il pianeta, il cui raggio è $r$. La distanza reciproca fra i centri dei
+due corpi vale $a$. Se indichiamo con $i \in \mathopen{[}0, \pi/2\mathclose{]}$
+l'angolo di inclinazione sotto il quale l'osservatore vede il sistema, l'angolo
+minimo che permette all'osservatore di assistere a un'eclissi è quello
+rappresentato nella figura, cioè con l'asse $x''$ passante per il centro della
+stella e tangente alla superficie del pianeta. Dunque
 \begin{equation}
   \cos(\pi/2 - i) = \frac{\sqrt{a^2 - r^2}}{a} = \sqrt{1 - \frac{r^2}{a^2}}.
 \end{equation}
-Generalmente si ha $a \gg R \gg r$, quindi $\cos(\pi/2 - i) \approx 1$, cioè
-$i \approx \pi/2$.
+Generalmente si ha $a \gg r_\star \gg r$, quindi $\cos(\pi/2 - i) \approx 1$,
+cioè $i \approx \pi/2$.
 
 Nella Figura % TODO: creare figura, scrivere didascalia descrittiva che faccia
              % riferimento anche alla curva di luminosità e inserire riferimento
@@ -134,11 +134,12 @@ l'ingresso iniziale e l'egresso finale:
 $\Delta t = t_{\textup{ef}} - t_{\textup{ii}}$. La velocità di rivoluzione del
 pianeta intorno alla stella è $P/(2\pi a)$, avendo indicato con $P$ il periodo
 di rivoluzione del pianeta intorno alla stella, e, sempre nell'approssimazione
-$a \gg R \gg r$, lo spazio percorso dal pianeta fra gli istanti
-$t_{\textup{ii}}$ e $t_{\textup{ef}}$ è $2(R + r)$. Allora la durata
+$a \gg r_\star \gg r$, lo spazio percorso dal pianeta fra gli istanti
+$t_{\textup{ii}}$ e $t_{\textup{ef}}$ è $2(r_\star + r)$. Allora la durata
 dell'eclissi è
 \begin{equation}
-  \Delta t \approx \frac{P}{2\pi a}2(R + r) = \frac{P(R + r)}{\pi a}.
+  \Delta t \approx \frac{P}{2\pi a}2(r_\star + r) = \frac{P(r_\star + r)}{\pi
+    a}.
 \end{equation}
 
 Se l'angolo di inclinazione $i$ non vale esattamente $\pi/2$, anche, come
@@ -153,25 +154,25 @@ Da semplici calcoli trigonometrici si ricava che lo spostamento apparente vale
 $a \cos i$. Le definizioni dei punti di contatto e di mezzo ingresso valgono
 anche per questo caso. Osservando la Figura % TODO: inserire riferimento
                                 % all'ultima figura
-si ricava, con semplici ragionamenti trigonometrici, che lo spazio percorso dal
-pianeta fra gli istanti $t_{\textup{ii}}$ e $t_{\textup{ef}}$ è $2(R + r)$ è
-circa $2\sqrt{(R + r)^2 - a^2\cos^2 i}$, quindi la durata dell'eclissi in questo
+si ricava, sempre usando la trigonometria, che lo spazio percorso dal pianeta
+fra gli istanti $t_{\textup{ii}}$ e $t_{\textup{ef}}$ è $2(r_\star + r)$ è circa
+$2\sqrt{(r_\star + r)^2 - a^2\cos^2 i}$, quindi la durata dell'eclissi in questo
 caso è
 \begin{equation}
-  \Delta t \approx \frac{P}{2\pi a} 2\sqrt{(R + r)^2 - a^2\cos^2 i} =
-  \frac{P}{\pi} \sqrt{\left(\frac{R + r}{a}\right)^2 - \cos^2 i}.
+  \Delta t \approx \frac{P}{2\pi a} 2\sqrt{(r_\star + r)^2 - a^2\cos^2 i} =
+  \frac{P}{\pi} \sqrt{\left(\frac{r_\star + r}{a}\right)^2 - \cos^2 i}.
 \end{equation}
 Per $i = \pi/2$ si riottiene il risultato precedente.
 
-Calcoliamo l'area della stella coperta dal pianeta durante l'eclissi. La
-distanza che prenderemo in considerazione non sarà la distanza reale $a$ fra i
-due corpi ma quella proiettata $d$ nel piano del cielo dell'osservatore e
-introdotta nel paragrafo~\ref{sec:geometria-sistema}. Se in un certo istante di
-tempo si ha $d > R + r$, i due corpi non sono sovrapposti nel cielo
-dell'osservatore quindi non si sta verificando l'eclissi. Se invece
-$d \leq R + r$ il pianeta copre parzialmente la stella. Finché
-$\sqrt{R^2 - r^2} \leq d \leq R + r$, l'area di sovrapposizione è la somma delle
-due aree $S_1$ e $S_2$ della
+Calcoliamo l'area del disco della stella coperta dal pianeta durante
+l'eclissi. La distanza che prenderemo in considerazione non sarà la distanza
+reale $a$ fra i due corpi ma quella proiettata $d$ nel piano del cielo
+dell'osservatore e introdotta nel paragrafo~\ref{sec:geometria-sistema}. Se in
+un certo istante di tempo si ha $d > r_\star + r$, i due corpi non sono
+sovrapposti nel cielo dell'osservatore quindi non si sta verificando
+l'eclissi. Se invece $d \leq r_\star + r$ il pianeta copre parzialmente la
+stella. Finché $\sqrt{r_\star^2 - r^2} \leq d \leq r_\star + r$, l'area di
+sovrapposizione è la somma delle due aree $S_1$ e $S_2$ della
 Figura. % TODO: creare figura e inserire riferimento
 Per il teorema del coseno, l'angolo $\theta_1$ % TODO: nella figura indicare,
                                 % correttamente, gli angoli \theta_1 e
@@ -180,54 +181,95 @@ Per il teorema del coseno, l'angolo $\theta_1$ % TODO: nella figura indicare,
                                 % vedere se ho indovinato i nomi degli angoli.
 è dato da
 \begin{equation}
-  \theta_1 = 2 \arccos \frac{R^2 - r^2 + d^2}{2Rd}
+  \theta_1 = 2 \arccos \frac{r_\star^2 - r^2 + d^2}{2r_\star d}
 \end{equation}
 e analogamente per l'angolo $\theta_2$ abbiamo
 \begin{equation}
-  \theta_2 = 2 \arccos \frac{r^2 - R^2 + d^2}{2rd}.
+  \theta_2 = 2 \arccos \frac{r^2 - r_\star^2 + d^2}{2rd}.
 \end{equation}
 Le aree $S_1$ e $S_2$ valgono rispettivamente
 \begin{subequations}
   \begin{align}
     S_1 &= \frac{\theta_2}{2\pi}\pi r^2 - \frac{r^2}{2}\sin\theta_2 =
     \frac{r^2}{2}(\theta_2 - \sin\theta_2), \\
-    S_2 &= \frac{\theta_1}{2\pi}\pi R^2 - \frac{R^2}{2}\sin\theta_1 =
-    \frac{R^2}{2}(\theta_1 - \sin\theta_1).
+    S_2 &= \frac{\theta_1}{2\pi}\pi r_\star^2 - \frac{r_\star^2}{2}\sin\theta_1
+    = \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1).
   \end{align}
 \end{subequations}
-Dunque in questo caso l'area di sovrapposizione $A(d)$ vale
+Dunque in questo caso l'area di sovrapposizione $\delta A$ vale
 \begin{equation}
-  A(d) = S_1 + S_2 = \frac{R^2}{2}(\theta_1 - \sin\theta_1) +
+  \delta A = S_1 + S_2 = \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) +
   \frac{r^2}{2}(\theta_2 - \sin\theta_2).
 \end{equation}
-Se $R - r \leq d < \sqrt{R^2 - r^2}$ l'area di sovrapposizione diventa
+Se $r_\star - r \leq d < \sqrt{r_\star^2 - r^2}$ l'area di sovrapposizione diventa
 \begin{equation}
-  A(d) = \pi r^2 - S_1  + S_2 = \frac{R^2}{2}(\theta_1 - \sin\theta_1) +
+  \delta A = \pi r^2 - S_1  + S_2 = \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) +
   \frac{r^2}{2}(2\pi - \theta_2 + \sin\theta_2).
 \end{equation}
-Infine se $d < R - r$ significa che il pianeta si trova completamente davanti
-alla stella rispetto all'osservatore quindi l'area di sovrapposizione è uguale
-all'area del pianeta vista dall'osservatore stesso, cioè
+Infine se $d < r_\star - r$ significa che il pianeta si trova completamente
+davanti alla stella rispetto all'osservatore quindi l'area di sovrapposizione è
+uguale all'area del disco del pianeta, cioè
 \begin{equation}
-  A(d) = \pi r^2.
+  \delta A = \pi r^2.
 \end{equation}
 Riepilogando
 \begin{equation}
-  A(d) =
+  \delta A =
   \begin{dcases}
-    0 & \text{se $d > R + r$}, \\
-    \frac{R^2}{2}(\theta_1 - \sin\theta_1) + \frac{r^2}{2}(\theta_2 -
-    \sin\theta_2) & \text{se $\sqrt{R^2 - r^2} \leq d \leq R + r$}, \\
-    \frac{R^2}{2}(\theta_1 - \sin\theta_1) + \frac{r^2}{2}(2\pi - \theta_2 +
-    \sin\theta_2) & \text{se $R - r \leq d < \sqrt{R^2 - r^2}$}, \\
-    \pi r^2 & \text{se $d < R - r$}.
+    0 & \text{se $d > r_\star + r$}, \\
+    \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) + \frac{r^2}{2}(\theta_2 -
+    \sin\theta_2) & \text{se $\sqrt{r_\star^2 - r^2} \leq d \leq r_\star + r$},
+    \\
+    \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) + \frac{r^2}{2}(2\pi - \theta_2 +
+    \sin\theta_2) & \text{se $r_\star - r \leq d < \sqrt{r_\star^2 - r^2}$}, \\
+    \pi r^2 & \text{se $d < r_\star - r$}.
   \end{dcases}
 \end{equation}
 
 Vediamo ora in dettagli come varia la luminosità della sistema che giunge
 all'osservatore nelle varie fasi dell'eclissi. Poiché nel sistema in esame solo
 la stella emette luce propria, la luminosità che prendiamo in considerazione è
-esattamente quella della stella.
+esattamente quella della stella. La luminosità propria $L_\star$ di una stella
+si misura in unità di \si{energia\per tempo}, quindi nel sistema internazionale
+\si{\joule \per \second}, mentre nel CGS si userà \si{erg\per
+  \second}. Definiamo il \emph{flusso superficiale} $F_\star$ come
+\begin{equation}
+    F_\star = \frac{L_\star}{4\pi r_\star^2}.
+\end{equation}
+Abbiamo anche $L_\star = 4\pi r_\star^2 F_\star$. Definiamo inoltre il
+\emph{flusso a Terra} $F_{\textup{T}}$ come
+\begin{equation}
+  F_{\textup{T}} = \frac{L_\star}{4\pi D^2} = F_\star \frac{r_\star^2}{D^2},
+\end{equation}
+in cui $D$ è la distanza fra l'osservatore e la stella. Le definizioni fin qui
+date sono valide se la stella è direttamente visibile dall'osservatore senza
+alcun ostacolo. Durante l'eclissi, però, il disco della stella sarà parzialmente
+coperta dal pianeta, quindi bisognerà moltiplicare le quantità sopra definite
+per la frazione di disco della stella visibile all'osservatore, vale a dire
+$(A - \delta A)/A$, con $A= \pi r_\star^2$. Dunque
+\begin{align}
+  F_\star &= \frac{L_\star}{4\pi r_\star^2} \frac{A - \delta A}{A} =
+  \frac{L_\star}{4\pi r_\star^2} \left( 1 - \frac{\delta A}{A} \right), \\
+  F_{\textup{T}} &= \frac{L_\star}{4\pi D^2} \frac{A - \delta A}{A} =
+  \frac{L_\star}{4\pi D^2} \left( 1 - \frac{\delta A}{A} \right).
+\end{align}
+Al di fuori della fase di eclissi $\delta A = 0$, quindi riotteniamo le
+definizioni precedenti. Più in generale possiamo definire una funzione
+\emph{flusso} $F$ come
+\begin{equation}
+  F = \frac{f}{4} L_\star \left( 1 - \frac{\delta A}{A} \right),
+\end{equation}
+con $f$ fattore geometrico che cambia a seconda della quantità che si vuole
+misurare. Nel caso del flusso superficiale avremo
+\begin{equation}
+  f \equiv f_\star = \frac{1}{\pi r_\star^2},
+\end{equation}
+mentre per il flusso a Terra
+\begin{equation}
+  f \equiv f_{\textup{T}} = \frac{1}{\pi D^2}.
+\end{equation}
+
+
 
 \section{La funzione di massa. Sistemi binari X}
 \label{sec:funzione-massa}

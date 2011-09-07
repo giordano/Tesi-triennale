@@ -30,14 +30,14 @@ solo alla mutua interazione gravitazionale.
     \draw [->] (O) -- (1,0,0) node[right] {$y$}; % asse y
     \draw [->] (O) -- (0,1,0) node[above] {$z$}; % asse z
     \draw [->] (O) -- (0,0,1) node[below left] {$x$}; % asse x
-    \filldraw [gray] (0.8,0.2,0.2) circle (0.01); % corpo di massa m_1
-    \draw [->] (0,0,0) -- node[below right,fill=white] {$\bm{r}_1$}
-               (0.8,0.2,0.2) node[right] {$m_1$}; % vettore r_1
-    \filldraw [gray] (0.6,0.8,0.4) circle (0.02); % corpo di massa m_2
-    \draw [->] (0,0,0) -- node[above left] {$\bm{r}_2$} (0.6,0.8,0.4)
-               node[above] {$m_2$}; % vettore r_2
+    \filldraw [gray] (0.8,0.2,0.2) circle (0.01); % corpo di massa m_2
+    \draw [->] (0,0,0) -- node[below right,fill=white] {$\bm{r}_2$}
+               (0.8,0.2,0.2) node[right] {$m_2$}; % vettore r_2
+    \filldraw [gray] (0.6,0.8,0.4) circle (0.02); % corpo di massa m_1
+    \draw [->] (0,0,0) -- node[above left] {$\bm{r}_1$} (0.6,0.8,0.4)
+               node[above] {$m_1$}; % vettore r_1
     % vettore posizione relativa
-    \draw [->] (0.8,0.2,0.2) -- node[right] {$\bm{r}$} (0.6,0.8,0.4);
+    \draw [<-] (0.8,0.2,0.2) -- node[right] {$\bm{r}$} (0.6,0.8,0.4);
     % vettore posizione del centro di massa
     \draw [->] (0,0,0) -- node[right] {$\bm{r}_\textup{CM}$} (0.65,0.65,0.35);
   \end{tikzpicture}
