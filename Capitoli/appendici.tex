@@ -68,6 +68,19 @@ risultati della simulazione.
 % \lstinputlisting[language=C,numbers=left,numberstyle=\tiny,
 % caption={File \texttt{eclissi.c}}]{programmi/eclissi.c}
 
+Di seguito è riportato lo script \verb|gnuplot| utilizzato per produrre, con il
+file generato dall'esecuzione del programma, le
+figure~\ref{fig:sim-ecl-piano-cielo}, \ref{fig:sim-ecl-distanza-proiettata} e
+\ref{fig:sim-ecl-flusso}. Per realizzare i grafici ho utilizzato il seguente
+comando da terminale
+\begin{verbatim}
+gnuplot programmi/eclissi.gnuplot
+\end{verbatim}
+che ho eseguito nella cartella superiore rispetto a quella in cui si trova lo
+script \verb|eclissi.gnuplot|.
+\lstinputlisting[language=gnuplot,
+numbers=left,numberstyle=\tiny]{programmi/eclissi.gnuplot}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../tesi"

@@ -277,21 +277,45 @@ mentre per il flusso a Terra
 Ho scritto un programma in linguaggio C che simula un'eclissi. Il programma
 genera un file con i valori, per ogni istante di tempo in cui viene svolta al
 simulazione, delle coordinate della particella relativa nel sistema di
-riferimento iniziale e del piano del cielo dell'osservatore, delle coordinate della
-stella e del pianeta nel piano del cielo, della distanza fra i due corpi proiettata
-nel piano del cielo e del flusso luminoso della stella. Il codice sorgente del
-programma è riportato nell'appendice~\ref{cha:simulazione-eclissi}. Nelle Figure
-% TODO: mettere i riferimenti alle figure, dopo che le inserisco
-sono rappresentati i risultati della simulazione. Ho inserito i seguenti valori:
-$r_\star = \SI{e12}{\centi\metre}$, $r = \SI{5e11}{\centi\metre}$,
-$\text{massa stella} = m_1 = \SI{1}{\solarmass}$,
+riferimento iniziale e del piano del cielo dell'osservatore, delle coordinate
+della stella e del pianeta nel piano del cielo, della distanza fra i due corpi
+proiettata nel piano del cielo e del flusso luminoso della stella. Il codice
+sorgente del programma è riportato
+nell'appendice~\ref{cha:simulazione-eclissi}. Nelle
+Figure~\ref{fig:sim-ecl-piano-cielo}, \ref{fig:sim-ecl-distanza-proiettata} e
+\ref{fig:sim-ecl-flusso} sono rappresentati i risultati della simulazione. Ho
+inserito i seguenti valori: $r_\star = \SI{e12}{\centi\metre}$,
+$r = \SI{5e11}{\centi\metre}$, $\text{massa stella} = m_1 = \SI{1}{\solarmass}$,
 $\text{massa pianeta} = m_2 = \SI{0.05}{\solarmass}$,
 $a = \SI{e13}{\centi\metre}$, $e = 0.8$, $\phi = \SI{30}{\degree}$,
 $i = \SI{85}{\degree}$. Ho posto uguale a $1$ la luminosità intrinseca della
-stella in modo che il grafico del flusso avesse come massimo proprio $1$. Ho
-scelto volutamente un rapporto $r_\star / r$ molto più vicino all'unità rispetto
-agli usuali rapporti fra i raggi di stelle e pianeti in maniera da rendere più
-accentuata la curva del flusso.
+stella in modo che il grafico del flusso avesse come massimo proprio $1$. Il
+rapporto $r_\star / r$ è stato scelto volutamente molto più vicino all'unità
+rispetto agli usuali rapporti fra i raggi di stelle e pianeti in maniera da
+rendere più accentuata la curva del flusso. La fase indica la quantità $(t -
+t_0)/P$, con $t_0$ istante iniziale scelto per la simulazione.
+
+\begin{figure}
+  \centering
+  \input{programmi/piano_cielo}
+  \caption{Orbite della stella e del pianeta nel piano del cielo} % TODO:
+                                % scrivere qualcosa di più completo in queste
+                                % didascalie.
+  \label{fig:sim-ecl-piano-cielo}
+\end{figure}
+\begin{figure}
+  \input{programmi/distanza_proiettata}
+  \caption[Distanza proiettata in funzione della fase]{Andamento della distanza
+    proiettata, normalizzata alla somma dei raggi della stella e del pianeta, in
+    funzione della fase}
+  \label{fig:sim-ecl-distanza-proiettata}
+\end{figure}
+\begin{figure}
+  \input{programmi/flusso}
+  \caption[Flusso luminoso di un sistema binario]{Andamento del flusso luminoso,
+  normalizzato a $1$.}
+  \label{fig:sim-ecl-flusso}
+\end{figure}
 
 \section{La funzione di massa. Sistemi binari X}
 \label{sec:funzione-massa}

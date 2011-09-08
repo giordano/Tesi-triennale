@@ -21,9 +21,16 @@ IMMAGINI_KEPLERO_PDF	= $(PROG)/newton-anomalia_eccentrica.pdf \
 	$(PROG)/bessel-anomalia_vera.pdf
 IMMAGINI_KEPLERO_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_KEPLERO_PDF))
 IMMAGINI_KEPLERO_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_KEPLERO_PDF))
+ECLISSI_DAT		= $(PROG)/eclissi.dat
+IMMAGINI_ECLISSI_PDF	= $(PROG)/distanza_proiettata.pdf \
+	$(PROG)/flusso.pdf $(PROG)/piano_orbitale.pdf \
+	$(PROG)/piano_cielo.pdf
+IMMAGINI_ECLISSI_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_ECLISSI_PDF))
+IMMAGINI_ECLISSI_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_ECLISSI_PDF))
 TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
 TUTTI_FILE		= $(PROG)/keplero-immagini $(PROG)/keplero-dat \
-	$(PROG)/keplero.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
+	$(PROG)/keplero.c $(PROG)/eclissi-immagini $(ECLISSI_DAT) \
+	$(PROG)/eclissi.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
 	$(FRONTESPIZIO_PDF)
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
 	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*.aux) \
@@ -61,7 +68,7 @@ Immagini/gnuplot/%.tex: Immagini/gnuplot/%.gnuplot
 Immagini/gnuplot/%.pdf: Immagini/gnuplot/%.eps
 	epstopdf $<
 
-## Immagini da produrre nella cartella keplero/
+## Immagini da produrre nella cartella programmi/
 $(PROG)/keplero-immagini: $(PROG)/keplero-dat $(PROG)/keplero.gnuplot
 	gnuplot $(PROG)/keplero.gnuplot
 	for file in $(IMMAGINI_KEPLERO_EPS); do \
@@ -70,11 +77,25 @@ $(PROG)/keplero-immagini: $(PROG)/keplero-dat $(PROG)/keplero.gnuplot
 	rm -f $(IMMAGINI_KEPLERO_EPS)
 	touch $(PROG)/keplero-immagini
 
+$(PROG)/eclissi-immagini: $(PROG)/eclissi.dat $(PROG)/eclissi.gnuplot
+	gnuplot $(PROG)/eclissi.gnuplot
+	for file in $(IMMAGINI_ECLISSI_EPS); do \
+		epstopdf $${file}; \
+	done
+	rm -f $(IMMAGINI_ECLISSI_EPS)
+	touch $(PROG)/eclissi-immagini
+
 $(PROG)/keplero-dat: $(PROG)/keplero $(PROG)/keplero.c
 	cd $(PROG) && ./keplero
 	touch $(PROG)/keplero-dat
 
+$(PROG)/eclissi.dat: $(PROG)/eclissi $(PROG)/eclissi.c
+	cd $(PROG) && ./eclissi
+
 $(PROG)/keplero: $(PROG)/keplero.c $(PROG)/libreria.h $(PROG)/libreria.o
+	@cd $(PROG) && make all
+
+$(PROG)/eclissi: $(PROG)/eclissi.c $(PROG)/libreria.h $(PROG)/libreria.o
 	@cd $(PROG) && make all
 
 $(PROG)/libreria.o: $(PROG)/libreria.c $(PROG)/libreria.h
