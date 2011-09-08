@@ -83,10 +83,11 @@ del buco nero.
 \section{I pianeti extrasolari}
 \label{sec:extrasolari}
 
-In questo paragrafo vedremo come è possibile ottenere alcune proprietà dei
-pianeti extrasolari studiando le eclissi delle stelle intorno a cui orbitano e
-con cui costituiscono quindi un sistema binario, almeno in prima
-approssimazione.
+Molti pianeti extrasolari costituiscono, almeno in prima approssimazione, un
+sistema binario insieme alla stella intorno alla quale orbitano e dallo studio
+delle eclissi della stella dietro al pianeta è possibile ricavare delle
+caratteristiche dei due corpi. Qui ci limiteremo a studiare alcune proprietà del
+fenomeno dell'eclissi.
 
 Vediamo sotto quali condizioni è possibile per un osservatore esterno vedere
 un'eclissi della stella dietro al pianeta studiato. Per semplicità assumiamo che
@@ -234,9 +235,9 @@ Vediamo ora in dettagli come varia la luminosità della sistema che giunge
 all'osservatore nelle varie fasi dell'eclissi. Poiché nel sistema in esame solo
 la stella emette luce propria, la luminosità che prendiamo in considerazione è
 esattamente quella della stella. La luminosità propria $L_\star$ di una stella
-si misura in unità di \si{energia\per tempo}, quindi nel sistema internazionale
-\si{\joule \per \second}, mentre nel CGS si userà \si{erg\per
-  \second}. Definiamo il \emph{flusso superficiale} $F_\star$ come
+ha le dimensioni di una potenza, quindi nel sistema internazionale si misura in
+\si{\watt}, mentre nel sistema CGS si userà \si{erg\per \second}. Definiamo il
+\emph{flusso superficiale} $F_\star$ come
 \begin{equation}
     F_\star = \frac{L_\star}{4\pi r_\star^2}.
 \end{equation}
@@ -273,7 +274,24 @@ mentre per il flusso a Terra
   f \equiv f_{\textup{T}} = \frac{1}{\pi D^2}.
 \end{equation}
 
-
+Ho scritto un programma in linguaggio C che simula un'eclissi. Il programma
+genera un file con i valori, per ogni istante di tempo in cui viene svolta al
+simulazione, delle coordinate della particella relativa nel sistema di
+riferimento iniziale e del piano del cielo dell'osservatore, delle coordinate della
+stella e del pianeta nel piano del cielo, della distanza fra i due corpi proiettata
+nel piano del cielo e del flusso luminoso della stella. Il codice sorgente del
+programma è riportato nell'appendice~\ref{cha:simulazione-eclissi}. Nelle Figure
+% TODO: mettere i riferimenti alle figure, dopo che le inserisco
+sono rappresentati i risultati della simulazione. Ho inserito i seguenti valori:
+$r_\star = \SI{e12}{\centi\metre}$, $r = \SI{5e11}{\centi\metre}$,
+$\text{massa stella} = m_1 = \SI{1}{\solarmass}$,
+$\text{massa pianeta} = m_2 = \SI{0.05}{\solarmass}$,
+$a = \SI{e13}{\centi\metre}$, $e = 0.8$, $\phi = \SI{30}{\degree}$,
+$i = \SI{85}{\degree}$. Ho posto uguale a $1$ la luminosità intrinseca della
+stella in modo che il grafico del flusso avesse come massimo proprio $1$. Ho
+scelto volutamente un rapporto $r_\star / r$ molto più vicino all'unità rispetto
+agli usuali rapporti fra i raggi di stelle e pianeti in maniera da rendere più
+accentuata la curva del flusso.
 
 \section{La funzione di massa. Sistemi binari X}
 \label{sec:funzione-massa}
