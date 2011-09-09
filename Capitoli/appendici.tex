@@ -25,12 +25,12 @@ L'esecuzione del programma genera due file di testo, \verb|bessel.dat| e
 diversi metodi.
 % TODO: ho commentato l'inserimento del codice per accelerare i tempi di
 % compilazione del documento, ricordarsi di decommentare nella versione finale!
-% \lstinputlisting[language=C,numbers=left,numberstyle=\tiny,
-% caption={File \texttt{keplero.c}}]{programmi/keplero.c}
-% \lstinputlisting[language=C,numbers=left,numberstyle=\tiny,
-% caption={File \texttt{libreria.h}}]{{programmi/libreria.h}}
-% \lstinputlisting[language=C,numbers=left,numberstyle=\tiny,
-% caption={File \texttt{libreria.c}}]{{programmi/libreria.c}}
+% \lstinputlisting[language=C,caption={File \texttt{keplero.c}}]
+% {programmi/keplero.c}
+% \lstinputlisting[language=C,caption={File \texttt{libreria.h}},
+% label={lst:lib.h}]{{programmi/libreria.h}}
+% \lstinputlisting[language=C,caption={File \texttt{libreria.c}},
+% label={lst:lib.c}]{{programmi/libreria.c}}
 
 Qui riportiamo inoltre il codice dello script \verb|gnuplot| utilizzato per
 ottenere le figure del paragrafo~\ref{sec:soluzione-keplero} a partire dai file
@@ -41,8 +41,8 @@ gnuplot programmi/keplero.gnuplot
 \end{verbatim}
 che ho eseguito nella cartella superiore rispetto a quella in cui si trova lo
 script \verb|keplero.gnuplot|.
-\lstinputlisting[language=gnuplot,
-numbers=left,numberstyle=\tiny]{programmi/keplero.gnuplot}
+\lstinputlisting[language=gnuplot,caption={File \texttt{keplero.gnuplot}}]
+{programmi/keplero.gnuplot}
 
 \clearpage{}
 \chapter{Programma per la simulazione di un'eclissi}
@@ -52,10 +52,10 @@ Riporto il codice sorgente del programma che ho scritto per effettuare la
 simulazione di un'eclissi di una stella dietro a un pianeta, usando le
 informazioni descritte nel paragrafo~\ref{sec:extrasolari}. Per calcolare le
 posizioni della particella relativa e dei due corpi ho utilizzato le funzioni
-presenti nella libreria \verb|libreria.c| da me scritta e già riportata
-nell'appendice~\ref{cha:soluzione-keplero}. Il \verb|main| del programma è
-contenuto nel file \verb|eclissi.c|. Per compilare il programma in ambiente
-GNU/Linux ho usato i seguenti comandi da terminale
+presenti nella libreria riportata nei codici~\ref{lst:lib.h} e
+\ref{lst:lib.c}. Il \verb|main| del programma è contenuto nel file
+\verb|eclissi.c|. Per compilare il programma in ambiente GNU/Linux ho usato i
+seguenti comandi da terminale
 \begin{verbatim}
 $ gcc -c -Wall -pedantic -lm -lgsl -lgslcblas libreria.c
 $ gcc -Wall -pedantic -lm -lgsl -lgslcblas -o eclissi \
@@ -65,8 +65,8 @@ Eseguendo il programma si ottiene un file di testo, \verb|eclissi.dat|, con i
 risultati della simulazione.
 % TODO: ho commentato l'inserimento del codice per accelerare i tempi di
 % compilazione del documento, ricordarsi di decommentare nella versione finale!
-% \lstinputlisting[language=C,numbers=left,numberstyle=\tiny,
-% caption={File \texttt{eclissi.c}}]{programmi/eclissi.c}
+% \lstinputlisting[language=C,caption={File \texttt{eclissi.c}}]
+% {programmi/eclissi.c}
 
 Di seguito è riportato lo script \verb|gnuplot| utilizzato per produrre, con il
 file generato dall'esecuzione del programma, le
@@ -78,8 +78,8 @@ gnuplot programmi/eclissi.gnuplot
 \end{verbatim}
 che ho eseguito nella cartella superiore rispetto a quella in cui si trova lo
 script \verb|eclissi.gnuplot|.
-\lstinputlisting[language=gnuplot,
-numbers=left,numberstyle=\tiny]{programmi/eclissi.gnuplot}
+\lstinputlisting[language=gnuplot,caption={File \texttt{eclissi.gnuplot}}]
+{programmi/eclissi.gnuplot}
 
 %%% Local Variables:
 %%% mode: latex

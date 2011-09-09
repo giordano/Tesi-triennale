@@ -63,7 +63,7 @@ int main(){
   e=0.8;
   /* calcolo il periodo orbitale usando la terza legge di Keplero */
   periodo=sqrt(4*M_PI*M_PI*a*a*a/(GSL_CONST_CGSM_GRAVITATIONAL_CONSTANT*(m1+m2)));
-  tmin=0; /* al periapside t=0 */
+  tmin=1e6; /* al periapside t=10^6 s */
   tmax=tmin+2*periodo;
   lum=1;
   omega=2*M_PI/periodo;
