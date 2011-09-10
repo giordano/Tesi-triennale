@@ -2,8 +2,8 @@
  * Scopo: programma per la risoluzione numerica
  * dell'equazione di Keplero con il metodo di Newton-Raphson
  * e con quello dei coefficienti di Bessel.
- * Dati di input: semiasse maggiore, eccentricità e periodo
- * delle orbite.
+ * Input (hard coded): semiasse maggiore, eccentricità e periodo
+ * delle orbite, tempo del passaggio al periapside.
  * Output: due file di testo con i risultati ottenuti con i due
  * metodi differenti. I file sono così organizzati: sono suddiviso
  * in dieci colonne, nella prima c'è il tempo t, nelle nove
@@ -12,7 +12,7 @@
  * differenti valori dell'eccentricità. I file possono essere
  * letti da un software per la realizzazione di grafici.
  * Autore: Mosè Giordano
- * Data: 02/09/2011
+ * Data: 10/09/2011
  */
 
 #include <stdio.h>
@@ -29,6 +29,7 @@ int main(){
   double e[N]={0,0.5,0.8}; /* eccentricità delle orbite */
   double periodo;   /* periodo dell'orbita */
   double t; /* istante di tempo tempo */
+  double t0; /* istante del passaggio al periapside */
   double tmin, tmax; /* istanti di tempo minimo e massimo in
 		      * cui calcolare l'anomalia eccentrica */
   double omega; /* velocità angolare media */
@@ -39,7 +40,8 @@ int main(){
   /* Inizializzazione delle variabili */
   a=2.5; /* 2.5·10^6 Km */
   periodo=10; /* 10 ore */
-  tmin=0; /* al periapside t=0 */
+  t0=0; /* al periapside t=0 s */
+  tmin=t0;
   tmax=tmin+periodo;
   omega=2*M_PI/periodo;
 
@@ -57,15 +59,15 @@ int main(){
 	{
 	  /* Calcolo l'anomalia eccentrica con il metodo di
 	   * Newton e scrivo su file i risultati */
-	  psi=psi_newton(omega*t,e[i]);
+	  psi=psi_newton(omega*(t-t0),e[i]);
 	  fprintf(newton,"\t%f\t%f\t%f",psi,
 		  r(a,e[i],psi),
 		  anomvera(e[i],psi));
 	  /* Calcolo l'anomalia eccentrica con il metodo dei
 	   * coefficienti di Bessel e scrivo su file i risultati */
-	  psi=psi_bessel(omega*t,e[i]);
+	  psi=psi_bessel(omega*(t-t0),e[i]);
 	  fprintf(bessel,"\t%f\t%f\t%f",psi,
-		  r_bessel(omega*t,a,e[i]),
+		  r_bessel(omega*(t-t0),a,e[i]),
 		  anomvera(e[i],psi));
 	}
       fprintf(newton,"\n");

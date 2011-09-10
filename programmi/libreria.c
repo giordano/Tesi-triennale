@@ -7,6 +7,7 @@
  */
 double f(double psi, double e, double phi)
 {
+  phi=fmod(phi,2*M_PI); /* phi deve trovarsi nell'intervallo [0,2pi] */
   return psi-e*sin(psi)-phi;
 }
 
@@ -27,7 +28,9 @@ double diff_besselj(int n, double x)
  */
 double psi_newton(double phi, double e)
 {
-  double psi=phi; /* anomalia eccentrica. Punto iniziale = phi */
+  double psi; /* anomalia eccentrica. */
+  phi=fmod(phi,2*M_PI); /* phi deve trovarsi nell'intervallo [0,2pi] */
+  psi=phi; /* punto iniziale per anomalia eccentrica = anomalia media */
   /* Se il valore assoluto della funzione valutata nel punto
    * iniziale è maggiore della precisione desiderata utilizzo
    * il metodo di Newton per cercare un nuovo punto.
@@ -45,7 +48,9 @@ double psi_newton(double phi, double e)
 double psi_bessel(double phi, double e)
 {
   int n;
-  double psi=phi;
+  double psi;
+  phi=fmod(phi,2*M_PI); /* phi deve trovarsi nell'intervallo [0,2pi] */
+  psi=phi;
   for(n=1;n<=MAX_BESSEL;n++)
     psi+=2*gsl_sf_bessel_Jn(n,n*e)*sin(n*phi)/n;
   return psi;
@@ -60,6 +65,7 @@ double r_bessel(double phi, double semiasse, double e)
 {
   int n;
   double distanza=semiasse*(1+e*e/2.);
+  phi=fmod(phi,2*M_PI); /* phi deve trovarsi nell'intervallo [0,2pi] */
   for(n=1;n<=MAX_BESSEL;n++)
     distanza-=2*semiasse*e*diff_besselj(n,n*e)*cos(n*phi)/n;
   return distanza;

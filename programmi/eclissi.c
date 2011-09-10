@@ -1,8 +1,10 @@
 /* Nome del file sorgente: pianeti.c
  * Scopo: simulazione di un'eclissi di una stella dietro a un pianeta.
- * Dati di input: raggi e masse dei due corpi, semiasse maggiore ed
- * eccentricità delle orbite, luminosità della stella, angoli di
- * periapside e di inclinazione. Unità di misura usate: CGS.
+ * Input (hard coded): raggi e masse dei due corpi, semiasse maggiore
+ * (oppure periodo, fissata una grandezza l'altra è determinata dalla
+ * terza legge di Keplero) ed eccentricità delle orbite, luminosità
+ * della stella, angoli di periapside e di inclinazione, tempo del
+ * passaggio al periapside. Unità di misura usate: CGS.
  * Output: un file di testo con i risultati della simulazione. Il file
  * è così organizzato: è suddiviso in 15 colonne, nella prima c'è la
  * fase (fase=(t-t_iniziale)/periodo); nelle 3 colonne successive ci
@@ -17,7 +19,7 @@
  * 15 c'è il flusso luminoso osservato a Terra e normalizzato a 1. Il file
  * può essere letto da un software per la realizzazione di grafici.
  * Autore: Mosè Giordano
- * Data: 06/09/2011
+ * Data: 10/09/2011
  */
 
 #include <stdio.h>
@@ -36,6 +38,7 @@ int main(){
   double e; /* eccentricità dell'orbita */
   double periodo; /* periodo dell'orbita */
   double t; /* istante di tempo */
+  double t0; /* istante del passaggio al periapside */
   double tmin, tmax; /* istanti di tempo minimo e massimo in
 		      * cui effettuare i calcoli */
   double lum; /* luminosità intrinseca della stella */
@@ -63,7 +66,8 @@ int main(){
   e=0.8;
   /* calcolo il periodo orbitale usando la terza legge di Keplero */
   periodo=sqrt(4*M_PI*M_PI*a*a*a/(GSL_CONST_CGSM_GRAVITATIONAL_CONSTANT*(m1+m2)));
-  tmin=1e6; /* al periapside t=10^6 s */
+  t0=0; /* al periapside t=0 s */
+  tmin=t0+periodo/2.; /* partiamo da periodo/2 per far vedere bene le eclissi */
   tmax=tmin+2*periodo;
   lum=1;
   omega=2*M_PI/periodo;
@@ -90,8 +94,8 @@ int main(){
    * di tempo [tmin,tmax] */
   for(t=tmin;t<=tmax;t+=(tmax-tmin)/PUNTI)
     {
-      psi=psi_bessel(omega*t,e); /* calolo l'anomalia eccentrica */
-      r=r_bessel(omega*t,a,e);   /* calcolo la distanza dal fuoco */
+      psi=psi_bessel(omega*(t-t0),e); /* calolo l'anomalia eccentrica */
+      r=r_bessel(omega*(t-t0),a,e);   /* calcolo la distanza dal fuoco */
       theta=anomvera(e,psi);     /* calcolo l'anomalia vera */
       ppf[0]=r*cos(theta); /* coordinata x della particella fittizia */
       ppf[1]=r*sin(theta); /* coordinata y della particella fittizia */
@@ -105,7 +109,7 @@ int main(){
       F=flusso(4,lum,r1,dA);
       /* scrivo su file i risultati */
       fprintf(eclissi,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
-	      (t-tmin)/periodo,ppf[0],ppf[1],ppf[2],ppfpc[0],ppfpc[1],ppfpc[2],
+	      (t-t0)/periodo,ppf[0],ppf[1],ppf[2],ppfpc[0],ppfpc[1],ppfpc[2],
 	      p1pc[0],p1pc[1],p1pc[2],p2pc[0],p2pc[1],p2pc[2],d/(r1+r2),F);
     }
   fclose(eclissi);
