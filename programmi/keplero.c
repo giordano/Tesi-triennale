@@ -27,7 +27,7 @@ int main(){
   /* Definizione delle variabili */
   double a; /* semiasse maggiore dell'orbita */
   double e[N]={0,0.5,0.8}; /* eccentricità delle orbite */
-  double periodo;   /* periodo dell'orbita */
+  double P;   /* periodo dell'orbita */
   double t; /* istante di tempo tempo */
   double t0; /* istante del passaggio al periapside */
   double tmin, tmax; /* istanti di tempo minimo e massimo in
@@ -39,11 +39,11 @@ int main(){
 
   /* Inizializzazione delle variabili */
   a=2.5; /* 2.5·10^6 Km */
-  periodo=10; /* 10 ore */
+  P=10; /* 10 ore */
   t0=0; /* al periapside t=0 s */
   tmin=t0;
-  tmax=tmin+periodo;
-  omega=2*M_PI/periodo;
+  tmax=tmin+P;
+  omega=2*M_PI/P;
 
   /* Apro i file su cui scrivere i risultati */
   newton=fopen("newton.dat","w");

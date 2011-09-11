@@ -14,7 +14,7 @@ plot 'programmi/eclissi.dat' using 1:14 lw 2
 set output 'programmi/flusso.tex'
 set xlabel "fase" # etichetta asse x
 set ylabel "$F$"
-plot [][0.7:1.1] 'programmi/eclissi.dat' using 1:15 lw 2
+plot [][0.7:1.05] 'programmi/eclissi.dat' using 1:15 lw 2
 
 set format x "$\\num{%g}$" # formato dei tic dell'asse x
 set format y "$\\num{%g}$" # formato dei tic dell'asse y

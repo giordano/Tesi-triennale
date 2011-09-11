@@ -36,7 +36,7 @@ int main(){
   double m1, m2, mu; /* masse dei due corpi e massa ridotta */
   double a; /* semiasse maggiore dell'orbita */
   double e; /* eccentricità dell'orbita */
-  double periodo; /* periodo dell'orbita */
+  double P; /* periodo dell'orbita */
   double t; /* istante di tempo */
   double t0; /* istante del passaggio al periapside */
   double tmin, tmax; /* istanti di tempo minimo e massimo in
@@ -65,12 +65,12 @@ int main(){
   a=1e13;
   e=0.8;
   /* calcolo il periodo orbitale usando la terza legge di Keplero */
-  periodo=sqrt(4*M_PI*M_PI*a*a*a/(GSL_CONST_CGSM_GRAVITATIONAL_CONSTANT*(m1+m2)));
+  P=sqrt(4*M_PI*M_PI*a*a*a/(GSL_CONST_CGSM_GRAVITATIONAL_CONSTANT*(m1+m2)));
   t0=0; /* al periapside t=0 s */
-  tmin=t0+periodo/2.; /* partiamo da periodo/2 per far vedere bene le eclissi */
-  tmax=tmin+2*periodo;
+  tmin=t0+P/2.; /* partiamo da P/2 per far vedere bene le eclissi */
+  tmax=tmin+1*P;
   lum=1;
-  omega=2*M_PI/periodo;
+  omega=2*M_PI/P;
   phi=30./180.*M_PI;
   i=85./180.*M_PI;
   /* la coordinata z della particella fittizia è sempre nulla */
@@ -109,7 +109,7 @@ int main(){
       F=flusso(4,lum,r1,dA);
       /* scrivo su file i risultati */
       fprintf(eclissi,"%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n",
-	      (t-t0)/periodo,ppf[0],ppf[1],ppf[2],ppfpc[0],ppfpc[1],ppfpc[2],
+	      (t-t0)/P,ppf[0],ppf[1],ppf[2],ppfpc[0],ppfpc[1],ppfpc[2],
 	      p1pc[0],p1pc[1],p1pc[2],p2pc[0],p2pc[1],p2pc[2],d/(r1+r2),F);
     }
   fclose(eclissi);
