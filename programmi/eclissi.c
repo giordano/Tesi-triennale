@@ -58,9 +58,9 @@ int main(){
 
   /* Inizializzazione delle variabili */
   r1=1e12;
-  r2=5e11;
+  r2=1e11;
   m1=1.*GSL_CONST_CGSM_SOLAR_MASS; /* 1 massa solare */
-  m2=0.05*GSL_CONST_CGSM_SOLAR_MASS;     /* 0.1 masse solari */
+  m2=0.02*GSL_CONST_CGSM_SOLAR_MASS;     /* 0.02 masse solari */
   mu=m1*m2/(m1+m2);
   a=1e13;
   e=0.8;
@@ -68,7 +68,7 @@ int main(){
   P=sqrt(4*M_PI*M_PI*a*a*a/(GSL_CONST_CGSM_GRAVITATIONAL_CONSTANT*(m1+m2)));
   t0=0; /* al periapside t=0 s */
   tmin=t0+P/2.; /* partiamo da P/2 per far vedere bene le eclissi */
-  tmax=tmin+1*P;
+  tmax=tmin+2*P;
   lum=1;
   omega=2*M_PI/P;
   phi=30./180.*M_PI;

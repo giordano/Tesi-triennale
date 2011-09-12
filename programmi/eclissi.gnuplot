@@ -9,12 +9,15 @@ set format y "$%g$"
 set output 'programmi/distanza_proiettata.tex'
 set xlabel "fase" # etichetta asse x
 set ylabel "$d/(r_\\star + r)$"
-plot 'programmi/eclissi.dat' using 1:14 lw 2
+set ytics 1 # imposto manualmente a 1 frequenza dei tic su asse y
+plot [0.5:2.5] 'programmi/eclissi.dat' using 1:14 lw 2
+
+set ytics autofreq
 
 set output 'programmi/flusso.tex'
 set xlabel "fase" # etichetta asse x
 set ylabel "$F$"
-plot [][0.7:1.05] 'programmi/eclissi.dat' using 1:15 lw 2
+plot [0.975:1.015][0.985:1.005] 'programmi/eclissi.dat' using 1:15 lw 2
 
 set format x "$\\num{%g}$" # formato dei tic dell'asse x
 set format y "$\\num{%g}$" # formato dei tic dell'asse y
