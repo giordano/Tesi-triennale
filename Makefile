@@ -44,7 +44,7 @@ DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
 
 ##### Regole
 
-.PHONY: pdf clean distclean dist
+.PHONY: pdf clean distclean dist archive-full
 
 pdf: $(PRINCIPALE_PDF)
 
@@ -115,4 +115,8 @@ distclean: clean
 # Per creare un archivio compresso contenente il sorgente e il repository di git:
 dist: $(TUTTI_TEX) $(BIBLIOGRAFIA) distclean
 	git gc # comprimo il repository di git per ridurre al minimo la tarball
-	cd .. && tar -cJvpsf $(CARTELLA).tar.xz --exclude=$(CARTELLA)/auto  $(CARTELLA)/
+	cd .. && tar -cJvpsf $(CARTELLA).tar.xz --exclude=$(CARTELLA)/auto $(CARTELLA)/
+
+# Crea un archivio compresso (.tar.gz) contenente tutte le immagini e senza il repo git
+archive-full: $(PRINCIPALE_PDF) clean
+	cd .. && tar -czvpsf $(CARTELLA).tar.gz --exclude=$(CARTELLA)/auto --exclude-vcs $(CARTELLA)/

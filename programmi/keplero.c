@@ -5,7 +5,7 @@
  * Input (hard coded): semiasse maggiore, eccentricità e periodo
  * delle orbite, tempo del passaggio al periapside.
  * Output: due file di testo con i risultati ottenuti con i due
- * metodi differenti. I file sono così organizzati: sono suddiviso
+ * metodi differenti. I file sono così organizzati: sono suddivisi
  * in dieci colonne, nella prima c'è il tempo t, nelle nove
  * successive ci sono i valori delle anomalie eccentriche,
  * distanze dal fuoco e anomalie vere al tempo t per i tre

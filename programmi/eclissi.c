@@ -1,23 +1,27 @@
 /* Nome del file sorgente: pianeti.c
- * Scopo: simulazione di un'eclissi di una stella dietro a un pianeta.
- * Input (hard coded): raggi e masse dei due corpi, semiasse maggiore
- * (oppure periodo, fissata una grandezza l'altra è determinata dalla
- * terza legge di Keplero) ed eccentricità delle orbite, luminosità
- * della stella, angoli di periapside e di inclinazione, tempo del
- * passaggio al periapside. Unità di misura usate: CGS.
- * Output: un file di testo con i risultati della simulazione. Il file
- * è così organizzato: è suddiviso in 15 colonne, nella prima c'è la
- * fase (fase=(t-t_iniziale)/periodo); nelle 3 colonne successive ci
- * sono le coordinate x, y, z iniziali dell particella fittizia; nelle
- * 3 colonne successive ci sono le coordinate x'', y'' e z'' della
- * particella fittizia nel piano del cielo; nelle 3 colonne successive
- * ci sono le coordinate x1'', y1'' e z1'' della stella (di massa m1)
- * nel piano del cielo; nelle 3 colonne successive ci sono le coordinate
- * x2'', y2'' e z2'' del pianeta (di massa m2) nel piano del cielo; nella
- * colonna 14 c'è la distanza fra stella e pianeta proiettata nel piano
- * del cielo e normalizzata alla somma dei raggi dei due corpi; nella colonna
- * 15 c'è il flusso luminoso osservato a Terra e normalizzato a 1. Il file
- * può essere letto da un software per la realizzazione di grafici.
+ * Scopo: simulazione di un'eclissi di una stella a causa di un
+ * pianeta compagno.
+ * Input (hard coded): raggi e masse dei due corpi, semiasse
+ * maggiore (oppure periodo, fissata una grandezza l'altra è
+ * determinata dalla terza legge di Keplero) ed eccentricità
+ * delle orbite, luminosità della stella, angoli di periapside
+ * e di inclinazione, tempo del passaggio al periapside.
+ * Unità di misura usate: CGS.
+ * Output: un file di testo con i risultati della simulazione.
+ * Il file è così organizzato: è suddiviso in 15 colonne, nella
+ * prima c'è la fase (fase=(t-t_iniziale)/periodo); nelle 3
+ * colonne successive ci sono le coordinate x, y, z iniziali
+ * della particella fittizia; nelle 3 colonne successive ci
+ * sono le coordinate x'', y'' e z'' della particella fittizia
+ * nel piano del cielo; nelle 3 colonne successive ci sono le
+ * coordinate x1'', y1'' e z1'' della stella (di massa m1) nel
+ * piano del cielo; nelle 3 colonne successive ci sono le
+ * coordinate x2'', y2'' e z2'' del pianeta (di massa m2) nel
+ * piano del cielo; nella colonna 14 c'è la distanza fra stella
+ * e pianeta proiettata nel piano del cielo e normalizzata alla
+ * somma dei raggi dei due corpi; nella colonna 15 c'è il flusso
+ * luminoso osservato a Terra e normalizzato a 1. Il file può
+ * essere letto da un software per la realizzazione di grafici.
  * Autore: Mosè Giordano
  * Data: 10/09/2011
  */
@@ -79,12 +83,12 @@ int main(){
   /* Effettuiamo alcuni controlli sui dati iniziali */
   if(a <= r1+r2)
     {
-      fprintf(stderr,"Errore: il semiasse maggiore è più piccolo della somma dei raggi dei due corpi.\n");
+      fprintf(stderr,"Errore: a < R_stella + R_pianeta.\n");
       return 1;
     }
   if(r1<r2)
     {
-      fprintf(stderr,"Errore: il raggio della stella è minore del raggio del pianeta. Si consiglia di invertirli.\n");
+      fprintf(stderr,"Errore: R_stella < R_pianeta.\n");
       return 1;
     }
 
