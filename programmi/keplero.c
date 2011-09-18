@@ -63,8 +63,8 @@ int main(){
 	  fprintf(newton,"\t%f\t%f\t%f",psi,
 		  r(a,e[i],psi),
 		  anomvera(e[i],psi));
-	  /* Calcolo l'anomalia eccentrica con il metodo dei
-	   * coefficienti di Bessel e scrivo su file i risultati */
+	  /* Calcolo l'anomalia eccentrica con il metodo di
+	   * Bessel e scrivo su file i risultati */
 	  psi=psi_bessel(omega*(t-t0),e[i]);
 	  fprintf(bessel,"\t%f\t%f\t%f",psi,
 		  r_bessel(omega*(t-t0),a,e[i]),

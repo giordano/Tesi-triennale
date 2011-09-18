@@ -7,7 +7,8 @@
  */
 double f(double psi, double e, double phi)
 {
-  phi=fmod(phi,2*M_PI); /* phi deve trovarsi nell'intervallo [0,2pi] */
+  /* phi deve trovarsi nell'intervallo [0,2pi] */
+  phi=fmod(phi,2*M_PI);
   return psi-e*sin(psi)-phi;
 }
 
@@ -29,8 +30,10 @@ double diff_besselj(int n, double x)
 double psi_newton(double phi, double e)
 {
   double psi; /* anomalia eccentrica. */
-  phi=fmod(phi,2*M_PI); /* phi deve trovarsi nell'intervallo [0,2pi] */
-  psi=phi; /* punto iniziale per anomalia eccentrica = anomalia media */
+  /* phi deve trovarsi nell'intervallo [0,2pi] */
+  phi=fmod(phi,2*M_PI);
+  /* punto iniziale per anomalia eccentrica = anomalia media */
+  psi=phi;
   /* Se il valore assoluto della funzione valutata nel punto
    * iniziale è maggiore della precisione desiderata utilizzo
    * il metodo di Newton per cercare un nuovo punto.
@@ -49,7 +52,8 @@ double psi_bessel(double phi, double e)
 {
   int n;
   double psi;
-  phi=fmod(phi,2*M_PI); /* phi deve trovarsi nell'intervallo [0,2pi] */
+  /* phi deve trovarsi nell'intervallo [0,2pi] */
+  phi=fmod(phi,2*M_PI);
   psi=phi;
   for(n=1;n<=MAX_BESSEL;n++)
     psi+=2*gsl_sf_bessel_Jn(n,n*e)*sin(n*phi)/n;
@@ -65,7 +69,8 @@ double r_bessel(double phi, double semiasse, double e)
 {
   int n;
   double distanza=semiasse*(1+e*e/2.);
-  phi=fmod(phi,2*M_PI); /* phi deve trovarsi nell'intervallo [0,2pi] */
+  /* phi deve trovarsi nell'intervallo [0,2pi] */
+  phi=fmod(phi,2*M_PI);
   for(n=1;n<=MAX_BESSEL;n++)
     distanza-=2*semiasse*e*diff_besselj(n,n*e)*cos(n*phi)/n;
   return distanza;
@@ -120,13 +125,13 @@ void vettore_scalare(int n, double a[], double b[], double c)
     b[i]=c*a[i];
 }
 
-/* Le funzioni seguenti servono per le simulazioni di un'eclissi. */
+/* Le funzioni seguenti servono per le simulazioni di transiti. */
 
 /* Funzione che restituisce l'area di di sovrapposizione fra
  * i due corpi. `r1' è il raggio della stella, `r2' del pianeta,
- * `d' è la loro distanza proiettata, `x1' e `x2' sono le coordinate,
- * rispettivamente della stella e del pianeta, nel piano del cielo
- * dell'osservatore.
+ * `d' è la loro distanza proiettata, `x1' e `x2' sono le
+ * coordinate, rispettivamente della stella e del pianeta, nel
+ * piano del cielo dell'osservatore.
  */
 double area_coperta(double r1, double r2, double d, double x1, double x2)
 {
@@ -134,8 +139,11 @@ double area_coperta(double r1, double r2, double d, double x1, double x2)
   double dA; /* area coperta */
   theta1=2*acos((r1*r1-r2*r2+d*d)/(2*r1*d));
   theta2=2*acos((r2*r2-r1*r1+d*d)/(2*r2*d));
-  if(x1 >= x2) /* se la stella è davanti al pianeta rispetto all'osservatore... */
-    dA=0; /* ...non si verifica l'eclissi (l'area coperta cioè è nulla) */
+
+  /* se la stella è davanti al pianeta rispetto all'osservatore... */
+  if(x1 >= x2)
+    /* ...non si verifica l'eclissi (l'area coperta cioè è nulla) */
+    dA=0;
   else
     {
       if(d > r1+r2)

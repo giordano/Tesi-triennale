@@ -5,9 +5,8 @@ In questo capitolo affronteremo il \emph{problema dei due corpi}, cioè lo studi
 del moto di due corpi, supposti puntiformi, soggetti solamente alla mutua
 interazione dovuta a forze che soddisfano il principio di azione e reazione. In
 particolare ci occuperemo del \emph{problema di Keplero}, ovvero del caso in cui
-la forza fra i due corpi è quella gravitazionale, o più in generale dipendente
-dall'inverso del quadrato della distanza fra i due corpi, che è di tipo
-centrale. Il problema sarà risolto usando il formalismo newtoniano (si vedano
+la forza fra i due corpi è quella gravitazionale, che è di tipo centrale. Il
+problema sarà risolto usando il formalismo newtoniano (si vedano
 \textcites{bradt:processes}{fabrizio:meccanica}{smart:textbook}) e quelli
 lagrangiano e hamiltoniano (si vedano
 \textcites{goldstein:meccanica}{landau:meccanica}), di questi ultimi daremo una
@@ -60,7 +59,7 @@ e la forza $\bm{F}_{12}$ che il corpo di massa $m_2$ esercita sull'altro è
   \bm{F}_{12} = m_1\toder[2]{\bm{r}_1}{t}.
 \end{equation}
 Assumiamo per ipotesi che queste due forze soddisfino il principio di azione e
-reazione nella forma forte
+reazione nella forma forte (si veda \textcite{goldstein:meccanica})
 \begin{equation}
   \label{eq:azione-reazione}
   \bm{F}_{12} = -\bm{F}_{21}.
@@ -112,10 +111,9 @@ trovata semplicemente calcolando l'accelerazione di $\bm{r}_\textup{CM}$
   \right) = \frac{\bm{F}_{12}+\bm{F}_{21}}{M_\textup{T}} = \bm{0},
 \end{equation}
 cioè il centro di massa è in quiete o si muove di moto rettilineo
-uniforme. Poiché il sistema in cui il centro di massa è a riposo è un sistema
-inerziale, questo può essere scelto come nostro nuovo sistema di riferimento.
-In particolare, fissiamo come origine del sistema il centro di massa. In questo
-nuovo sistema le posizioni delle due masse saranno dunque descritte dai vettori
+uniforme. Consideriamo, quindi, come sistema di riferimento inerziale quello
+avente origine nel centro di massa. In questo nuovo sistema le posizioni delle
+due masse saranno dunque descritte dai vettori
 \begin{subequations}
   \label{eq:r1-r2-nel-cdm}
   \begin{align}
@@ -309,8 +307,8 @@ $u^2$ ottenendo
   \toder[2]{u}{\theta} + u = \frac{GM_\textup{T}\mu^2}{l_0^2}.
 \end{equation}
 Questa è una equazione differenziale ordinaria lineare del secondo ordine a
-coefficienti costanti, chiamata \emph{equazione di Binet}. Per semplificare i
-calcoli poniamo
+coefficienti costanti, chiamata \emph{equazione di Binet}
+(si veda \textcite{fabrizio:meccanica}). Per semplificare i calcoli poniamo
 \begin{equation}
   \label{eq:reciproco-semilato}
   \frac{GM_\textup{T}\mu^2}{l_0^2} = \frac{1}{p},
@@ -428,13 +426,14 @@ fuochi e risulta
   c=\sqrt{a^2-b^2} = ae.
 \end{equation}
 Il \emph{periapside} è il punto di un'ellisse più vicino a uno dei due fuochi,
-l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso
-fuoco. Osservando la Figura~\ref{fig:ellisse} si riconosce che il periapside
-rispetto al fuoco $M_\textup{T}$ è raggiunto in corrispondenza di
-$\theta=\theta_0$, cioè quando l'anomalia vera $\chi$ è nulla, e la distanza del
-periapside da $M_\textup{T}$ è $r_\textup{min} = r(\theta_0) = a(1-e) = a-c$;
-l'apoapside è raggiunto per $\theta=\theta_0+\pi$, vale a dire quando l'anomalia
-vera $\chi$ è uguale a $\pi$, e la distanza dell'apoapside dallo stesso fuoco è
+l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso fuoco.
+
+Osservando la Figura~\ref{fig:ellisse} si riconosce che il periapside rispetto
+al fuoco $M_\textup{T}$ è raggiunto in corrispondenza di $\theta=\theta_0$, cioè
+quando l'anomalia vera $\chi$ è nulla, e la distanza del periapside da
+$M_\textup{T}$ è $r_\textup{min} = r(\theta_0) = a(1-e) = a-c$; l'apoapside è
+raggiunto per $\theta=\theta_0+\pi$, vale a dire quando l'anomalia vera $\chi$ è
+uguale a $\pi$, e la distanza dell'apoapside dallo stesso fuoco è
 $r_\textup{max} = r(\theta_0+\pi) = a(1+e)= a+c$. Si ottiene il caso particolare
 della circonferenza ponendo nelle equazioni precedenti $e=0$, quindi $p=a=b$,
 $c=e=0$. Se indichiamo con $t_0$ l'istante del passaggio del corpo dal
@@ -442,8 +441,10 @@ periapside e con $P$ il periodo di rivoluzione, dalla seconda legge di Keplero
 abbiamo che l'apoapside viene raggiunto nell'istante $t_0 + P/2$. Infatti il
 vettore posizione, partendo dal periapside, all'apoapside avrà spazzato metà
 della superficie totale dell'ellisse, impiegando dunque metà del periodo totale
-di rivoluzione. Nella Figura~\ref{fig:ellissi-eccentricita} sono riportate tre
-ellissi con lo stesso semiasse maggiore ma con eccentricità differenti.
+di rivoluzione.
+
+Nella Figura~\ref{fig:ellissi-eccentricita} sono riportate tre ellissi con lo
+stesso semiasse maggiore ma con eccentricità differenti.
 \begin{figure}
   \centering
   \begin{tikzpicture}[font=\footnotesize,scale=2]
@@ -611,16 +612,18 @@ Nelle osservazioni astronomiche di un sistema binario, spesso è possibile
 misurare solo la componente della velocità dei due corpi lungo la direzione di
 vista dell'osservatore. Calcoleremo dapprima la velocità lungo la direzione di
 vista $v_\textup{los}$ per la particella relativa, poi riporteremo i risultati
-ottenuti ai due corpi. Supponiamo che l'osservatore guardi la particella
-relativa nella direzione dell'asse $\versor{x}$, come nella
-Figura~\ref{fig:ellisse-vlos}, quindi $v_\textup{los} = \bm{v}\cdot\versor{x}$.
-Per semplicità, svolgeremo i calcoli in funzione dell'anomalia vera $\chi$. Per
-calcolare $v_\textup{los}$ facciamo le seguenti considerazioni
-geometriche. Chiamiamo $\alpha(\chi)$ l'angolo compreso fra la direzione di
-$\versor{r}(\chi)$ e del vettore $\dot{\bm{r}}(\chi) \equiv \bm{v}(\chi)$ e sia
-per il momento $\chi \in \mathopen{[}0, \pi\mathclose{]}$. La tangente di questo
-angolo è data dal rapporto fra la componente tangenziale $r(\chi)\dot{\chi}$
-della velocità e la componente radiale $\dot{r}(\chi)$, quindi
+ottenuti ai due corpi.
+
+Supponiamo che l'osservatore guardi la particella relativa nella direzione
+dell'asse $\versor{x}$, come nella Figura~\ref{fig:ellisse-vlos}, quindi
+$v_\textup{los} = \bm{v}\cdot\versor{x}$.  Per semplicità, svolgeremo i calcoli
+in funzione dell'anomalia vera $\chi$. Per calcolare $v_\textup{los}$ facciamo
+le seguenti considerazioni geometriche. Chiamiamo $\alpha(\chi)$ l'angolo
+compreso fra la direzione di $\versor{r}(\chi)$ e del vettore
+$\dot{\bm{r}}(\chi) \equiv \bm{v}(\chi)$ e sia per il momento
+$\chi \in \mathopen{[}0, \pi\mathclose{]}$. La tangente di questo angolo è data
+dal rapporto fra la componente tangenziale $r(\chi)\dot{\chi}$ della velocità e
+la componente radiale $\dot{r}(\chi)$, quindi
 \begin{equation}
   \label{eq:angolo-alpha}
   \alpha(\chi) = \arctan\frac{r(\chi)\dot{\chi}}{\dot{r}(\chi)} =
@@ -664,8 +667,8 @@ della velocità nella direzione della linea di vista è
 \begin{figure}[tb]
   \centering
   \input{Immagini/gnuplot/velocita_los}
-  \caption[Andamento della velocità nella direzione della di vista in funzione
-  dell'anomalia
+  \caption[Andamento della velocità nella direzione della linea di vista in
+  funzione dell'anomalia
   vera]{Andamento della velocità lungo la direzione della linea di vista del
     corpo di massa ridotta in funzione dell'anomalia vera nel caso di orbita
     ellittica. Il grafico è stato realizzato per gli stessi valori di
@@ -692,19 +695,20 @@ funzione dell'anomalia $\chi$ per diversi valori dell'eccentricità.
 \begin{figure}
   \centering
   \input{Immagini/gnuplot/velocita_los_due_corpi}
-  \caption[Andamento della velocità dei due corpi nella direzione della di vista
-  in funzione dell'anomalia
+  \caption[Andamento della velocità dei due corpi nella direzione della linea di
+  vista in funzione dell'anomalia
   vera]{Andamento della velocità dei due corpi lungo la direzione della linea di
     vista in funzione dell'anomalia vera delle loro orbite. Abbiamo posto
     $GM_\textup{T} = \SI{5e11}{\cubic\kilo\metre\per\square\second}$,
     $a = \SI{5e7}{\kilo\metre}$, $e=0.5$ e $m_1/m_2=5$}
   \label{fig:velocita-los-due-corpi}
 \end{figure}
-Ritorniamo ai due corpi. Per fare questo ci poniamo in un sistema di riferimento
-inerziale con origine nella posizione del centro di massa e indichiamo ancora
-con $\versor{x}$ la direzione della linea di vista che però non sarà più la
-stessa della Figura~\ref{fig:ellisse-vlos}, tuttavia i ragionamenti da
-utilizzare sono gli stessi. Osserviamo che $\bm{v}=\dot{\bm{r}}$ e
+Consideriamo nuovamente due corpi che interagiscono gravitazionalmente e sia
+dato un sistema di riferimento inerziale con origine nel centro di
+massa. Indichiamo inoltre con $\versor{x}$ la direzione della linea di vista. Si
+noti che questa direzione non è più la stessa definita nella
+Figura~\ref{fig:ellisse-vlos}, ma, nonostante ciò, i ragionamenti da utilizzare
+sono gli stessi. Osserviamo che $\bm{v}=\dot{\bm{r}}$ e
 dalle~\eqref{eq:r1-r2-posizione-relativa-cdm} abbiamo che le velocità dei corpi
 di massa $m_1$ e $m_2$ sono, rispettivamente,
 $\bm{v}_1 = \bm{v}_\textup{CM}-\mu\bm{v}/m_1$ e
@@ -715,6 +719,7 @@ v_\textup{los}/m_1$
 e
 $v_{2,\textup{los}} = \bm{v}_2 \cdot \versor{x} = v_\textup{CM,los} + \mu
 v_\textup{los}/m_2$.
+
 Le curve che compaiono nella Figura~\ref{fig:velocita-los} sono centrate attorno
 allo zero perché avevamo richiesto per ipotesi che il centro di massa fosse a
 riposo, ma se il centro di massa si muove con velocità
@@ -732,7 +737,7 @@ valore delle masse individuali. Nell'esempio della
 Figura~\ref{fig:velocita-los-due-corpi} il centro di massa del sistema si sta
 allontanando dall'osservatore con velocità $v_\textup{CM,los} =
 \SI{-40}{\kilo\metre\per\second}$. Sistemi binari di questo tipo sono chiamati
-\emph{binari spettroscopici}.
+\emph{binarie spettroscopiche}.
 
 \subsection{Energia e classificazione energetica delle orbite}
 \label{sec:energia-orbite}
@@ -999,12 +1004,15 @@ con $q_1,\dots,q_n$ e che determinano univocamente il sistema tenendo conto dei
 vincoli. Le $q_i$ sono dette \emph{coordinate generalizzate} o
 \emph{lagrangiane}, non hanno necessariamente le dimensioni di una lunghezza e
 la loro scelta non è univoca; $n$, il numero di grandezze indipendenti, è
-chiamato \emph{numero di gradi di libertà}. D'ora in poi indicheremo per brevità
-con $\bm{q} = (q_1,\dots,q_n)$ l'insieme delle $n$ coordinate generalizzate e
-con $\dot{\bm{q}} = (\dot{q}_1,\dots,\dot{q}_n)$ l'insieme delle \emph{velocità
-  generalizzate} sebbene, come già osservato, a rigore non è detto che tutte
-queste grandezze abbiano la stessa dimensione fisica. Definiamo la
-\emph{funzione di Lagrange} o \emph{lagrangiana}
+chiamato \emph{numero di gradi di libertà}.
+
+D'ora in poi indicheremo per brevità con $\bm{q} = (q_1,\dots,q_n)$ l'insieme
+delle $n$ coordinate generalizzate e con $\dot{\bm{q}} =
+(\dot{q}_1,\dots,\dot{q}_n)$ l'insieme delle \emph{velocità generalizzate}
+sebbene, come già osservato, a rigore non è detto che tutte queste grandezze
+abbiano la stessa dimensione fisica.
+
+Definiamo la \emph{funzione di Lagrange} o \emph{lagrangiana}
 $\mathcal{L}(\bm{q},\dot{\bm{q}},t)$
 \begin{equation}
   \mathcal{L}(\bm{q},\dot{\bm{q}},t) = T(\bm{q},\dot{\bm{q}},t) -
@@ -1286,8 +1294,9 @@ veda \textcite{landau:meccanica}). Abbiamo visto che il problema di Keplero ha
 due gradi di libertà e finora abbiamo trovati quattro costanti: l'energia $E$
 del sistema e le tre componenti del vettore momento angolare $\bm{l}_0$. Per
 tutti i campi centrali con forza del tipo $\bm{F} = -k/r^2\versor{r}$, agente su
-un corpo di massa $\mu$, esiste un altro vettore costante chiamato
-\emph{vettore di Laplace-Runge-Lenz} e definito da
+un corpo di massa $\mu$, esistono altre tre costanti corrispondenti alle tre
+componenti del \emph{vettore di Laplace-Runge-Lenz} (si veda
+\textcite{goldstein:meccanica}) definito da
 \begin{equation}
   \bm{A} = \bm{p}\times\bm{l}_0 - \mu k\versor{r}.
 \end{equation}
@@ -1342,10 +1351,11 @@ ortogonale a questo. Gli assi $x'$ e $y'$ sono diretti, rispettivamente, come
 gli assi $x$ e $y$ della figura~\ref{fig:ellisse}, con $x'$ diretto verso il
 periapside. Consideriamo ora il sistema di riferimento ausiliario $Oxyz$,
 ottenuto ruotando attorno all'asse $z\equiv z'$ il sistema $Ox'y'z'$ di un
-angolo $\phi_0$. Le coordinate nel sistema di riferimento ausiliario possono
-essere ottenute da quelle del sistema di riferimento intrinseco con la seguente
-trasformazione scritta in forma matriciale (si
-veda~\textcite{goldstein:meccanica})
+angolo $\phi_0$.
+
+Le coordinate nel sistema di riferimento ausiliario possono essere ottenute da
+quelle del sistema di riferimento intrinseco con la seguente trasformazione
+scritta in forma matriciale (si veda \textcite{goldstein:meccanica})
 \begin{equation}
   \begin{pmatrix}
     x \\
