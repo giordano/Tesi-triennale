@@ -392,11 +392,16 @@ possono essere classificate nel seguente modo:
               {$\theta - \theta_0$} ($(0.8,0) + cos(45)*(0.1,0) +
               sin(45)*(0,0.1)$);
     \draw[->] (0.8,0) -- node[above] {$r$} (0.962586,0.162586);
-    \node [below] at ($(0,0)!.5!(-1,0)$) {$a$};
-    \node [above] at ($(0,0)!.5!(0.8,0)$) {$c$};
-    \node [left] at ($(0,0)!.5!(0,0.6)$) {$b$};
-    \node [left] at ($(0.8,0)!.5!(0.8,0.36)$) {$p$};
-    \node [below] at ($(0.8,0)!.5!(1,0)$) {$a-c$};
+    \draw[decorate,decoration={brace,raise=3,mirror}] (0,0) -- node[above=4]
+                                                      {$a$} (-1,0);
+    \draw[decorate,decoration={brace,raise=3}] (0,0) -- node[above=4] {$c$}
+                                               (0.8,0);
+    \draw[decorate,decoration={brace,raise=3}] (0,0) -- node[left=4] {$b$}
+                                               (0,0.6);
+    \draw[decorate,decoration={brace,raise=3}] (0.8,0) -- node[left=4] {$p$}
+                                               (0.8,0.36);
+    \draw[decorate,decoration={brace,raise=3,mirror}] (0.8,0) -- node[below=4]
+                                                      {$a-c$} (1,0);
   \end{tikzpicture}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
     del sistema di riferimento $Oxy$ è la posizione di $M_\textup{T}$ e coincide
