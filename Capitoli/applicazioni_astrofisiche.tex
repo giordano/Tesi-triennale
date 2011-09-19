@@ -183,22 +183,52 @@ delle eclissi della stella dietro al pianeta è possibile ricavare delle
 caratteristiche dei due corpi. Qui ci limiteremo a studiare alcune proprietà del
 fenomeno dell'eclissi.
 
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \coordinate (O1) at (0,0); % centro stella
+    \coordinate (O2) at (8,0); % centro pianeta
+    \draw (O1) circle (2);% disco stella (r=2)
+    \node at ($(O1) + (2.3,-1.2)$) {$m_1$};
+    \draw (O2) circle (1);% disco pianeta (r=1)
+    \node at ($(O2) + (-1.1,-1)$) {$m_2$};
+    \draw[->] (O1) -- (0,3) node[above] {$z$}; % asse z
+    \draw[->] (O1) -- (10,0) node[right] {$x$}; % asse x
+    \draw[->] let \n1 = {acos(sqrt(1-1*1/(8*8)))} in
+                  (O1) -- ($cos((\n1)*(10,0) + sin(\n1)*(0,10)$) node[right]
+                  {$x''$};
+    \draw[->,dashed] let \n1 = {acos(sqrt(1-1*1/(8*8)))} in
+                         ($(O1) + (0,2.5)$) to[out=0,in=90+\n1] node[right=5]
+                         {$i_{\textup{min}}$} ($cos(\n1)*(2.5,0) +
+                         sin(\n1)*(0,2.5)$);
+    \draw[decorate,decoration={brace,mirror,raise=5}] (O1) -- node[below=6]
+                                                      {$a$} (O2);
+    \draw (O1) -- node[below right] {$r_\star$} ($(O1) - cos(45)*(2,0) -
+                                    sin(45)*(0,2)$);
+    \draw let \n1 = {acos(sqrt(1-1*1/(8*8)))} in
+              (O2) -- node[right] {$r$} ($(O2) + cos(90+\n1)*(1,0) +
+              sin(90+\n1)*(0,1)$);
+  \end{tikzpicture}
+  \caption[Angolo di inclinazione minimo sotto il quale un osservatore può
+  vedere
+  un'eclissi]{Angolo di inclinazione minimo sotto il quale un osservatore può
+    vedere un'eclissi. La direzione della linea di vista è l'asse $x''$. Il moto
+    della stella e del pianeta si svolge nel piano ortogonale al piano della
+    figura}
+  \label{fig:minimo-angolo-eclissi}
+\end{figure}
 Vediamo sotto quali condizioni è possibile per un osservatore esterno vedere
 un'eclissi della stella dietro al pianeta studiato. Per semplicità assumiamo che
 le orbite dei due corpi siano circolari, quindi $e \approx 0$, che questi siano
 perfettamente sferici e che possano essere trascurati gli effetti dovuti
-all'atmosfera. Con riferimento alla Figura % TODO: creare figura, scrivere
-                                % didascalia che faccia riferimento al fatto che
-                                % il piano in cui si svolgono le orbite dei due
-                                % corpi è ortogonale al piano della figura e
-                                % inserire riferimento nel testo
-il corpo di massa $m_1$ è la stella, di raggio $r_\star$, e quello di massa
-$m_2$ è il pianeta, il cui raggio è $r$. La distanza reciproca fra i centri dei
-due corpi vale $a$. Se indichiamo con $i \in \mathopen{[}0, \pi/2\mathclose{]}$
-l'angolo di inclinazione sotto il quale l'osservatore vede il sistema, l'angolo
-minimo che permette all'osservatore di assistere a un'eclissi è quello
-rappresentato nella figura, cioè con l'asse $x''$ passante per il centro della
-stella e tangente alla superficie del pianeta. Dunque
+all'atmosfera. Con riferimento alla Figura~\ref{fig:minimo-angolo-eclissi}, il
+corpo di massa $m_1$ è la stella, di raggio $r_\star$, e quello di massa $m_2$ è
+il pianeta, il cui raggio è $r$. La distanza fra i centri dei due corpi vale
+$a$. Se indichiamo con $i \in \mathopen{[}0, \pi/2\mathclose{]}$ l'angolo di
+inclinazione sotto il quale l'osservatore vede il sistema, l'angolo minimo che
+permette all'osservatore di assistere a un'eclissi è quello rappresentato nella
+figura, cioè con l'asse $x''$ passante per il centro della stella e tangente
+alla superficie del pianeta. Dunque
 \begin{equation}
   \cos(\pi/2 - i) = \frac{\sqrt{a^2 - r^2}}{a} = \sqrt{1 - \frac{r^2}{a^2}}.
 \end{equation}
