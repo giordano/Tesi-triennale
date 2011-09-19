@@ -259,6 +259,51 @@ caso è
 \end{equation}
 Per $i = \pi/2$ si riottiene il risultato precedente.
 
+\begin{figure}
+  \centering
+  \subfloat[][$\sqrt{r_\star^2 - r^2} \leq d \leq r_\star +
+  r$\label{fig:area-coperta.a}]
+  {\begin{tikzpicture}[scale=1.1] \coordinate (O1) at (0,0); % centro stella
+      \coordinate (O2) at (2.5,0); % centro pianeta
+      \draw[name path=S,label=left:$m_1$] (O1) circle (2);% disco stella (r=2)
+      \draw[name path=P,label=right:$m_2$] (O2) circle (1);% disco pianeta (r=1)
+      \path[name intersections={of=S and P,by={A,B}}];
+      \draw[dashed] (O1) -- node[above] {$r_\star$} (A) -- (O2) --
+      node[below] {$r$} (B) -- (O1); \draw (A) -- (B);
+      \draw[->] ($(B) - (0,0.5)$) node[left,fill=white] {$S_1$} to
+      [out=45,in=-80] (1.9,-0.1);
+      \draw[->] ($(A) + (0,0.5)$) node[right] {$S_2$}
+      to[out=180] (1.7,0.1); \draw let \n1 = {acos((1-4+2.5*2.5)/(2*1*2.5))} in
+      ($(O2) - cos(\n1)*(0.2,0) + sin(\n1)*(0,0.2)$) arc (180-\n1:180+\n1:0.2);
+      \draw[->] ($(O2) + (-0.2,0.5)$) node[right] {$\theta_2$}
+      to[out=180,in=180] (2.3,0); \draw let \n2 =
+      {acos((4-1+2.5*2.5)/(2*2*2.5))} in
+      ($(O1) + cos(\n2)*(0.3,0) - sin(\n2)*(0,0.3)$) arc (-\n2:\n2:0.3);
+      \draw[->] ($(O1) + (0.5,-0.5)$) node[below] {$\theta_1$} to[in=0] (0.3,0);
+    \end{tikzpicture}} \quad
+  \subfloat[][$r_\star - r \leq d <
+  \sqrt{r_\star^2 - r^2}$\label{fig:area-coperta.b}]
+  {\begin{tikzpicture}[scale=1.1] \coordinate (O1) at (0,0); % centro stella
+      \coordinate (O2) at (1.5,0); % centro pianeta
+      \draw[name path=S,label=left:$m_1$] (O1) circle (2);% disco stella (r=2)
+      \draw[name path=P,label=right:$m_2$] (O2) circle (1);% disco pianeta (r=1)
+      \path[name intersections={of=S and P,by={A,B}}];
+      \draw[dashed] (O1) -- node[below] {$r_\star$} (A) -- (O2) --
+      node[left] {$r$} (B) -- (O1); \draw (A) -- (B);
+      \draw[->] ($(B) - (0,0.5)$) node[left,fill=white] {$S_1$} to
+      [out=0,in=-60] (1.9,-0.1); \draw[->] ($(A) + (0,0.5)$) node[right] {$S_2$}
+      to[out=180] (1.2,0.3); \draw let \n1 = {acos((1-4+1.5*1.5)/(2*1*1.5))} in
+      ($(O2) - cos(\n1)*(0.2,0) + sin(\n1)*(0,0.2)$) arc (180-\n1:180+\n1:0.2);
+      \draw[->] ($(O2) + (1,0.6)$) node[right] {$\theta_2$}
+      to[out=200,in=0] (1.3,0); \draw let \n2 = {acos((4-1+1.5*1.5)/(2*2*1.5))}
+      in ($(O1) + cos(\n2)*(0.2,0) - sin(\n2)*(0,0.2)$) arc (-\n2:\n2:0.2);
+      \draw[->] ($(O1) + (0.3,-0.3)$) node[below] {$\theta_1$} to[in=0] (0.2,0);
+    \end{tikzpicture}}
+  \caption[Sovrapposizione fra i dischi di stella e di un pianeta compagno
+  durante un transito]{Schema della sovrapposizione fra i dischi di una stella e
+  di un pianeta compagno durante un transito}
+  \label{fig:area-coperta}
+\end{figure}
 Calcoliamo l'area del disco della stella coperta dal pianeta durante
 l'eclissi. La distanza che prenderemo in considerazione non sarà la distanza
 reale $a$ fra i due corpi ma quella proiettata $d$ nel piano del cielo
@@ -268,12 +313,10 @@ sovrapposti nel cielo dell'osservatore quindi non si sta verificando
 l'eclissi. Se invece $d \leq r_\star + r$ il pianeta copre parzialmente la
 stella. Finché $\sqrt{r_\star^2 - r^2} \leq d \leq r_\star + r$, l'area di
 sovrapposizione è la somma delle due aree $S_1$ e $S_2$ della
-Figura. % TODO: creare figura e inserire riferimento
-Per il teorema del coseno, l'angolo $\theta_1$ % TODO: nella figura indicare,
-                                % correttamente, gli angoli \theta_1 e
-                                % \theta_2. Dopo aver messo la figura
-                                % ricontrollare tutte le formule seguenti, per
-                                % vedere se ho indovinato i nomi degli angoli.
+Figura~\ref{fig:area-coperta.a}. Per il teorema del coseno, l'angolo
+$\theta_1$ % TODO: nella figura indicare, correttamente, gli angoli \theta_1 e
+           % \theta_2. Dopo aver messo la figura  ricontrollare tutte le formule
+           % seguenti, per vedere se ho indovinato i nomi degli angoli.
 è dato da
 \begin{equation}
   \theta_1 = 2 \arccos \frac{r_\star^2 - r^2 + d^2}{2r_\star d}
@@ -296,10 +339,11 @@ Dunque in questo caso l'area di sovrapposizione $\delta A$ vale
   \delta A = S_1 + S_2 = \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) +
   \frac{r^2}{2}(\theta_2 - \sin\theta_2).
 \end{equation}
-Se $r_\star - r \leq d < \sqrt{r_\star^2 - r^2}$ risulta $\theta_2 > \pi$,
-quindi $S_2$ è la somma del settore circolare di angolo $\theta_2$ e del
-triangolo isoscele con vertice nel centro del disco del pianeta e angolo al
-vertice di $2\pi - \theta_2$. Così l'area di sovrapposizione diventa
+Se $r_\star - r \leq d < \sqrt{r_\star^2 - r^2}$ risulta $\theta_2 > \pi$ (si
+veda la Figura~\ref{fig:area-coperta.b}), quindi $S_2$ è la somma del settore
+circolare di angolo $\theta_2$ e del triangolo isoscele con vertice nel centro
+del disco del pianeta e angolo al vertice di $2\pi - \theta_2$. Così l'area di
+sovrapposizione diventa
 \begin{equation}
   \begin{split}
     \delta A &= S_1 + S_2 = \frac{r_\star^2}{2}(\theta_1 - \sin\theta_1) +

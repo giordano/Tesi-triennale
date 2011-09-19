@@ -6,8 +6,9 @@
 %%%%% Pacchetti caricati
 \usepackage{fancyhdr}
 \usepackage{layaureo}
+\usepackage[font=small,format=hang,labelfont=bf,textformat=period]{caption}
 % per tabelle e figure
-\usepackage{booktabs,graphicx}
+\usepackage{booktabs,graphicx,subfig}
 \usepackage{tikz}
 \usepackage[autostyle=true]{csquotes}
 \usepackage[style=numeric,hyperref,abbreviate=false,backend=biber]{biblatex}
@@ -25,7 +26,6 @@
 % restituisce erroneamente lettere in tondo, non in corsivo e non funziona con
 % le lettere greche.
 \usepackage{bm}
-\usepackage[font=small,format=hang,labelfont=bf,textformat=period]{caption}
 \usepackage{siunitx}
 \usepackage{hyperref}
 %%%%% Fine pacchetti
@@ -87,7 +87,7 @@
 \addto\captionsitalian{%
   \renewcommand{\lstlistingname}{Codice}}
 
-\usetikzlibrary{calc}
+\usetikzlibrary{calc,intersections}
 %%%%% Fine impostazioni
 
 %%%%% Comandi personalizzati
