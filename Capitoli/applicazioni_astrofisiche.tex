@@ -235,8 +235,37 @@ alla superficie del pianeta. Dunque
 Generalmente si ha $a \gg r_\star \gg r$, quindi $\cos(\pi/2 - i) \approx 1$,
 cioè $i \approx \pi/2$.
 
-Nella Figura % TODO: creare figura, scrivere didascalia descrittiva che faccia
-             % riferimento anche alla curva di luminosità e inserire riferimento
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[scale=0.6]
+    \coordinate (O) at (0,0); % centro stella
+    \draw (O) circle (4); % disco stella
+    \draw (O) -- node[right] {$r_\star$} (0,-4);
+    \draw (-5,0) -- node[above] {$r$} ($(-5,0) - cos(45)*(1,0) - sin(45)*(0,1)$);
+    \foreach \x in {-5,-3,-1,1,3,5} % varie posizioni del pianeta
+      \draw (\x,0) circle (1);
+    \draw (-6,-3) node[left] {luminosità} -- (-5,-3) -- (-3,-5) -- (3,-5) --
+          (5,-3) -- (6,-3);
+    \draw[dashed] (-5,0)  -- (-5,-6) node[below] {$t_{\textup{ii}}$};
+    \draw[dashed] (-4,-4) -- (-4,-6) node[below] {$t_{\textup{mi}}$};
+    \draw[dashed] (-3,0)  -- (-3,-6) node[below] {$t_{\textup{if}}$};
+    \draw[dashed] (3,0)   -- (3,-6)  node[below] {$t_{\textup{ei}}$};
+    \draw[dashed] (4,-4)  -- (4,-6)  node[below] {$t_{\textup{mf}}$};
+    \draw[dashed] (5,0)   -- (5,-6)  node[below] {$t_{\textup{ef}}$};
+    \draw[->] (-6,-6) -- (6,-6) node[right] {$t$};
+  \end{tikzpicture}
+  \caption[Rappresentazione schematica del transito di un pianeta davanti alla
+  stella
+  compagna]{Rappresentazione schematica del transito di un pianeta davanti alla
+    stella compagna. Davanti alla stella di raggio $r_\star$, fissa, sono
+    riportate le posizioni del pianeta, di raggio $r$, in diversi istanti di
+    tempo. La curva sotto lo schema mostra l'andamento della luminosità del
+    sistema in funzione del tempo $t$}
+  \label{fig:schema-transito}
+\end{figure}
+Nella Figura~\ref{fig:schema-transito} % TODO: scrivere didascalia descrittiva
+                                % che faccia riferimento anche alla curva di
+                                % luminosità
 è rappresentata una schematizzazione di un'eclissi della stella, nel caso in cui
 $i = \pi/2$. L'osservatore è fisso davanti alla stella e vede il pianeta che le
 passa davanti, in vari istanti. Quando il pianeta non copre la stella la
@@ -352,10 +381,7 @@ sovrapposti nel cielo dell'osservatore quindi non si sta verificando
 l'eclissi. Se invece $d \leq r_\star + r$ il pianeta copre parzialmente la
 stella. Finché $\sqrt{r_\star^2 - r^2} \leq d \leq r_\star + r$, l'area di
 sovrapposizione è la somma delle due aree $S_1$ e $S_2$ della
-Figura~\ref{fig:area-coperta.a}. Per il teorema del coseno, l'angolo
-$\theta_1$ % TODO: nella figura indicare, correttamente, gli angoli \theta_1 e
-           % \theta_2. Dopo aver messo la figura  ricontrollare tutte le formule
-           % seguenti, per vedere se ho indovinato i nomi degli angoli.
+Figura~\ref{fig:area-coperta.a}. Per il teorema del coseno, l'angolo $\theta_1$
 è dato da
 \begin{equation}
   \theta_1 = 2 \arccos \frac{r_\star^2 - r^2 + d^2}{2r_\star d}
