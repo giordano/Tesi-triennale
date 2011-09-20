@@ -135,7 +135,7 @@ void vettore_scalare(int n, double a[], double b[], double c)
  */
 double area_coperta(double r1, double r2, double d, double x1, double x2)
 {
-  double theta1, theta2; /* vedi figura (TODO: mettere riferimento) della tesi */
+  double theta1, theta2; /* vedi Figura 3.5 della tesi */
   double dA; /* area coperta */
   theta1=2*acos((r1*r1-r2*r2+d*d)/(2*r1*d));
   theta2=2*acos((r2*r2-r1*r1+d*d)/(2*r2*d));

@@ -31,8 +31,8 @@ set ylabel "$y$ (\\si{\\centi\\metre})"
 plot 'programmi/eclissi.dat' using 2:3 lw 2
 
 set output 'programmi/piano_cielo.tex'
-set xlabel "$x\\prime\\prime$ (\\si{\\centi\\metre})" offset 0,5
-set ylabel "$y\\prime\\prime$ (\\si{\\centi\\metre})" offset 8,0
+set xlabel "$y\\prime\\prime$ (\\si{\\centi\\metre})" offset 0,5
+set ylabel "$z\\prime\\prime$ (\\si{\\centi\\metre})" offset 8,0
 set bmargin 6
 set lmargin 11
 set key
