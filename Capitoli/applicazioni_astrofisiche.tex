@@ -188,21 +188,21 @@ fenomeno dell'eclissi.
   \begin{tikzpicture}
     \coordinate (O1) at (0,0); % centro stella
     \coordinate (O2) at (8,0); % centro pianeta
-    \draw (O1) circle (2);% disco stella (r=2)
+    \draw (O1) circle (2); % disco stella (r=2)
     \node at ($(O1) + (2.3,-1.2)$) {$m_1$};
-    \draw (O2) circle (1);% disco pianeta (r=1)
+    \draw (O2) circle (1); % disco pianeta (r=1)
     \node at ($(O2) + (-1.1,-1)$) {$m_2$};
     \draw[->] (O1) -- (0,3) node[above] {$z$}; % asse z
     \draw[->] (O1) -- (10,0) node[right] {$x$}; % asse x
     \draw[->] let \n1 = {acos(sqrt(1-1*1/(8*8)))} in
                   (O1) -- ($cos((\n1)*(10,0) + sin(\n1)*(0,10)$) node[right]
-                  {$x''$};
+                  {$x''$}; % asse x''
     \draw[->,dashed] let \n1 = {acos(sqrt(1-1*1/(8*8)))} in
                          ($(O1) + (0,2.5)$) to[out=0,in=90+\n1] node[right=5]
                          {$i_{\textup{min}}$} ($cos(\n1)*(2.5,0) +
-                         sin(\n1)*(0,2.5)$);
-    \draw[decorate,decoration={brace,mirror,raise=5}] (O1) -- node[below=6]
-                                                      {$a$} (O2);
+                         sin(\n1)*(0,2.5)$); % angolo di inclinazione
+    % distanza fra i centri di pianeta e stella
+    \draw[<->] ($(O1) + (0,-0.2)$) -- node[fill=white] {$a$} ($(O2) + (0,-0.2)$);
     \draw (O1) -- node[below right] {$r_\star$} ($(O1) - cos(45)*(2,0) -
                                     sin(45)*(0,2)$);
     \draw let \n1 = {acos(sqrt(1-1*1/(8*8)))} in
@@ -245,14 +245,14 @@ cioè $i \approx \pi/2$.
     \foreach \x in {-5,-3,-1,1,3,5} % varie posizioni del pianeta
       \draw (\x,0) circle (1);
     \draw (-8,-3) node[left] {luminosità} -- (-5,-3) -- (-3,-5) -- (3,-5) --
-          (5,-3) -- (8,-3);
+          (5,-3) -- (8,-3); % curva di luce
     \draw[dashed] (-5,0)  -- (-5,-6) node[below] {$t_{\textup{ii}}$};
     \draw[dashed] (-4,-4) -- (-4,-6) node[below] {$t_{\textup{mi}}$};
     \draw[dashed] (-3,0)  -- (-3,-6) node[below] {$t_{\textup{if}}$};
     \draw[dashed] (3,0)   -- (3,-6)  node[below] {$t_{\textup{ei}}$};
     \draw[dashed] (4,-4)  -- (4,-6)  node[below] {$t_{\textup{mf}}$};
     \draw[dashed] (5,0)   -- (5,-6)  node[below] {$t_{\textup{ef}}$};
-    \draw[->] (-8,-6) -- (8,-6) node[right] {$t$};
+    \draw[->] (-8,-6) -- (8,-6) node[right] {$t$}; % asse del tempo
   \end{tikzpicture}
   \caption[Transito di un pianeta davanti alla stella compagna nel caso
   $i =
@@ -386,6 +386,7 @@ Per $i = \pi/2$ si riottiene il risultato precedente.
       \coordinate (O2) at (2.5,0); % centro pianeta
       \draw[name path=S] (O1) circle (2); % disco stella (r=2)
       \draw[name path=P] (O2) circle (1); % disco pianeta (r=1)
+      % individuo punti di intersezione fra dischi di pianeta e stella
       \path[name intersections={of=S and P,by={A,B}}];
       \draw[dashed] (O1) -- node[above] {$r_\star$} (A) -- (O2) --
                     node[below] {$r$} (B) -- (O1);
@@ -409,8 +410,9 @@ Per $i = \pi/2$ si riottiene il risultato precedente.
   {\begin{tikzpicture}[scale=1.1]
       \coordinate (O1) at (0,0); % centro stella
       \coordinate (O2) at (1.5,0); % centro pianeta
-      \draw[name path=S] (O1) circle (2);% disco stella (r=2)
-      \draw[name path=P] (O2) circle (1);% disco pianeta (r=1)
+      \draw[name path=S] (O1) circle (2); % disco stella (r=2)
+      \draw[name path=P] (O2) circle (1); % disco pianeta (r=1)
+      % individuo punti di intersezione fra dischi di pianeta e stella
       \path[name intersections={of=S and P,by={A,B}}];
       \draw[dashed] (O1) -- node[below] {$r_\star$} (A) -- (O2) --
                     node[left] {$r$} (B) -- (O1);
