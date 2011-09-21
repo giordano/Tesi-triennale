@@ -15,26 +15,38 @@ relativa che si muove su un'orbita ellittica.
 \begin{figure}
   \centering
   \begin{tikzpicture}[font=\footnotesize,scale=3]
-    % a=1, e=0.8, b=a*sqrt(1-e^2)=0.6, c=ae=0.8, p=a*(1-e^2)=0.36, chi=120,
-    % r(chi)=0.6, x_Q=x_G=c+r(chi)*cos(chi)=0.5,
-    % y_Q=r(chi)*sin(chi)=0.5196, y_G=y_Q*a/b=0.866, psi=60 (deriva dalla
-    % relazione fra anomalia vera ed eccentrica)
+    \pgfmathsetmacro{\a}{1} % a=1
+    \pgfmathsetmacro{\e}{0.8} % e=0.8
+    \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
+    \pgfmathsetmacro{\c}{\a*\e} % c=a*e
+    \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
+    \pgfmathsetmacro{\angolochi}{120} % chi=120
+    % r(chi)=p/(1+e*cos(chi))
+    \pgfmathsetmacro{\r}{\p/(1+\e*cos(\angolochi))}
+    \pgfmathsetmacro{\xq}{\c+\r*cos(\angolochi)} % x_Q=x_G=c+r(chi)*cos(chi)
+    \pgfmathsetmacro{\yq}{\r*sin(\angolochi)} % y_Q=r(chi)*sin(chi)
+    \pgfmathsetmacro{\yg}{\yq*\a/\b} % y_G=y_Q*a/b
+    % calcolo anomalia eccentrica (da relazione fra anomalia vera ed eccentrica)
+    \pgfmathsetmacro{\angolopsi}{2*atan(sqrt((1-\e)/(1+\e))*tan(\angolochi/2))}
+
     \draw [->] (-1.2,0) -- (1.2,0) node[right] {$x$}; %asse x
     \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
-    \draw (0,0) circle (1); % circonferenza ausiliaria
-    \draw (0,0) ellipse (1 and 0.6); %ellisse
-    \draw (0.8,0) -- (0.5,0.5196) node[above right] {$Q$}; % segmento FQ
-    \draw [dashed] (0.5,0.5196) -- (0.5,0.866); % segmento QG
-    \draw (0,0) -- (0.5,0.866) node[above right] {$G$}; % segmento CG
+    \draw (0,0) circle (\a); % circonferenza ausiliaria
+    \draw (0,0) ellipse (\a*1 and \b); %ellisse
+    \draw (\c,0) -- (\xq,\yq) node[above right] {$Q$}; % segmento FQ
+    \draw [dashed] (\xq,\yq) -- (\xq,\yg); % segmento QG
+    \draw (0,0) -- (\xq,\yg) node[above right] {$G$}; % segmento CG
     \draw (0,0) node[below left] {$C$}; % etichetta del punto C
-    \draw (0.8,0) node[below] {$F$}; % etichetta del punto F
-    \draw (1,0) node[above right] {$P$}; % etichetta del punto P
-    \draw [dashdotted] (0.5,0.5196) -- (0.5,0) node[below] {$R$}; % segmento RQ
-    \draw [->] (0.9,0) to [out=90,in=30] node[above] {$\chi$} ($(0.8,0) +
-               cos(120)*(0.1,0) + sin(120)*(0,0.1)$) ; % angolo chi
-    \draw [->] (0.1,0) to [out=90,in=-30] node[above right=-4] {$\psi$} ($(0,0)
-               + cos(60)*(0.1,0) + sin(60)*(0,0.1)$) ; % angolo psi
-
+    \draw (\c,0) node[below] {$F$}; % etichetta del punto F
+    \draw (\a,0) node[above right] {$P$}; % etichetta del punto P
+    \draw [dashdotted] (\xq,\yq) -- (\xq,0) node[below] {$R$}; % segmento RQ
+    % angolo chi
+    \draw [->] (\c+0.1,0) to [out=90,in=\angolochi-90] node[above] {$\chi$}
+               ($(\c,0)+cos(\angolochi)*(0.1,0) + sin(\angolochi)*(0,0.1)$);
+    % angolo psi
+    \draw [->] (0.1,0) to [out=90,in=\angolopsi-90] node[above right=-4]
+               {$\psi$}
+               ($(0,0)+cos(\angolopsi)*(0.1,0)+sin(\angolopsi)*(0,0.1)$);
   \end{tikzpicture}
   \caption[Ellisse e circonferenza ausiliaria per l'equazione di
   Keplero]{Ellisse e circonferenza ausiliaria concentrica. Abbiamo posto $a=1$

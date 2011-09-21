@@ -21,26 +21,44 @@ solo alla mutua interazione gravitazionale.
 
 \begin{figure}
   \centering
-  \begin{tikzpicture}[font=\footnotesize,scale=3]
-    % m1=1: y=0.8,  z=0.2,  x=0.2
-    % m2=3: y=0.6,  z=0.8,  x=0.4
-    % cm:   y=0.65, z=0.65, x=0.35
+  \tdplotsetmaincoords{70}{100}
+  \begin{tikzpicture}[tdplot_main_coords,font=\footnotesize,scale=3]
+    % coordinate del corpo di massa m1=2:
+    % x=0.8,  y=0.2,  z=0.2
+    \pgfmathsetmacro{\muno}{2}
+    \pgfmathsetmacro{\xuno}{0.2}
+    \pgfmathsetmacro{\yuno}{0.2}
+    \pgfmathsetmacro{\zuno}{0.8}
+    % coordinate del corpo di massa m2=1:
+    % x=0.6,  y=0.8,  z=0.4
+    \pgfmathsetmacro{\mdue}{1}
+    \pgfmathsetmacro{\xdue}{0.6}
+    \pgfmathsetmacro{\ydue}{0.9}
+    \pgfmathsetmacro{\zdue}{0.3}
+    % coordinate del centro di massa
+    \pgfmathsetmacro{\xcdm}{(\xuno*\muno+\xdue*\mdue)/(\muno+\mdue)}
+    \pgfmathsetmacro{\ycdm}{(\yuno*\muno+\ydue*\mdue)/(\muno+\mdue)}
+    \pgfmathsetmacro{\zcdm}{(\zuno*\muno+\zdue*\mdue)/(\muno+\mdue)}
+
     \node [shape=coordinate](O) at (0,0,0) [label=left:$O$] {};
-    \draw [->] (O) -- (1,0,0) node[right] {$y$}; % asse y
-    \draw [->] (O) -- (0,1,0) node[above] {$z$}; % asse z
-    \draw [->] (O) -- (0,0,1) node[below left] {$x$}; % asse x
-    \filldraw [gray] (0.8,0.2,0.2) circle (0.01); % corpo di massa m_2
-    \draw [->] (0,0,0) -- node[below right,fill=white] {$\bm{r}_2$}
-               (0.8,0.2,0.2) node[right] {$m_2$}; % vettore r_2
-    \filldraw [gray] (0.6,0.8,0.4) circle (0.02); % corpo di massa m_1
-    \draw [->] (0,0,0) -- node[above left] {$\bm{r}_1$} (0.6,0.8,0.4)
+    \draw [->] (O) -- (1,0,0) node[anchor=north east] {$x$}; % asse x
+    \draw [->] (O) -- (0,1,0) node[anchor=north west] {$y$}; % asse y
+    \draw [->] (O) -- (0,0,1) node[anchor=south] {$z$}; % asse z
+
+    \draw [->] (O) -- node[left,fill=white] {$\bm{r}_1$} (\xuno,\yuno,\zuno)
                node[above] {$m_1$}; % vettore r_1
+    \draw [->] (O) -- node[below right,fill=white] {$\bm{r}_2$}
+               (\xdue,\ydue,\zdue) node[right] {$m_2$}; % vettore r_2
     % vettore posizione relativa
-    \draw [<-] (0.8,0.2,0.2) -- node[right] {$\bm{r}$} (0.6,0.8,0.4);
+    \draw [->] (\xuno,\yuno,\zuno) -- node[above] {$\bm{r}$}
+    (\xdue,\ydue,\zdue);
     % vettore posizione del centro di massa
-    \draw [->] (0,0,0) -- node[right] {$\bm{r}_\textup{CM}$} (0.65,0.65,0.35);
+    \draw [->] (O) -- node[right] {$\bm{r}_\textup{CM}$}
+               (\xcdm,\ycdm,\zcdm);
   \end{tikzpicture}
-  \caption{Due corpi in un sistema di riferimento inerziale}
+  \caption[Posizioni dei due corpi in un sistema di riferimento
+  inerziale]{Posizioni dei due corpi in un sistema di riferimento
+    inerziale. Abbiamo posto $m_1 = 2 m_2$}
   \label{fig:due-corpi}
 \end{figure}
 Consideriamo un sistema costituito da due corpi puntiformi, di masse $m_1$ e
@@ -381,22 +399,27 @@ possono essere classificate nel seguente modo:
 \begin{figure}
   \centering
   \begin{tikzpicture}[font=\scriptsize,scale=5]
-    % a=1, e=0.8, b=a*sqrt(1-e^2)=0.6, c=a*e=0.8, p=a*(1-e^2)=0.36
+    \pgfmathsetmacro{\a}{1} % a=1
+    \pgfmathsetmacro{\e}{0.8} % e=0.8
+    \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
+    \pgfmathsetmacro{\c}{\a*\e} % c=a*e
+    \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
+
     \draw[->] (-1.1,0) -- (1.1,0) node[right] {$x\equiv x'$}; %assi x e x'
     \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
-    \draw[->] (0.8,-0.7) -- (0.8,0.7) node[above] {$y$}; %asse y
-    \draw (0,0) ellipse (1 and 0.6);
+    \draw[->] (\c,-0.7) -- (\c,0.7) node[above] {$y$}; %asse y
+    \draw (0,0) ellipse (\a*1 and \b);
     \draw (0,0) node[below left] {$O'$};
-    \draw (0.8,0) node[below left] {$O\equiv M_{\textup{T}}$};
-    \draw[->] (0.9,0) to [out=90,in=-45] node[inner sep=0,fill=white,right=3]
-              {$\theta - \theta_0$} ($(0.8,0) + cos(45)*(0.1,0) +
+    \draw (\c,0) node[below left] {$O\equiv M_{\textup{T}}$};
+    \draw[->] (\c+0.1,0) to [out=90,in=-45] node[inner sep=0,fill=white,right=3]
+              {$\theta - \theta_0$} ($(\c,0) + cos(45)*(0.1,0) +
               sin(45)*(0,0.1)$);
-    \draw[->] (0.8,0) -- node[above] {$r$} (0.962586,0.162586);
-    \draw[<->] (0,0.05) -- node[fill=white] {$a$} (-1,0.05);
-    \draw[<->] (0,0.05) -- node[fill=white] {$c$} (0.8,0.05);
-    \draw[<->] (-0.05,0) -- node[fill=white] {$b$} (-0.05,0.6);
-    \draw[<->] (0.75,0) -- node[fill=white] {$p$} (0.75,0.36);
-    \draw[<->] (0.8,-0.05) -- node[fill=white,inner sep=0] {$a-c$} (1,-0.05);
+    \draw[->] (\c,0) -- node[above] {$r$} (\c+0.162586,0.162586);
+    \draw[<->] (0,0.05) -- node[fill=white] {$a$} (-\a,0.05);
+    \draw[<->] (0,0.05) -- node[fill=white] {$c$} (\c,0.05);
+    \draw[<->] (-0.05,0) -- node[fill=white] {$b$} (-0.05,\b);
+    \draw[<->] (\c-0.05,0) -- node[fill=white] {$p$} (\c-0.05,\p);
+    \draw[<->] (\c,-0.05) -- node[fill=white,inner sep=0] {$a-c$} (\a,-0.05);
   \end{tikzpicture}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
     del sistema di riferimento $Oxy$ è la posizione di $M_\textup{T}$ e coincide
@@ -448,19 +471,29 @@ stesso semiasse maggiore ma con eccentricità differenti.
 \begin{figure}
   \centering
   \begin{tikzpicture}[font=\footnotesize,scale=2]
-    % Semiasse delle tre ellissi: a=1.
-    % e_1=0.2 --> b_1=a*sqrt(1-e_1^2)=0.979796, c_1=a*e_1=0.2.
-    % e_2=0.5 --> b_2=a*sqrt(1-e_2^2)=0.866025, c_2=a*e_2=0.5.
-    % e_3=0.9 --> b_3=a*sqrt(1-e_3^2)=0.435890, c_3=a*e_3=0.9.
-    % Fisso il fuoco nell'origine, quindi i centri si trovano in (-c_i,0).
+    \pgfmathsetmacro{\a}{1.0} % Semiasse delle tre ellissi: a=1
+    % parametri della prima ellisse
+    \pgfmathsetmacro{\euno}{0.2} % e1 = 0.2
+    \pgfmathsetmacro{\buno}{\a*sqrt(1-\euno*\euno)} % b_1=a*sqrt(1-e_1^2)
+    \pgfmathsetmacro{\cuno}{\a*\euno} % c_1=a*e_1
+    % parametri della seconda ellisse
+    \pgfmathsetmacro{\edue}{0.5} % e2 = 0.5
+    \pgfmathsetmacro{\bdue}{\a*sqrt(1-\edue*\edue)} % b_2=a*sqrt(1-e_2^2)
+    \pgfmathsetmacro{\cdue}{\a*\edue} % c_2=a*e_2
+    % parametri della terza ellisse
+    \pgfmathsetmacro{\etre}{0.9} % e3 = 0.9
+    \pgfmathsetmacro{\btre}{\a*sqrt(1-\etre*\etre)} % b_3=a*sqrt(1-e_3^2)
+    \pgfmathsetmacro{\ctre}{\a*\etre} % c_3=a*e_3
+
+    % Fisso il fuoco comune nell'origine, quindi i centri si trovano in (-c_i,0)
     \draw [->] (-2,0) -- (1.1,0) node[right] {$x$}; %asse x
     \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
-    \draw (-0.2,0) ellipse (1 and 0.979796); %ellisse 1
-    \draw (0.8,0.8) node {$e=0.2$};
-    \draw[dashed] (-0.5,0) ellipse (1 and 0.866025); %ellisse 2
-    \draw (-1.2,0.7) node[left] {$e=0.5$};
-    \draw[dashdotted] (-0.9,0) ellipse (1 and 0.435890); %ellisse 3
-    \draw (-1.9,0.2) node[left] {$e=0.9$};
+    \draw (-\cuno,0) ellipse (\a*1 and \buno); %ellisse 1
+    \draw (0.8,0.8) node {$e=\euno$};
+    \draw[dashed] (-\cdue,0) ellipse (\a*1 and \bdue); %ellisse 2
+    \draw (-1.2,0.7) node[left] {$e=\edue$};
+    \draw[dashdotted] (-\ctre,0) ellipse (\a*1 and \btre); %ellisse 3
+    \draw (-1.9,0.2) node[left] {$e=\etre$};
   \end{tikzpicture}
   \caption[Ellissi con diversi valori di eccentricità]{Ellissi con fuoco comune
     nell'origine del sistema di riferimento, stesso semiasse maggiore $a=1$ ed
@@ -1238,32 +1271,43 @@ la~\eqref{eq:orbita} nelle~\eqref{eq:r1-r2-nel-cdm} troviamo che le orbite dei
 due corpi nel sistema di riferimento del centro di massa sono
 \begin{figure}
   \centering
-  % a=1, e=0.8, b=a*sqrt(1-e^2)=0.6, c=a*e=0.8, p=a*(1-e^2)=0.36,
-  % m_1 = 5, m_2=1, mu=m_1*m_2/(m_1+m_2)=0.8333,
-  % a_1=a*mu/m_1=0.1667, b_1=b*mu/m_1=0.1, c=a_1*e=0.1333
-  % a_2=a*mu/m_2=0.8333, b_1=b*mu/m_2=0.5, c=a_2*e=0.6667
-  \begin{tikzpicture}[font=\footnotesize,scale=2.5]
-    \draw[->] (-1.6,0) -- (0.4,0) node[right] {$x$}; %asse x
-    \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y$}; %asse y
-    \draw (0.1333,0) ellipse (0.1667 and 0.1); %ellisse di m_1
-    \node at (0.35,0.1) {$m_1$};
-    \draw[dashed] (-0.6667,0) ellipse (0.8333 and 0.5); %ellisse di m_2
-    \node at (-1.2,0.5) {$m_2$};
-  \end{tikzpicture}
-  \quad
-  \begin{tikzpicture}[font=\footnotesize,scale=2.5]
-    \draw[->] (-1.9,0) -- (0.3,0) node[right] {$x$}; %asse x
-    \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y$}; %asse y
-    \draw (-0.8,0) ellipse (1 and 0.6); %ellisse della particella ridotta
-    \node [below left] at (0,0) {$m_1$};
-    \node at (-1.6,0.5) {$\mu$};
-  \end{tikzpicture}
-  \caption[Soluzione del problema di Keplero]{Nella figura di sinistra sono
-    riportate le orbite ellittiche dei due corpi nel sistema di riferimento del
-    centro di massa. Nella figura di destra è rappresentata l'orbita della
-    particella relativa nel sistema di riferimento con origine nel corpo di
-    massa $m_1$. Abbiamo posto $m_1=5$ e $m_2=1$ in unità arbitrarie, i
-    parametri delle ellissi sono $a=1$ ed $e=0.8$}
+  \pgfmathsetmacro{\a}{1} % a=1
+  \pgfmathsetmacro{\e}{0.8} % e=0.8
+  \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
+  \pgfmathsetmacro{\c}{\a*\e} % c=a*e
+  \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
+  \pgfmathsetmacro{\muno}{5} % m_1=5
+  \pgfmathsetmacro{\mdue}{1} % m_2=1
+  \pgfmathsetmacro{\mridotta}{\muno*\mdue/(\muno+\mdue)} % mu=m_1*m_2/(m_1+m_2)
+
+  \pgfmathsetmacro{\auno}{\a*\mridotta/\muno} % a_1=a*mu/m_1
+  \pgfmathsetmacro{\buno}{\b*\mridotta/\muno} % b_1=b*mu/m_1
+  \pgfmathsetmacro{\cuno}{\auno*\e} % c_1=a_1*e
+  \pgfmathsetmacro{\adue}{\a*\mridotta/\mdue} % a_2=a*mu/m_2
+  \pgfmathsetmacro{\bdue}{\b*\mridotta/\mdue} % b_2=b*mu/m_2
+  \pgfmathsetmacro{\cdue}{\adue*\e} % c_2=a_2*e
+  \subfloat[][Orbite ellittiche dei due corpi nel sistema di riferimento del
+  centro di massa]
+  {\begin{tikzpicture}[font=\footnotesize,scale=2.5]
+      \draw[->] (-1.6,0) -- (0.4,0) node[right] {$x$}; %asse x
+      \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y$}; %asse y
+      \draw (\cuno,0) ellipse (\auno*1 and \buno); %ellisse di m_1
+      \node at (0.35,0.1) {$m_1$};
+      \draw[dashed] (-\cdue,0) ellipse (\adue*1 and \bdue); %ellisse di m_2
+      \node at (-1.2,0.5) {$m_2$};
+    \end{tikzpicture}} \quad
+  \subfloat[][Orbita della particella relativa nel sistema di riferimento con
+  origine nel corpo di massa $m_1$]
+  {\begin{tikzpicture}[font=\footnotesize,scale=2.5]
+      \draw[->] (-1.9,0) -- (0.3,0) node[right] {$x$}; %asse x
+      \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y$}; %asse y
+      \draw (-\c,0) ellipse (\a*1 and \b); %ellisse della particella ridotta
+      \node [below left] at (0,0) {$m_1$};
+      \node at (-1.6,0.5) {$\mu$};
+    \end{tikzpicture}}
+  \caption[Soluzione del problema di Keplero]{Soluzione del problema di
+    Keplero. Abbiamo posto $m_1=5$ e $m_2=1$ in unità arbitrarie, i parametri
+    delle ellissi sono $a=1$ ed $e=0.8$}
   \label{fig:orbite-ellittiche}
 \end{figure}
 \begin{subequations}
@@ -1274,10 +1318,10 @@ due corpi nel sistema di riferimento del centro di massa sono
     \frac{\mu}{m_2}\frac{p}{1+e\cos(\theta - \theta_0)}.
   \end{align}
 \end{subequations}
-Nella Figura~\ref{fig:orbite-ellittiche} mostriamo le orbite dei due corpi e del
+Nelle Figure~\ref{fig:orbite-ellittiche} mostriamo le orbite dei due corpi e del
 corpo di massa ridotta nel caso di orbite ellittiche. Come si può osservare,
 entrambi i corpi ruotano intorno al centro di massa ma mentre il corpo più
-massivo, nell'esempio in figura $m_1$, rimane vicino a questo, il corpo meno
+massivo, $m_1$ nell'esempio in figura, rimane vicino a questo, il corpo meno
 massivo descrive orbite più larghe. Dalle
 relazioni~\eqref{eq:r1-r2-posizione-relativa-cdm} si vede inoltre che il centro
 di massa giace sempre sulla congiungente $\bm{r}$ dei due corpi, quindi $m_1$ e
