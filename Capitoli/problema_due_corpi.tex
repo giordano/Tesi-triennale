@@ -1258,7 +1258,6 @@ due corpi nel sistema di riferimento del centro di massa sono
     \node [below left] at (0,0) {$m_1$};
     \node at (-1.6,0.5) {$\mu$};
   \end{tikzpicture}
-  % \input{Immagini/gnuplot/orbite_ellittiche}
   \caption[Soluzione del problema di Keplero]{Nella figura di sinistra sono
     riportate le orbite ellittiche dei due corpi nel sistema di riferimento del
     centro di massa. Nella figura di destra è rappresentata l'orbita della
@@ -1342,16 +1341,79 @@ sette complessivamente trovate.
 \section{Geometria del sistema binario}
 \label{sec:geometria-sistema}
 
-% TODO: mettere figure e relativi riferimenti
+\begin{figure}
+  \centering
+  % Ruoto sistema di riferimento principale (che qui chiamo x'y'z')
+  \tdplotsetmaincoords{70}{135}
+  \begin{tikzpicture}[tdplot_main_coords,scale=6]
+    %% colori
+    % colore per gli assi del sistema di riferimento Ox'y'z'
+    \colorlet{intrinseco}{black}
+    % colore per gli assi del sistema di riferimento Oxyz
+    \colorlet{ausiliario}{red}
+    % colore per gli assi del sistema di riferimento Ox'y'z'
+    \colorlet{pdc}{blue}
+
+    \pgfmathsetmacro{\angolophi}{30} % valore dell'angolo `i'
+    \pgfmathsetmacro{\angoloi}{30} % valore dell'angolo `phi_0'
+    % origine dei sistemi di riferimento
+    \node [shape=coordinate](O) at (0,0,0) [label=above right:$O$] {};
+    % asse x'
+    \draw[->,intrinseco] (O) -- (1,0,0) node[anchor=north east]{$x'$};
+    % asse y'
+    \draw[->,intrinseco] (O) -- (0,1,0) node[anchor=north west]{$y'$};
+    % asse z' (coincidente con l'asse z)
+    \draw[->,intrinseco!50!ausiliario] (O) -- (0,0,1) node[anchor=south]{$z'
+      \equiv z$};
+    \draw[thick] (-0.4,0,0) ellipse (0.5 and 0.3); % ellisse
+
+    % ruoto il sistema di riferimento principale x'y'z' intorno all'asse z'
+    % dell'angolo `phi_0'
+    \tdplotsetrotatedcoords{0}{0}{\angolophi}
+    % asse x
+    \draw[tdplot_rotated_coords,->,ausiliario] (O) -- (1,0,0)
+    node[anchor=north]{$x$};
+    % asse y (coincidente con l'asse y'')
+    \draw[tdplot_rotated_coords,->,ausiliario!50!pdc] (O) -- (0,1,0)
+    node[anchor=west]{$y \equiv y''$};
+    % disegno arco dell'angolo `phi_0'
+    \tdplotdrawarc[->,tdplot_rotated_coords,ausiliario]{(O)}{0.8}{-\angolophi}%
+    {0}{anchor=north east}{$\phi_0$}
+
+    % ruoto il sistema di riferimento xyz intorno all'asse y dell'angolo `phi_0'
+    \tdplotsetrotatedcoords{\angolophi}{-\angoloi}{0}
+    % asse x''
+    \draw[tdplot_rotated_coords,->,pdc] (O) -- (1,0,0)
+    node[anchor=east]{$x''$};
+    % asse z''
+    \draw[tdplot_rotated_coords,->,pdc] (O) -- (0,0,1)
+    node[anchor=south]{$z''$};
+    % ruoto il piano theta (di `phi_0') per disegnare l'arco di `i'
+    \tdplotsetthetaplanecoords{\angolophi}
+    % disegno arco dell'angolo `i'
+    \tdplotdrawarc[->,tdplot_rotated_coords,pdc]{(O)}{0.8}{90-\angoloi}%
+    {0}{anchor=south east}{$i$}
+    \tdplotdrawarc[->,tdplot_rotated_coords,pdc]{(O)}{0.8}{90}%
+    {90-\angoloi}{anchor=south east}{$\pi/2-i$}
+  \end{tikzpicture}
+  \caption[Geometria del sistema binario]{Geometria del sistema binario. Il
+    sistema di riferimento proprio dell'ellisse è $Ox'y'z'$, l'origine $O$
+    coincide con uno dei fuochi. Il sistema di riferimento
+    \textcolor{red}{$Oxyz$} è ottenuto da quello intrinseco con una rotazione di
+    angolo $\phi_0$ attorno all'asse $z' \equiv z$. Il sistema di riferimento
+    \textcolor{blue}{$Ox''y''z''$} è ottenuto dal sistema di riferimento $Oxyz$
+    con una rotazione di angolo $i$ attorno all'asse $y \equiv y''$}
+  \label{fig:geometria-sistema}
+\end{figure}
 In questo paragrafo ci proponiamo di determinare come un osservatore vede un
 sistema binario nel proprio cielo. Per fare ciò consideriamo il sistema di
 riferimento destrorso $Ox'y'z'$ intrinseco al sistema binario, cioè con origine
 nel fuoco dell'orbita, assi $x'$ e $y'$ complanari al piano dell'orbita e $z'$
-ortogonale a questo. Gli assi $x'$ e $y'$ sono diretti, rispettivamente, come
-gli assi $x$ e $y$ della figura~\ref{fig:ellisse}, con $x'$ diretto verso il
-periapside. Consideriamo ora il sistema di riferimento ausiliario $Oxyz$,
-ottenuto ruotando attorno all'asse $z\equiv z'$ il sistema $Ox'y'z'$ di un
-angolo $\phi_0$.
+ortogonale a questo, come mostrato nella Figura~\ref{fig:geometria-sistema}. Gli
+assi $x'$ e $y'$ sono diretti, rispettivamente, come gli assi $x$ e $y$ della
+Figura~\ref{fig:ellisse}, con $x'$ diretto verso il periapside. Consideriamo ora
+il sistema di riferimento ausiliario $Oxyz$, ottenuto ruotando attorno all'asse
+$z\equiv z'$ il sistema $Ox'y'z'$ di un angolo $\phi_0$.
 
 Le coordinate nel sistema di riferimento ausiliario possono essere ottenute da
 quelle del sistema di riferimento intrinseco con la seguente trasformazione

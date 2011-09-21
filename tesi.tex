@@ -9,7 +9,7 @@
 \usepackage[font=small,format=hang,labelfont=bf,textformat=period]{caption}
 % per tabelle e figure
 \usepackage{booktabs,graphicx,subfig}
-\usepackage{tikz}
+\usepackage{tikz,tikz-3dplot}
 \usepackage[autostyle=true]{csquotes}
 \usepackage[style=numeric,hyperref,abbreviate=false,backend=biber]{biblatex}
 \usepackage{listings}
@@ -40,7 +40,7 @@
 % per tutte le pagine.
 % Nella testatina (`head') a destra (`R') mettiamo il nome del paragrafo
 % (`\rightmark'), non tutto maiuscolo (`\nouppercase').
-\fancyhead[R]{\slshape\nouppercase{\leftmark}}
+\fancyhead[R]{\slshape\footnotesize\nouppercase{\leftmark}}
 % Nel piede (`foot') al centro (`C') mettiamo il numero della pagina
 % (`\thepage').
 \fancyfoot[C]{\thepage}
