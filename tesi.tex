@@ -169,6 +169,23 @@
 \newcommand{\C}{\numberset{C}}	% Complessi \C
 %%%%% Fine comandi personalizzati
 
+%%%%% Funzioni PGF
+% funzione che restituisce la distanza dal fuoco di un punto di un'ellisse in
+% corrispondenza dell'anomalia vera #1 (\e = eccentricità, \p = semilato retto)
+\pgfmathdeclarefunction{dist}{1}{\pgfmathparse{\p/(1+\e*cos(#1))}}
+% vedi equazione (1.51), pag 10 della tesi (eq:angolo-alpha2). Per avere
+% risultati corretti bisogna inserire un valore dell'anomalia diverso da 0,
+% 180 e 360 (e numeri a loro congrui in modulo 360)
+\pgfmathdeclarefunction{alpha}{1}{\pgfmathparse{
+    (mod(#1,360) < 180) ? atan(1/tan(mod(#1,360))+1/(\e*sin(mod(#1,360)))):
+                          atan(1/tan(mod(#1,360)) +
+                          1/(\e*sin(mod(#1,360)))) + 180}
+}
+% vedi sempre il paragrafo sulla velocità nella direzione della linea di
+% vista (sec:velocita-linea-di-vista)
+\pgfmathdeclarefunction{beta}{1}{\pgfmathparse{#1+alpha(#1)}}
+%%%%% Fine funzioni PGF
+
 \begin{document}
 \frontmatter{}
 \pagenumbering{Alph}
