@@ -39,7 +39,6 @@ set arrow from -1.05*(a+c),0 to 1.3*a*(1-e),0 filled # asse x
 
 ### primo punto in cui rappresentare la velocità
 Q=0.6*pi
-# set arrow from 0,0 to r(Q1)*cos(Q),r(Q)*sin(Q) filled
 # vettore velocità
 set arrow from r(Q)*cos(Q),r(Q)*sin(Q) to \
     r(Q)*cos(Q)+vx(Q),r(Q)*sin(Q)+vy(Q) filled
@@ -59,7 +58,6 @@ set label "{\\scriptsize $\\bm{v}_\\textup{los}$}" at \
 
 ### secondo punto in cui rappresentare la velocità
 Q=1.38*pi
-# set arrow from 0,0 to r(Q)*cos(Q),r(Q)*sin(Q) filled
 # vettore velocità
 set arrow from r(Q)*cos(Q),r(Q)*sin(Q) to \
     r(Q)*cos(Q)+vx(Q),r(Q)*sin(Q)+vy(Q) filled

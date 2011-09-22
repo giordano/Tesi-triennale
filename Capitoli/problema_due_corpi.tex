@@ -194,6 +194,89 @@ abbiamo
   -\frac{Gm_1m_2}{r^2}\versor{r} = \mu\toder[2]{\bm{r}}{t}.
 \end{equation}
 
+\begin{figure}
+  \centering
+  % Ruoto sistema di riferimento principale
+  \tdplotsetmaincoords{70}{135}
+  \begin{tikzpicture}[tdplot_main_coords,scale=3,font=\scriptsize]
+    \pgfmathsetmacro{\a}{1} % a=1
+    \pgfmathsetmacro{\e}{0.8} % e=0.8
+    \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
+    \pgfmathsetmacro{\c}{\a*\e} % c=a*e
+    \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
+    % lunghezza del vettore momento angolare. metto un valore arbitrario
+    \pgfmathsetmacro{\l}{0.6}
+    \pgfmathsetmacro{\m}{0.1} % massa
+
+    % funzione che restituisce la distanza dal fuoco
+    \pgfmathdeclarefunction{dist}{1}{\pgfmathparse{\p/(1+\e*cos(#1))}}
+    % vedi equazione (1.51), pag 10 della tesi (eq:angolo-alpha2). Per avere
+    % risultati corretti bisogna inserire un valore dell'anomalia diverso da 0,
+    % 180 e 360 (e numeri a loro congrui in modulo 360)
+    \pgfmathdeclarefunction{alpha}{1}{\pgfmathparse{
+        (mod(#1,360) < 180) ? atan(1/tan(mod(#1,360))+1/(\e*sin(mod(#1,360)))):
+                              atan(1/tan(mod(#1,360)) +
+                              1/(\e*sin(mod(#1,360)))) + 180}
+    }
+    % vedi sempre il paragrafo sulla velocità nella direzione della linea di
+    % vista (sec:velocita-linea-di-vista)
+    \pgfmathdeclarefunction{beta}{1}{\pgfmathparse{#1+alpha(#1)}}
+    % funzione che restituisce la quantità di moto nel punto di anomalia vera #1
+    % (valgono le stesse considerazioni di prima: la funzione restituisce valori
+    % corretti se #1 != 0, 180, 360 e numeri a loro congrui in modulo 360
+    \pgfmathdeclarefunction{mv}{1}{\pgfmathparse{\m*(2/dist(#1)-1/\a)}}
+
+    %% parametri del primo punto
+    % anomalia vera del primo punto
+    \pgfmathsetmacro{\anomaliauno}{0}
+    % coordinata x del primo punto in cui disegno il vettore posizione
+    \pgfmathsetmacro{\xuno}{dist(\anomaliauno)*cos(\anomaliauno)}
+    % coordinata y del primo punto in cui disegno il vettore posizione
+    \pgfmathsetmacro{\yuno}{dist(\anomaliauno)*sin(\anomaliauno)}
+    % componente x del vettore quantità di moto. poiché anomalia = 0 pongo
+    % manualmente p_x = 0, p_y = |p| (negli altri casi posso usare le funzioni
+    % sopra definite)
+    \pgfmathsetmacro{\pxuno}{0}
+    % componente y del vettore quantità di moto
+    \pgfmathsetmacro{\pyuno}{mv(\anomaliauno)}
+    %% secondo punto
+    % anomalia vera del secondo punto
+    \pgfmathsetmacro{\anomaliadue}{130}
+    % coordinata x del secondo punto in cui disegno il vettore posizione
+    \pgfmathsetmacro{\xdue}{dist(\anomaliadue)*cos(\anomaliadue)}
+    % coordinata y del secondo punto in cui disegno il vettore posizione
+    \pgfmathsetmacro{\ydue}{dist(\anomaliadue)*sin(\anomaliadue)}
+    % componente x del vettore quantità di moto
+    \pgfmathsetmacro{\pxdue}{mv(\anomaliadue)*cos(beta(\anomaliadue))}
+    % componente y del vettore quantità di moto
+    \pgfmathsetmacro{\pydue}{mv(\anomaliadue)*sin(beta(\anomaliadue))}
+
+    % origine dei sistemi di riferimento
+    \node [shape=coordinate](O) at (0,0,0) [label=above right:$O$] {};
+    \draw[->] (O) -- (1,0,0) node[anchor=north east]{$x$}; % asse x
+    \draw[->] (O) -- (0,1,0) node[anchor=north west]{$y$}; % asse y
+    \draw[->] (O) -- (0,0,1) node[anchor=south]{$z$}; % asse z
+    \draw (-\c,0,0) ellipse ({\a} and \b); % ellisse
+
+    %% primo punto
+    \draw[->,thick] (O) -- node[above] {$\bm{r}_1$} (\xuno,\yuno); % posizione
+    % vettore quantità di moto
+    \draw[->,thick] (\xuno,\yuno) -- node[below] {$\bm{p}_1$} +(\pxuno,\pyuno);
+    % vettore momento angolare
+   \draw[->,thick] (\xuno,\yuno,0) -- node[left] {$\bm{l}_0$} +(0,0,\l);
+
+    % %% secondo punto
+    \draw[->,thick] (O) -- node[above] {$\bm{r}_2$} (\xdue,\ydue); % posizione
+    % vettore quantità di moto
+    \draw[->,thick] (\xdue,\ydue) -- node[below] {$\bm{p}_2$} +(\pxdue,\pydue);
+    % vettore momento angolare
+    \draw[->,thick] (\xdue,\ydue,0) -- node[right] {$\bm{l}_0$} +(0,0,\l);
+  \end{tikzpicture}
+  \caption[Vettore momento angolare]{Vettore momento angolare
+    $\bm{l}_0 = \bm{r} \times \bm{p}$ rappresentato in due punti diversi
+    di un'orbita ellittica}
+  \label{fig:momento-angolare}
+\end{figure}
 Per una qualsiasi forza di tipo centrale il momento angolare $\bm{l} = \bm{r}
 \times \bm{p}$ rispetto al centro della forza è una costante del moto. Infatti
 il momento torcente $\bm{\tau}$ di una forza $\bm{F}$ rispetto a un polo $O$ è
@@ -215,7 +298,10 @@ implica che, nel caso $\bm{l}_0\neq\bm{0}$, il vettore $\bm{r}$, giace sempre
 sullo stesso piano perpendicolare a $\bm{l}_0$. Se invece risulta
 $\bm{l}_0=\bm{0}$, $\bm{r}$ è parallelo alla quantità di moto $\bm{p}$ e il moto
 è unidimensionale. Da qui in seguito supporremo che il momento angolare
-$\bm{l}_0$ della particella relativa sia non nullo.
+$\bm{l}_0$ della particella relativa sia non nullo. Nella
+Figura~\ref{fig:momento-angolare} è rappresentato il vettore momento angolare
+$\bm{l}_0$ di una particella in moto su un'orbita piana ellittica in due punti
+differenti di questa orbita.
 
 Dal momento che il moto della particella di massa ridotta si svolge in un piano,
 possiamo utilizzare le coordinate polari $r,\theta$ per rappresentare la
@@ -408,7 +494,7 @@ possono essere classificate nel seguente modo:
     \draw[->] (-1.1,0) -- (1.1,0) node[right] {$x\equiv x'$}; %assi x e x'
     \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
     \draw[->] (\c,-0.7) -- (\c,0.7) node[above] {$y$}; %asse y
-    \draw (0,0) ellipse (\a*1 and \b);
+    \draw (0,0) ellipse ({\a} and \b);
     \draw (0,0) node[below left] {$O'$};
     \draw (\c,0) node[below left] {$O\equiv M_{\textup{T}}$};
     \draw[->] (\c+0.1,0) to [out=90,in=-45] node[inner sep=0,fill=white,right=3]
@@ -488,11 +574,11 @@ stesso semiasse maggiore ma con eccentricità differenti.
     % Fisso il fuoco comune nell'origine, quindi i centri si trovano in (-c_i,0)
     \draw [->] (-2,0) -- (1.1,0) node[right] {$x$}; %asse x
     \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
-    \draw (-\cuno,0) ellipse (\a*1 and \buno); %ellisse 1
+    \draw (-\cuno,0) ellipse ({\a} and \buno); %ellisse 1
     \draw (0.8,0.8) node {$e=\euno$};
-    \draw[dashed] (-\cdue,0) ellipse (\a*1 and \bdue); %ellisse 2
+    \draw[dashed] (-\cdue,0) ellipse ({\a} and \bdue); %ellisse 2
     \draw (-1.2,0.7) node[left] {$e=\edue$};
-    \draw[dashdotted] (-\ctre,0) ellipse (\a*1 and \btre); %ellisse 3
+    \draw[dashdotted] (-\ctre,0) ellipse ({\a} and \btre); %ellisse 3
     \draw (-1.9,0.2) node[left] {$e=\etre$};
   \end{tikzpicture}
   \caption[Ellissi con diversi valori di eccentricità]{Ellissi con fuoco comune
@@ -1301,7 +1387,7 @@ due corpi nel sistema di riferimento del centro di massa sono
   {\begin{tikzpicture}[font=\footnotesize,scale=2.5]
       \draw[->] (-1.9,0) -- (0.3,0) node[right] {$x$}; %asse x
       \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y$}; %asse y
-      \draw (-\c,0) ellipse (\a*1 and \b); %ellisse della particella ridotta
+      \draw (-\c,0) ellipse ({\a} and \b); %ellisse della particella ridotta
       \node [below left] at (0,0) {$m_1$};
       \node at (-1.6,0.5) {$\mu$};
     \end{tikzpicture}}
@@ -1385,7 +1471,7 @@ sette complessivamente trovate.
 \section{Geometria del sistema binario}
 \label{sec:geometria-sistema}
 
-\begin{figure}
+\begin{figure}[tb]
   \centering
   % Ruoto sistema di riferimento principale (che qui chiamo x'y'z')
   \tdplotsetmaincoords{70}{135}
@@ -1398,8 +1484,8 @@ sette complessivamente trovate.
     % colore per gli assi del sistema di riferimento Ox'y'z'
     \colorlet{pdc}{blue}
 
-    \pgfmathsetmacro{\angolophi}{30} % valore dell'angolo `i'
-    \pgfmathsetmacro{\angoloi}{30} % valore dell'angolo `phi_0'
+    \pgfmathsetmacro{\angolophi}{20} % valore dell'angolo `phi_0'
+    \pgfmathsetmacro{\angoloi}{40} % valore dell'angolo `i'
     % origine dei sistemi di riferimento
     \node [shape=coordinate](O) at (0,0,0) [label=above right:$O$] {};
     % asse x'
@@ -1420,9 +1506,11 @@ sette complessivamente trovate.
     % asse y (coincidente con l'asse y'')
     \draw[tdplot_rotated_coords,->,ausiliario!50!pdc] (O) -- (0,1,0)
     node[anchor=west]{$y \equiv y''$};
-    % disegno arco dell'angolo `phi_0'
+    % disegno archi dell'angolo `phi_0'
     \tdplotdrawarc[->,tdplot_rotated_coords,ausiliario]{(O)}{0.8}{-\angolophi}%
     {0}{anchor=north east}{$\phi_0$}
+    \tdplotdrawarc[->,tdplot_rotated_coords,ausiliario]{(O)}{0.8}%
+    {90-\angolophi}{90}{anchor=north west}{$\phi_0$}
 
     % ruoto il sistema di riferimento xyz intorno all'asse y dell'angolo `phi_0'
     \tdplotsetrotatedcoords{\angolophi}{-\angoloi}{0}
@@ -1434,11 +1522,13 @@ sette complessivamente trovate.
     node[anchor=south]{$z''$};
     % ruoto il piano theta (di `phi_0') per disegnare l'arco di `i'
     \tdplotsetthetaplanecoords{\angolophi}
-    % disegno arco dell'angolo `i'
+    % disegno archi dell'angolo `i' e `pi/2-i'
     \tdplotdrawarc[->,tdplot_rotated_coords,pdc]{(O)}{0.8}{90-\angoloi}%
     {0}{anchor=south east}{$i$}
     \tdplotdrawarc[->,tdplot_rotated_coords,pdc]{(O)}{0.8}{90}%
     {90-\angoloi}{anchor=south east}{$\pi/2-i$}
+    \tdplotdrawarc[->,tdplot_rotated_coords,pdc]{(O)}{0.8}{0}%
+    {-\angoloi}{anchor=south}{$\pi/2-i$}
   \end{tikzpicture}
   \caption[Geometria del sistema binario]{Geometria del sistema binario. Il
     sistema di riferimento proprio dell'ellisse è $Ox'y'z'$, l'origine $O$
