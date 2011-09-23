@@ -1,0 +1,102 @@
+% Questo è un file di tipo -*- latex -*-
+\ProvidesFile{mythesis.bbx}[2011/09/23 v0.1 my thesis bibliography style]
+
+\RequireBibliographyStyle{numeric}
+
+% copio un po' di codice dal file di stile bibliografico `nature.bbx'
+% Alter settings that carry through from biblatex
+\ExecuteBibliographyOptions{
+  firstinits       ,
+  maxnames     = 4 ,
+  maxcitenames = 3 ,
+  punctfont        ,
+  useprefix        ,
+}
+
+% Modify the name format
+\DeclareNameFormat{default}{%
+  \usebibmacro{name:last-first}{#1}{#4}{#5}{#7}%
+  \usebibmacro{name:andothers}%
+}
+
+% Custom field formats
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[article]{volume}{#1}
+
+% Bibliography macros
+\renewbibmacro*{byeditor+others}{%
+  \ifnameundef{editor}
+    {}
+    {%
+      \nopunct
+      \printtext[parens]{\usebibmacro{editor}}%
+      \clearname{editor}%
+      \nopunct
+    }%
+  \usebibmacro{byeditorx}%
+  \usebibmacro{bytranslator+others}%
+}
+
+\newbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addcomma\addspace}%
+  \iffieldundef{series}
+    {}
+    {%
+      \newunit
+      \printfield{series}%
+      \setunit{\addspace}%
+    }%
+  \printfield{volume}%
+  \newunit
+  \usebibmacro{issue}%
+  \newunit
+}
+
+\renewbibmacro*{name:andothers}{%
+  \ifboolexpr
+    {
+      test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+      and
+      test \ifmorenames
+    }
+    {
+      \ifnumgreater{\value{liststop}}{1}
+        {\finalandcomma}
+        {}%
+      \andothersdelim
+      \mkbibemph{\bibstring{andothers}}%
+    }
+    {}%
+}
+
+% stile bibliografico degli articoli
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \usebibmacro{date}%
+  \setunit*{\addcomma\addspace}\newblock
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  %%% se non è definita il campo `pages' allora usa `doi+eprint+url'.
+  % \iffieldundef{pages}
+  {\usebibmacro{doi+eprint+url}}
+  %   {}%
+  \setunit{\addspace}\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}%
+}

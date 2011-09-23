@@ -31,7 +31,7 @@ TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
 TUTTI_FILE		= $(PROG)/keplero-immagini $(PROG)/keplero-dat \
 	$(PROG)/keplero.c $(PROG)/eclissi-immagini $(ECLISSI_DAT) \
 	$(PROG)/eclissi.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
-	$(FRONTESPIZIO_PDF)
+	$(FRONTESPIZIO_PDF) mythesis.bbx mythesis.cbx
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
 	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*.aux) \
 	$(wildcard Capitoli/*~) $(IMMAGINI_GNUPLOT_EPS) \
