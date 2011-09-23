@@ -282,7 +282,7 @@ possono essere utilizzati diversi metodi numerici per risolverla.
 
 Il primo metodo che utilizzeremo per determinare il valore dell'anomalia
 eccentrica $\psi$ in corrispondenza di un fissato istante di tempo $t$ è quello
-di Newton~-~Raphson (\textcite{brugnano:calcolo-numerico}), chiamato anche
+di Newton~-~Raphson (\textcite[30]{brugnano:calcolo-numerico}), chiamato anche
 \emph{metodo delle tangenti}, descritto nel seguente
 \begin{teorema}[di Newton~-~Raphson]
   Sia $f\in C^2(\mathopen{[}a,b\mathclose{]})$, con
@@ -399,7 +399,7 @@ La funzione $f(x,z)\colon\C\times\C\to\C$ definita da
   f(x,z) = \e^{(x/2)(z - 1/z)}
 \end{equation}
 è olomorfa in $\C\setminus 0$ rispetto alla variabile $z$, quindi può essere
-espansa in serie di Laurent (\textcite{demarco:analisi2}) di potenze di $z$
+espansa in serie di Laurent (\textcite[673]{demarco:analisi2}) di potenze di $z$
 intorno a $z=0$
 \begin{equation}
   f(x,z) = \sum_{n = -\infty}^{+\infty} c_n(x) z^n.
@@ -411,7 +411,7 @@ con $J_n(x)$, sono dati da
   \quad n\in\Z,
 \end{equation}
 in cui $\gamma$ è un qualsiasi circolo centrato nell'origine. Si dimostra che se
-$n$ è un intero non negativo si ha
+$n$ è un intero non negativo si ha (\textcite[355]{whittaker:modern-analysis})
 \begin{equation}
   J_n (x) = \sum_{m = 0}^{+\infty}\frac{(-1)^m(x/2)^{n+2m}}{m!(n+m)!}.
 \end{equation}
@@ -433,6 +433,7 @@ da cui ricaviamo la formula
 La funzione $J_n(x)$ è chiamata \emph{coefficiente di Bessel di argomento $x$ e
   ordine $n$}, mentre la funzione $f(x,z)$ è la \emph{funzione generatrice del
   coefficiente di Bessel}. Si dimostrano inoltre le seguenti formule ricorsive
+(\textcites[17]{watson:bessel}[359]{whittaker:modern-analysis})
 \begin{subequations}
   \begin{gather}
     \frac{2n}{x} J_n(x) = J_{n-1}(x) + J_{n+1}(x),\\
@@ -454,7 +455,7 @@ $J_n(x)$ soddisfa la seguente equazione differenziale nell'incognita $y(x)$
 Questa è l'\emph{equazione differenziale di Bessel per funzioni di ordine
   $n$}.
 Si può dare la seguente \emph{rappresentazione integrale dei coefficienti di
-  Bessel}
+  Bessel} (\textcites[20]{watson:bessel}[362]{whittaker:modern-analysis})
 \begin{equation}
   \label{eq:bessel-integrale}
   J_n(x) = \frac{1}{\pi} \int_0^\pi\cos(n\theta - x\sin\theta)\dd\theta,
@@ -473,7 +474,7 @@ in ogni istante di tempo $t\in\mathopen{[}t_0,P+t_0\mathclose{]}$ e inoltre
 $G_\psi(\psi(t),\phi(t)) = 1 - e\cos\psi(t) \neq 0$,
 $\forall\psi\in\mathopen{[}0, 2\pi\mathclose{]}$ e $G\in C^1(\mathopen{[}0,
 2\pi\mathclose{]}^2)$, quindi per il teorema del Dini
-(\textcite{demarco:analisi2}) esiste un'unica funzione di classe $C^1$ che
+(\textcite[267]{demarco:analisi2}) esiste un'unica funzione di classe $C^1$ che
 esplicita $\psi(t)$ rispetto a $\phi(t)$, per ogni
 $t\in\mathopen{[}t_0,P+t_0\mathclose{]}$. Tuttavia, come già detto, non possiamo
 dare un'espressione elementare della funzione $\psi(\phi)$, però possiamo
@@ -484,7 +485,7 @@ $\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però il moto della particella
 relativa è periodico, quindi anche la funzione $\psi(\phi)$ è periodica, di
 periodo $2\pi$.  La funzione $\ltoder{\psi(\phi)}{\phi}$ è integrabile
 nell'intervallo $\mathopen{[}-\pi, \pi\mathclose{]}$ essendo continua, quindi è
-sviluppabile in serie di Fourier (\textcite{demarco:analisi2}) in media
+sviluppabile in serie di Fourier (\textcite[440]{demarco:analisi2}) in media
 quadratica in $\mathopen{[}-\pi, \pi\mathclose{]}$. Inoltre, poiché $\psi(\phi)$
 è dispari, $\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello sviluppo
 compariranno solo il termine costante e quelli in coseno, cioè
@@ -559,7 +560,7 @@ periapside $r(\phi=0) = a(1-e)$, $\psi(\phi=0)=0$
   r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne) -
   2ae\sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne)\cos(n\phi).
 \end{equation}
-Si dimostra che
+Si dimostra che (\textcite[555]{watson:bessel})
 \begin{equation}
   \sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne) = \frac{1}{2} + \frac{e}{4},
 \end{equation}
