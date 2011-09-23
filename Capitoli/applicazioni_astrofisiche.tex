@@ -199,19 +199,17 @@ fenomeno dell'eclissi.
     \node at ($(O1) + (2.3,-1.2)$) {$m_1$};
     \draw (O2) circle (\rdue); % disco pianeta
     \node at ($(O2) + (-1.1,-1)$) {$m_2$};
-    \draw[->] (O1) -- (0,3) node[above] {$z$}; % asse z
-    \draw[->] (O1) -- (10,0) node[right] {$x$}; % asse x
+    \draw[->] (O1) -- +(0,3) node[above] {$z$}; % asse z
+    \draw[->] (O1) -- +(10,0) node[right] {$x$}; % asse x
     % asse x''
-    \draw[->] (O1) -- ($cos((\i)*(10,0) + sin(\i)*(0,10)$) node[right] {$x''$};
+    \draw[->] (O1) -- ($10*({cos(\i)},{sin(\i)})$) node[right] {$x''$};
+    % angolo di inclinazione
     \draw[->,dashed] ($(O1) + (0,2.5)$) to[out=0,in=90+\i] node[right=5]
-                     {$i_{\textup{min}}$} ($cos(\i)*(2.5,0) +
-                     sin(\i)*(0,2.5)$); % angolo di inclinazione
+                     {$i_{\textup{min}}$} ($2.5*({cos(\i)},{sin(\i)})$);
     % distanza fra i centri di pianeta e stella
-    \draw[<->] ($(O1) + (0,-0.2)$) -- node[fill=white] {$a$} ($(O2) + (0,-0.2)$);
-    \draw (O1) -- node[below right] {$r_\star$} ($(O1) - cos(45)*(2,0) -
-          sin(45)*(0,2)$);
-    \draw (O2) -- node[right] {$r$} ($(O2) + cos(90+\i)*(1,0) +
-          sin(90+\i)*(0,1)$);
+    \draw[<->] ($(O1) + (0,-0.2)$) -- node[fill=white] {$a$} ($(O2)+(0,-0.2)$);
+    \draw (O1) -- node[left] {$r_\star$} +($-\runo*({cos(45)},{sin(45)})$);
+    \draw (O2) -- node[right] {$r$} +($\rdue*({cos(90+\i)},{sin(90+\i)})$);
   \end{tikzpicture}
   \caption[Angolo di inclinazione minimo sotto il quale un osservatore può
   vedere
@@ -241,15 +239,15 @@ cioè $i \approx \pi/2$.
 
 \begin{figure}
   \centering
-  \begin{tikzpicture}[scale=0.6]
+  \begin{tikzpicture}[scale=0.6,font=\footnotesize]
     \pgfmathsetmacro{\rdue}{1} % raggio pianeta = 1
     \pgfmathsetmacro{\runo}{4*\rdue} % raggio stella = 4
 
     \coordinate (O) at (0,0); % centro stella
     \draw (O) circle (\runo); % disco stella
-    \draw (O) -- node[right] {$r_\star$} (0,-\runo);
+    \draw (O) -- node[right] {$r_\star$} +(0,-\runo);
     \draw (-\runo-\rdue,0) -- node[above] {$r$}
-          ($(-\runo-\rdue,0)-cos(45)*(\rdue,0)-sin(45)*(0,\rdue)$);
+          +($-\rdue*({cos(45)},{sin(45)})$);
     \foreach \x in {-5,-3,-1,1,3,5} % varie posizioni del pianeta
       \draw (\x,0) circle (\rdue);
     \draw (-8,-\runo+1) node[left] {luminosità} -- (-\runo-\rdue,-\runo+1) --
@@ -313,7 +311,7 @@ dell'eclissi è
   \centering
   \subfloat[][Posizione del pianeta, davanti alla stella, in corrispondenza dei
   punti di contatto\label{fig:transito-i-non-90.a}]
-  {\begin{tikzpicture}[scale=0.7]
+  {\begin{tikzpicture}[scale=0.7,font=\footnotesize]
       \pgfmathsetmacro{\rdue}{1} % raggio pianeta = 1
       \pgfmathsetmacro{\runo}{4*\rdue} % raggio stella = 4
       \pgfmathsetmacro{\acosi}{2.5} % a*cos(i) = 2.5
@@ -331,25 +329,21 @@ dell'eclissi è
             (\xingresso,\acosi)  circle (\rdue) % posizione di egresso finale
             (0,0) -- node[sloped,below,fill=white] {$r_\star + r$}
             (-\xingresso,\acosi);
-      \draw[dashed] ($-\xingresso*(1,0) + (0,\acosi)$) --
-                    ($-\xingresso*(1,0) + (0,-1)$) node[below]
-                    {$t_{\textup{ii}}$}
-                    ($\xingresso*(1,0) + (0,\acosi)$) --
-                    ($\xingresso*(1,0) + (0,-1)$) node[below]
-                    {$t_{\textup{ef}}$};
+      \draw[dashed] ($-\xingresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
+                    node[below] {$t_{\textup{ii}}$}
+                    ($\xingresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
+                    node[below] {$t_{\textup{ef}}$};
       \draw (-\xegresso,\acosi) circle (\rdue) % posizione di ingresso finale
             (\xegresso,\acosi)  circle (\rdue) % posizione di egresso iniziale
             (0,0) -- node[sloped,below,fill=white] {$r_\star-r$}
             (\xegresso,\acosi);
-      \draw[dashed] ($-\xegresso*(1,0) + (0,\acosi)$) --
-                    ($-\xegresso*(1,0) + (0,-1)$) node[below]
-                    {$t_{\textup{if}}$}
-                    ($\xegresso*(1,0) + (0,\acosi)$) --
-                    ($\xegresso*(1,0) + (0,-1)$) node[below]
-                    {$t_{\textup{ei}}$};
+      \draw[dashed] ($-\xegresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
+                    node[below] {$t_{\textup{if}}$}
+                    ($\xegresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
+                    node[below] {$t_{\textup{ei}}$};
     \end{tikzpicture}} \qquad
   \subfloat[][Geometria del sistema\label{fig:transito-i-non-90.b}]
-  {\begin{tikzpicture}[scale=0.7]
+  {\begin{tikzpicture}[scale=0.7,font=\footnotesize]
       \coordinate (O1) at (0,0); % centro stella
       \coordinate (O2) at (8,0); % centro pianeta
       \draw (O1) circle (2); % disco stella (r=2)
@@ -370,9 +364,8 @@ dell'eclissi è
                            ($(O1) + (0,2.5)$) to[out=0,in=90+\n1] node[right=5]
                            {$i$} ($cos(\n1)*(2.5,0) +
                            sin(\n1)*(0,2.5)$);
-      \draw (O1) -- node[left] {$r_\star$} ($(O1) - cos(45)*(2,0) -
-                                      sin(45)*(0,2)$);
-      \draw (O2) -- node[right] {$r$} ($(O2) + cos(45)*(1,0) - sin(45)*(0,1)$);
+      \draw (O1) -- node[left] {$r_\star$} +($-2*({cos(45)},{sin(45)})$);
+      \draw (O2) -- node[left] {$r$} +($({cos(45)},{-sin(45)})$);
     \end{tikzpicture}}
   \caption{Transito di un pianeta davanti alla stella compagna nel caso
     $i \neq \pi/2$}
@@ -380,8 +373,8 @@ dell'eclissi è
 \end{figure}
 Come abbiamo visto, per poter osservare un'eclissi deve aversi $i \approx
 \pi/2$. Se l'angolo di inclinazione $i$ non vale esattamente $\pi/2$,
-l'osservatore non vede il pianeta passare esattamente davanti all'equatore della
-stella ma leggermente più spostato, come mostrato nella
+l'osservatore non vede il centro del pianeta passare esattamente davanti
+all'equatore della stella ma leggermente più spostato, come mostrato nella
 Figura~\ref{fig:transito-i-non-90.a}. In questa figura, della stella è
 rappresentata solo metà del disco visibile. Per calcolare lo spostamento
 apparente del pianeta rispetto all'equatore si può vedere la
@@ -402,7 +395,7 @@ Per $i = \pi/2$ si riottiene il risultato precedente.
   \centering
   \subfloat[][$\sqrt{r_\star^2 - r^2} \leq d \leq r_\star +
   r$\label{fig:area-coperta.a}]
-  {\begin{tikzpicture}[scale=1.1]
+  {\begin{tikzpicture}[scale=1.1,font=\footnotesize]
       \coordinate (O1) at (0,0); % centro stella
       \coordinate (O2) at (2.5,0); % centro pianeta
       \draw[name path=S] (O1) circle (2); % disco stella (r=2)
@@ -428,7 +421,7 @@ Per $i = \pi/2$ si riottiene il risultato precedente.
     \end{tikzpicture}} \qquad
   \subfloat[][$r_\star - r \leq d <
   \sqrt{r_\star^2 - r^2}$\label{fig:area-coperta.b}]
-  {\begin{tikzpicture}[scale=1.1]
+  {\begin{tikzpicture}[scale=1.1,font=\footnotesize]
       \coordinate (O1) at (0,0); % centro stella
       \coordinate (O2) at (1.5,0); % centro pianeta
       \draw[name path=S] (O1) circle (2); % disco stella (r=2)
