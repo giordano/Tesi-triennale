@@ -38,7 +38,7 @@ della particella relativa che si muove su un'orbita ellittica.
     \draw (0,0) -- (\xq,\yg) node[above right] {$G$}; % segmento CG
     \draw (0,0) node[below left] {$C$}; % etichetta del punto C
     \draw (\c,0) node[below] {$F$}; % etichetta del punto F
-    \draw (\a,0) node[above right] {$P$}; % etichetta del punto P
+    \draw (\a,0) node[above right] {$B$}; % etichetta del punto B
     \draw [dashdotted] (\xq,\yq) -- (\xq,0) node[below] {$R$}; % segmento RQ
     % angolo theta (anomalia vera(
     \draw [->] (\c+0.1,0) to [out=90,in=\anomalia-90] node[above] {$\theta$}
@@ -56,28 +56,28 @@ della particella relativa che si muove su un'orbita ellittica.
 La seconda legge di Keplero permette di trovare la posizione relativa di un
 corpo di un sistema binario in un qualsiasi istante di tempo. Con riferimento
 alla Figura~\ref{fig:circonferenza-ausiliaria-keplero}, il punto $Q$
-dell'ellisse indica la posizione del corpo all'istante di tempo $t$ e $P$ la
+dell'ellisse indica la posizione del corpo all'istante di tempo $t$ e $B$ la
 posizione del periapside, da cui il corpo passa all'istante
 $t_0$. Nell'intervallo di tempo $\mathopen{[}t_0, t\mathclose{]}$ il raggio
 vettore che congiunge il fuoco $F$ alla posizione del corpo sull'ellisse si
-sposta da $FP$ a $FQ$, spazzando dunque l'area $FPQ$. Allora per la seconda
+sposta da $FB$ a $FQ$, spazzando dunque l'area $FBQ$. Allora per la seconda
 legge di Keplero
 \begin{equation}
-  \text{area } FPQ : \text{area ellisse} = t-t_0 : P,
+  \text{area } FBQ : \text{area ellisse} = t-t_0 : P,
 \end{equation}
-da cui otteniamo
+con $P$ periodo orbitale, da cui otteniamo
 \begin{equation}
-  \text{area } FPQ = \frac{\pi ab(t-t_0)}{P}.
+  \text{area } FBQ = \frac{\pi ab(t-t_0)}{P}.
 \end{equation}
 Definendo la \emph{velocità angolare media} $\omega = 2\pi/P$ questa equazione
 diventa
 \begin{equation}
-  \text{area } FPQ = \frac{1}{2}\omega ab(t-t_0).
+  \text{area } FBQ = \frac{1}{2}\omega ab(t-t_0).
 \end{equation}
 Conoscendo l'istante di passaggio al periapside $t_0$, il periodo di rivoluzione
 $P$, il semiasse maggiore $a$ e l'eccentricità $e$, legata al semiasse minore
 dalla~\eqref{eq:semiasse-minore-ellisse}, è possibile calcolare in un qualsiasi
-istante di tempo $t$ l'area $FPQ$ da cui si ricava la posizione $Q$. Le
+istante di tempo $t$ l'area $FBQ$ da cui si ricava la posizione $Q$. Le
 grandezze $t_0$, $a$ ed $e$ sono chiamate \emph{elementi dell'orbita
   ellittica}. Sebbene questa tecnica sia molto semplice teoricamente, è poco
 utile nella pratica. Si usa invece il metodo che ci apprestiamo a illustrare.
@@ -86,7 +86,7 @@ Circoscriviamo all'ellisse una circonferenza ausiliaria di raggio $a$, come
 nella Figura~\ref{fig:circonferenza-ausiliaria-keplero}. Sia $G$ l'intersezione
 con la circonferenza della perpendicolare all'asse $x$ innalzata dal punto
 $Q$. Se $\theta > \pi$, il punto $G$ apparterrà alla semicirconferenza
-inferiore. L'angolo $G\widehat{C}P$, dove $C$ è il centro della circonferenza, è
+inferiore. L'angolo $G\widehat{C}B$, dove $C$ è il centro della circonferenza, è
 chiamato \emph{anomalia eccentrica} e lo indicheremo con $\psi$. L'anomalia
 eccentrica può assumere valori fra $0$ e $2\pi$ e al periapside si ha
 $\psi = \theta = 0$, all'apoapside $\psi = \theta = \pi$. I punti $Q=(x_Q,y_Q)$
