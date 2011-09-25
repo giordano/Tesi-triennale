@@ -45,20 +45,22 @@ solo alla mutua interazione gravitazionale.
     \draw [->] (O) -- (0,1,0) node[anchor=north west] {$y$}; % asse y
     \draw [->] (O) -- (0,0,1) node[anchor=south] {$z$}; % asse z
 
-    \draw [->] (O) -- node[left,fill=white] {$\bm{r}_1$} (\xuno,\yuno,\zuno)
-               node[above] {$m_1$}; % vettore r_1
-    \draw [->] (O) -- node[below right,fill=white] {$\bm{r}_2$}
-               (\xdue,\ydue,\zdue) node[right] {$m_2$}; % vettore r_2
+    \draw [->,thick] (O) -- node[left,fill=white] {$\bm{r}_1$}
+                     (\xuno,\yuno,\zuno) node[above] {$m_1$}; % vettore r_1
+    \draw [->,thick] (O) -- node[below right,fill=white] {$\bm{r}_2$}
+                     (\xdue,\ydue,\zdue) node[right] {$m_2$}; % vettore r_2
     % vettore posizione relativa
-    \draw [->] (\xuno,\yuno,\zuno) -- node[above] {$\bm{r}$}
-    (\xdue,\ydue,\zdue);
+    \draw [->,thick] (\xuno,\yuno,\zuno) -- node[above] {$\bm{r}$}
+                     (\xdue,\ydue,\zdue);
     % vettore posizione del centro di massa
-    \draw [->] (O) -- node[right] {$\bm{r}_\textup{CM}$}
-               (\xcdm,\ycdm,\zcdm);
+    \draw [->,thick] (O) -- node[right] {$\bm{r}_\textup{CM}$}
+                     (\xcdm,\ycdm,\zcdm);
   \end{tikzpicture}
   \caption[Posizioni dei due corpi in un sistema di riferimento
   inerziale]{Posizioni dei due corpi in un sistema di riferimento
-    inerziale. Abbiamo posto $m_1 = 2 m_2$}
+    inerziale. Abbiamo posto $m_1 = 2 m_2$. Il vettore
+    $\bm{r} = \bm{r}_2 - \bm{r}_1$ indica la posizione di $m_2$ rispetto a
+    $m_1$}
   \label{fig:due-corpi}
 \end{figure}
 Consideriamo un sistema costituito da due corpi puntiformi, di masse $m_1$ e
@@ -204,14 +206,19 @@ abbiamo
     \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
     \pgfmathsetmacro{\c}{\a*\e} % c=a*e
     \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
-    % lunghezza del vettore momento angolare. metto un valore arbitrario
-    \pgfmathsetmacro{\l}{0.6}
-    \pgfmathsetmacro{\m}{0.1} % massa
+    \pgfmathsetmacro{\m}{0.3} % massa
+    \pgfmathsetmacro{\scala}{4} % fattore di scala per il momento angolare
 
     % funzione che restituisce la quantità di moto nel punto di anomalia vera #1
     % (valgono sempre le stesse considerazioni: la funzione restituisce valori
-    % corretti se #1 != 0, 180, 360 e numeri a loro congrui in modulo 360
-    \pgfmathdeclarefunction{mv}{1}{\pgfmathparse{\m*(2/dist(#1)-1/\a)}}
+    % corretti se #1 != 0, 180, 360 e numeri a loro congrui in modulo 360)
+    \pgfmathdeclarefunction{mv}{1}{\pgfmathparse{\m*sqrt(2/dist(#1)-1/\a)}}
+    % funzione che restituisce il modulo del momento angolare nel punto di
+    % anomalia vera #1. (valgono sempre le stesse considerazioni: la funzione
+    % restituisce valori corretti se #1 != 0, 180, 360 e numeri a loro congrui
+    % in modulo 360)
+    \pgfmathdeclarefunction{momang}{1}%
+                          {\pgfmathparse{dist(#1)*mv(#1)*sin(alpha(#1))*\scala}}
 
     %% parametri del primo punto
     % anomalia vera del primo punto
@@ -246,18 +253,20 @@ abbiamo
     \draw (-\c,0,0) ellipse ({\a} and \b); % ellisse
 
     %% primo punto
-    \draw[->,thick] (O) -- node[above] {$\bm{r}_1$} (\xuno,\yuno); % posizione
+    \draw[->,thick] (O) -- node[above] {$\bm{r}$} (\xuno,\yuno); % posizione
     % vettore quantità di moto
-    \draw[->,thick] (\xuno,\yuno) -- node[below] {$\bm{p}_1$} +(\pxuno,\pyuno);
+    \draw[->,thick] (\xuno,\yuno) -- node[below] {$\bm{p}$} +(\pxuno,\pyuno);
     % vettore momento angolare
-   \draw[->,thick] (\xuno,\yuno,0) -- node[left] {$\bm{l}_0$} +(0,0,\l);
+   \draw[->,thick] (\xuno,\yuno,0) -- node[left] {$\bm{l}_0$}
+                   +(0,0,{dist(\anomaliauno)*mv(\anomaliauno)*\scala});
 
     % %% secondo punto
-    \draw[->,thick] (O) -- node[above] {$\bm{r}_2$} (\xdue,\ydue); % posizione
+    \draw[->,thick] (O) -- node[above] {$\bm{r}$} (\xdue,\ydue); % posizione
     % vettore quantità di moto
-    \draw[->,thick] (\xdue,\ydue) -- node[below] {$\bm{p}_2$} +(\pxdue,\pydue);
+    \draw[->,thick] (\xdue,\ydue) -- node[below] {$\bm{p}$} +(\pxdue,\pydue);
     % vettore momento angolare
-    \draw[->,thick] (\xdue,\ydue,0) -- node[right] {$\bm{l}_0$} +(0,0,\l);
+    \draw[->,thick] (\xdue,\ydue,0) -- node[right] {$\bm{l}_0$}
+                    +(0,0,{momang(\anomaliadue)});
   \end{tikzpicture}
   \caption[Vettore momento angolare]{Vettore momento angolare
     $\bm{l}_0 = \bm{r} \times \bm{p}$ rappresentato in due punti diversi
@@ -366,7 +375,7 @@ questo tipo.
 Nel problema di Keplero, vogliamo ora cercare un'espressione esplicita della
 coordinata polare $r$ in funzione dell'altra coordinata $\theta$, che a sua
 volta dipenderà dal tempo. Per fare ciò è conveniente effettuare la sostituzione
-$u=1/r$. Calcolando le derivate temporali di $r$ otteniamo che
+$u=1/r$. Calcolando le derivate temporali di $r$ otteniamo
 \begin{subequations}
   \begin{align}
     \dot{r} &= \toder{r}{t} = \toder{r}{\theta}\toder{\theta}{t} =
@@ -667,11 +676,10 @@ trovate, la~\eqref{eq:reciproco-semilato} e la~\eqref{eq:orbita} risulta
       \frac{2}{r(\theta)} - \frac{1}{a}
     \right).
   \end{split}
-\end{equation}}
-Questa relazione lega il modulo quadro della velocità alla distanza della
-particella relativa da $M_\textup{T}$. Si può osservare in particolare che
-$v^2(\theta)$ è lineare in $1/r(\theta)$, quindi il modulo della velocità è
-massimo quando la particella relativa si trova nel periapside e vale
+\end{equation}}Questa relazione lega il modulo quadro della velocità alla
+distanza della particella relativa da $M_\textup{T}$. Si può osservare in
+particolare che $v^2(\theta)$ è lineare in $1/r(\theta)$, quindi il modulo della
+velocità è massimo quando la particella relativa si trova nel periapside e vale
 \begin{equation}
   v^2(\theta_0) = \frac{GM_\textup{T}}{a}\frac{1+e}{1-e}.
 \end{equation}
@@ -724,17 +732,17 @@ l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
 
     % funzione che restituisce la velocità nel punto di anomalia vera #1.
     % La funzione restituisce valori corretti se #1 != 0, 180, 360 e numeri a
-    % loro congrui in modulo 360
-    \pgfmathdeclarefunction{vel}{1}{\pgfmathparse{(2/dist(#1)-1/\a)}}
+    % loro congrui in modulo 360. Poniamo GM_T = 1 (quindi l_0/mu=sqrt(p)).
+    \pgfmathdeclarefunction{vel}{1}{\pgfmathparse{sqrt(2/dist(#1)-1/\a)}}
     % funzione che restituisce la velocità radiale nel punto di anomalia vera #1
     \pgfmathdeclarefunction{velrad}{1}{\pgfmathparse{\e*sin(#1)/sqrt(\p)}}
     % funzione che restituisce la velocità tangenziale nel punto di anomalia
     % vera #1
-    \pgfmathdeclarefunction{veltang}{1}{\pgfmathparse{1+\e*cos(#1)/sqrt(\p)}}
+    \pgfmathdeclarefunction{veltang}{1}{\pgfmathparse{(1+\e*cos(#1))/sqrt(\p)}}
 
     %% parametri del primo punto
     % anomalia vera del primo punto
-    \pgfmathsetmacro{\anomaliauno}{100}
+    \pgfmathsetmacro{\anomaliauno}{70}
     % coordinata x del primo punto in cui disegno il vettore posizione
     \pgfmathsetmacro{\xuno}{dist(\anomaliauno)*cos(\anomaliauno)}
     % coordinata y del primo punto in cui disegno il vettore posizione
@@ -745,7 +753,7 @@ l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
     \pgfmathsetmacro{\vyuno}{vel(\anomaliauno)*sin(beta(\anomaliauno))}
     %% secondo punto
     % anomalia vera del secondo punto
-    \pgfmathsetmacro{\anomaliadue}{240}
+    \pgfmathsetmacro{\anomaliadue}{230}
     % coordinata x del secondo punto in cui disegno il vettore posizione
     \pgfmathsetmacro{\xdue}{dist(\anomaliadue)*cos(\anomaliadue)}
     % coordinata y del secondo punto in cui disegno il vettore posizione
@@ -756,8 +764,8 @@ l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
     \pgfmathsetmacro{\vydue}{vel(\anomaliadue)*sin(beta(\anomaliadue))}
 
     % origine dei sistemi di riferimento
-    \node [shape=coordinate](O) at (0,0) [label=below left:$O \equiv
-    M_{\textup{T}}$] {};
+    \node [shape=coordinate](O) at (0,0)
+          [label=below left:$O \equiv M_{\textup{T}}$] {};
     % asse x
     \draw[->] ({-1.05*(\a+\c)},0) -- ({1.3*\a*(1-\e)},0) node[right] {$x$};
     % asse y
@@ -767,36 +775,42 @@ l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
     %% primo punto
     % vettore velocità
     \draw[->,vel] (\xuno,\yuno) -- +(\vxuno,\vyuno)
-    node[above left] {$\bm{v}_1$};
+                  node[above left] {$\bm{v}$};
     % vettore velocità radiale
     \draw[->,rad] (\xuno,\yuno) -- +({velrad(\anomaliauno)*cos(\anomaliauno)},
-    {velrad(\anomaliauno)*sin(\anomaliauno)})
-    node[above] {$\bm{v}_{\textup{r},1}$};
+                  {velrad(\anomaliauno)*sin(\anomaliauno)})
+                  node[above] {$\bm{v}_{\textup{r}}$};
     % vettore velocità tangenziale
     \draw[->,tang] (\xuno,\yuno) --
-    +({veltang(\anomaliauno)*cos(\anomaliauno+90)},
-    {veltang(\anomaliauno)*sin(\anomaliauno+90)})
-    node[below left] {$\bm{v}_{\textup{t},1}$};
+                   +({veltang(\anomaliauno)*cos(\anomaliauno+90)},
+                   {veltang(\anomaliauno)*sin(\anomaliauno+90)})
+                   node[left] {$\bm{v}_{\textup{t}}$};
     % vettore velocità nella direzione della linea di vista (asse x)
     \draw[->,los] (\xuno,\yuno) --  +(\vxuno,0) node[left]
-    {$\bm{v}_{\textup{los},1}$};
+                  {$\bm{v}_{\textup{los}}$};
     \draw ({\xuno+0.2*cos(\anomaliauno)},{\yuno+0.2*sin(\anomaliauno)}) arc
-    ({\anomaliauno}:beta(\anomaliauno):0.2) node[above=3] {$\alpha$} ;
+          ({\anomaliauno}:beta(\anomaliauno):0.2) node[above=3] {$\alpha$};
+    \draw[loosely dashed] (O) -- (\xuno,\yuno);
+    \draw ($(O) + (0.2,0)$) arc (0:{\anomaliauno}:0.2) node[right=5] {$\chi$};
     %% secondo punto
     % vettore velocità
-    \draw[->,vel] (\xdue,\ydue) -- +(\vxdue,\vydue) node[right] {$\bm{v}_2$};
+    \draw[->,vel] (\xdue,\ydue) -- +(\vxdue,\vydue) node[above right] {$\bm{v}$};
     % vettore velocità radiale
     \draw[->,rad] (\xdue,\ydue) -- +({velrad(\anomaliadue)*cos(\anomaliadue)},
-    {velrad(\anomaliadue)*sin(\anomaliadue)})
-    node[above right] {$\bm{v}_{\textup{r},2}$};
+                  {velrad(\anomaliadue)*sin(\anomaliadue)})
+                  node[above right] {$\bm{v}_{\textup{r}}$};
     % vettore velocità tangenziale
     \draw[->,tang] (\xdue,\ydue) --
-    +({veltang(\anomaliadue)*cos(\anomaliadue+90)},
-    {veltang(\anomaliadue)*sin(\anomaliadue+90)}) node[below]
-    {$\bm{v}_{\textup{t},2}$};
+                   +({veltang(\anomaliadue)*cos(\anomaliadue+90)},
+                   {veltang(\anomaliadue)*sin(\anomaliadue+90)})
+                   node[below right] {$\bm{v}_{\textup{t}}$};
     % vettore velocità nella direzione della linea di vista (asse x)
-    \draw[->,los] (\xdue,\ydue) --  +(\vxdue,0) node[right]
-    {$\bm{v}_{\textup{los},2}$};
+    \draw[->,los] (\xdue,\ydue) --  +(\vxdue,0) node[below right,fill=white]
+                  {$\bm{v}_{\textup{los}}$};
+    \draw[loosely dashed] (\xdue,\ydue) --
+                          +($0.5*({cos(\anomaliadue)},{sin(\anomaliadue)})$);
+    \draw ({\xdue+0.2*cos(\anomaliadue)},{\ydue+0.2*sin(\anomaliadue)}) arc
+         ({\anomaliadue}:beta(\anomaliadue):0.2) node[below left=14] {$\alpha$};
 
     %% disegno una specie di occhio
     \pgfmathsetmacro{\occhio}{20} % metà dell'apertura angolare dell'occhio
@@ -1323,13 +1337,13 @@ $\bm{r}_\textup{CM}$ e $\bm{r}$ sono
     M_\textup{T}\dot{\bm{r}}_\textup{CM} = m_1\dot{\bm{r}}_1+m_2\dot{\bm{r}}_2 =
     \bm{p}_1 + \bm{p}_2, \\
     \bm{p} &= \parder{\mathcal{L}}{\dot{\bm{r}}} = \mu\dot{\bm{r}} =
-    \frac{m_2\bm{p}_1 + m_1\bm{p}_2}{m_1 + m_2}. \label{eq:momento-relativo}
+    \frac{m_1\bm{p}_2 - m_2\bm{p}_1}{m_1 + m_2}. \label{eq:momento-relativo}
   \end{align}
 \end{subequations}
 dove $\bm{p}_\textup{CM}$ è il \emph{momento totale} e $\bm{p}$ il \emph{momento
   relativo}. Osserviamo infine che
 \begin{equation}
-  \frac{\bm{p}}{\mu} = \frac{\bm{p}_1}{m_1} + \frac{\bm{p}_2}{m_2}.
+  \frac{\bm{p}}{\mu} = \frac{\bm{p}_2}{m_2} - \frac{\bm{p}_1}{m_1}.
 \end{equation}
 Poiché la coordinata $\bm{r}_\textup{CM}$ è ciclica nella
 lagrangiana~\eqref{eq:lagrangiana-due-corpi}, il momento totale
@@ -1394,10 +1408,9 @@ La coordinata $\theta$ è ciclica e quindi il suo momento coniugato
   p_\theta = \parder{\mathcal{L}}{\dot{\theta}} = \mu r^2\dot{\theta} = l_0
 \end{equation}
 è una costante del moto. Abbiamo così trovato nuovamente che il modulo del
-vettore momento angolare è costante e, ricordando il risultato del
-paragrafo~\ref{sec:problema-keplero}, siamo stati in grado di dimostrare la
-validità della seconda legge di Keplero. L'equazione di Lagrange per la
-coordinata $r$ è
+vettore momento angolare è costante e ricordiamo che, grazie a questo risultato,
+nel paragrafo~\ref{sec:problema-keplero} siamo stati in grado di dimostrare la
+seconda legge di Keplero. L'equazione di Lagrange per la coordinata $r$ è
 \begin{equation}
   \label{eq:eq-lagrange-due-corpi}
   \mu\ddot{r} = \mu r\dot{\theta}^2 - \parder{U(r)}{r}.
@@ -1509,7 +1522,7 @@ $n$ gradi di libertà esistono $2n+1$ integrali primi del moto indipendenti (si
 veda \textcite[42]{landau:meccanica}). Abbiamo visto che il problema di Keplero
 ha due gradi di libertà e finora abbiamo trovati quattro costanti: l'energia $E$
 del sistema e le tre componenti del vettore momento angolare $\bm{l}_0$. Per
-tutti i campi centrali con forza del tipo $\bm{F} = -k/r^2\versor{r}$, agente su
+tutti i campi centrali con forza del tipo $\bm{F} = -k\versor{r}/r^2$, agente su
 un corpo di massa $\mu$, esistono altre tre costanti corrispondenti alle tre
 componenti del \emph{vettore di Laplace-Runge-Lenz} (si veda
 \textcite[98]{goldstein:meccanica}) definito da
@@ -1521,7 +1534,7 @@ la massa del corpo che genera il campo. Verifichiamo che il vettore $\bm{A}$ è
 una costante del moto
 \begin{equation}
   \begin{split}
-    \toder{\bm{A}}{t} &= \dot{\bm{p}}\times\bm{l}_0 + \bm{p}\times\dot{\bm{l}_0}
+    \toder{\bm{A}}{t} &= \dot{\bm{p}}\times\bm{l}_0 + \bm{p}\times\dot{\bm{l}}_0
     - \mu k\toder{\versor{r}}{t} = \bm{F}\times\bm{l}_0 - \mu
     k\dot{\theta}\versor{\theta} \\
     &= -\frac{k}{r^2}\versor{r}\times \mu r^2\dot{\theta}\versor{z} -
@@ -1550,10 +1563,10 @@ che ha modulo $A = \mu ke$.
 
 Adesso conosciamo sette costanti del moto, ma non sono tutte fra loro
 indipendenti. Un prima relazione che lega queste costanti è l'ortogonalità fra
-$\bm{A}$ e $\bm{l}_0$, l'altra deriva da $A = \mu ke$, dove l'eccentricità $e$ è
-data dalla~\eqref{eq:eccentricita-energia}, quindi $A^2 = \mu^2k^2e^2 = \mu^2k^2
-+ 2\mu El_0^2$. Questo prova l'esistenza di cinque costanti indipendenti fra le
-sette complessivamente trovate.
+$\bm{A}$ e $\bm{l}_0$, l'altra deriva da $A = \mu ke$. Infatti, ricordando la
+relazione~\eqref{eq:eccentricita-energia} fra l'eccentricità $e$ e l'energia $E$
+risulta $A^2 = \mu^2k^2e^2 = \mu^2k^2 + 2\mu El_0^2$. Questo prova l'esistenza
+di cinque costanti indipendenti fra le sette complessivamente trovate.
 
 \section{Geometria del sistema binario}
 \label{sec:geometria-sistema}
@@ -1629,12 +1642,13 @@ sette complessivamente trovate.
 In questo paragrafo ci proponiamo di determinare come un osservatore vede un
 sistema binario nel proprio cielo. Per fare ciò consideriamo il sistema di
 riferimento destrorso $Ox'y'z'$ intrinseco al sistema binario, cioè con origine
-nel fuoco dell'orbita, assi $x'$ e $y'$ complanari al piano dell'orbita e $z'$
-ortogonale a questo, come mostrato nella Figura~\ref{fig:geometria-sistema}. Gli
-assi $x'$ e $y'$ sono diretti, rispettivamente, come gli assi $x$ e $y$ della
-Figura~\ref{fig:ellisse}, con $x'$ diretto verso il periapside. Consideriamo ora
-il sistema di riferimento ausiliario $Oxyz$, ottenuto ruotando attorno all'asse
-$z\equiv z'$ il sistema $Ox'y'z'$ di un angolo $\phi_0$.
+in uno dei fuochi dell'orbita, assi $x'$ e $y'$ complanari al piano dell'orbita
+e $z'$ ortogonale a questo, come mostrato nella
+Figura~\ref{fig:geometria-sistema}. Gli assi $x'$ e $y'$ sono diretti,
+rispettivamente, come gli assi $x$ e $y$ della Figura~\ref{fig:ellisse}, con
+$x'$ diretto verso il periapside. Consideriamo ora il sistema di riferimento
+ausiliario $Oxyz$, ottenuto ruotando attorno all'asse $z\equiv z'$ il sistema
+$Ox'y'z'$ di un angolo $\phi_0$.
 
 Le coordinate nel sistema di riferimento ausiliario possono essere ottenute da
 quelle del sistema di riferimento intrinseco con la seguente trasformazione
@@ -1681,8 +1695,8 @@ permette di passare dal sistema di riferimento ausiliario a questo nuovo sistema
     z
   \end{pmatrix}.
 \end{equation}
-Possiamo passare direttamente dal sistema di riferimento intrinseco al piano del
-cielo combinando le due trasformazioni
+Possiamo passare direttamente dal sistema di riferimento intrinseco al sistema
+$Ox''y''z''$ combinando le due trasformazioni
 \begin{equation}
   \begin{split}
     \begin{pmatrix}
