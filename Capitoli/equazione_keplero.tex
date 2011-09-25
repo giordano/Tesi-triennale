@@ -89,11 +89,11 @@ $Q$. Se $\theta > \pi$, il punto $G$ apparterrà alla semicirconferenza
 inferiore. L'angolo $G\widehat{C}B$, dove $C$ è il centro della circonferenza, è
 chiamato \emph{anomalia eccentrica} e lo indicheremo con $\psi$. L'anomalia
 eccentrica può assumere valori fra $0$ e $2\pi$ e al periapside si ha
-$\psi = \theta = 0$, all'apoapside $\psi = \theta = \pi$. I punti $Q=(x_Q,y_Q)$
-e $G=(x_Q,y_G)$ hanno la stessa ascissa e vogliamo trovare una relazione fra le
-loro ordinate. Per fare questo ricordiamo che l'equazione cartesiana di una
-circonferenza di raggio $a$ e centro l'origine del sistema di riferimento
-$Ox_\textup{c}y_\textup{c}$ è
+$\psi = \theta = 0$, all'apoapside $\psi = \theta = \pi$. Per costruzione, i
+punti $Q=(x_Q,y_Q)$ e $G=(x_G,y_G)$ hanno la stessa ascissa e vogliamo trovare
+una relazione fra le loro ordinate. Per fare questo ricordiamo che l'equazione
+cartesiana di una circonferenza di raggio $a$ e centro l'origine del sistema di
+riferimento $Ox_\textup{c}y_\textup{c}$ è
 \begin{equation}
   x_\textup{c}^2 + y_\textup{c}^2 = a^2.
 \end{equation}
@@ -104,14 +104,14 @@ $x_\textup{e}$, e minore $b$, lungo l'asse $y_\textup{e}$, è
     \frac{x_\textup{e}^2}{a^2} + \frac{y_\textup{e}^2}{b^2} = 1.
 \end{equation}
 Se gli assi dei sistemi di riferimento delle due coniche sono coincidenti, come
-nel nostro caso, uguagliando le ascisse risulta
+nel nostro caso, uguagliando i quadrati delle ascisse risulta
 \begin{equation}
   x_\textup{c}^2 = x_\textup{e}^2 \iff a^2 - y_\textup{c}^2 = a^2 -
-  y_\textup{e}^2a^2/b^2 \iff \abs{y_\textup{c}} = \abs{y_\textup{e}}a/b.
+  y_\textup{e}^2a^2/b^2 \iff \abs{y_\textup{e}} = \abs{y_\textup{c}}b/a.
 \end{equation}
-Allora, per i punti $Q$ e $G$ abbiamo che $y_G = y_Qa/b$, poiché $y_G$ e $y_Q$
+Allora, per i punti $Q$ e $G$ abbiamo che $y_Q = y_Gb/a$, poiché $y_G$ e $y_Q$
 hanno sempre lo stesso segno. D'altra parte, $y_Q = r\sin\theta$ e
-$y_G = a\sin\psi$, cioè
+$y_G = a\sin\psi$, pertanto
 \begin{equation}
   \label{eq:r-sin-chi}
   r\sin\theta = b\sin\psi.
@@ -130,7 +130,7 @@ e~\eqref{eq:r-cos-chi} otteniamo
 \begin{equation}
   \begin{split}
     r^2 &= r^2\cos^2\theta + r^2\sin^2\theta = a^2(\cos\psi - e)^2 +
-    b^2\sin^2\psi\\ 
+    b^2\sin^2\psi\\
     &= a^2\cos^2\psi-2a^2e\cos\psi+a^2e^2+a^2\sin^2\psi-a^2e^2\sin^2\psi\\
     &= a^2(1+e^2-2e\cos\psi-e^2\sin^2\psi) = a^2(1-2e\cos\psi+e^2\cos^2\psi)\\
     &= a^2(1 - e\cos\psi)^2,
@@ -172,7 +172,7 @@ di $r$ è
       \frac{2}{r} - \frac{1}{a}
     \right) - \frac{\omega^2a^4(1-e^2)}{r^2} \\
     &= \frac{2\omega^2a^3r-r^2\omega^2a^2-\omega^2a^4+\omega^2a^4e^2}{r^2}\\
-    &= \frac{\omega^2a^2}{r^2}(a^2e^2-(r-a)^2)
+    &= \frac{\omega^2a^2}{r^2}[a^2e^2-(r-a)^2]
   \end{split}
 \end{equation}
 da cui
@@ -201,13 +201,13 @@ equazione differenziale fino a un generico istante di tempo $t$ in cui
 l'anomalia eccentrica vale $\psi$
 \begin{gather}
   \int_{t_0}^t \omega\dd \tau = \int_0^\psi(1-e\cos\psi')\dd \psi' \iff\\
-  \phi = \omega(t - t_0) = \psi - e\sin\psi, \label{eq:keplero}
+  \phi \equiv \omega(t - t_0) = \psi - e\sin\psi, \label{eq:keplero}
 \end{gather}
-dove $\phi = \omega(t-t_0)$ è chiamata \emph{anomalia media}. Anche l'anomalia
-media varia fra $0$, valore raggiunto per $t = t_0$ cioè al periapside, e
+dove $\phi \equiv \omega(t-t_0)$ è chiamata \emph{anomalia media}. Anche
+l'anomalia media varia fra $0$, valore raggiunto per al periapside $t = t_0$, e
 $2\pi$. Il corpo relativo passa all'apoapside all'istante $t = t_0 + P/2$,
-quindi in questo punto $\phi = \psi = \theta = \pi$. La~\eqref{eq:keplero} è detta
-\emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
+quindi in questo punto $\phi = \psi = \theta = \pi$. La~\eqref{eq:keplero} è
+detta \emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
 soluzione $\psi$ permette di ricavare, tramite
 la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare $r$. Inoltre possiamo
 determinare una relazione tra l'anomalia eccentrica e l'anomalia vera $\theta$.
@@ -483,9 +483,9 @@ cercare un'espressione che coinvolga i coefficienti di Bessel, che sono funzioni
 speciali. Notiamo innanzitutto che $\psi$ è una funzione dispari di
 $\phi$. Finora ci siamo limitati a considerare gli intervalli
 $\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però il moto della particella
-relativa è periodico, quindi anche la funzione $\psi(\phi)$ è periodica, di
+relativa è periodico, dunque anche la funzione $\psi(\phi)$ è periodica, di
 periodo $2\pi$.  La funzione $\ltoder{\psi(\phi)}{\phi}$ è integrabile
-nell'intervallo $\mathopen{[}-\pi, \pi\mathclose{]}$ essendo continua, quindi è
+nell'intervallo $\mathopen{[}-\pi, \pi\mathclose{]}$ essendo continua, allora è
 sviluppabile in serie di Fourier (\textcite[440]{demarco:analisi2}) in media
 quadratica in $\mathopen{[}-\pi, \pi\mathclose{]}$. Inoltre, poiché $\psi(\phi)$
 è dispari, $\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello sviluppo
@@ -514,7 +514,7 @@ Integriamo questa equazione con la condizione iniziale del periapside $\psi(0) =
   \psi = \phi + \sum_{n=1}^{+\infty}\frac{2}{n}J_n(ne)\sin(n\phi).
 \end{equation}
 Questa è l'espressione analitica cercata, che lega l'anomalia eccentrica
-all'anomalia media e quindi, in definitiva, al tempo.
+all'anomalia media e, in definitiva, al tempo.
 
 Un'altra quantità importante nelle applicazioni astrofisiche è il rapporto
 $r/a$. Dalla~\eqref{eq:keplero} abbiamo
@@ -535,7 +535,7 @@ Dalla~\eqref{eq:r-anomalia-eccentrica} abbiamo
 La funzione $\ltoder{r}{\phi}$ è continua quindi integrabile in $\mathopen{[}-\pi,
 \pi\mathclose{]}$, dunque sviluppabile in serie di Fourier in media quadratica
 in questo intervallo. Inoltre è dispari rispetto a $\phi$ perché $\psi(\phi)$ è
-pari, quindi nello sviluppo compariranno solo i termini in seno, cioè
+pari e nello sviluppo compariranno solo i termini in seno, cioè
 \begin{equation}
   \toder{r}{\phi} = \sum_{n=1}^{+\infty}b_n\sin(n\phi),
 \end{equation}
@@ -549,9 +549,9 @@ dove
     &= 2aeJ_n'(ne),
   \end{split}
 \end{equation}
-avendo ricordato nuovamente l'equazione di Keplero e la rappresentazione
-integrale delle derivate dei coefficienti di
-Bessel~\eqref{eq:bessel-derivata-integrale}. Dunque abbiamo trovato
+avendo ancora ricordato l'equazione di Keplero e la rappresentazione
+integrale~\eqref{eq:bessel-derivata-integrale} delle derivate dei coefficienti
+di Bessel. Così abbiamo trovato
 \begin{equation}
   \toder{r}{\phi} = \sum_{n=1}^{+\infty} 2aeJ_n'(ne)\sin(n\phi).
 \end{equation}
