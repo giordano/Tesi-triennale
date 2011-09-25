@@ -1,16 +1,16 @@
 # imposta il terminale su `epslatex'
-set term epslatex
+set term epslatex size 6,3
 # imposta il file di output
 set output 'Immagini/gnuplot/velocita.tex'
 set key top center
 unset xtics
 set format y "$%g$"
-set xtics ("{\\scriptsize periapside: $\\chi=0$}" 0, \
-    "{\\scriptsize apoapside: $\\chi=\\pi$}" pi, \
-    "{\\scriptsize periapside: $\\chi=2\\pi$}" 2*pi)
+set xtics ("{\\scriptsize periapside: $\\theta=\\theta_0$}" 0, \
+    "{\\scriptsize apoapside: $\\theta=\\theta_0+\\pi$}" pi, \
+    "{\\scriptsize periapside: $\\theta=\\theta_0+2\\pi$}" 2*pi)
 set size 0.9,0.9
-set xlabel "$\\chi$"  # etichetta per l'asse x
-set ylabel "$v^2(\\chi)/GM_\\textup{T}$" # etichetta per l'asse y
+set xlabel "$\\theta$"  # etichetta per l'asse x
+set ylabel "$v^2(\\theta)/GM_\\textup{T}$" # etichetta per l'asse y
 r(a,e,x)=a*(1-e**2)/(1+e*cos(x))
 v(a,e,x)=2./r(a,e,x)-1/a
 a=1

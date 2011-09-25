@@ -1,15 +1,15 @@
 # imposta il terminale su `epslatex'
-set term epslatex
+set term epslatex size 6,3
 # imposta il file di output
 set output 'Immagini/gnuplot/velocita_los.tex'
 unset xtics
 set format y "$%g$"
 set key bottom right
-set xtics ("{\\scriptsize periapside: $\\chi=0$}" 0, \
-    "{\\scriptsize apoapside: $\\chi=\\pi$}" pi, \
-    "{\\scriptsize periapside: $\\chi=2\\pi$}" 2*pi)
-set xlabel "$\\chi$"  # etichetta per l'asse x
-set ylabel "$v_\\textup{los}(\\chi)/\\sqrt{GM_\\textup{T}}$" # etichetta per l'asse y
+set xtics ("{\\scriptsize periapside: $\\theta=\\theta_0$}" 0, \
+    "{\\scriptsize apoapside: $\\theta=\\theta_0+\\pi$}" pi, \
+    "{\\scriptsize periapside: $\\theta=\\theta_0+2\\pi$}" 2*pi)
+set xlabel "$\\theta$"  # etichetta per l'asse x
+set ylabel "$v_\\textup{los}(\\theta)/\\sqrt{GM_\\textup{T}}$" # etichetta per l'asse y
 r(a,e,x)=a*(1-e**2)/(1+e*cos(x))
 v(a,e,x)=sqrt(2./r(a,e,x)-1/a)
 # se e=0 l'angolo alpha vale sempre pi/2, quindi definisco la funzione per casi

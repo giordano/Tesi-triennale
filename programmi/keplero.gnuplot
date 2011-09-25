@@ -39,7 +39,7 @@ plot 'programmi/bessel.dat' using 1:2 title "$e=0$" lw 2,\
      'programmi/bessel.dat' using 1:8 title "$e=0.8$" lw 2
 
 # etichetta asse y per i due grafici successivi
-set ylabel "$\\chi$"
+set ylabel "$\\theta$"
 set output 'programmi/newton-anomalia_vera.tex'
 plot 'programmi/newton.dat' using 1:4 title "$e=0$" lw 2,\
      'programmi/newton.dat' using 1:7 title "$e=0.5$" lw 2,\

@@ -3,11 +3,11 @@
 
 Nel precedente capitolo abbiamo determinato l'equazione
 dell'orbita~\eqref{eq:orbita} che lega la coordinata polare $r$ all'anomalia
-vera $\chi$, che dipende a sua volta dal tempo. La seconda legge di Keplero,
-però, ci dice che $\chi$ non varia in maniera costante con il tempo, eccetto nel
-caso particolare di orbita circolare. In questo capitolo ci occuperemo della
-determinazione della posizione, in un dato istante di tempo, della particella
-relativa che si muove su un'orbita ellittica.
+vera, che dipende a sua volta dal tempo. La seconda legge di Keplero, però, ci
+dice che l'anomalia vera $\theta$ non varia in maniera costante con il tempo,
+eccetto nel caso particolare di orbita circolare. In questo capitolo ci
+occuperemo della determinazione della posizione, in un dato istante di tempo,
+della particella relativa che si muove su un'orbita ellittica.
 
 \section{Elementi orbitali ed equazione di Keplero}
 \label{sec:elementi-orbitali}
@@ -20,14 +20,14 @@ relativa che si muove su un'orbita ellittica.
     \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
     \pgfmathsetmacro{\c}{\a*\e} % c=a*e
     \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
-    \pgfmathsetmacro{\angolochi}{120} % chi=120
-    % r(chi)=p/(1+e*cos(chi))
-    \pgfmathsetmacro{\r}{\p/(1+\e*cos(\angolochi))}
-    \pgfmathsetmacro{\xq}{\c+\r*cos(\angolochi)} % x_Q=x_G=c+r(chi)*cos(chi)
-    \pgfmathsetmacro{\yq}{\r*sin(\angolochi)} % y_Q=r(chi)*sin(chi)
+    \pgfmathsetmacro{\anomalia}{120} % theta=120
+    % r(theta)=p/(1+e*cos(theta))
+    \pgfmathsetmacro{\r}{\p/(1+\e*cos(\anomalia))}
+    \pgfmathsetmacro{\xq}{\c+\r*cos(\anomalia)} % x_Q=x_G=c+r(theta)*cos(theta)
+    \pgfmathsetmacro{\yq}{\r*sin(\anomalia)} % y_Q=r(theta)*sin(theta)
     \pgfmathsetmacro{\yg}{\yq*\a/\b} % y_G=y_Q*a/b
     % calcolo anomalia eccentrica (da relazione fra anomalia vera ed eccentrica)
-    \pgfmathsetmacro{\angolopsi}{2*atan(sqrt((1-\e)/(1+\e))*tan(\angolochi/2))}
+    \pgfmathsetmacro{\angolopsi}{2*atan(sqrt((1-\e)/(1+\e))*tan(\anomalia/2))}
 
     \draw [->] (-1.2,0) -- (1.2,0) node[right] {$x$}; %asse x
     \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
@@ -40,10 +40,10 @@ relativa che si muove su un'orbita ellittica.
     \draw (\c,0) node[below] {$F$}; % etichetta del punto F
     \draw (\a,0) node[above right] {$P$}; % etichetta del punto P
     \draw [dashdotted] (\xq,\yq) -- (\xq,0) node[below] {$R$}; % segmento RQ
-    % angolo chi
-    \draw [->] (\c+0.1,0) to [out=90,in=\angolochi-90] node[above] {$\chi$}
-               ($(\c,0)+cos(\angolochi)*(0.1,0) + sin(\angolochi)*(0,0.1)$);
-    % angolo psi
+    % angolo theta (anomalia vera(
+    \draw [->] (\c+0.1,0) to [out=90,in=\anomalia-90] node[above] {$\theta$}
+               ($(\c,0)+cos(\anomalia)*(0.1,0) + sin(\anomalia)*(0,0.1)$);
+    % angolo psi (anomalia eccentrica)
     \draw [->] (0.1,0) to [out=90,in=\angolopsi-90] node[above right=-4]
                {$\psi$}
                ($(0,0)+cos(\angolopsi)*(0.1,0)+sin(\angolopsi)*(0,0.1)$);
@@ -85,12 +85,12 @@ utile nella pratica. Si usa invece il metodo che ci apprestiamo a illustrare.
 Circoscriviamo all'ellisse una circonferenza ausiliaria di raggio $a$, come
 nella Figura~\ref{fig:circonferenza-ausiliaria-keplero}. Sia $G$ l'intersezione
 con la circonferenza della perpendicolare all'asse $x$ innalzata dal punto
-$Q$. Se $\chi > \pi$, il punto $G$ apparterrà alla semicirconferenza
+$Q$. Se $\theta > \pi$, il punto $G$ apparterrà alla semicirconferenza
 inferiore. L'angolo $G\widehat{C}P$, dove $C$ è il centro della circonferenza, è
 chiamato \emph{anomalia eccentrica} e lo indicheremo con $\psi$. L'anomalia
 eccentrica può assumere valori fra $0$ e $2\pi$ e al periapside si ha
-$\psi = \chi = 0$, all'apoapside $\psi = \chi = \pi$. I punti $Q=(x_Q,y_Q)$ e
-$G=(x_Q,y_G)$ hanno la stessa ascissa e vogliamo trovare una relazione fra le
+$\psi = \theta = 0$, all'apoapside $\psi = \theta = \pi$. I punti $Q=(x_Q,y_Q)$
+e $G=(x_Q,y_G)$ hanno la stessa ascissa e vogliamo trovare una relazione fra le
 loro ordinate. Per fare questo ricordiamo che l'equazione cartesiana di una
 circonferenza di raggio $a$ e centro l'origine del sistema di riferimento
 $Ox_\textup{c}y_\textup{c}$ è
@@ -110,26 +110,27 @@ nel nostro caso, uguagliando le ascisse risulta
   y_\textup{e}^2a^2/b^2 \iff \abs{y_\textup{c}} = \abs{y_\textup{e}}a/b.
 \end{equation}
 Allora, per i punti $Q$ e $G$ abbiamo che $y_G = y_Qa/b$, poiché $y_G$ e $y_Q$
-hanno sempre lo stesso segno. D'altra parte, $y_Q = r\sin\chi$ e
+hanno sempre lo stesso segno. D'altra parte, $y_Q = r\sin\theta$ e
 $y_G = a\sin\psi$, cioè
 \begin{equation}
   \label{eq:r-sin-chi}
-  r\sin\chi = b\sin\psi.
+  r\sin\theta = b\sin\psi.
 \end{equation}
 Inoltre $\overline{FR} =
-r\cos\chi$,\footnote{Un
+r\cos\theta$,\footnote{Un
   valore negativo di $\overline{FR}$ indica che il punto $R$ si trova alla
   sinistra di $F$ sull'asse $x$.} ma è anche $\overline{FR} = \overline{CR} -
 \overline{CF} = a\cos\psi - ae$, da cui
 \begin{equation}
   \label{eq:r-cos-chi}
-  r\cos\chi = a(\cos\psi - e).
+  r\cos\theta = a(\cos\psi - e).
 \end{equation}
 Sommando membro a membro i quadrati delle equazioni~\eqref{eq:r-sin-chi}
 e~\eqref{eq:r-cos-chi} otteniamo
 \begin{equation}
   \begin{split}
-    r^2 &= r^2\cos^2\chi + r^2\sin^2\chi = a^2(\cos\psi - e)^2 + b^2\sin^2\psi\\
+    r^2 &= r^2\cos^2\theta + r^2\sin^2\theta = a^2(\cos\psi - e)^2 +
+    b^2\sin^2\psi\\ 
     &= a^2\cos^2\psi-2a^2e\cos\psi+a^2e^2+a^2\sin^2\psi-a^2e^2\sin^2\psi\\
     &= a^2(1+e^2-2e\cos\psi-e^2\sin^2\psi) = a^2(1-2e\cos\psi+e^2\cos^2\psi)\\
     &= a^2(1 - e\cos\psi)^2,
@@ -150,11 +151,11 @@ Ricordando la~\eqref{eq:reciproco-semilato}, la~\eqref{eq:semilato-ellisse} e
 la~\eqref{eq:velocita-tangenziale} abbiamo
 \begin{equation}
   \begin{split}
-    r^2\dot{\chi}^2 &= \frac{l_0^2}{\mu^2p^2}(1 + e\cos\chi)^2 =
-    \frac{l_0^2}{\mu^2p} \frac{(1+e\cos\chi)^2}{a(1-e^2)} \\
-    &= GM_\textup{T} \frac{(1+e\cos\chi)^2}{a(1-e^2)} = \omega^2a^3
-    \frac{(1+e\cos\chi)^2}{a(1-e^2)} \\
-    &= \omega^2a^4 \frac{(1+e\cos\chi)^2}{a^2(1-e^2)^2}(1-e^2) =
+    r^2\dot{\theta}^2 &= \frac{l_0^2}{\mu^2p^2}(1 + e\cos\theta)^2 =
+    \frac{l_0^2}{\mu^2p} \frac{(1+e\cos\theta)^2}{a(1-e^2)} \\
+    &= GM_\textup{T} \frac{(1+e\cos\theta)^2}{a(1-e^2)} = \omega^2a^3
+    \frac{(1+e\cos\theta)^2}{a(1-e^2)} \\
+    &= \omega^2a^4 \frac{(1+e\cos\theta)^2}{a^2(1-e^2)^2}(1-e^2) =
     \frac{\omega^2a^4(1-e^2)}{r^2}.
   \end{split}
 \end{equation}
@@ -162,7 +163,7 @@ Quindi, dalla~\eqref{eq:velocita-ellisse}, il quadrato della derivata temporale
 di $r$ è
 \begin{equation}
   \begin{split}
-    \dot{r}^2 &= v^2 - r^2\dot{\chi}^2 = GM_\textup{T}
+    \dot{r}^2 &= v^2 - r^2\dot{\theta}^2 = GM_\textup{T}
     \left(
       \frac{2}{r} - \frac{1}{a}
     \right) - \frac{\omega^2a^4(1-e^2)}{r^2} \\
@@ -205,31 +206,31 @@ l'anomalia eccentrica vale $\psi$
 dove $\phi = \omega(t-t_0)$ è chiamata \emph{anomalia media}. Anche l'anomalia
 media varia fra $0$, valore raggiunto per $t = t_0$ cioè al periapside, e
 $2\pi$. Il corpo relativo passa all'apoapside all'istante $t = t_0 + P/2$,
-quindi in questo punto $\phi = \psi = \chi = \pi$. La~\eqref{eq:keplero} è detta
+quindi in questo punto $\phi = \psi = \theta = \pi$. La~\eqref{eq:keplero} è detta
 \emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
 soluzione $\psi$ permette di ricavare, tramite
 la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare $r$. Inoltre possiamo
-determinare una relazione tra l'anomalia eccentrica e l'anomalia vera $\chi$.
+determinare una relazione tra l'anomalia eccentrica e l'anomalia vera $\theta$.
 Infatti, uguagliando i secondi membri delle equazioni~\eqref{eq:orbita}
 e~\eqref{eq:r-anomalia-eccentrica} abbiamo
 \begin{equation}
   \begin{aligned}
-    a(1-e\cos\psi) &= \frac{a(1-e^2)}{1+e\cos\chi} \iff 1+e\cos\chi =
+    a(1-e\cos\psi) &= \frac{a(1-e^2)}{1+e\cos\theta} \iff 1+e\cos\theta =
     \frac{1-e^2}{1-e\cos\psi} \iff \\
-    e\cos\chi &= \frac{1-e^2-1+e\cos\psi}{1-e\cos\psi} =
+    e\cos\theta &= \frac{1-e^2-1+e\cos\psi}{1-e\cos\psi} =
     \frac{e(\cos\psi-e)}{1-e\cos\psi} \iff \\
-    \cos\chi &= \frac{\cos\psi-e}{1-e\cos\psi}.
+    \cos\theta &= \frac{\cos\psi-e}{1-e\cos\psi}.
   \end{aligned}
 \end{equation}
 Aggiungiamo e sottraiamo ambo i membri dell'ultima equazione a $1$ ottenendo
 \begin{align}
   \begin{split}
-    1-\cos\chi &= 1-\frac{\cos\psi-e}{1-e\cos\psi} =
+    1-\cos\theta &= 1-\frac{\cos\psi-e}{1-e\cos\psi} =
     \frac{1-e\cos\psi-\cos\psi+e}{1-e\cos\psi} \\
     &= \frac{(1+e)(1-\cos\psi)}{1-e\cos\psi},
   \end{split} \\
   \begin{split}
-    1+\cos\chi &= 1+\frac{\cos\psi-e}{1-e\cos\psi} =
+    1+\cos\theta &= 1+\frac{\cos\psi-e}{1-e\cos\psi} =
     \frac{1-e\cos\psi+\cos\psi-e}{1-e\cos\psi} \\
     &= \frac{(1-e)(1+\cos\psi)}{1-e\cos\psi}.
   \end{split}
@@ -237,24 +238,24 @@ Aggiungiamo e sottraiamo ambo i membri dell'ultima equazione a $1$ ottenendo
 Facendo il rapporto dei primi e ultimi membri di queste equazioni troviamo
 la relazione cercata
 \begin{gather}
-  \frac{1-\cos\chi}{1+\cos\chi} = \frac{1+e}{1-e}\frac{1-\cos\psi}{1+\cos\psi}
-  \iff \\
-  \tan^2\frac{\chi}{2} = \frac{1+e}{1-e}\tan^2\frac{\psi}{2}.
+  \frac{1-\cos\theta}{1+\cos\theta} =
+  \frac{1+e}{1-e}\frac{1-\cos\psi}{1+\cos\psi} \iff \\
+  \tan^2\frac{\theta}{2} = \frac{1+e}{1-e}\tan^2\frac{\psi}{2}.
 \end{gather}
-In questa equazione possiamo esplicitare $\chi$ in funzione di $\psi$ ottenendo
+In questa equazione possiamo esplicitare $\theta$ in funzione di $\psi$ ottenendo
 \begin{equation}
-  \chi = 2\arctan
+  \theta = 2\arctan
   \left(
     \sqrt{\frac{1+e}{1-e}}\tan\frac{\psi}{2}
   \right).
 \end{equation}
-Il risultato, seppur corretto, presenta con questa definizione di $\chi$ una
+Il risultato, seppur corretto, presenta con questa definizione di $\theta$ una
 discontinuità di prima specie in $\psi = \pi$ perché la tangente è discontinua
-in $\pi/2$. Per rendere continua $\chi$ in funzione di $\psi$ dobbiamo
+in $\pi/2$. Per rendere continua $\theta$ in funzione di $\psi$ dobbiamo
 aggiungere $\pi$ al valore dell'arcotangente se $\psi > \pi$, cioè
 \begin{equation}
   \label{eq:anoamlie-vera-eccentrica}
-  \chi =
+  \theta =
   \begin{dcases}
     2\arctan
     \left(
@@ -341,7 +342,7 @@ la formula~\eqref{eq:formula-newton} e valutiamo $f$ in $\psi_1$. Se è uguale a
 $0$ allora abbiamo trovato la radice, altrimenti continuiamo nello stesso modo
 finché non troviamo lo zero della funzione. Dopo aver determinato il valore di
 $\psi$ al tempo $t$ possiamo anche ricavare la distanza $r$ dal fuoco con
-la~\eqref{eq:r-anomalia-eccentrica} e l'anomalia vera $\chi$ con
+la~\eqref{eq:r-anomalia-eccentrica} e l'anomalia vera $\theta$ con
 la~\eqref{eq:anoamlie-vera-eccentrica}.
 
 Ho scritto un programma con il linguaggio C che risolve l'equazione di Keplero
@@ -458,13 +459,13 @@ Si può dare la seguente \emph{rappresentazione integrale dei coefficienti di
   Bessel} (\textcites[20]{watson:bessel}[362]{whittaker:modern-analysis})
 \begin{equation}
   \label{eq:bessel-integrale}
-  J_n(x) = \frac{1}{\pi} \int_0^\pi\cos(n\theta - x\sin\theta)\dd\theta,
+  J_n(x) = \frac{1}{\pi} \int_0^\pi\cos(n\alpha - x\sin\alpha)\dd\alpha,
 \end{equation}
 quindi, derivando sotto il segno di integrale, abbiamo anche
 \begin{equation}
   \label{eq:bessel-derivata-integrale}
-  J_n'(x) = \frac{1}{\pi}\int_0^\pi\sin(n\theta - x\sin\theta)
-  \sin\theta\dd\theta.
+  J_n'(x) = \frac{1}{\pi}\int_0^\pi\sin(n\alpha - x\sin\alpha)
+  \sin\alpha\dd\alpha.
 \end{equation}
 
 Ritorniamo al problema fisico. Definiamo la funzione $G(\psi,\phi) = \psi -

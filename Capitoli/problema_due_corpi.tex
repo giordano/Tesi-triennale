@@ -469,7 +469,7 @@ La~\eqref{eq:orbita} è l'equazione polare di una conica con centro nel fuoco o
 uno dei fuochi nel caso dell'ellisse. La costante $e$ è chiamata
 \emph{eccentricità} della conica, la costante $p$ invece è detta
 \emph{semilato retto}. Entrambe possono assumere valori non negativi. La
-quantità $\chi = \theta - \theta_0$ è chiamata \emph{anomalia vera} o
+quantità $\theta - \theta_0$ è chiamata \emph{anomalia vera} o
 \emph{effettiva}. A seconda dei diversi valori dell'eccentricità le coniche
 possono essere classificate nel seguente modo:
 \begin{itemize}
@@ -535,18 +535,17 @@ l'\emph{apoapside} è il punto dell'ellisse più lontano dallo stesso fuoco.
 
 Osservando la Figura~\ref{fig:ellisse} si riconosce che il periapside rispetto
 al fuoco $M_\textup{T}$ è raggiunto in corrispondenza di $\theta=\theta_0$, cioè
-quando l'anomalia vera $\chi$ è nulla, e la distanza del periapside da
-$M_\textup{T}$ è $r_\textup{min} = r(\theta_0) = a(1-e) = a-c$; l'apoapside è
-raggiunto per $\theta=\theta_0+\pi$, vale a dire quando l'anomalia vera $\chi$ è
-uguale a $\pi$, e la distanza dell'apoapside dallo stesso fuoco è
-$r_\textup{max} = r(\theta_0+\pi) = a(1+e)= a+c$. Si ottiene il caso particolare
-della circonferenza ponendo nelle equazioni precedenti $e=0$, quindi $p=a=b$,
-$c=e=0$. Se indichiamo con $t_0$ l'istante del passaggio del corpo dal
-periapside e con $P$ il periodo di rivoluzione, dalla seconda legge di Keplero
-abbiamo che l'apoapside viene raggiunto nell'istante $t_0 + P/2$. Infatti il
-vettore posizione, partendo dal periapside, all'apoapside avrà spazzato metà
-della superficie totale dell'ellisse, impiegando dunque metà del periodo totale
-di rivoluzione.
+quando l'anomalia vera è nulla, e la distanza del periapside da $M_\textup{T}$ è
+$r_\textup{min} = r(\theta_0) = a(1-e) = a-c$; l'apoapside è raggiunto per
+$\theta=\theta_0+\pi$, vale a dire quando l'anomalia vera è uguale a $\pi$, e la
+distanza dell'apoapside dallo stesso fuoco è $r_\textup{max} = r(\theta_0+\pi) =
+a(1+e)= a+c$. Si ottiene il caso particolare della circonferenza ponendo nelle
+equazioni precedenti $e=0$, quindi $p=a=b$, $c=e=0$. Se indichiamo con $t_0$
+l'istante del passaggio del corpo dal periapside e con $P$ il periodo di
+rivoluzione, dalla seconda legge di Keplero abbiamo che l'apoapside viene
+raggiunto nell'istante $t_0 + P/2$. Infatti il vettore posizione, partendo dal
+periapside, all'apoapside avrà spazzato metà della superficie totale
+dell'ellisse, impiegando dunque metà del periodo totale di rivoluzione.
 
 Nella Figura~\ref{fig:ellissi-eccentricita} sono riportate tre ellissi con lo
 stesso semiasse maggiore ma con eccentricità differenti.
@@ -626,7 +625,7 @@ Keplero che per i pianeti del Sistema Solare afferma: \textbf{\emph{i pianeti,
   \input{Immagini/gnuplot/velocita}
   \caption[Andamento della velocità in funzione dell'anomalia vera]{Andamento
     del modulo quadro della velocità della particella relativa in funzione
-    dell'anomalia vera $\chi$ nel caso di orbita ellittica, per diversi valori
+    dell'anomalia $\theta$ nel caso di orbita ellittica, per diversi valori
     dell'eccentricità $e$. In tutte le curve risulta $a=1$}
   \label{fig:velocita}
 \end{figure}
@@ -689,7 +688,7 @@ $M_\textup{T}$ è massima, cioè all'apoapside
   v^2(\theta_0+\pi) = \frac{GM_\textup{T}}{a}\frac{1-e}{1+e}.
 \end{equation}
 Questi risultati sono in accordo con la seconda legge di Keplero. L'andamento di
-$v^2$ in funzione dell'anomalia vera $\chi$ è riportato nella
+$v^2$ in funzione dell'anomalia $\theta$ è riportato nella
 Figura~\ref{fig:velocita}.
 
 I calcoli svolti per determinare la velocità nel caso di orbite ellittiche sono
@@ -791,7 +790,7 @@ l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
     \draw ({\xuno+0.2*cos(\anomaliauno)},{\yuno+0.2*sin(\anomaliauno)}) arc
           ({\anomaliauno}:beta(\anomaliauno):0.2) node[above=3] {$\alpha$};
     \draw[loosely dashed] (O) -- (\xuno,\yuno);
-    \draw ($(O) + (0.2,0)$) arc (0:{\anomaliauno}:0.2) node[right=5] {$\chi$};
+    \draw ($(O) + (0.2,0)$) arc (0:{\anomaliauno}:0.2) node[right=5] {$\theta$};
     %% secondo punto
     % vettore velocità
     \draw[->,vel] (\xdue,\ydue) -- +(\vxdue,\vydue) node[above right] {$\bm{v}$};
@@ -836,53 +835,54 @@ ottenuti ai due corpi.
 
 Supponiamo che l'osservatore guardi la particella relativa nella direzione
 dell'asse $\versor{x}$, come nella Figura~\ref{fig:ellisse-vlos}, quindi
-$v_\textup{los} = \bm{v}\cdot\versor{x}$.  Per semplicità, svolgeremo i calcoli
-in funzione dell'anomalia vera $\chi$. Per calcolare $v_\textup{los}$ facciamo
-le seguenti considerazioni geometriche. Chiamiamo $\alpha(\chi)$ l'angolo
-compreso fra la direzione di $\versor{r}(\chi)$ e del vettore
-$\dot{\bm{r}}(\chi) \equiv \bm{v}(\chi)$ e sia per il momento
-$\chi \in \mathopen{[}0, \pi\mathclose{]}$. La tangente di questo angolo è data
-dal rapporto fra la componente tangenziale $r(\chi)\dot{\chi}$ della velocità e
-la componente radiale $\dot{r}(\chi)$, quindi
+$v_\textup{los} = \bm{v}\cdot\versor{x}$. D'ora in poi porremo, per semplicità,
+$\theta_0 = 0$, in modo che la coordinata $\theta$ sia uguale all'anomalia
+vera. Per calcolare $v_\textup{los}$ facciamo le seguenti considerazioni
+geometriche. Chiamiamo $\alpha(\theta)$ l'angolo compreso fra la direzione di
+$\versor{r}(\theta)$ e del vettore $\dot{\bm{r}}(\theta) \equiv \bm{v}(\theta) =
+\bm{v}_{\textup{r}}\versor{r} + \bm{v}_{\textup{t}}\versor{\theta}$ e sia per il
+momento $\theta \in \mathopen{[}0, \pi\mathclose{]}$. La tangente di questo
+angolo è data dal rapporto fra la componente tangenziale $r(\theta)\dot{\theta}$
+della velocità e la componente radiale $\dot{r}(\theta)$, quindi
 \begin{equation}
   \label{eq:angolo-alpha}
-  \alpha(\chi) = \arctan\frac{r(\chi)\dot{\chi}}{\dot{r}(\chi)} =
-  \arctan\frac{1 + e\cos\chi}{e\sin\chi} = \arctan
+  \alpha(\theta) = \arctan\frac{r(\theta)\dot{\theta}}{\dot{r}(\theta)} =
+  \arctan\frac{1 + e\cos\theta}{e\sin\theta} = \arctan
   \left(
-    \cot\chi + \frac{\csc\chi}{e}
+    \cot\theta + \frac{\csc\theta}{e}
   \right).
 \end{equation}
-Per $\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$ dobbiamo prendere qualche
+Per $\theta \in \mathopen{]}\pi, 2\pi\mathclose{[}$ dobbiamo prendere qualche
 accorgimento. La funzione $\arctan$ ha codominio
 $\mathopen{]}-\pi/2, \pi/2\mathclose{[}$, ma nell'intervallo
-$\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$ la componente radiale
-$\dot{r}(\chi)$ assume valori negativi, come si può vedere
+$\theta \in \mathopen{]}\pi, 2\pi\mathclose{[}$ la componente radiale
+$\dot{r}(\theta)$ assume valori negativi, come si può vedere
 dalla~\eqref{eq:velocita-radiale} e nella Figura~\ref{fig:ellisse-vlos}, quindi
-l'angolo $\alpha(\chi)$ che la velocità forma con la direzione radiale positiva
-è maggiore di $\pi/2$. Per ottenere il valore giusto di $\alpha(\chi)$ in questo
-intervallo dobbiamo aggiungere $\pi$ al risultato dato
-dalla~\eqref{eq:angolo-alpha}, in definitiva
+l'angolo $\alpha(\theta)$ che la velocità forma con la direzione radiale
+positiva è maggiore di $\pi/2$. Per ottenere il valore giusto di
+$\alpha(\theta)$ in questo intervallo dobbiamo aggiungere $\pi$ al risultato
+dato dalla~\eqref{eq:angolo-alpha}, in definitiva
 \begin{equation}
   \label{eq:angolo-alpha2}
-  \alpha(\chi) =
+  \alpha(\theta) =
   \begin{dcases}
     \arctan
     \left(
-      \cot\chi + \frac{\csc\chi}{e}
-    \right) & \text{se $\chi \in \mathopen{[}0, \pi\mathclose{]}$,}\\
+      \cot\theta + \frac{\csc\theta}{e}
+    \right) & \text{se $\theta \in \mathopen{[}0, \pi\mathclose{]}$,}\\
     \arctan
     \left(
-      \cot\chi + \frac{\csc\chi}{e}
-    \right) + \pi & \text{se $\chi \in \mathopen{]}\pi, 2\pi\mathclose{[}$.}
+      \cot\theta + \frac{\csc\theta}{e}
+    \right) + \pi & \text{se $\theta \in \mathopen{]}\pi, 2\pi\mathclose{[}$.}
   \end{dcases}
 \end{equation}
-Si noti che grazie a questa definizione la funzione $\alpha(\chi)$ è continua
-in $\chi = \pi$. Indichiamo con $\beta(\chi)$ l'angolo compreso fra la
-direzione del vettore velocità $\bm{v}(\chi)$ e la linea di vista, nel nostro
-caso l'asse $\versor{x}$. Poiché $\alpha(\chi)$ è l'angolo fra il verso
-positivo della direzione radiale e il vettore $\bm{v}(\chi)$ e la direzione
-radiale forma un angolo $\chi$ con la direzione positiva dell'asse
-$\versor{x}$, abbiamo $\beta(\chi) = \chi + \alpha(\chi)$ e la componente
+Si noti che grazie a questa definizione la funzione $\alpha(\theta)$ è continua
+in $\theta = \pi$. Indichiamo con $\beta(\theta)$ l'angolo compreso fra la
+direzione del vettore velocità $\bm{v}(\theta)$ e la linea di vista, nel nostro
+caso l'asse $\versor{x}$. Poiché $\alpha(\theta)$ è l'angolo fra il verso
+positivo della direzione radiale e il vettore $\bm{v}(\theta)$ e la direzione
+radiale forma un angolo $\theta$ con la direzione positiva dell'asse
+$\versor{x}$, abbiamo $\beta(\theta) = \theta + \alpha(\theta)$ e la componente
 della velocità nella direzione della linea di vista è
 \begin{figure}[tb]
   \centering
@@ -897,20 +897,20 @@ della velocità nella direzione della linea di vista è
 \end{figure}
 \begin{equation}
   \begin{split}
-    v_\textup{los} &= v(\chi)\cos\beta(\chi) = \sqrt{GM_\textup{T} \left[
-      \frac{2}{r(\chi)} - \frac{1}{a}
-    \right]}\cos(\chi + \alpha(\chi)) = \\
+    v_\textup{los} &= v(\theta)\cos\beta(\theta) = \sqrt{GM_\textup{T} \left[
+      \frac{2}{r(\theta)} - \frac{1}{a}
+    \right]}\cos(\theta + \alpha(\theta)) = \\
     &= \sqrt{GM_\textup{T}
     \left[
-      \frac{2(1+e\cos\chi)}{a(1-e^2)} - \frac{1}{a}
-    \right]}\cos(\chi + \alpha(\chi)).
+      \frac{2(1+e\cos\theta)}{a(1-e^2)} - \frac{1}{a}
+    \right]}\cos(\theta + \alpha(\theta)).
   \end{split}
 \end{equation}
 Osserviamo dalla~\eqref{eq:angolo-alpha2} che se $e=0$, cioè per le orbite
-circolari, si ha sempre $\alpha(\chi) = \pi/2$, coerentemente col fatto che
+circolari, si ha sempre $\alpha(\theta) = \pi/2$, coerentemente col fatto che
 per il moto circolare la velocità è sempre tangenziale. Nella
 Figura~\ref{fig:velocita-los} è riportato l'andamento di $v_\textup{los}$ in
-funzione dell'anomalia $\chi$ per diversi valori dell'eccentricità.
+funzione dell'anomalia $\theta$ per diversi valori dell'eccentricità.
 
 \begin{figure}
   \centering
@@ -1188,8 +1188,8 @@ da cui
   \Delta M \geq \frac{1}{2}\frac{r(\theta)}{a}(m_1 + m_2).
 \end{equation}
 Per stimare il valore minimo di $\Delta M$ per il quale il sistema si distrugge,
-scegliamo di valutare $r(\theta)$ al periapside, cioè in $\theta = \theta_0$,
-perché il sistema è maggiormente legato in questo punto, pertanto
+scegliamo di valutare $r(\theta)$ al periapside, cioè in $\theta = \theta_0 =
+0$, perché il sistema è maggiormente legato in questo punto, pertanto
 \begin{equation}
     \Delta M \geq \frac{1}{2}\frac{r(\theta_0)}{a}(m_1 + m_2) =
     \frac{1}{2}(1 - e)(m_1 + m_2).
