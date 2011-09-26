@@ -1,4 +1,4 @@
-\documentclass[a4paper,oneside,fleqn,titlepage]{book}
+\documentclass[a4paper,twoside,openright,fleqn,titlepage]{book}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
@@ -32,18 +32,18 @@
 
 %%%%% Impostazioni
 %% testatine.
-% TODO: decidere se usare `oneside' o `twoside' e adattare il formato della
-% testatina di conseguenza.
 \pagestyle{fancy}
 \fancyhf{} % svuota tutti i campi delle testatine e dei piedi
-% Abbiamo usato l'opzione di classe `oneside', quindi la testatina è la stessa
-% per tutte le pagine.
-% Nella testatina (`head') a destra (`R') mettiamo il nome del paragrafo
-% (`\rightmark'), non tutto maiuscolo (`\nouppercase').
-\fancyhead[R]{\slshape\footnotesize\nouppercase{\leftmark}}
-% Nel piede (`foot') al centro (`C') mettiamo il numero della pagina
-% (`\thepage').
-\fancyfoot[C]{\thepage}
+% Nella testatina (`head') a destra (`R') nelle pagine pari (`E') mettiamo il
+% nome del capitolo (`\leftmark'), non tutto maiuscolo (`\nouppercase'). Sulla
+% sinistra (`L') delle pagine dispari (`O') mettiamo il nome del paragrafo
+% (`\rightmark').
+\fancyhead[RE]{\slshape\footnotesize\nouppercase{\leftmark}}
+\fancyhead[LO]{\slshape\footnotesize\nouppercase{\rightmark}}
+% All'esterno di ogni pagina (cioè a sinistra (`L') nelle pagine pari (`E') e a
+% destra (`R') nelle pagine dispari (`O')), nella testatina (`head') mettiamo il
+% numero della pagina (`\thepage').
+\fancyhead[LE,RO]{\thepage}
 
 \graphicspath{{Immagini/}} % cartella in cui cercare le immagini da caricare
 
