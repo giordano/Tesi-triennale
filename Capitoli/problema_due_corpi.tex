@@ -490,9 +490,11 @@ possono essere classificate nel seguente modo:
     \draw[->] (-1.1,0) -- (1.1,0) node[right] {$x\equiv x'$}; %assi x e x'
     \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
     \draw[->] (\c,-0.7) -- (\c,0.7) node[above] {$y$}; %asse y
-    \draw (0,0) ellipse ({\a} and \b);
+    \draw[thick] (0,0) ellipse ({\a} and \b); % ellisse
+    \draw[fill=black] (-\c,0) circle (0.005) node[below] {$F_2$};
     \draw (0,0) node[below left] {$O'$};
-    \draw (\c,0) node[below left] {$O\equiv M_{\textup{T}}$};
+    \draw[fill=black] (\c,0)circle (0.005)
+                      node[below left] {$O\equiv F_1 \equiv M_{\textup{T}}$};
     \draw[->] (\c+0.1,0) to [out=90,in=-45] node[inner sep=0,fill=white,right=3]
               {$\theta - \theta_0$} ($(\c,0) + cos(45)*(0.1,0) +
               sin(45)*(0,0.1)$);
@@ -505,10 +507,10 @@ possono essere classificate nel seguente modo:
   \end{tikzpicture}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
     del sistema di riferimento $Oxy$ è la posizione di $M_\textup{T}$ e coincide
-    con uno dei fuochi dell'ellisse, $a$ è il semiasse maggiore, $b$ è il
-    semiasse minore, $p$ è il semilato retto, $c$ è l'eccentricità lineare. Il
-    sistema di riferimento $O'x'y'$ ha origine nel centro dell'ellisse. Nel
-    grafico abbiamo posto $a=1$ ed $e=0.8$}
+    con il fuoco $F_1$ dell'ellisse, $F_2$ è la posizione dell'altro fuoco, $a$
+    è il semiasse maggiore, $b$ è il semiasse minore, $p$ è il semilato retto,
+    $c$ è l'eccentricità lineare. Il sistema di riferimento $O'x'y'$ ha origine
+    nel centro dell'ellisse. Nel grafico abbiamo posto $a=1$ ed $e=0.8$}
   \label{fig:ellisse}
 \end{figure}
 
@@ -788,9 +790,10 @@ l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
     \draw[->,los] (\xuno,\yuno) --  +(\vxuno,0) node[left]
                   {$\bm{v}_{\textup{los}}$};
     \draw ({\xuno+0.2*cos(\anomaliauno)},{\yuno+0.2*sin(\anomaliauno)}) arc
-          ({\anomaliauno}:beta(\anomaliauno):0.2) node[above=3] {$\alpha$};
+          (\anomaliauno:beta(\anomaliauno):0.2) node[above right=2] {$\alpha$};
     \draw[loosely dashed] (O) -- (\xuno,\yuno);
-    \draw ($(O) + (0.2,0)$) arc (0:{\anomaliauno}:0.2) node[right=5] {$\theta$};
+    \draw ($(O) + (0.2,0)$) to[out=90,in=\anomaliauno-90] node[right] {$\theta$}
+          ($(O) + 0.2*({cos(\anomaliauno)},{sin(\anomaliauno)})$);
     %% secondo punto
     % vettore velocità
     \draw[->,vel] (\xdue,\ydue) -- +(\vxdue,\vydue) node[above right] {$\bm{v}$};
@@ -840,10 +843,11 @@ $\theta_0 = 0$, in modo che la coordinata $\theta$ sia uguale all'anomalia
 vera. Per calcolare $v_\textup{los}$ facciamo le seguenti considerazioni
 geometriche. Chiamiamo $\alpha(\theta)$ l'angolo compreso fra la direzione di
 $\versor{r}(\theta)$ e del vettore $\dot{\bm{r}}(\theta) \equiv \bm{v}(\theta) =
-\bm{v}_{\textup{r}}\versor{r} + \bm{v}_{\textup{t}}\versor{\theta}$ e sia per il
-momento $\theta \in \mathopen{[}0, \pi\mathclose{]}$. La tangente di questo
-angolo è data dal rapporto fra la componente tangenziale $r(\theta)\dot{\theta}$
-della velocità e la componente radiale $\dot{r}(\theta)$, quindi
+v_{\textup{r}}(\theta)\versor{r} + v_{\textup{t}}(\theta)\versor{\theta}$ e sia
+per il momento $\theta \in \mathopen{[}0, \pi\mathclose{]}$. La tangente di
+questo angolo è data dal rapporto fra la componente tangenziale
+$r(\theta)\dot{\theta}$ della velocità e la componente radiale
+$\dot{r}(\theta)$, quindi
 \begin{equation}
   \label{eq:angolo-alpha}
   \alpha(\theta) = \arctan\frac{r(\theta)\dot{\theta}}{\dot{r}(\theta)} =
@@ -897,9 +901,9 @@ della velocità nella direzione della linea di vista è
 \end{figure}
 \begin{equation}
   \begin{split}
-    v_\textup{los} &= v(\theta)\cos\beta(\theta) = \sqrt{GM_\textup{T} \left[
+    v_\textup{los} &= v(\theta)\cos\beta(\theta) = \sqrt{GM_\textup{T} \left(
       \frac{2}{r(\theta)} - \frac{1}{a}
-    \right]}\cos(\theta + \alpha(\theta)) = \\
+    \right)}\cos(\theta + \alpha(\theta)) = \\
     &= \sqrt{GM_\textup{T}
     \left[
       \frac{2(1+e\cos\theta)}{a(1-e^2)} - \frac{1}{a}
@@ -1670,7 +1674,7 @@ scritta in forma matriciale (si veda \textcite{goldstein:meccanica})
     z'
   \end{pmatrix}.
 \end{equation}
-Supponiamo ora che un osservatore, posto a distanza $D$ dal sistema, si trovi
+Supponiamo ora che un osservatore, posto a distanza $R_0$ dal sistema, si trovi
 nel piano $xz$ e guardi il piano dell'orbita lungo un asse $x''$ che forma un
 angolo $i$, che prende il nome di \emph{angolo di inclinazione}, con la
 direzione dell'asse $z\equiv z'$. Consideriamo dunque un nuovo sistema di

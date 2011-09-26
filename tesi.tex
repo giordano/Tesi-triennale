@@ -38,8 +38,8 @@
 \fancyhf{} % svuota tutti i campi delle testatine e dei piedi
 % Abbiamo usato l'opzione di classe `oneside', quindi la testatina è la stessa
 % per tutte le pagine.
-% Nella testatina (`head') a destra (`R') mettiamo il nome del paragrafo
-% (`\rightmark'), non tutto maiuscolo (`\nouppercase').
+% Nella testatina (`head') a destra (`R') mettiamo il nome del capitolo
+% (`\leftmark'), non tutto maiuscolo (`\nouppercase').
 \fancyhead[R]{\slshape\footnotesize\nouppercase{\leftmark}}
 % Nel piede (`foot') al centro (`C') mettiamo il numero della pagina
 % (`\thepage').
@@ -50,6 +50,7 @@
 % impostazioni per il pacchetto `hyperref'. Per l'elenco di tutte le opzioni del
 % documento consulta il manuale: `texdoc hyperref'
 \hypersetup{pdftitle={Problema dei due corpi e applicazioni astrofisiche},
+  pdfauthor={Mosè Giordano},
   colorlinks,% link colorati, non riquadrati
   breaklinks=true,% permette di spezzare i link su più righi
   bookmarksnumbered,% inserisce i numeri delle sezioni nei segnalibri
@@ -75,7 +76,7 @@
 \DeclareSIUnit\arcsecond{as}
 
 \bibliography{bibliografia} % nome del file contenente la bibliografia
-\defbibheading{subbibliography}{\section*{#1}\markboth{#1}{#1}}
+\defbibheading{bibliography}[\refname]{\chapter*{#1}\markboth{#1}{#1}}
 
 \theoremstyle{plain}
 \newtheorem*{teorema}{Teorema}
@@ -208,7 +209,7 @@
 \backmatter{}
 \cleardoublepage{}
 \phantomsection{}
-\addcontentsline{toc}{chapter}{Riferimenti bibliografici}
-\printbibliography[title=Riferimenti bibliografici]
+\addcontentsline{toc}{chapter}{\refname}
+\printbibliography
 
 \end{document}

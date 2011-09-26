@@ -44,14 +44,14 @@ Tabella~\ref{tab:parametri-orbitali-S2}.
   \label{tab:parametri-orbitali-S2}
   \begin{tabular}{lc}
     \toprule
-    Grandezza & Valore \\
+    Grandezza         & Valore                       \\
     \midrule
-    $R_0$ & \SI{7.96}{\kilo\parsec} \\
-    $P$ & \SI{15.86}{\year} \\
-    $a$ & \SI{126.5}{\milli\arcsecond} \\
-    $e$ & $0.8970$ \\
-    $R_\textup{min}$ & \SI{0.535}{\milli\parsec} \\
-    $M_{\textup{S}2}$ & circa \SI{15}{\solarmass} \\
+    $R_0$             & \SI{7.96}{\kilo\parsec}      \\
+    $P$               & \SI{15.86}{\year}            \\
+    $a$               & \SI{126.5}{\milli\arcsecond} \\
+    $e$               & $0.8970$                     \\
+    $R_\textup{min}$  & \SI{0.535}{\milli\parsec}    \\
+    $M_{\textup{S}2}$ & circa \SI{15}{\solarmass}    \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -64,7 +64,7 @@ dal corpo, con la seguente relazione
 \end{equation}
 Poiché $M_\textup{BH}$ è sicuramente molto più grande di $M_{\textup{S}2}$
 possiamo porre $M_\textup{T} \approx M_\textup{BH}$
-nella~\ref{eq:terza-legge-keplero} e otteniamo
+nella~\eqref{eq:terza-legge-keplero} e otteniamo
 \begin{equation}
   M_\textup{BH} \approx M_\textup{T} = \frac{4\pi^2a^3}{GP^2} =
   \SI{4.06e6}{\solarmass}.
@@ -117,16 +117,16 @@ corpo $1$
 \end{equation}
 Il valore della funzione di massa è noto quando si misurano il periodo orbitale
 $P$ e il semiasse maggiore proiettato $a_1\sin i$. È possibile fare questo, in
-particolare misurare $a_1\sin i$, solo nei sistemi visuali, quelli cioè in cui
-entrambi i corpi che costituiscono sono visibili. Vedremo più avanti come si può
-calcolare la funzione di massa negli altri casi. Ragionando in maniera analoga
-per il corpo di massa $m_2$ possiamo definire la funzione di massa $f_2$
+particolare misurare $a_1\sin i$, solo nei sistemi binari visuali, quelli cioè
+in cui entrambi i corpi sono visibili. Vedremo più avanti come si può calcolare
+la funzione di massa negli altri casi. Ragionando in maniera analoga per il
+corpo di massa $m_2$ possiamo definire la funzione di massa $f_2$
 \begin{equation}
   f_2(m_1,m_2,i) \equiv \frac{(m_1\sin i)^3}{(m_1 + m_2)^2} =
   \frac{4\pi^2}{GP^2}(a_2\sin i)^3,
 \end{equation}
-con $a_2$ semiasse maggiore dell'ellisse descritta dal corpo di massa
-$m_2$. Conoscendo solo le funzioni di massa non è possibile determinare
+con $a_2 = am_1/(m_1+m_2)$ semiasse maggiore dell'ellisse descritta dal corpo di
+massa $m_2$. Conoscendo solo le funzioni di massa non è possibile determinare
 univocamente le due masse se l'angolo di inclinazione non è noto. Sarà quindi
 necessaria un'altra equazione per poter fissare i valori di tutte e tre queste
 grandezze. Tuttavia, dato un qualsiasi valore di $m_1$ e $i$, la funzione di
@@ -195,17 +195,17 @@ fenomeno dell'eclissi.
 
     \coordinate (O1) at (0,0); % centro stella
     \coordinate (O2) at (\a,0); % centro pianeta
-    \draw (O1) circle (\runo); % disco stella
+    \draw[thick] (O1) circle (\runo); % disco stella
     \node at ($(O1) + (2.3,-1.2)$) {$m_1$};
-    \draw (O2) circle (\rdue); % disco pianeta
+    \draw[thick] (O2) circle (\rdue); % disco pianeta
     \node at ($(O2) + (-1.1,-1)$) {$m_2$};
     \draw[->] (O1) -- +(0,3) node[above] {$z$}; % asse z
     \draw[->] (O1) -- +(10,0) node[right] {$x$}; % asse x
     % asse x''
     \draw[->] (O1) -- ($10*({cos(\i)},{sin(\i)})$) node[right] {$x''$};
     % angolo di inclinazione
-    \draw[->,dashed] ($(O1) + (0,2.5)$) to[out=0,in=90+\i] node[right=5]
-                     {$i_{\textup{min}}$} ($2.5*({cos(\i)},{sin(\i)})$);
+    \draw[dashed] ($(O1) + (0,2.5)$) to[out=0,in=90+\i] node[right=5]
+                  {$i_{\textup{min}}$} ($2.5*({cos(\i)},{sin(\i)})$);
     % distanza fra i centri di pianeta e stella
     \draw[<->] ($(O1) + (0,-0.2)$) -- node[fill=white] {$a$} ($(O2)+(0,-0.2)$);
     \draw (O1) -- node[left] {$r_\star$} +($-\runo*({cos(45)},{sin(45)})$);
@@ -346,9 +346,9 @@ dell'eclissi è
   {\begin{tikzpicture}[scale=0.7,font=\footnotesize]
       \coordinate (O1) at (0,0); % centro stella
       \coordinate (O2) at (8,0); % centro pianeta
-      \draw (O1) circle (2); % disco stella (r=2)
+      \draw[thick] (O1) circle (2); % disco stella (r=2)
       \node at ($(O1) + (2.3,-1.2)$) {$m_1$};
-      \draw (O2) circle (1); % disco pianeta (r=1)
+      \draw[thick] (O2) circle (1); % disco pianeta (r=1)
       \node at ($(O2) + (-1.1,-1)$) {$m_2$};
       \draw[->] (O1) -- (0,3) node[above] {$z$}; % asse z
       \draw[->] (O1) -- (10,0) node[right] {$x$}; % asse x
@@ -360,10 +360,9 @@ dell'eclissi è
                  in
                  (O1) -- node (P) {} (\n1,\n2); % distanza fra le due rette
       \draw[->] (-0.8,0.5) node[above] {$a\cos i$} to[out=-90,in=180] (P);
-      \draw[->,dashed] let \n1 = {atan(0.1)} in
-                           ($(O1) + (0,2.5)$) to[out=0,in=90+\n1] node[right=5]
-                           {$i$} ($cos(\n1)*(2.5,0) +
-                           sin(\n1)*(0,2.5)$);
+      \draw[dashed] let \n1 = {atan(0.1)} in
+                        ($(O1) + (0,2.5)$) to[out=0,in=90+\n1] node[right=5]
+                        {$i$} ($cos(\n1)*(2.5,0) + sin(\n1)*(0,2.5)$);
       \draw (O1) -- node[left] {$r_\star$} +($-2*({cos(45)},{sin(45)})$);
       \draw (O2) -- node[left] {$r$} +($({cos(45)},{-sin(45)})$);
     \end{tikzpicture}}
@@ -398,8 +397,8 @@ Per $i = \pi/2$ si riottiene il risultato precedente.
   {\begin{tikzpicture}[scale=1.1,font=\footnotesize]
       \coordinate (O1) at (0,0); % centro stella
       \coordinate (O2) at (2.5,0); % centro pianeta
-      \draw[name path=S] (O1) circle (2); % disco stella (r=2)
-      \draw[name path=P] (O2) circle (1); % disco pianeta (r=1)
+      \draw[name path=S,thick] (O1) circle (2); % disco stella (r=2)
+      \draw[name path=P,thick] (O2) circle (1); % disco pianeta (r=1)
       % individuo punti di intersezione fra dischi di pianeta e stella
       \path[name intersections={of=S and P,by={A,B}}];
       \draw[dashed] (O1) -- node[above] {$r_\star$} (A) -- (O2) --
@@ -424,8 +423,8 @@ Per $i = \pi/2$ si riottiene il risultato precedente.
   {\begin{tikzpicture}[scale=1.1,font=\footnotesize]
       \coordinate (O1) at (0,0); % centro stella
       \coordinate (O2) at (1.5,0); % centro pianeta
-      \draw[name path=S] (O1) circle (2); % disco stella (r=2)
-      \draw[name path=P] (O2) circle (1); % disco pianeta (r=1)
+      \draw[name path=S,thick] (O1) circle (2); % disco stella (r=2)
+      \draw[name path=P,thick] (O2) circle (1); % disco pianeta (r=1)
       % individuo punti di intersezione fra dischi di pianeta e stella
       \path[name intersections={of=S and P,by={A,B}}];
       \draw[dashed] (O1) -- node[below] {$r_\star$} (A) -- (O2) --
@@ -453,8 +452,8 @@ reale $a$ fra i due corpi ma quella proiettata $d$ nel piano del cielo
 dell'osservatore e introdotta nel paragrafo~\ref{sec:geometria-sistema}. Se in
 un certo istante di tempo si ha $d > r_\star + r$, i due corpi non sono
 sovrapposti nel cielo dell'osservatore quindi non si sta verificando
-l'eclissi. Se invece $d \leq r_\star + r$ il pianeta copre parzialmente la
-stella. Finché $\sqrt{r_\star^2 - r^2} \leq d \leq r_\star + r$, l'area di
+l'eclissi. Se invece $d \leq r_\star + r$ il pianeta copre, almeno parzialmente,
+la stella. Finché $\sqrt{r_\star^2 - r^2} \leq d \leq r_\star + r$, l'area di
 sovrapposizione è la somma delle due aree $S_1$ e $S_2$ della
 Figura~\ref{fig:area-coperta.a}. Per il teorema del coseno, l'angolo $\theta_1$
 è dato da
@@ -483,7 +482,7 @@ Dunque in questo caso l'area di sovrapposizione $\delta A$ vale
 Se $r_\star - r \leq d < \sqrt{r_\star^2 - r^2}$, l'area di sovrapposizione
 $\delta A$ è sempre data da $S_1 + S_2$ (si veda la
 Figura~\ref{fig:area-coperta.b}) e risulta $\theta_2 > \pi$ (si osservi
-l'equazione~\ref{eq:theta2}). In questo caso, quindi, $S_2$ è la somma del
+l'equazione~\eqref{eq:theta2}). In questo caso, quindi, $S_2$ è la somma del
 settore circolare di angolo $\theta_2$ e del triangolo isoscele con vertice nel
 centro del disco del pianeta e angolo al vertice di $2\pi - \theta_2$. Così
 l'area di sovrapposizione diventa
@@ -512,7 +511,7 @@ Riepilogando
   \end{dcases}
 \end{equation}
 
-Vediamo ora in dettagli come varia la luminosità della sistema che giunge
+Vediamo ora in dettaglio come varia la luminosità della sistema che giunge
 all'osservatore nelle varie fasi dell'eclissi. Poiché nel sistema in esame solo
 la stella emette luce propria, la luminosità che prendiamo in considerazione è
 esattamente quella della stella. La luminosità propria $L_\star$ di una stella,
@@ -527,9 +526,9 @@ misurata anche in unità di luminosità solari ($L_\odot$). Definiamo il
 Abbiamo anche $L_\star = 4\pi r_\star^2 F_\star$. Definiamo inoltre il
 \emph{flusso a Terra} $F_{\textup{T}}$ come
 \begin{equation}
-  F_{\textup{T}} = \frac{L_\star}{4\pi D^2} = F_\star \frac{r_\star^2}{D^2},
+  F_{\textup{T}} = \frac{L_\star}{4\pi R_0^2} = F_\star \frac{r_\star^2}{R_0^2},
 \end{equation}
-in cui $D$ è la distanza fra l'osservatore e la stella. Le definizioni fin qui
+in cui $R_0$ è la distanza fra l'osservatore e la stella. Le definizioni fin qui
 date sono valide se la stella è direttamente visibile dall'osservatore senza
 alcun ostacolo. Durante l'eclissi, però, il disco della stella sarà parzialmente
 coperta dal pianeta, quindi bisognerà moltiplicare le quantità sopra definite
@@ -538,8 +537,8 @@ $(A - \delta A)/A$, con $A= \pi r_\star^2$. Dunque
 \begin{align}
   F_\star &= \frac{L_\star}{4\pi r_\star^2} \frac{A - \delta A}{A} =
   \frac{L_\star}{4\pi r_\star^2} \left( 1 - \frac{\delta A}{A} \right), \\
-  F_{\textup{T}} &= \frac{L_\star}{4\pi D^2} \frac{A - \delta A}{A} =
-  \frac{L_\star}{4\pi D^2} \left( 1 - \frac{\delta A}{A} \right).
+  F_{\textup{T}} &= \frac{L_\star}{4\pi R_0^2} \frac{A - \delta A}{A} =
+  \frac{L_\star}{4\pi R_0^2} \left( 1 - \frac{\delta A}{A} \right).
 \end{align}
 Al di fuori della fase di eclissi $\delta A = 0$, quindi riotteniamo le
 definizioni precedenti. Più in generale possiamo definire una funzione
@@ -554,7 +553,7 @@ misurare. Nel caso del flusso superficiale avremo
 \end{equation}
 mentre per il flusso a Terra
 \begin{equation}
-  f \equiv f_{\textup{T}} = \frac{1}{\pi D^2}.
+  f \equiv f_{\textup{T}} = \frac{1}{\pi R_0^2}.
 \end{equation}
 
 Ho scritto un programma in linguaggio C che simula un'eclissi. Il programma

@@ -105,7 +105,7 @@ double anomvera(double e, double psi)
  * (1.97) di pagina 23 della tesi e le trasformazioni discusse
  * nel capitolo 4 del Goldstein, Poole e Safko (vedi la
  * bibliografia). `phi' è l'angolo fra l'asse x' e l'asse x,
- * `i' è l'angolo fra l'asse z'' e x'', come spiegato nella tesi.
+ * `i' è l'angolo fra l'asse z e x'', come spiegato nella tesi.
  */
 void pianodelcielo(double Qa[3], double phi, double i, double Qb[3])
 {
@@ -125,7 +125,7 @@ void vettore_scalare(int n, double a[], double b[], double c)
     b[i]=c*a[i];
 }
 
-/* Le funzioni seguenti servono per le simulazioni di transiti. */
+/* Le funzioni seguenti servono per le simulazioni di transiti */
 
 /* Funzione che restituisce l'area di di sovrapposizione fra
  * i due corpi. `r1' è il raggio della stella, `r2' del pianeta,
@@ -133,16 +133,16 @@ void vettore_scalare(int n, double a[], double b[], double c)
  * coordinate, rispettivamente della stella e del pianeta, nel
  * piano del cielo dell'osservatore.
  */
-double area_coperta(double r1, double r2, double d, double x1, double x2)
-{
+double area_coperta(double r1, double r2, double d, double x1,
+		    double x2){
   double theta1, theta2; /* vedi Figura 3.5 della tesi */
   double dA; /* area coperta */
   theta1=2*acos((r1*r1-r2*r2+d*d)/(2*r1*d));
   theta2=2*acos((r2*r2-r1*r1+d*d)/(2*r2*d));
 
-  /* se la stella è davanti al pianeta rispetto all'osservatore... */
+  /* se per l'osservatore la stella è davanti al pianeta... */
   if(x1 >= x2)
-    /* ...non si verifica l'eclissi (l'area coperta cioè è nulla) */
+    /* ...non si verifica l'eclissi (l'area coperta è nulla) */
     dA=0;
   else
     {
@@ -157,7 +157,7 @@ double area_coperta(double r1, double r2, double d, double x1, double x2)
 }
 
 /* Funzione che restituisce il valore del flusso di una stella.
- * Vedi equazione (3.17), pag. 41. `f' è il fattore geometrico,
+ * Vedi equazione (3.27), pag. 45. `f' è il fattore geometrico,
  * `lum' è la luminosità intrinseca della stella, `r' è il raggio
  * della stella, `dA' è l'area coperta dal pianeta. Se si passa
  * alla funzione f=4, il risultato sarà normalizzato a `lum'.
