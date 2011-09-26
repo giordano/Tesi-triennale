@@ -33,7 +33,7 @@
 #include "libreria.h"
 
 /* Numero di punti in cui effettuare la simulazione */
-#define PUNTI 5000
+#define PUNTI 10000
 /* Valore della costante di gravitazione universale */
 #define G GSL_CONST_CGSM_GRAVITATIONAL_CONSTANT
 
