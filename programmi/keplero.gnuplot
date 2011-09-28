@@ -1,5 +1,5 @@
 # imposta il terminale su `epslatex'
-set term epslatex color solid
+set term epslatex
 
 # impostazioni per tutti i grafici
 set xlabel "$t$ (\\si{\\hour})" # etichetta asse x
