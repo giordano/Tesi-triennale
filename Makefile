@@ -23,8 +23,7 @@ IMMAGINI_KEPLERO_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_KEPLERO_PDF))
 IMMAGINI_KEPLERO_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_KEPLERO_PDF))
 ECLISSI_DAT		= $(PROG)/eclissi.dat
 IMMAGINI_ECLISSI_PDF	= $(PROG)/distanza_proiettata.pdf \
-	$(PROG)/flusso.pdf $(PROG)/piano_orbitale.pdf \
-	$(PROG)/piano_cielo.pdf
+	$(PROG)/flusso.pdf $(PROG)/piano_cielo.pdf
 IMMAGINI_ECLISSI_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_ECLISSI_PDF))
 IMMAGINI_ECLISSI_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_ECLISSI_PDF))
 TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
