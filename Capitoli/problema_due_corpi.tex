@@ -732,8 +732,6 @@ l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
     \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
 
     % funzione che restituisce la velocità nel punto di anomalia vera #1.
-    % La funzione restituisce valori corretti se #1 != 0, 180, 360 e numeri a
-    % loro congrui in modulo 360. Poniamo GM_T = 1 (quindi l_0/mu=sqrt(p)).
     \pgfmathdeclarefunction{vel}{1}{\pgfmathparse{sqrt(2/dist(#1)-1/\a)}}
     % funzione che restituisce la velocità radiale nel punto di anomalia vera #1
     \pgfmathdeclarefunction{velrad}{1}{\pgfmathparse{\e*sin(#1)/sqrt(\p)}}
