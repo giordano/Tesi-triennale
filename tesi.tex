@@ -109,8 +109,10 @@
 % Derivata totale: \toder[ordine]{funzione}{variabile}
 \newcommand*{\toder}[3][]{\frac{{\dd^{#1}}#2}{\dd {#3}^{#1}}}
 % Derivata parziale \parder[ordine]{funzione}{variabile}
+
 % Per la definizione del comando `parder' (per inserire le derivate parziali)
-% vedi http://www.guit.sssup.it/phpbb/viewtopic.php?p=42188#42188
+% vedi
+% http://www.guitex.org/home/index.php?option=com_kunena&func=view&catid=5&id=42178&Itemid=60#42199
 \makeatletter
 \newcommand{\parder}[2]{\begingroup
   \@tempswafalse\toks@={}\count@=\z@
@@ -189,14 +191,13 @@
 
 \begin{document}
 \frontmatter{}
-\pagenumbering{Alph}
 \input{frontespizio}
 
 \cleardoublepage{}
-\pagenumbering{roman}
 \tableofcontents{}
 \cleardoublepage{}
 \listoffigures{}
+\include{Capitoli/introduzione}
 
 \mainmatter{}
 \include{Capitoli/problema_due_corpi}
