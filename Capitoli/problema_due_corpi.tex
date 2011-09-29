@@ -45,7 +45,7 @@ solo alla mutua interazione gravitazionale.
     \draw [->] (O) -- (0,1,0) node[anchor=north west] {$y$}; % asse y
     \draw [->] (O) -- (0,0,1) node[anchor=south] {$z$}; % asse z
 
-    \draw [->,thick] (O) -- node[left,fill=white] {$\bm{r}_1$}
+    \draw [->,thick] (O) -- node[left=2,fill=white] {$\bm{r}_1$}
                      (\xuno,\yuno,\zuno) node[above] {$m_1$}; % vettore r_1
     \draw [->,thick] (O) -- node[below right,fill=white] {$\bm{r}_2$}
                      (\xdue,\ydue,\zdue) node[right] {$m_2$}; % vettore r_2
@@ -1020,7 +1020,32 @@ equivalente a un moto unidimensionale lungo la direzione radiale e con un
 \emph{potenziale efficace}
 \begin{figure} %TODO: scegliere valori migliori per il grafico
   \centering
-  \input{Immagini/gnuplot/potenziale_efficace}
+    \begin{tikzpicture}[xscale=1.45,yscale=0.1,font=\scriptsize]
+    % coefficienti che compaiono nel potenziale efficace
+    \pgfmathsetmacro{\a}{25}
+    \pgfmathsetmacro{\b}{50}
+    % funzione potenziale efficace
+    \pgfmathdeclarefunction{ueff}{1}{\pgfmathparse{\a/#1^2-\b/#1}}
+    %% valori dell'energia
+    % energia E_0 = minimo di U_eff, il minimo si ha nel punto r = 2a/b e
+    % U_eff(2a/b) = -b^2/(4a)
+    \pgfmathsetmacro{\ezero}{-\b^2/(4*\a)}
+    \pgfmathsetmacro{\euno}{-20} % energia E_1
+    \pgfmathsetmacro{\edue}{15} % energia E_2
+
+    \draw[->] (0,-30) -- (0,30) node[above] {$U_{\textup{eff}}$}; % asse y
+    \draw[->] (0,0) node[left] {$O$} -- (8,0) node[right] {$r(\theta)$}; %asse x
+    % grafico della funzione potenziale efficace
+    \draw[name path=U] [domain=0.4:8,samples=100] plot (\x,{ueff(\x)});
+    \draw[dashed,name path={E0}] (0,\ezero) node[left] {$E_0$} -- +(8,0);
+    \draw[dashed,name path={E1}] (0,\euno) node[left] {$E_1$} -- +(8,0);
+    \draw[dashed] (0,\edue) node[left] {$E_2$} -- +(8,0);
+    \path[name intersections={of=U and {E0},by={A}}];
+    \draw[loosely dashed] (A) -- +(0,-\ezero) node[above] {$r_0$};
+    \path[name intersections={of=U and {E1},by={B,C}}];
+    \draw[loosely dashed] (B) -- +(0,-\euno) node[above] {$r_{\textup{min}}$}
+                          (C) -- +(0,-\euno) node[above] {$r_{\textup{max}}$};
+  \end{tikzpicture}
   \caption[Andamento del potenziale efficace in funzione della distanza dal
   centro del campo]{Andamento qualitativo del potenziale efficace della
     particella $\mu$ nel problema di Keplero in funzione della distanza dal
@@ -1035,15 +1060,19 @@ equivalente a un moto unidimensionale lungo la direzione radiale e con un
 \end{equation}
 nel quale il termine $l_0/(2\mu r^2(\theta))$ è chiamato \emph{potenziale
   centrifugo}. Nella Figura~\ref{fig:potenziale-efficace} è riportato il grafico
-della curva del potenziale efficace. In $r=r_0=l_0/(GM_\textup{T}\mu^2)$ si ha
-un punto di minimo per $U_\textup{eff}$ e risulta $U_\textup{eff}(r_0) =
--G^2M_\textup{T}^2\mu^3/(2l_0^2)$. La differenza fra l'energia e
+della curva del potenziale efficace. In $r=r_0=l_0^2/(GM_\textup{T}\mu^2)$ si ha
+un punto di minimo per $U_\textup{eff}$ e risulta $U_\textup{eff}(r_0) = E_0
+=-G^2M_\textup{T}^2\mu^3/(2l_0^2)$. Dal fatto che $r_0 = p$ deduciamo che il
+punto di minimo per il potenziale efficace si ha in corrispondenza dell'anomalia
+vera $\theta = \pm \pi/2$ poiché in questi punti il modulo quadro $\dot{r}^2$
+della componente radiale della velocità assume il massimo valore (si veda
+l'equazione~\eqref{eq:velocita-radiale}). La differenza fra l'energia e
 $U_\textup{eff}$ dà $\mu\dot{r}^2/2$, quindi il moto è ammesso solo in quelle
 regioni in cui $E-U_\textup{eff}\geq 0$, cioè:
 \begin{enumerate}
-\item se $E = E_0 = G^2M_\textup{T}^2\mu^3/(2l_0^2)$ risulta $\dot{r}=0$, cioè
-  $r(t) = r_0 = \text{costante}$. L'orbita è dunque circolare e il moto
-  circolare uniforme con pulsazione $\omega_0 = l_0/(\mu r_0^2)$;
+\item se $E = E_0$ risulta $\dot{r}=0$, cioè $r(t) = r_0 =
+  \text{costante}$. L'orbita è dunque circolare e il moto circolare uniforme con
+  pulsazione $\omega_0 = l_0/(\mu r_0^2)$;
 \item se $E = E_1 \in \mathopen{]}E_0,0\mathclose{[}$, il moto è limitato fra le
   distanze apsidali $r_\textup{min}$ e $r_\textup{max}$ e l'orbita è un'ellisse;
 \item se $E = E_2 \geq 0$ il moto è limitato inferiormente ma non
