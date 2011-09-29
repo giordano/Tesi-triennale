@@ -520,10 +520,11 @@ mentre nel sistema CGS si userà \si{erg\per \second}. Questa grandezza è spess
 misurata anche in unità di luminosità solari ($L_\odot$). Definiamo il
 \emph{flusso superficiale} $F_\star$ come
 \begin{equation}
-    F_\star = \frac{L_\star}{4\pi r_\star^2}.
+    F_\star = \frac{L_\star}{4\pi r_\star^2},
 \end{equation}
-Abbiamo anche $L_\star = 4\pi r_\star^2 F_\star$. Definiamo inoltre il
-\emph{flusso a Terra} $F_{\textup{T}}$ come
+avendo assunto che il disco stellare appaia uniformemente illuminato
+all'osservatore. Abbiamo anche $L_\star = 4\pi r_\star^2 F_\star$. Definiamo
+inoltre il \emph{flusso a Terra} $F_{\textup{T}}$ come
 \begin{equation}
   F_{\textup{T}} = \frac{L_\star}{4\pi R_0^2} = F_\star \frac{r_\star^2}{R_0^2},
 \end{equation}
@@ -598,6 +599,20 @@ t_0)/P$, con $t_0$ istante iniziale scelto per la simulazione.
     simulazione discussa in questo paragrafo}
   \label{fig:sim-ecl-flusso}
 \end{figure}
+
+\section{Possibili sviluppi futuri}
+\label{sec:sviluppi-futuri}
+
+Nel paragrafo precedente abbiamo studiato i transiti di pianeti extrasolari
+davanti alle stelle compagne ma adottando alcune approssimazioni. Questo lavoro
+può essere migliorato prendendo in considerazione i fatti che i due corpi non
+sono perfettamente sferici ma possono essere deformati, per esempio a causa del
+potenziale gravitazionale, la luminosità della stella non è uniforme su tutta la
+superficie ma generalmente si ha un \emph{limb darkening}, cioè un oscuramento
+al bordo, inoltre gli effetti dovuti all'atmosfera stellare non sono
+trascurabili. Tutto ciò comporta che la curva di luce di un'eclissi non ha la
+forma squadrata della Figura~\ref{fig:sim-ecl-flusso} ma risulta più smussata e
+irregolare.
 
 %%% Local Variables:
 %%% mode: latex
