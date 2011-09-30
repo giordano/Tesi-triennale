@@ -180,8 +180,9 @@
 % risultati corretti bisogna inserire un valore dell'anomalia diverso da 0,
 % 180 e 360 (e numeri a loro congrui in modulo 360)
 \pgfmathdeclarefunction{alpha}{1}{\pgfmathparse{
-    (mod(#1,360) < 180) ? atan(1/tan(mod(#1,360))+1/(\e*sin(mod(#1,360)))):
-                          atan(1/tan(mod(#1,360)) +
+    (mod(#1,360) < 180) ? atan(cos(mod(#1,360))/sin(mod(#1,360)) +
+                          1/(\e*sin(mod(#1,360)))):
+                          atan(cos(mod(#1,360))/sin(mod(#1,360)) +
                           1/(\e*sin(mod(#1,360)))) + 180}
 }
 % vedi sempre il paragrafo sulla velocità nella direzione della linea di
