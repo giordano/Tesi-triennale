@@ -295,7 +295,7 @@ di Newton~-~Raphson (\textcite[30]{brugnano:calcolo-numerico}), chiamato anche
       f''(x) \neq 0 \quad \forall x \in \mathopen{[}a,b\mathclose{]},
     \end{gather}
   \end{subequations}
-  allora, posto
+  allora, posto $\forall n \in \N_0$
   \begin{subequations}
     \begin{align}
       x_0 &=
@@ -399,11 +399,11 @@ La funzione $f(x,z)\colon\C\times\C\to\C$ definita da
 \begin{equation}
   f(x,z) = \e^{(x/2)(z - 1/z)}
 \end{equation}
-è olomorfa in $\C\setminus 0$ rispetto alla variabile $z$, quindi può essere
+è olomorfa in $\C\setminus \{0\}$ rispetto alla variabile $z$, quindi può essere
 espansa in serie di Laurent (\textcite[673]{demarco:analisi2}) di potenze di $z$
 intorno a $z=0$
 \begin{equation}
-  f(x,z) = \sum_{n = -\infty}^{+\infty} c_n(x) z^n.
+  f(x,z) = \sum_{\substack{n = -\infty \\ n \in \Z}}^{+\infty} c_n(x) z^n.
 \end{equation}
 Per il teorema di Laurent, i coefficienti $c_n(x)$, che indicheremo d'ora in poi
 con $J_n(x)$, sono dati da
@@ -442,7 +442,7 @@ La funzione $J_n(x)$ è chiamata \emph{coefficiente di Bessel di argomento $x$ e
     J_{n-1} - \frac{n}{z}J_n,\\
     J_n''(x) = \frac{n^2}{x^2}J_n(x) - J_n(x) - \frac{1}{x}J_n'(x),\\
     \toder{}{x}(x^nJ_n(x)) = x^nJ_{n-1}(x),\\
-    \toder{}{x}(x^{-n}J_n(x)) = -xJ_{n+1}(x).
+    \toder{}{x}(x^{-n}J_n(x)) = -x^{-n}J_{n+1}(x).
   \end{gather}
 \end{subequations}
 Si può verificare, grazie alle relazioni appena riportate, che la funzione
@@ -469,7 +469,7 @@ quindi, derivando sotto il segno di integrale, abbiamo anche
 \end{equation}
 
 Ritorniamo al problema fisico. Definiamo la funzione $G(\psi,\phi) = \psi -
-e\sin\psi - \psi$, con $\psi,\phi\in\mathopen{[}0,
+e\sin\psi - \phi$, con $\psi,\phi\in\mathopen{[}0,
 2\pi\mathclose{]}$. Dall'equazione di Keplero abbiamo $G(\psi(t),\phi(t)) = 0$
 in ogni istante di tempo $t\in\mathopen{[}t_0,P+t_0\mathclose{]}$ e inoltre
 $G_\psi(\psi(t),\phi(t)) = 1 - e\cos\psi(t) \neq 0$,
@@ -481,15 +481,16 @@ $t\in\mathopen{[}t_0,P+t_0\mathclose{]}$. Tuttavia, come già detto, non possiam
 dare un'espressione elementare della funzione $\psi(\phi)$, però possiamo
 cercare un'espressione che coinvolga i coefficienti di Bessel, che sono funzioni
 speciali. Notiamo innanzitutto che $\psi$ è una funzione dispari di
-$\phi$. Finora ci siamo limitati a considerare gli intervalli
-$\psi,\phi\in\mathopen{[}0, 2\pi\mathclose{]}$, però il moto della particella
-relativa è periodico, dunque anche la funzione $\psi(\phi)$ è periodica, di
-periodo $2\pi$.  La funzione $\ltoder{\psi(\phi)}{\phi}$ è integrabile
-nell'intervallo $\mathopen{[}-\pi, \pi\mathclose{]}$ essendo continua, allora è
-sviluppabile in serie di Fourier (\textcite[440]{demarco:analisi2}) in media
-quadratica in $\mathopen{[}-\pi, \pi\mathclose{]}$. Inoltre, poiché $\psi(\phi)$
-è dispari, $\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello sviluppo
-compariranno solo il termine costante e quelli in coseno, cioè
+$\phi$. Finora abbiamo considerato $\psi,\phi\in\mathopen{[}0,
+2\pi\mathclose{]}$, però per semplicità di calcoli negli integrali seguenti
+poniamo momentaneamente $\phi\in\mathopen{[}-\pi, \pi\mathclose{]}$ e
+consideriamo il prolungamento periodico su $\R$, di periodo $2\pi$, della
+funzione $\psi(\phi)$. La funzione $\ltoder{\psi(\phi)}{\phi}$ è integrabile
+in $\mathopen{[}-\pi, \pi\mathclose{]}$ essendo continua in questo intervallo,
+allora è sviluppabile in serie di Fourier (\textcite[440]{demarco:analisi2}) in
+media quadratica in $\mathopen{[}-\pi, \pi\mathclose{]}$. Inoltre, poiché
+$\psi(\phi)$ è dispari, $\ltoder{\psi(\phi)}{\phi}$ è pari, quindi nello
+sviluppo compariranno solo il termine costante e quelli in coseno, cioè
 \begin{equation}
   \toder{\psi}{\phi} = \frac{a_0}{2} + \sum_{n=1}^{+\infty}a_n\cos(n\phi),
 \end{equation}
@@ -508,8 +509,8 @@ integrale dei coefficienti di Bessel~\eqref{eq:bessel-integrale}. Dunque
 \begin{equation}
   \toder{\psi}{\phi} = 1 + \sum_{n=1}^{+\infty}2J_n(x)\cos(n\phi).
 \end{equation}
-Integriamo questa equazione con la condizione iniziale del periapside $\psi(0) =
-0$
+Integriamo questa equazione con la condizione iniziale del periapside $\psi(\phi
+= 0) = 0$
 \begin{equation}
   \psi = \phi + \sum_{n=1}^{+\infty}\frac{2}{n}J_n(ne)\sin(n\phi).
 \end{equation}
@@ -532,10 +533,12 @@ Dalla~\eqref{eq:r-anomalia-eccentrica} abbiamo
 \begin{equation}
   \toder{r}{\phi} = ae\sin\psi\toder{\psi}{\phi} = \frac{ae\sin\psi}{1-e\cos\psi}.
 \end{equation}
-La funzione $\ltoder{r}{\phi}$ è continua quindi integrabile in $\mathopen{[}-\pi,
-\pi\mathclose{]}$, dunque sviluppabile in serie di Fourier in media quadratica
-in questo intervallo. Inoltre è dispari rispetto a $\phi$ perché $\psi(\phi)$ è
-pari e nello sviluppo compariranno solo i termini in seno, cioè
+Come fatto precedentemente, solo per il calcolo degli integrali seguenti poniamo
+$\phi \in \mathopen{[}-\pi, \pi\mathclose{]}$. La funzione $\ltoder{r}{\phi}$ è
+continua quindi integrabile in $\mathopen{[}-\pi, \pi\mathclose{]}$, dunque
+sviluppabile in serie di Fourier in media quadratica in questo
+intervallo. Inoltre è dispari rispetto a $\phi$ perché $\psi(\phi)$ è pari e
+nello sviluppo compariranno solo i termini in seno, cioè
 \begin{equation}
   \toder{r}{\phi} = \sum_{n=1}^{+\infty}b_n\sin(n\phi),
 \end{equation}
@@ -555,8 +558,8 @@ di Bessel. Così abbiamo trovato
 \begin{equation}
   \toder{r}{\phi} = \sum_{n=1}^{+\infty} 2aeJ_n'(ne)\sin(n\phi).
 \end{equation}
-Integriamo questa equazione differenziale con le condizioni iniziali al
-periapside $r(\phi=0) = a(1-e)$, $\psi(\phi=0)=0$
+Integriamo questa equazione differenziale con la condizione iniziale al
+periapside $r(\phi=0) = a(1-e)$
 \begin{equation}
   r = a(1-e) + 2ae\sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne) -
   2ae\sum_{n=1}^{+\infty}\frac{1}{n}J_n'(ne)\cos(n\phi).
@@ -577,7 +580,7 @@ La media di $r/a$ rispetto all'anomalia media $\phi$ vale allora
 \end{equation}
 
 Nello stesso programma riportato nell'appendice~\ref{cha:soluzione-keplero} ho
-calcolato con il metodo dei coefficienti di Bessel le stesse grandezze calcolate
+calcolato con il metodo dei coefficienti di Bessel le grandezze già calcolate
 con il metodo di Newton~-~Raphson, ovvero anomalia eccentrica, distanza dal
 fuoco e anomalia vera in funzione del tempo. I grafici ottenuti con questa
 simulazione sono riportati nelle Figure~\ref{fig:bessel-anomalia_eccentrica},
