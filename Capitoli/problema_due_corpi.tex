@@ -310,11 +310,12 @@ date da
     \dot{\bm{r}}  &= \dot{r}\versor{r} +
     r\dot{\theta}\versor{\theta}, \label{eq:velocita-polare}\\
     \ddot{\bm{r}} &= (\ddot{r}-r\dot{\theta}^2)\versor{r} + (r\ddot{\theta} +
-    2\dot{r}\dot{\theta}) \versor{\theta}.
+    2\dot{r}\dot{\theta}) \versor{\theta},
   \end{align}
 \end{subequations}
-Usando le coordinate polari, l'equazione vettoriale~\eqref{eq:forza-mu} può
-essere riscritta come due equazioni scalari
+in cui $\versor{r}$ è il versore radiale e $\versor{\theta}$ quello
+tangenziale. Usando le coordinate polari, l'equazione
+vettoriale~\eqref{eq:forza-mu} può essere riscritta come due equazioni scalari
 \begin{subequations}
   \begin{gather}
     -\frac{GM_\textup{T}\mu}{r^2} = \mu(\ddot{r} - r\dot{\theta}^2) \iff
@@ -433,7 +434,7 @@ $(1+e)/p$. Vedremo più avanti il significato delle grandezze $e$ e
 $p$. Osserviamo che queste condizioni equivalgono a richiedere
 \begin{subequations}
   \begin{align}
-    r(\theta_0) &= \frac{1}{u(\theta)} = \frac{p}{1+e}, \\
+    r(\theta_0) &= \frac{1}{u(\theta_0)} = \frac{p}{1+e}, \\
     \toder{r}{\theta}(\theta_0) &= \toder{(1/u)}{\theta}(\theta_0) =
     -\frac{1}{u^2(\theta_0)} \toder{u}{\theta}(\theta_0) = 0.
   \end{align}
@@ -491,19 +492,19 @@ possono essere classificate nel seguente modo:
     \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
     \draw[->] (\c,-0.7) -- (\c,0.7) node[above] {$y$}; %asse y
     \draw[thick] (0,0) ellipse ({\a} and \b); % ellisse
-    \draw[fill=black] (-\c,0) circle (0.005) node[below] {$F_2$};
-    \draw (0,0) node[below left] {$O'$};
-    \draw[fill=black] (\c,0)circle (0.005)
+    \draw[fill=black] (-\c,0) circle (0.005) node[below] {$F_2$}; % fuoco F_2
+    \draw (0,0) node[below left] {$O'$}; % origine O'
+    \draw[fill=black] (\c,0) circle (0.005) % fuoco F_1 e origine O
                       node[below left] {$O\equiv F_1 \equiv M_{\textup{T}}$};
     \draw[->] (\c+0.1,0) to [out=90,in=-45] node[inner sep=0,fill=white,right=3]
               {$\theta - \theta_0$} ($(\c,0) + cos(45)*(0.1,0) +
-              sin(45)*(0,0.1)$);
-    \draw[->] (\c,0) -- node[above] {$r$} (\c+0.162586,0.162586);
-    \draw[<->] (0,0.05) -- node[fill=white] {$a$} (-\a,0.05);
-    \draw[<->] (0,0.05) -- node[fill=white] {$c$} (\c,0.05);
-    \draw[<->] (-0.05,0) -- node[fill=white] {$b$} (-0.05,\b);
-    \draw[<->] (\c-0.05,0) -- node[fill=white] {$p$} (\c-0.05,\p);
-    \draw[<->] (\c,-0.05) -- node[fill=white,inner sep=0] {$a-c$} (\a,-0.05);
+              sin(45)*(0,0.1)$); % arco dell'anomalia vera
+    \draw[->] (\c,0) -- node[above] {$r$} +($dist(45)*({cos(45},{sin(45)})$);
+    \draw[<->] (0,0.04) -- node[fill=white] {$a$} +(-\a,0);
+    \draw[<->] (0,0.04) -- node[fill=white] {$c$} +(\c,0);
+    \draw[<->] (-0.04,0) -- node[fill=white] {$b$} +(0,\b);
+    \draw[<->] (\c-0.04,0) -- node[fill=white] {$p$} +(0,\p);
+    \draw[<->] (\c,-0.04) -- node[fill=white,inner sep=0] {$a-c$} +({\a-\c},0);
   \end{tikzpicture}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
     del sistema di riferimento $Oxy$ è la posizione di $M_\textup{T}$ e coincide
@@ -640,8 +641,7 @@ e~\eqref{eq:soluzione2-binet} e che $l_0=\mu r^2\dot{\theta}$ abbiamo
   \begin{align}
     \dot{r}(\theta) &= -\frac{l_0}{\mu}\toder{u}{\theta} = -\frac{l_0}{\mu}
     \left( -\frac{1}{p}e\sin(\theta-\theta_0) \right) = \frac{l_0}{\mu p}e
-    \sin(\theta -
-    \theta_0), \label{eq:velocita-radiale}\\
+    \sin(\theta - \theta_0), \label{eq:velocita-radiale} \\
     r(\theta)\dot{\theta} &= \frac{l_0}{\mu}u =
     \frac{l_0}{\mu p}(1+e\cos(\theta-\theta_0)). \label{eq:velocita-tangenziale}
   \end{align}
@@ -879,13 +879,16 @@ dato dalla~\eqref{eq:angolo-alpha}, in definitiva
   \end{dcases}
 \end{equation}
 Si noti che grazie a questa definizione la funzione $\alpha(\theta)$ è continua
-in $\theta = \pi$. Indichiamo con $\beta(\theta)$ l'angolo compreso fra la
-direzione del vettore velocità $\bm{v}(\theta)$ e la linea di vista, nel nostro
-caso l'asse $\versor{x}$. Poiché $\alpha(\theta)$ è l'angolo fra il verso
-positivo della direzione radiale e il vettore $\bm{v}(\theta)$ e la direzione
-radiale forma un angolo $\theta$ con la direzione positiva dell'asse
-$\versor{x}$, abbiamo $\beta(\theta) = \theta + \alpha(\theta)$ e la componente
-della velocità nella direzione della linea di vista è
+in $\theta = \pi$. Inoltre dalla~\eqref{eq:angolo-alpha2} risulta che se $e=0$,
+cioè per le orbite circolari, si ha sempre $\alpha(\theta) = \pi/2$,
+coerentemente col fatto che per il moto circolare la velocità è sempre
+tangenziale. Indichiamo con $\beta(\theta)$ l'angolo compreso fra la direzione
+del vettore velocità $\bm{v}(\theta)$ e la linea di vista, nel nostro caso
+l'asse $\versor{x}$. Poiché $\alpha(\theta)$ è l'angolo fra il verso positivo
+della direzione radiale e il vettore $\bm{v}(\theta)$ e la direzione radiale
+forma un angolo $\theta$ con la direzione positiva dell'asse $\versor{x}$,
+abbiamo $\beta(\theta) = \theta + \alpha(\theta)$ e la componente della velocità
+nella direzione della linea di vista è
 \begin{figure}[tb]
   \centering
   \input{Immagini/gnuplot/velocita_los}
@@ -908,11 +911,8 @@ della velocità nella direzione della linea di vista è
     \right]}\cos(\theta + \alpha(\theta)).
   \end{split}
 \end{equation}
-Osserviamo dalla~\eqref{eq:angolo-alpha2} che se $e=0$, cioè per le orbite
-circolari, si ha sempre $\alpha(\theta) = \pi/2$, coerentemente col fatto che
-per il moto circolare la velocità è sempre tangenziale. Nella
-Figura~\ref{fig:velocita-los} è riportato l'andamento di $v_\textup{los}$ in
-funzione dell'anomalia $\theta$ per diversi valori dell'eccentricità.
+Nella Figura~\ref{fig:velocita-los} è riportato l'andamento di $v_\textup{los}$
+in funzione dell'anomalia $\theta$ per diversi valori dell'eccentricità.
 
 \begin{figure}
   \centering
@@ -1040,8 +1040,10 @@ equivalente a un moto unidimensionale lungo la direzione radiale e con un
     \draw[dashed,name path={E0}] (0,\ezero) node[left] {$E_0$} -- +(8,0);
     \draw[dashed,name path={E1}] (0,\euno) node[left] {$E_1$} -- +(8,0);
     \draw[dashed] (0,\edue) node[left] {$E_2$} -- +(8,0);
+    % individuo il punto di intersezione fra il potenziale e l'energia E_0
     \path[name intersections={of=U and {E0},by={A}}];
     \draw[loosely dashed] (A) -- +(0,-\ezero) node[above] {$r_0$};
+    % individuo i punti di intersezione fra il potenziale e l'energia E_1
     \path[name intersections={of=U and {E1},by={B,C}}];
     \draw[loosely dashed] (B) -- +(0,-\euno) node[above] {$r_{\textup{min}}$}
                           (C) -- +(0,-\euno) node[above] {$r_{\textup{max}}$};
@@ -1064,7 +1066,7 @@ della curva del potenziale efficace. In $r=r_0=l_0^2/(GM_\textup{T}\mu^2)$ si ha
 un punto di minimo per $U_\textup{eff}$ e risulta $U_\textup{eff}(r_0) = E_0
 =-G^2M_\textup{T}^2\mu^3/(2l_0^2)$. Dal fatto che $r_0 = p$ deduciamo che il
 punto di minimo per il potenziale efficace si ha in corrispondenza dell'anomalia
-vera $\theta = \pm \pi/2$ poiché in questi punti il modulo quadro $\dot{r}^2$
+vera $\theta = \pm \pi/2$, infatti in questi punti il modulo quadro $\dot{r}^2$
 della componente radiale della velocità assume il massimo valore (si veda
 l'equazione~\eqref{eq:velocita-radiale}). La differenza fra l'energia e
 $U_\textup{eff}$ dà $\mu\dot{r}^2/2$, quindi il moto è ammesso solo in quelle
