@@ -8,7 +8,7 @@ set format y "$%g$"
 
 set output 'programmi/distanza_proiettata.tex'
 set xlabel "fase" # etichetta asse x
-set ylabel "$d/(r_\\star + r)$"
+set ylabel "$d/(r_1 + r_2)$"
 set ytics 1 # imposto a 1 frequenza dei tic su asse y
 plot [0.5:2.5] 'programmi/eclissi.dat' using 1:8 lw 2
 
