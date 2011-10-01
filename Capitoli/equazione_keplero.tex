@@ -86,14 +86,14 @@ Circoscriviamo all'ellisse una circonferenza ausiliaria di raggio $a$, come
 nella Figura~\ref{fig:circonferenza-ausiliaria-keplero}. Sia $G$ l'intersezione
 con la circonferenza della perpendicolare all'asse $x$ innalzata dal punto
 $Q$. Se $\theta > \pi$, il punto $G$ apparterrà alla semicirconferenza
-inferiore. L'angolo $G\widehat{C}B$, dove $C$ è il centro della circonferenza, è
-chiamato \emph{anomalia eccentrica} e lo indicheremo con $\psi$. L'anomalia
-eccentrica può assumere valori fra $0$ e $2\pi$ e al periapside si ha
-$\psi = \theta = 0$, all'apoapside $\psi = \theta = \pi$. Per costruzione, i
-punti $Q=(x_Q,y_Q)$ e $G=(x_G,y_G)$ hanno la stessa ascissa e vogliamo trovare
-una relazione fra le loro ordinate. Per fare questo ricordiamo che l'equazione
-cartesiana di una circonferenza di raggio $a$ e centro l'origine del sistema di
-riferimento $Ox_\textup{c}y_\textup{c}$ è
+inferiore. L'angolo $G\widehat{C}B$, dove $C$ è il centro della circonferenza e
+dell'ellisse, è chiamato \emph{anomalia eccentrica} e lo indicheremo con
+$\psi$. L'anomalia eccentrica può assumere valori fra $0$ e $2\pi$ e al
+periapside si ha $\psi = \theta = 0$, all'apoapside $\psi = \theta = \pi$. Per
+costruzione, i punti $Q=(x_Q,y_Q)$ e $G=(x_G,y_G)$ hanno la stessa ascissa e
+vogliamo trovare una relazione fra le loro ordinate. Per fare questo ricordiamo
+che l'equazione cartesiana di una circonferenza di raggio $a$ e centro l'origine
+del sistema di riferimento $Ox_\textup{c}y_\textup{c}$ è
 \begin{equation}
   x_\textup{c}^2 + y_\textup{c}^2 = a^2.
 \end{equation}
@@ -353,13 +353,12 @@ dell'anomalia vera in funzione del tempo per le differenti eccentricità fornite
 come input. Il codice sorgente del programma è riportato
 nell'appendice~\ref{cha:soluzione-keplero}. Nelle
 Figure~\ref{fig:newton-anomalia_eccentrica}, \ref{fig:newton-raggio}
-e~\ref{fig:newton-anomalia_vera}, realizzate con il software \verb|gnuplot|,
-sono rappresentati i risultati della simulazione. Per tutti i grafici, il
-periodo di rivoluzione è $P = \SI{10}{\hour}$, l'istante di passaggio dal
-periapside è $t_0 = 0$ e il semiasse maggiore vale $a =
-\SI{2.5e6}{\kilo\metre}$,
-quindi per la terza legge di Keplero
-$GM_\textup{T} \simeq \SI{5e11}{\cubic\kilo\metre\per\square\second}$.
+e~\ref{fig:newton-anomalia_vera} sono rappresentati i risultati della
+simulazione. Per tutti i grafici, il periodo di rivoluzione è
+$P = \SI{10}{\hour}$, l'istante di passaggio dal periapside è $t_0 = 0$ e il
+semiasse maggiore vale $a = \SI{2.5e6}{\kilo\metre}$, quindi per la terza legge
+di Keplero $GM_\textup{T} \simeq
+\SI{5e11}{\cubic\kilo\metre\per\square\second}$.
 \begin{figure}
   \centering
   \input{programmi/newton-anomalia_eccentrica}
