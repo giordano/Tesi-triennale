@@ -1,4 +1,4 @@
-/* Nome del file sorgente: pianeti.c
+/* Nome del file sorgente: eclissi.c
  * Scopo: simulazione di un'eclissi di una stella a causa di un
  * pianeta compagno.
  * Input (hard coded): raggi e masse dei due corpi, semiasse
