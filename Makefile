@@ -33,8 +33,7 @@ TUTTI_FILE		= $(PROG)/keplero-immagini $(PROG)/keplero-dat \
 	$(PROG)/eclissi.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
 	$(FRONTESPIZIO_PDF) mythesis.bbx mythesis.cbx
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
-	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*.aux) \
-	$(wildcard Capitoli/*~) $(wildcard MaterialeInizialeFinale/*.aux) \
+	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*~) \
 	$(wildcard MaterialeInizialeFinale/*~) $(IMMAGINI_GNUPLOT_EPS) \
 	$(wildcard Immagini/gnuplot/*~) $(wildcard $(PROG)/*~) \
 	$(wildcard $(PROG)/*.eps)
