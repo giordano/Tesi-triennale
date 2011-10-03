@@ -12,7 +12,7 @@
  * differenti valori dell'eccentricità. I file possono essere
  * letti da un software per la realizzazione di grafici.
  * Autore: Mosè Giordano
- * Data: 10/09/2011
+ * Data: 18/09/2011
  */
 
 #include <stdio.h>

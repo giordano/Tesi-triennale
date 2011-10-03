@@ -20,7 +20,7 @@
  * normalizzato a 1. Il file può essere letto da un software per
  * la realizzazione di grafici.
  * Autore: Mosè Giordano
- * Data: 10/09/2011
+ * Data: 28/09/2011
  */
 
 #include <stdio.h>

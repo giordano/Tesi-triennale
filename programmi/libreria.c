@@ -157,7 +157,7 @@ double area_coperta(double r1, double r2, double d, double x1,
 }
 
 /* Funzione che restituisce il valore del flusso di una stella.
- * Vedi equazione (3.27), pag. 45. `f' è il fattore geometrico,
+ * Vedi equazione (3.27), pag. 46. `f' è il fattore geometrico,
  * `lum' è la luminosità intrinseca della stella, `r' è il raggio
  * della stella, `dA' è l'area coperta dal pianeta. Se si passa
  * alla funzione f=4, il risultato sarà normalizzato a `lum'.
