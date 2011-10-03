@@ -28,14 +28,12 @@ $ gcc -Wall -pedantic -lm -lgsl -lgslcblas -o keplero \
 L'esecuzione del programma genera due file di testo, \verb|bessel.dat| e
 \verb|newton.dat|, contenenti i risultati delle simulazioni effettuate con i due
 diversi metodi.
-% TODO: ho commentato l'inserimento del codice per accelerare i tempi di
-% compilazione del documento, ricordarsi di decommentare nella versione finale!
-% \lstinputlisting[language=C,caption={File \texttt{keplero.c}}]
-% {programmi/keplero.c}
-% \lstinputlisting[language=C,caption={File \texttt{libreria.h}},
-% label={lst:lib.h}]{programmi/libreria.h}
-% \lstinputlisting[language=C,caption={File \texttt{libreria.c}},
-% label={lst:lib.c}]{programmi/libreria.c}
+\lstinputlisting[language=C,caption={File \texttt{keplero.c}}]
+{programmi/keplero.c}
+\lstinputlisting[language=C,caption={File \texttt{libreria.h}},
+label={lst:lib.h}]{programmi/libreria.h}
+\lstinputlisting[language=C,caption={File \texttt{libreria.c}},
+label={lst:lib.c}]{programmi/libreria.c}
 
 Qui riportiamo inoltre il codice dello script \verb|gnuplot| utilizzato per
 ottenere le figure del paragrafo~\ref{sec:soluzione-keplero} a partire dai file
@@ -49,7 +47,7 @@ script \verb|keplero.gnuplot|.
 \lstinputlisting[language=gnuplot,caption={File \texttt{keplero.gnuplot}}]
 {programmi/keplero.gnuplot}
 
-\clearpage{}
+\cleardoublepage{}
 \chapter{Programma per la simulazione di un'eclissi}
 \label{cha:simulazione-eclissi}
 \markboth%
@@ -75,8 +73,8 @@ Eseguendo il programma si ottiene un file di testo, \verb|eclissi.dat|, con i
 risultati della simulazione.
 % TODO: ho commentato l'inserimento del codice per accelerare i tempi di
 % compilazione del documento, ricordarsi di decommentare nella versione finale!
-% \lstinputlisting[language=C,caption={File \texttt{eclissi.c}}]
-% {programmi/eclissi.c}
+\lstinputlisting[language=C,caption={File \texttt{eclissi.c}}]
+{programmi/eclissi.c}
 
 Di seguito è riportato lo script \verb|gnuplot| utilizzato per produrre, con il
 file generato dall'esecuzione del programma, le

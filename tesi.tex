@@ -20,7 +20,10 @@
 % `mathtools' serve per definire la norma e il valore assoluto
 \usepackage{mathtools}
 \usepackage{frontespizio}
-\usepackage{amsmath,amsfonts,amssymb,amsthm}
+% pacchetto per inserire il simbolo del GuIT
+\usepackage{guit}
+% pacchetti matematici dell'American Mathematical Society
+\usepackage{amsmath,amssymb,amsthm}
 % `bm' serve per scrivere i vettori in corsivo con il comando
 % `\bm{vettore}'. Deve sostituire il comando `\mathbf{vettore}' perché questo
 % restituisce erroneamente lettere in tondo, non in corsivo e non funziona con
@@ -52,7 +55,7 @@
 \hypersetup{pdftitle={Problema dei due corpi e applicazioni astrofisiche},
   pdfauthor={Mosè Giordano},
   colorlinks,% link colorati, non riquadrati
-  breaklinks=true,% permette di spezzare i link su più righi
+  breaklinks=true,% permette di spezzare i link su più righe
   bookmarksnumbered,% inserisce i numeri delle sezioni nei segnalibri
   urlcolor=black,linkcolor=black,citecolor=black
 }
@@ -192,13 +195,14 @@
 
 \begin{document}
 \frontmatter{}
-\input{frontespizio}
+\input{MaterialeInizialeFinale/frontespizio}
+\input{MaterialeInizialeFinale/colophon}
 
 \cleardoublepage{}
 \tableofcontents{}
 \cleardoublepage{}
 \listoffigures{}
-\include{Capitoli/introduzione}
+\include{MaterialeInizialeFinale/introduzione}
 
 \mainmatter{}
 \include{Capitoli/problema_due_corpi}
@@ -206,7 +210,7 @@
 \include{Capitoli/applicazioni_astrofisiche}
 
 \appendix{}
-\include{Capitoli/appendici}
+\include{MaterialeInizialeFinale/appendici}
 
 \backmatter{}
 \cleardoublepage{}

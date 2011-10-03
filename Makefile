@@ -5,10 +5,11 @@ PRINCIPALE		= tesi
 PRINCIPALE_TEX		= $(PRINCIPALE).tex
 PRINCIPALE_PDF		= $(PRINCIPALE).pdf
 BIBLIOGRAFIA		= bibliografia.bib
-FRONTESPIZIO		= frontespizio.tex
+FRONTESPIZIO		= MaterialeInizialeFinale/frontespizio.tex
 FRONTESPIZIO_FRN	= $(PRINCIPALE)-frn.tex
 FRONTESPIZIO_PDF	= $(patsubst %.tex,%.pdf,$(FRONTESPIZIO_FRN))
 CAPITOLI_TEX		= $(wildcard Capitoli/*.tex)
+INIZIO_FINE_TEX		= $(wildcard MaterialeInizialeFinale/*.tex)
 IMMAGINI_GNUPLOT	= $(wildcard Immagini/gnuplot/*.gnuplot)
 IMMAGINI_GNUPLOT_PDF	= $(patsubst %.gnuplot,%.pdf,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_EPS	= $(patsubst %.gnuplot,%.eps,$(IMMAGINI_GNUPLOT))
@@ -26,14 +27,15 @@ IMMAGINI_ECLISSI_PDF	= $(PROG)/distanza_proiettata.pdf \
 	$(PROG)/flusso.pdf $(PROG)/piano_cielo.pdf
 IMMAGINI_ECLISSI_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_ECLISSI_PDF))
 IMMAGINI_ECLISSI_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_ECLISSI_PDF))
-TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX)
+TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX) $(INIZIO_FINE_TEX)
 TUTTI_FILE		= $(PROG)/keplero-immagini $(PROG)/keplero-dat \
 	$(PROG)/keplero.c $(PROG)/eclissi-immagini $(ECLISSI_DAT) \
 	$(PROG)/eclissi.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
 	$(FRONTESPIZIO_PDF) mythesis.bbx mythesis.cbx
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
 	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*.aux) \
-	$(wildcard Capitoli/*~) $(IMMAGINI_GNUPLOT_EPS) \
+	$(wildcard Capitoli/*~) $(wildcard MaterialeInizialeFinale/*.aux) \
+	$(wildcard MaterialeInizialeFinale/*~) $(IMMAGINI_GNUPLOT_EPS) \
 	$(wildcard Immagini/gnuplot/*~) $(wildcard $(PROG)/*~) \
 	$(wildcard $(PROG)/*.eps)
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
@@ -116,6 +118,6 @@ dist: $(TUTTI_TEX) $(BIBLIOGRAFIA) distclean
 	git gc # comprimo il repository di git per ridurre al minimo la tarball
 	cd .. && tar -cJvpsf $(CARTELLA).tar.xz --exclude=$(CARTELLA)/auto $(CARTELLA)/
 
-# Crea un archivio compresso (.tar.gz) contenente tutte le immagini e senza il repo git
+# Crea un archivio compresso (.tar.xz) contenente tutte le immagini e senza il repo git
 full-dist: $(PRINCIPALE_PDF) clean
-	cd .. && tar -czvpsf $(CARTELLA).tar.gz --exclude=$(CARTELLA)/auto --exclude-vcs $(CARTELLA)/
+	cd .. && tar -cJvpsf $(CARTELLA).tar.xz --exclude=$(CARTELLA)/auto --exclude-vcs $(CARTELLA)/
