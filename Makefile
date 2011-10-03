@@ -40,7 +40,9 @@ CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
 	$(IMMAGINI_GNUPLOT_TEX) $(FRONTESPIZIO_FRN) $(FRONTESPIZIO_PDF) \
 	$(KEPLERO_DAT) $(PROG)/keplero-immagini $(PROG)/keplero-dat \
-	$(IMMAGINI_KEPLERO_PDF) $(IMMAGINI_KEPLERO_TEX)
+	$(IMMAGINI_KEPLERO_PDF) $(IMMAGINI_KEPLERO_TEX) \
+	$(ECLISSI_DAT) $(PROG)/eclissi-immagini \
+	$(IMMAGINI_ECLISSI_PDF) $(IMMAGINI_ECLISSI_TEX)
 
 ##### Regole
 
