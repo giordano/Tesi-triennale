@@ -1,0 +1,110 @@
+\begin{scope}[
+  %% stili dei vettori
+  % velocità
+  vel/.style=thick,
+  % velocità radiale
+  rad/.style={thick,dashed},
+  % velocità tangenziale
+  tang/.style={thick,dashed},
+  % velocità nella direzione della linea di vista
+  los/.style={thick,dashdotted}]
+  \pgfmathsetmacro{\a}{2} % a=2
+  \pgfmathsetmacro{\e}{0.7} % e=0.7
+  \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
+  \pgfmathsetmacro{\c}{\a*\e} % c=a*e
+  \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
+
+  % funzione che restituisce la velocità nel punto di anomalia vera #1.
+  \pgfmathdeclarefunction{vel}{1}{\pgfmathparse{sqrt(2/dist(#1)-1/\a)}}
+  % funzione che restituisce la velocità radiale nel punto di anomalia vera #1
+  \pgfmathdeclarefunction{velrad}{1}{\pgfmathparse{\e*sin(#1)/sqrt(\p)}}
+  % funzione che restituisce la velocità tangenziale nel punto di anomalia
+  % vera #1
+  \pgfmathdeclarefunction{veltang}{1}{\pgfmathparse{(1+\e*cos(#1))/sqrt(\p)}}
+
+  %% parametri del primo punto
+  % anomalia vera del primo punto
+  \pgfmathsetmacro{\anomaliauno}{70}
+  % coordinata x del primo punto in cui disegno il vettore posizione
+  \pgfmathsetmacro{\xuno}{dist(\anomaliauno)*cos(\anomaliauno)}
+  % coordinata y del primo punto in cui disegno il vettore posizione
+  \pgfmathsetmacro{\yuno}{dist(\anomaliauno)*sin(\anomaliauno)}
+  % componente x del vettore velocità
+  \pgfmathsetmacro{\vxuno}{vel(\anomaliauno)*cos(beta(\anomaliauno))}
+  % componente y del vettore velocità
+  \pgfmathsetmacro{\vyuno}{vel(\anomaliauno)*sin(beta(\anomaliauno))}
+  %% secondo punto
+  % anomalia vera del secondo punto
+  \pgfmathsetmacro{\anomaliadue}{230}
+  % coordinata x del secondo punto in cui disegno il vettore posizione
+  \pgfmathsetmacro{\xdue}{dist(\anomaliadue)*cos(\anomaliadue)}
+  % coordinata y del secondo punto in cui disegno il vettore posizione
+  \pgfmathsetmacro{\ydue}{dist(\anomaliadue)*sin(\anomaliadue)}
+  % componente x del vettore velocità
+  \pgfmathsetmacro{\vxdue}{vel(\anomaliadue)*cos(beta(\anomaliadue))}
+  % componente y del vettore velocità
+  \pgfmathsetmacro{\vydue}{vel(\anomaliadue)*sin(beta(\anomaliadue))}
+
+  % origine dei sistemi di riferimento
+  \node [shape=coordinate](O) at (0,0)
+        [label=below left:$O \equiv M_{\textup{T}}$] {};
+  % asse x
+  \draw[->] ({-1.05*(\a+\c)},0) -- ({1.3*\a*(1-\e)},0) node[right] {$x$};
+  % asse y
+  \draw[->] (0,{-1.2*\b}) -- (0,{1.2*\b}) node[above] {$y$};
+  \draw (-\c,0) ellipse ({\a} and \b); % ellisse
+
+  %% primo punto
+  % vettore velocità
+  \draw[->,vel] (\xuno,\yuno) -- +(\vxuno,\vyuno)
+                node[above left] {$\bm{v}$};
+  % vettore velocità radiale
+  \draw[->,rad] (\xuno,\yuno) -- +({velrad(\anomaliauno)*cos(\anomaliauno)},
+                {velrad(\anomaliauno)*sin(\anomaliauno)})
+                node[above] {$\bm{v}_{\textup{r}}$};
+  % vettore velocità tangenziale
+  \draw[->,tang] (\xuno,\yuno) --
+                 +({veltang(\anomaliauno)*cos(\anomaliauno+90)},
+                 {veltang(\anomaliauno)*sin(\anomaliauno+90)})
+                 node[left] {$\bm{v}_{\textup{t}}$};
+  % vettore velocità nella direzione della linea di vista (asse x)
+  \draw[->,los] (\xuno,\yuno) --  +(\vxuno,0) node[left]
+                {$\bm{v}_{\textup{los}}$};
+  \draw ({\xuno+0.2*cos(\anomaliauno)},{\yuno+0.2*sin(\anomaliauno)}) arc
+        (\anomaliauno:beta(\anomaliauno):0.2) node[above right=2] {$\alpha$};
+  \draw[loosely dashed] (O) -- (\xuno,\yuno);
+  \draw ($(O) + (0.2,0)$) to[out=90,in=\anomaliauno-90] node[right] {$\theta$}
+        ($(O) + 0.2*({cos(\anomaliauno)},{sin(\anomaliauno)})$);
+  %% secondo punto
+  % vettore velocità
+  \draw[->,vel] (\xdue,\ydue) -- +(\vxdue,\vydue) node[above right] {$\bm{v}$};
+  % vettore velocità radiale
+  \draw[->,rad] (\xdue,\ydue) -- +({velrad(\anomaliadue)*cos(\anomaliadue)},
+                {velrad(\anomaliadue)*sin(\anomaliadue)})
+                node[above right] {$\bm{v}_{\textup{r}}$};
+  % vettore velocità tangenziale
+  \draw[->,tang] (\xdue,\ydue) --
+                 +({veltang(\anomaliadue)*cos(\anomaliadue+90)},
+                 {veltang(\anomaliadue)*sin(\anomaliadue+90)})
+                 node[below right] {$\bm{v}_{\textup{t}}$};
+  % vettore velocità nella direzione della linea di vista (asse x)
+  \draw[->,los] (\xdue,\ydue) --  +(\vxdue,0) node[below right,fill=white]
+                {$\bm{v}_{\textup{los}}$};
+  \draw[loosely dashed] (\xdue,\ydue) --
+                        +($0.5*({cos(\anomaliadue)},{sin(\anomaliadue)})$);
+  \draw ({\xdue+0.2*cos(\anomaliadue)},{\ydue+0.2*sin(\anomaliadue)}) arc
+       ({\anomaliadue}:beta(\anomaliadue):0.2) node[below left=14] {$\alpha$};
+
+  %% disegno una specie di occhio
+  \pgfmathsetmacro{\occhio}{20} % metà dell'apertura angolare dell'occhio
+  \draw ({2.5*(\a-\c)},0) -- +({cos(180+\occhio)*0.2},{sin(180+\occhio)*0.2});
+  \draw ({2.5*(\a-\c)},0) -- +({cos(180-\occhio)*0.2},{sin(180-\occhio)*0.2});
+  \draw ({2.5*(\a-\c)-cos(\occhio)*0.16},{sin(\occhio)*0.16}) arc
+        ({180-\occhio}:{180+\occhio}:0.16);
+  \node at ({2.3*(\a-\c)},0.1) [label=above:osservatore] {};
+\end{scope}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:

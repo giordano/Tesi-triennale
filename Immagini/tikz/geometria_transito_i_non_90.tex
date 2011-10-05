@@ -1,0 +1,26 @@
+\coordinate (O1) at (0,0); % centro stella
+\coordinate (O2) at (8,0); % centro pianeta
+\draw[thick] (O1) circle (2); % disco stella (r=2)
+\node at ($(O1) + (2.3,-1.2)$) {$m_1$};
+\draw[thick] (O2) circle (1); % disco pianeta (r=1)
+\node at ($(O2) + (-1.1,-1)$) {$m_2$};
+\draw[->] (O1) -- (0,3) node[above] {$z$}; % asse z
+\draw[->] (O1) -- (10,0) node[right] {$x$}; % asse x
+\draw[->] (O1) -- (10,1) node[right] {$x''$}; % asse x''
+% retta parallela all'asse x'' e passante per il centro del pianeta
+\draw (0,-0.8) -- (10,0.2);
+\draw[<->] let \n1 = {0.8/10.1},
+               \n2 = {-8/10.1}
+           in
+           (O1) -- node (P) {} (\n1,\n2); % distanza fra le due rette
+\draw[->] (-0.8,0.5) node[above] {$a\cos i$} to[out=-90,in=180] (P);
+\draw[dashed] let \n1 = {atan(0.1)} in
+                  ($(O1) + (0,2.5)$) to[out=0,in=90+\n1] node[right=5]
+                  {$i$} ($cos(\n1)*(2.5,0) + sin(\n1)*(0,2.5)$);
+\draw (O1) -- node[left] {$r_1$} +($-2*({cos(45)},{sin(45)})$);
+\draw (O2) -- node[left] {$r_2$} +($({cos(45)},{-sin(45)})$);
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:

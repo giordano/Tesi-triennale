@@ -1,0 +1,28 @@
+\pgfmathsetmacro{\a}{1.0} % Semiasse delle tre ellissi: a=1
+% parametri della prima ellisse
+\pgfmathsetmacro{\euno}{0.2} % e1 = 0.2
+\pgfmathsetmacro{\buno}{\a*sqrt(1-\euno*\euno)} % b_1=a*sqrt(1-e_1^2)
+\pgfmathsetmacro{\cuno}{\a*\euno} % c_1=a*e_1
+% parametri della seconda ellisse
+\pgfmathsetmacro{\edue}{0.5} % e2 = 0.5
+\pgfmathsetmacro{\bdue}{\a*sqrt(1-\edue*\edue)} % b_2=a*sqrt(1-e_2^2)
+\pgfmathsetmacro{\cdue}{\a*\edue} % c_2=a*e_2
+% parametri della terza ellisse
+\pgfmathsetmacro{\etre}{0.9} % e3 = 0.9
+\pgfmathsetmacro{\btre}{\a*sqrt(1-\etre*\etre)} % b_3=a*sqrt(1-e_3^2)
+\pgfmathsetmacro{\ctre}{\a*\etre} % c_3=a*e_3
+
+% Fisso il fuoco comune nell'origine, quindi i centri si trovano in (-c_i,0)
+\draw [->] (-2,0) -- (1.1,0) node[right] {$x$}; %asse x
+\draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
+\draw (-\cuno,0) ellipse ({\a} and \buno); %ellisse 1
+\draw (0.8,0.8) node {$e=\euno$};
+\draw[dashed] (-\cdue,0) ellipse ({\a} and \bdue); %ellisse 2
+\draw (-1.2,0.7) node[left] {$e=\edue$};
+\draw[dashdotted] (-\ctre,0) ellipse ({\a} and \btre); %ellisse 3
+\draw (-1.9,0.2) node[left] {$e=\etre$};
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:

@@ -1,0 +1,71 @@
+\pgfmathsetmacro{\a}{1} % a=1
+\pgfmathsetmacro{\e}{0.8} % e=0.8
+\pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
+\pgfmathsetmacro{\c}{\a*\e} % c=a*e
+\pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
+\pgfmathsetmacro{\m}{0.3} % massa
+\pgfmathsetmacro{\scala}{4} % fattore di scala per il momento angolare
+
+% funzione che restituisce la quantità di moto nel punto di anomalia vera #1
+% (valgono sempre le stesse considerazioni: la funzione restituisce valori
+% corretti se #1 != 0, 180, 360 e numeri a loro congrui in modulo 360)
+\pgfmathdeclarefunction{mv}{1}{\pgfmathparse{\m*sqrt(2/dist(#1)-1/\a)}}
+% funzione che restituisce il modulo del momento angolare nel punto di
+% anomalia vera #1. (valgono sempre le stesse considerazioni: la funzione
+% restituisce valori corretti se #1 != 0, 180, 360 e numeri a loro congrui
+% in modulo 360)
+\pgfmathdeclarefunction{momang}{1}%
+                      {\pgfmathparse{dist(#1)*mv(#1)*sin(alpha(#1))*\scala}}
+
+%% parametri del primo punto
+% anomalia vera del primo punto
+\pgfmathsetmacro{\anomaliauno}{0}
+% coordinata x del primo punto in cui disegno il vettore posizione
+\pgfmathsetmacro{\xuno}{dist(\anomaliauno)*cos(\anomaliauno)}
+% coordinata y del primo punto in cui disegno il vettore posizione
+\pgfmathsetmacro{\yuno}{dist(\anomaliauno)*sin(\anomaliauno)}
+% componente x del vettore quantità di moto. poiché anomalia = 0 pongo
+% manualmente p_x = 0, p_y = |p| (negli altri casi posso usare le funzioni
+% sopra definite)
+\pgfmathsetmacro{\pxuno}{0}
+% componente y del vettore quantità di moto
+\pgfmathsetmacro{\pyuno}{mv(\anomaliauno)}
+%% secondo punto
+% anomalia vera del secondo punto
+\pgfmathsetmacro{\anomaliadue}{130}
+% coordinata x del secondo punto in cui disegno il vettore posizione
+\pgfmathsetmacro{\xdue}{dist(\anomaliadue)*cos(\anomaliadue)}
+% coordinata y del secondo punto in cui disegno il vettore posizione
+\pgfmathsetmacro{\ydue}{dist(\anomaliadue)*sin(\anomaliadue)}
+% componente x del vettore quantità di moto
+\pgfmathsetmacro{\pxdue}{mv(\anomaliadue)*cos(beta(\anomaliadue))}
+% componente y del vettore quantità di moto
+\pgfmathsetmacro{\pydue}{mv(\anomaliadue)*sin(beta(\anomaliadue))}
+
+% origine dei sistemi di riferimento
+\node [shape=coordinate](O) at (0,0,0) [label=above right:$O$] {};
+\draw[->] (O) -- (1,0,0) node[anchor=north east]{$x$}; % asse x
+\draw[->] (O) -- (0,1,0) node[anchor=north west]{$y$}; % asse y
+\draw[->] (O) -- (0,0,1) node[anchor=south]{$z$}; % asse z
+\draw (-\c,0,0) ellipse ({\a} and \b); % ellisse
+
+%% primo punto
+\draw[->,thick] (O) -- node[above] {$\bm{r}$} (\xuno,\yuno); % posizione
+% vettore quantità di moto
+\draw[->,thick] (\xuno,\yuno) -- node[below] {$\bm{p}$} +(\pxuno,\pyuno);
+% vettore momento angolare
+\draw[->,thick] (\xuno,\yuno,0) -- node[left] {$\bm{l}_0$}
+                +(0,0,{dist(\anomaliauno)*mv(\anomaliauno)*\scala});
+
+% %% secondo punto
+\draw[->,thick] (O) -- node[above] {$\bm{r}$} (\xdue,\ydue); % posizione
+% vettore quantità di moto
+\draw[->,thick] (\xdue,\ydue) -- node[below] {$\bm{p}$} +(\pxdue,\pydue);
+% vettore momento angolare
+\draw[->,thick] (\xdue,\ydue,0) -- node[right] {$\bm{l}_0$}
+                +(0,0,{momang(\anomaliadue)});
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:

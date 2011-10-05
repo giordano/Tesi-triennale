@@ -14,6 +14,7 @@ IMMAGINI_GNUPLOT	= $(wildcard Immagini/gnuplot/*.gnuplot)
 IMMAGINI_GNUPLOT_PDF	= $(patsubst %.gnuplot,%.pdf,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_EPS	= $(patsubst %.gnuplot,%.eps,$(IMMAGINI_GNUPLOT))
 IMMAGINI_GNUPLOT_TEX	= $(patsubst %.gnuplot,%.tex,$(IMMAGINI_GNUPLOT))
+IMMAGINI_TIKZ		= $(wildcard Immagini/tikz/*.tex)
 PROG			= programmi
 KEPLERO_DAT		= $(PROG)/newton.dat $(PROG)/bessel.dat
 IMMAGINI_KEPLERO_PDF	= $(PROG)/newton-anomalia_eccentrica.pdf \
@@ -27,7 +28,8 @@ IMMAGINI_ECLISSI_PDF	= $(PROG)/distanza_proiettata.pdf \
 	$(PROG)/flusso.pdf $(PROG)/piano_cielo.pdf
 IMMAGINI_ECLISSI_EPS	= $(patsubst %.pdf,%.eps,$(IMMAGINI_ECLISSI_PDF))
 IMMAGINI_ECLISSI_TEX	= $(patsubst %.pdf,%.tex,$(IMMAGINI_ECLISSI_PDF))
-TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX) $(INIZIO_FINE_TEX)
+TUTTI_TEX		= $(PRINCIPALE_TEX) $(CAPITOLI_TEX) $(INIZIO_FINE_TEX) \
+			  $(IMMAGINI_TIKZ)
 TUTTI_FILE		= $(PROG)/keplero-immagini $(PROG)/keplero-dat \
 	$(PROG)/keplero.c $(PROG)/eclissi-immagini $(ECLISSI_DAT) \
 	$(PROG)/eclissi.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
@@ -35,8 +37,8 @@ TUTTI_FILE		= $(PROG)/keplero-immagini $(PROG)/keplero-dat \
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
 	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*~) \
 	$(wildcard MaterialeInizialeFinale/*~) $(IMMAGINI_GNUPLOT_EPS) \
-	$(wildcard Immagini/gnuplot/*~) $(wildcard $(PROG)/*~) \
-	$(wildcard $(PROG)/*.eps)
+	$(wildcard Immagini/gnuplot/*~) $(wildcard Immagini/tikz/*~) \
+	$(wildcard $(PROG)/*~) $(wildcard $(PROG)/*.eps)
 DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
 	$(IMMAGINI_GNUPLOT_TEX) $(FRONTESPIZIO_FRN) $(FRONTESPIZIO_PDF) \
 	$(KEPLERO_DAT) $(PROG)/keplero-immagini $(PROG)/keplero-dat \

@@ -1,0 +1,27 @@
+% coordinata x del centro del pianeta (uguale al semiasse maggiore perché ho
+% posto il centro della stella nell'origine)
+\pgfmathsetmacro{\a}{8}
+\pgfmathsetmacro{\runo}{2} % raggio stella = 2
+\pgfmathsetmacro{\rdue}{1} % raggio pianeta = 1
+\pgfmathsetmacro{\i}{acos(sqrt(1-\rdue*\rdue/(\a*\a)))} % angolo i
+
+\coordinate (O1) at (0,0); % centro stella
+\coordinate (O2) at (\a,0); % centro pianeta
+\draw[thick] (O1) circle (\runo); % disco stella
+\node at ($(O1) + (2.3,-1.2)$) {$m_1$};
+\draw[thick] (O2) circle (\rdue); % disco pianeta
+\node at ($(O2) + (-1.1,-1)$) {$m_2$};
+\draw[->] (O1) -- +(0,3) node[above] {$z$}; % asse z
+\draw[->] (O1) -- +(10,0) node[right] {$x$}; % asse x
+\draw[->] (O1) -- ($10*({cos(\i)},{sin(\i)})$) node[right] {$x''$}; % asse x''
+\draw[dashed] ($(O1) + (0,2.5)$) to[out=0,in=90+\i] % angolo di inclinazione
+              node[right=5] {$i_{\textup{min}}$} ($2.5*({cos(\i)},{sin(\i)})$);
+% distanza fra i centri di pianeta e stella
+\draw[<->] ($(O1) + (0,-0.2)$) -- node[fill=white] {$a$} ($(O2)+(0,-0.2)$);
+\draw (O1) -- node[left] {$r_1$} +($-\runo*({cos(45)},{sin(45)})$);
+\draw (O2) -- node[right] {$r_2$} +($\rdue*({cos(90+\i)},{sin(90+\i)})$);
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:

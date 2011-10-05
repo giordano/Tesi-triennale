@@ -1,0 +1,30 @@
+\pgfmathsetmacro{\rdue}{1} % raggio pianeta = 1
+\pgfmathsetmacro{\runo}{4*\rdue} % raggio stella = 4
+\pgfmathsetmacro{\acosi}{2.5} % a*cos(i) = 2.5
+% modulo della coordinata x dell'ingresso finale (e dell'egresso finale)
+\pgfmathsetmacro{\xingresso}{sqrt((\runo+\rdue)^2-\acosi^2)}
+% modulo della coordinata x dell'egresso iniziale (e dell'ingrsso finale)
+\pgfmathsetmacro{\xegresso}{sqrt((\runo-\rdue)^2-\acosi^2)}
+
+\draw (\runo,0) arc (0:180:\runo); % semi-disco stella
+\draw (-6,\acosi) -- (6,\acosi); % asse passante lungo equatori dei pianeti
+\draw (-\runo,0) -- (\runo,0); % diametro stella
+\draw[<->] (0,0) -- node[sloped,above,fill=white] {$a\cos i$} (0,\acosi);
+\draw[->] (-6,-1) -- (6,-1) node[right] {$t$}; % asse del tempo
+\draw (-\xingresso,\acosi) circle (\rdue) % posizione di ingresso iniziale
+      (\xingresso,\acosi)  circle (\rdue) % posizione di egresso finale
+      (0,0) -- node[sloped,below,fill=white] {$r_1 + r_2$} (-\xingresso,\acosi);
+\draw[dashed] ($-\xingresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
+              node[below] {$t_{\textup{ii}}$} ($\xingresso*(1,0) + (0,\acosi)$)
+              -- +(0,{-\acosi-1}) node[below] {$t_{\textup{ef}}$};
+\draw (-\xegresso,\acosi) circle (\rdue) % posizione di ingresso finale
+      (\xegresso,\acosi)  circle (\rdue) % posizione di egresso iniziale
+      (0,0) -- node[sloped,below,fill=white] {$r_1-r_2$} (\xegresso,\acosi);
+\draw[dashed] ($-\xegresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
+              node[below] {$t_{\textup{if}}$} ($\xegresso*(1,0) + (0,\acosi)$)
+              -- +(0,{-\acosi-1}) node[below] {$t_{\textup{ei}}$};
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:

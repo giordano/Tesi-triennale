@@ -186,30 +186,7 @@ fenomeno dell'eclissi.
 \begin{figure}
   \centering
   \begin{tikzpicture}
-    % coordinata x del centro del pianeta (uguale al semiasse maggiore perché ho
-    % posto il centro della stella nell'origine)
-    \pgfmathsetmacro{\a}{8}
-    \pgfmathsetmacro{\runo}{2} % raggio stella = 2
-    \pgfmathsetmacro{\rdue}{1} % raggio pianeta = 1
-    \pgfmathsetmacro{\i}{acos(sqrt(1-\rdue*\rdue/(\a*\a)))} % angolo i
-
-    \coordinate (O1) at (0,0); % centro stella
-    \coordinate (O2) at (\a,0); % centro pianeta
-    \draw[thick] (O1) circle (\runo); % disco stella
-    \node at ($(O1) + (2.3,-1.2)$) {$m_1$};
-    \draw[thick] (O2) circle (\rdue); % disco pianeta
-    \node at ($(O2) + (-1.1,-1)$) {$m_2$};
-    \draw[->] (O1) -- +(0,3) node[above] {$z$}; % asse z
-    \draw[->] (O1) -- +(10,0) node[right] {$x$}; % asse x
-    % asse x''
-    \draw[->] (O1) -- ($10*({cos(\i)},{sin(\i)})$) node[right] {$x''$};
-    % angolo di inclinazione
-    \draw[dashed] ($(O1) + (0,2.5)$) to[out=0,in=90+\i] node[right=5]
-                  {$i_{\textup{min}}$} ($2.5*({cos(\i)},{sin(\i)})$);
-    % distanza fra i centri di pianeta e stella
-    \draw[<->] ($(O1) + (0,-0.2)$) -- node[fill=white] {$a$} ($(O2)+(0,-0.2)$);
-    \draw (O1) -- node[left] {$r_1$} +($-\runo*({cos(45)},{sin(45)})$);
-    \draw (O2) -- node[right] {$r_2$} +($\rdue*({cos(90+\i)},{sin(90+\i)})$);
+    \input{Immagini/tikz/angolo_inclinazione}
   \end{tikzpicture}
   \caption[Angolo di inclinazione minimo sotto il quale un osservatore può
   vedere
@@ -240,32 +217,7 @@ cioè $i \approx \pi/2$.
 \begin{figure}
   \centering
   \begin{tikzpicture}[scale=0.6,font=\footnotesize]
-    \pgfmathsetmacro{\rdue}{1} % raggio pianeta = 1
-    \pgfmathsetmacro{\runo}{4*\rdue} % raggio stella = 4
-
-    \coordinate (O) at (0,0); % centro stella
-    \draw (O) circle (\runo); % disco stella
-    \draw (O) -- node[right] {$r_1$} +(0,-\runo);
-    \draw (-\runo-\rdue,0) -- node[above,sloped] {$r_2$}
-          +($-\rdue*({cos(45)},{sin(45)})$);
-    \foreach \x in {-5,-3,-1,1,3,5} % varie posizioni del pianeta
-      \draw (\x,0) circle (\rdue);
-    \draw (-8,-\runo+1) node[left] {luminosità} -- (-\runo-\rdue,-\runo+1) --
-          (-\runo+\rdue,-\runo-1) -- (\runo-1,-\runo-1) --
-          (\runo+\rdue,-\runo+1) -- (8,-\runo+1); % curva di luce
-    \draw[dashed] (-\runo-\rdue,0) -- (-\runo-\rdue,-\runo-2) node[below]
-                  {$t_{\textup{ii}}$};
-    \draw[dashed] (-\runo,-\runo) -- (-\runo,-\runo-2) node[below]
-                  {$t_{\textup{mi}}$};
-    \draw[dashed] (-\runo+\rdue,0) -- (-\runo+\rdue,-\runo-2) node[below]
-                  {$t_{\textup{if}}$};
-    \draw[dashed] (\runo-\rdue,0) -- (\runo-\rdue,-\runo-2) node[below]
-                  {$t_{\textup{ei}}$};
-    \draw[dashed] (\runo,-\runo) -- (\runo,-\runo-2) node[below]
-                  {$t_{\textup{mf}}$};
-    \draw[dashed] (\runo+\rdue,0) -- (\runo+\rdue,-\runo-2) node[below]
-                  {$t_{\textup{ef}}$};
-    \draw[->] (-8,-\runo-2) -- (8,-\runo-2) node[right] {$t$}; % asse del tempo
+    \input{Immagini/tikz/schema_transito}
   \end{tikzpicture}
   \caption[Transito di un pianeta davanti alla stella compagna nel caso
   $i = \pi/2$]{Transito di un pianeta davanti alla stella compagna nel caso $i =
@@ -310,59 +262,11 @@ dell'eclissi è
   \subfloat[][Posizione del pianeta, davanti alla stella, in corrispondenza dei
   punti di contatto\label{fig:transito-i-non-90.a}]
   {\begin{tikzpicture}[scale=0.7,font=\footnotesize]
-      \pgfmathsetmacro{\rdue}{1} % raggio pianeta = 1
-      \pgfmathsetmacro{\runo}{4*\rdue} % raggio stella = 4
-      \pgfmathsetmacro{\acosi}{2.5} % a*cos(i) = 2.5
-      % modulo della coordinata x dell'ingresso finale (e dell'egresso finale)
-      \pgfmathsetmacro{\xingresso}{sqrt((\runo+\rdue)^2-\acosi^2)}
-      % modulo della coordinata x dell'egresso iniziale (e dell'ingrsso finale)
-      \pgfmathsetmacro{\xegresso}{sqrt((\runo-\rdue)^2-\acosi^2)}
-
-      \draw (\runo,0) arc (0:180:\runo); % semi-disco stella
-      \draw (-6,\acosi) -- (6,\acosi); % asse passante lungo equatori dei pianeti
-      \draw (-\runo,0) -- (\runo,0); % diametro stella
-      \draw[<->] (0,0) -- node[sloped,above,fill=white] {$a\cos i$} (0,\acosi);
-      \draw[->] (-6,-1) -- (6,-1) node[right] {$t$}; % asse del tempo
-      \draw (-\xingresso,\acosi) circle (\rdue) % posizione di ingresso iniziale
-            (\xingresso,\acosi)  circle (\rdue) % posizione di egresso finale
-            (0,0) -- node[sloped,below,fill=white] {$r_1 + r_2$}
-            (-\xingresso,\acosi);
-      \draw[dashed] ($-\xingresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
-                    node[below] {$t_{\textup{ii}}$}
-                    ($\xingresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
-                    node[below] {$t_{\textup{ef}}$};
-      \draw (-\xegresso,\acosi) circle (\rdue) % posizione di ingresso finale
-            (\xegresso,\acosi)  circle (\rdue) % posizione di egresso iniziale
-            (0,0) -- node[sloped,below,fill=white] {$r_1-r_2$}
-            (\xegresso,\acosi);
-      \draw[dashed] ($-\xegresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
-                    node[below] {$t_{\textup{if}}$}
-                    ($\xegresso*(1,0) + (0,\acosi)$) -- +(0,{-\acosi-1})
-                    node[below] {$t_{\textup{ei}}$};
+      \input{Immagini/tikz/schema_transito_i_non_90}
     \end{tikzpicture}} \qquad
   \subfloat[][Geometria del sistema\label{fig:transito-i-non-90.b}]
   {\begin{tikzpicture}[scale=0.7,font=\footnotesize]
-      \coordinate (O1) at (0,0); % centro stella
-      \coordinate (O2) at (8,0); % centro pianeta
-      \draw[thick] (O1) circle (2); % disco stella (r=2)
-      \node at ($(O1) + (2.3,-1.2)$) {$m_1$};
-      \draw[thick] (O2) circle (1); % disco pianeta (r=1)
-      \node at ($(O2) + (-1.1,-1)$) {$m_2$};
-      \draw[->] (O1) -- (0,3) node[above] {$z$}; % asse z
-      \draw[->] (O1) -- (10,0) node[right] {$x$}; % asse x
-      \draw[->] (O1) -- (10,1) node[right] {$x''$}; % asse x''
-      % retta parallela all'asse x'' e passante per il centro del pianeta
-      \draw (0,-0.8) -- (10,0.2);
-      \draw[<->] let \n1 = {0.8/10.1},
-                     \n2 = {-8/10.1}
-                 in
-                 (O1) -- node (P) {} (\n1,\n2); % distanza fra le due rette
-      \draw[->] (-0.8,0.5) node[above] {$a\cos i$} to[out=-90,in=180] (P);
-      \draw[dashed] let \n1 = {atan(0.1)} in
-                        ($(O1) + (0,2.5)$) to[out=0,in=90+\n1] node[right=5]
-                        {$i$} ($cos(\n1)*(2.5,0) + sin(\n1)*(0,2.5)$);
-      \draw (O1) -- node[left] {$r_1$} +($-2*({cos(45)},{sin(45)})$);
-      \draw (O2) -- node[left] {$r_2$} +($({cos(45)},{-sin(45)})$);
+      \input{Immagini/tikz/geometria_transito_i_non_90}
     \end{tikzpicture}}
   \caption{Transito di un pianeta davanti alla stella compagna nel caso
     $i \neq \pi/2$}
@@ -392,51 +296,11 @@ Per $i = \pi/2$ si riottiene il risultato precedente.
   \centering
   \subfloat[][$\sqrt{r_1^2-r_2^2}\leq d\leq r_1+r_2$\label{fig:area-coperta.a}]
   {\begin{tikzpicture}[scale=1.1,font=\footnotesize]
-      \coordinate (O1) at (0,0); % centro stella
-      \coordinate (O2) at (2.5,0); % centro pianeta
-      \draw[name path=S,thick] (O1) circle (2); % disco stella (r=2)
-      \draw[name path=P,thick] (O2) circle (1); % disco pianeta (r=1)
-      % individuo punti di intersezione fra dischi di pianeta e stella
-      \path[name intersections={of=S and P,by={A,B}}];
-      \draw[dashed] (O1) -- (A) -- (O2) -- node[below,sloped] {$r_2$} (B) --
-                    node[above,sloped] {$r_1$}  (O1);
-      \draw (A) -- (B);
-      \draw[->] ($(B) - (0,0.5)$) node[left,fill=white] {$S_1$} to
-                [out=45,in=-80] (1.9,-0.1);
-      \draw[->] ($(A) + (0,0.5)$) node[right] {$S_2$}
-                to[out=180] (1.7,0.1);
-      \draw let \n1 = {acos((1-4+2.5*2.5)/(2*1*2.5))} in
-                ($(O2) - cos(\n1)*(0.2,0) + sin(\n1)*(0,0.2)$) arc
-                (180-\n1:180+\n1:0.2);
-      \draw[->] ($(O2) + (-0.2,0.5)$) node[right] {$\theta_2$}
-                to[out=180,in=180] (2.3,0);
-      \draw let \n2 = {acos((4-1+2.5*2.5)/(2*2*2.5))} in
-                ($(O1) + cos(\n2)*(0.3,0) - sin(\n2)*(0,0.3)$) arc
-                (-\n2:\n2:0.3);
-      \draw[->] ($(O1) + (0.5,-0.5)$) node[below] {$\theta_1$} to[in=0] (0.3,0);
+      \input{Immagini/tikz/area_coperta1}
     \end{tikzpicture}} \qquad
   \subfloat[][$r_1-r_2 \leq d < \sqrt{r_1^2-r_2^2}$\label{fig:area-coperta.b}]
   {\begin{tikzpicture}[scale=1.1,font=\footnotesize]
-      \coordinate (O1) at (0,0); % centro stella
-      \coordinate (O2) at (1.5,0); % centro pianeta
-      \draw[name path=S,thick] (O1) circle (2); % disco stella (r=2)
-      \draw[name path=P,thick] (O2) circle (1); % disco pianeta (r=1)
-      % individuo punti di intersezione fra dischi di pianeta e stella
-      \path[name intersections={of=S and P,by={A,B}}];
-      \draw[dashed] (O1) -- (A) -- (O2) -- node[below,sloped] {$r_2$} (B) --
-                    node[above,sloped] {$r_1$} (O1);
-      \draw (A) -- (B);
-      \draw[->] ($(B) - (0,0.5)$) node[left,fill=white] {$S_1$} to
-                [out=0,in=-60] (1.9,-0.1);
-      \draw[->] ($(A) + (0,0.5)$) node[right] {$S_2$} to[out=180] (1.2,0.3);
-      \draw let \n1 = {acos((1-4+1.5*1.5)/(2*1*1.5))} in
-                ($(O2) - cos(\n1)*(0.2,0) + sin(\n1)*(0,0.2)$) arc
-                (180-\n1:180+\n1:0.2);
-      \draw[->] ($(O2) + (1,0.6)$) node[right] {$\theta_2$}
-                to[out=200,in=0] (1.3,0);
-      \draw let \n2 = {acos((4-1+1.5*1.5)/(2*2*1.5))} in
-            ($(O1) + cos(\n2)*(0.3,0) - sin(\n2)*(0,0.3)$) arc (-\n2:\n2:0.3);
-      \draw[->] ($(O1) + (0.4,-0.4)$) node[below] {$\theta_1$} to[in=0] (0.3,0);
+      \input{Immagini/tikz/area_coperta2}
     \end{tikzpicture}}
   \caption{Schema della sovrapposizione fra i dischi di una stella e di un
     pianeta compagno durante un transito}

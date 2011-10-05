@@ -1,0 +1,26 @@
+\coordinate (O1) at (0,0); % centro stella
+\coordinate (O2) at (2.5,0); % centro pianeta
+\draw[name path=S,thick] (O1) circle (2); % disco stella (r=2)
+\draw[name path=P,thick] (O2) circle (1); % disco pianeta (r=1)
+% individuo punti di intersezione fra dischi di pianeta e stella
+\path[name intersections={of=S and P,by={A,B}}];
+\draw[dashed] (O1) -- (A) -- (O2) -- node[below,sloped] {$r_2$} (B) --
+              node[above,sloped] {$r_1$}  (O1);
+\draw (A) -- (B);
+\draw[->] ($(B) - (0,0.5)$) node[left,fill=white] {$S_1$} to
+          [out=45,in=-80] (1.9,-0.1);
+\draw[->] ($(A) + (0,0.5)$) node[right] {$S_2$}
+          to[out=180] (1.7,0.1);
+\draw let \n1 = {acos((1-4+2.5*2.5)/(2*1*2.5))} in
+          ($(O2) - cos(\n1)*(0.2,0) + sin(\n1)*(0,0.2)$) arc
+          (180-\n1:180+\n1:0.2);
+\draw[->] ($(O2) + (-0.2,0.5)$) node[right] {$\theta_2$}
+          to[out=180,in=180] (2.3,0);
+\draw let \n2 = {acos((4-1+2.5*2.5)/(2*2*2.5))} in
+          ($(O1) + cos(\n2)*(0.3,0) - sin(\n2)*(0,0.3)$) arc (-\n2:\n2:0.3);
+\draw[->] ($(O1) + (0.5,-0.5)$) node[below] {$\theta_1$} to[in=0] (0.3,0);
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:

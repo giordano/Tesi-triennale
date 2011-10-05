@@ -1,0 +1,37 @@
+% coordinate del corpo di massa m1=2:
+% x=0.8,  y=0.2,  z=0.2
+\pgfmathsetmacro{\muno}{2}
+\pgfmathsetmacro{\xuno}{0.2}
+\pgfmathsetmacro{\yuno}{0.2}
+\pgfmathsetmacro{\zuno}{0.8}
+% coordinate del corpo di massa m2=1:
+% x=0.6,  y=0.8,  z=0.4
+\pgfmathsetmacro{\mdue}{1}
+\pgfmathsetmacro{\xdue}{0.6}
+\pgfmathsetmacro{\ydue}{0.9}
+\pgfmathsetmacro{\zdue}{0.3}
+% coordinate del centro di massa
+\pgfmathsetmacro{\xcdm}{(\xuno*\muno+\xdue*\mdue)/(\muno+\mdue)}
+\pgfmathsetmacro{\ycdm}{(\yuno*\muno+\ydue*\mdue)/(\muno+\mdue)}
+\pgfmathsetmacro{\zcdm}{(\zuno*\muno+\zdue*\mdue)/(\muno+\mdue)}
+
+\node [shape=coordinate](O) at (0,0,0) [label=left:$O$] {};
+\draw [->] (O) -- (1,0,0) node[anchor=north east] {$x$}; % asse x
+\draw [->] (O) -- (0,1,0) node[anchor=north west] {$y$}; % asse y
+\draw [->] (O) -- (0,0,1) node[anchor=south] {$z$}; % asse z
+
+\draw [->,thick] (O) -- node[left=2,fill=white] {$\bm{r}_1$}
+                 (\xuno,\yuno,\zuno) node[above] {$m_1$}; % vettore r_1
+\draw [->,thick] (O) -- node[below right,fill=white] {$\bm{r}_2$}
+                 (\xdue,\ydue,\zdue) node[right] {$m_2$}; % vettore r_2
+% vettore posizione relativa
+\draw [->,thick] (\xuno,\yuno,\zuno) -- node[above] {$\bm{r}$}
+                 (\xdue,\ydue,\zdue);
+% vettore posizione del centro di massa
+\draw [->,thick] (O) -- node[right] {$\bm{r}_\textup{CM}$}
+                 (\xcdm,\ycdm,\zcdm);
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:

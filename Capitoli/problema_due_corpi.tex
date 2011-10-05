@@ -24,38 +24,7 @@ solo alla mutua interazione gravitazionale.
   \centering
   \tdplotsetmaincoords{70}{100}
   \begin{tikzpicture}[tdplot_main_coords,font=\footnotesize,scale=3]
-    % coordinate del corpo di massa m1=2:
-    % x=0.8,  y=0.2,  z=0.2
-    \pgfmathsetmacro{\muno}{2}
-    \pgfmathsetmacro{\xuno}{0.2}
-    \pgfmathsetmacro{\yuno}{0.2}
-    \pgfmathsetmacro{\zuno}{0.8}
-    % coordinate del corpo di massa m2=1:
-    % x=0.6,  y=0.8,  z=0.4
-    \pgfmathsetmacro{\mdue}{1}
-    \pgfmathsetmacro{\xdue}{0.6}
-    \pgfmathsetmacro{\ydue}{0.9}
-    \pgfmathsetmacro{\zdue}{0.3}
-    % coordinate del centro di massa
-    \pgfmathsetmacro{\xcdm}{(\xuno*\muno+\xdue*\mdue)/(\muno+\mdue)}
-    \pgfmathsetmacro{\ycdm}{(\yuno*\muno+\ydue*\mdue)/(\muno+\mdue)}
-    \pgfmathsetmacro{\zcdm}{(\zuno*\muno+\zdue*\mdue)/(\muno+\mdue)}
-
-    \node [shape=coordinate](O) at (0,0,0) [label=left:$O$] {};
-    \draw [->] (O) -- (1,0,0) node[anchor=north east] {$x$}; % asse x
-    \draw [->] (O) -- (0,1,0) node[anchor=north west] {$y$}; % asse y
-    \draw [->] (O) -- (0,0,1) node[anchor=south] {$z$}; % asse z
-
-    \draw [->,thick] (O) -- node[left=2,fill=white] {$\bm{r}_1$}
-                     (\xuno,\yuno,\zuno) node[above] {$m_1$}; % vettore r_1
-    \draw [->,thick] (O) -- node[below right,fill=white] {$\bm{r}_2$}
-                     (\xdue,\ydue,\zdue) node[right] {$m_2$}; % vettore r_2
-    % vettore posizione relativa
-    \draw [->,thick] (\xuno,\yuno,\zuno) -- node[above] {$\bm{r}$}
-                     (\xdue,\ydue,\zdue);
-    % vettore posizione del centro di massa
-    \draw [->,thick] (O) -- node[right] {$\bm{r}_\textup{CM}$}
-                     (\xcdm,\ycdm,\zcdm);
+    \input{Immagini/tikz/due_corpi}
   \end{tikzpicture}
   \caption[Posizioni dei due corpi in un sistema di riferimento
   inerziale]{Posizioni dei due corpi in un sistema di riferimento
@@ -202,72 +171,7 @@ abbiamo
   % Ruoto sistema di riferimento principale
   \tdplotsetmaincoords{70}{135}
   \begin{tikzpicture}[tdplot_main_coords,scale=3,font=\scriptsize]
-    \pgfmathsetmacro{\a}{1} % a=1
-    \pgfmathsetmacro{\e}{0.8} % e=0.8
-    \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
-    \pgfmathsetmacro{\c}{\a*\e} % c=a*e
-    \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
-    \pgfmathsetmacro{\m}{0.3} % massa
-    \pgfmathsetmacro{\scala}{4} % fattore di scala per il momento angolare
-
-    % funzione che restituisce la quantità di moto nel punto di anomalia vera #1
-    % (valgono sempre le stesse considerazioni: la funzione restituisce valori
-    % corretti se #1 != 0, 180, 360 e numeri a loro congrui in modulo 360)
-    \pgfmathdeclarefunction{mv}{1}{\pgfmathparse{\m*sqrt(2/dist(#1)-1/\a)}}
-    % funzione che restituisce il modulo del momento angolare nel punto di
-    % anomalia vera #1. (valgono sempre le stesse considerazioni: la funzione
-    % restituisce valori corretti se #1 != 0, 180, 360 e numeri a loro congrui
-    % in modulo 360)
-    \pgfmathdeclarefunction{momang}{1}%
-                          {\pgfmathparse{dist(#1)*mv(#1)*sin(alpha(#1))*\scala}}
-
-    %% parametri del primo punto
-    % anomalia vera del primo punto
-    \pgfmathsetmacro{\anomaliauno}{0}
-    % coordinata x del primo punto in cui disegno il vettore posizione
-    \pgfmathsetmacro{\xuno}{dist(\anomaliauno)*cos(\anomaliauno)}
-    % coordinata y del primo punto in cui disegno il vettore posizione
-    \pgfmathsetmacro{\yuno}{dist(\anomaliauno)*sin(\anomaliauno)}
-    % componente x del vettore quantità di moto. poiché anomalia = 0 pongo
-    % manualmente p_x = 0, p_y = |p| (negli altri casi posso usare le funzioni
-    % sopra definite)
-    \pgfmathsetmacro{\pxuno}{0}
-    % componente y del vettore quantità di moto
-    \pgfmathsetmacro{\pyuno}{mv(\anomaliauno)}
-    %% secondo punto
-    % anomalia vera del secondo punto
-    \pgfmathsetmacro{\anomaliadue}{130}
-    % coordinata x del secondo punto in cui disegno il vettore posizione
-    \pgfmathsetmacro{\xdue}{dist(\anomaliadue)*cos(\anomaliadue)}
-    % coordinata y del secondo punto in cui disegno il vettore posizione
-    \pgfmathsetmacro{\ydue}{dist(\anomaliadue)*sin(\anomaliadue)}
-    % componente x del vettore quantità di moto
-    \pgfmathsetmacro{\pxdue}{mv(\anomaliadue)*cos(beta(\anomaliadue))}
-    % componente y del vettore quantità di moto
-    \pgfmathsetmacro{\pydue}{mv(\anomaliadue)*sin(beta(\anomaliadue))}
-
-    % origine dei sistemi di riferimento
-    \node [shape=coordinate](O) at (0,0,0) [label=above right:$O$] {};
-    \draw[->] (O) -- (1,0,0) node[anchor=north east]{$x$}; % asse x
-    \draw[->] (O) -- (0,1,0) node[anchor=north west]{$y$}; % asse y
-    \draw[->] (O) -- (0,0,1) node[anchor=south]{$z$}; % asse z
-    \draw (-\c,0,0) ellipse ({\a} and \b); % ellisse
-
-    %% primo punto
-    \draw[->,thick] (O) -- node[above] {$\bm{r}$} (\xuno,\yuno); % posizione
-    % vettore quantità di moto
-    \draw[->,thick] (\xuno,\yuno) -- node[below] {$\bm{p}$} +(\pxuno,\pyuno);
-    % vettore momento angolare
-   \draw[->,thick] (\xuno,\yuno,0) -- node[left] {$\bm{l}_0$}
-                   +(0,0,{dist(\anomaliauno)*mv(\anomaliauno)*\scala});
-
-    % %% secondo punto
-    \draw[->,thick] (O) -- node[above] {$\bm{r}$} (\xdue,\ydue); % posizione
-    % vettore quantità di moto
-    \draw[->,thick] (\xdue,\ydue) -- node[below] {$\bm{p}$} +(\pxdue,\pydue);
-    % vettore momento angolare
-    \draw[->,thick] (\xdue,\ydue,0) -- node[right] {$\bm{l}_0$}
-                    +(0,0,{momang(\anomaliadue)});
+    \input{Immagini/tikz/momento_angolare}
   \end{tikzpicture}
   \caption[Vettore momento angolare]{Vettore momento angolare
     $\bm{l}_0 = \bm{r} \times \bm{p}$ rappresentato in due punti diversi
@@ -336,15 +240,7 @@ $l_0 = \norm{\bm{l}_0} = \mu r^2\dot{\theta}$ del momento angolare. Infatti
 \begin{figure}
   \centering
   \begin{tikzpicture}[font=\footnotesize,scale=2]
-    \draw[->] (0.6,1.2) .. controls (0.8,1.19) and (1.1,1.196) .. (1.299,0.75)
-                        .. controls (1.5,0.3)  and (1.7,0.2)   .. (2.0,0.0)
-                        .. controls (2.3,-0.2) and (2.4,-0.2)  .. (2.6,-0.3);
-    \draw (0,0) node[left] {$O$};
-    \draw[->] (0,0) -- node[below] {$r+\dd r$} (2,0);
-    \draw[->] (0,0) -- node[above] {$r$} (1.299,0.75);
-    \draw[dashed] (1.299,0) -- node[left] {$r\dd\theta$} (1.299,0.75);
-    \draw[->] ($0.4*cos(30)*(1,0)+ 0.4*sin(30)*(0,1)$) to [out=-60,in=90]
-              node[right] {$\dd\theta$} (0.4,0);
+    \input{Immagini/tikz/area_spazzata}
   \end{tikzpicture}
   \caption[Area spazzata nell'intervallo di tempo $\dd t$ dal vettore
   posizione]{Area spazzata nell'intervallo di tempo $\dd t$ dal vettore
@@ -483,29 +379,7 @@ possono essere classificate nel seguente modo:
 \begin{figure}
   \centering
   \begin{tikzpicture}[font=\scriptsize,scale=5]
-    \pgfmathsetmacro{\a}{1} % a=1
-    \pgfmathsetmacro{\e}{0.8} % e=0.8
-    \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
-    \pgfmathsetmacro{\c}{\a*\e} % c=a*e
-    \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
-
-    \draw[->] (-1.1,0) -- (1.1,0) node[right] {$x\equiv x'$}; %assi x e x'
-    \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
-    \draw[->] (\c,-0.7) -- (\c,0.7) node[above] {$y$}; %asse y
-    \draw[thick] (0,0) ellipse ({\a} and \b); % ellisse
-    \draw[fill=black] (-\c,0) circle (0.005) node[below] {$F_2$}; % fuoco F_2
-    \draw (0,0) node[below left] {$O'$}; % origine O'
-    \draw[fill=black] (\c,0) circle (0.005) % fuoco F_1 e origine O
-                      node[below left] {$O\equiv F_1 \equiv M_{\textup{T}}$};
-    \draw[->] (\c+0.1,0) to [out=90,in=-45] node[inner sep=0,fill=white,right=3]
-              {$\theta - \theta_0$} ($(\c,0) + cos(45)*(0.1,0) +
-              sin(45)*(0,0.1)$); % arco dell'anomalia vera
-    \draw[->] (\c,0) -- node[above] {$r$} +($dist(45)*({cos(45},{sin(45)})$);
-    \draw[<->] (0,0.04) -- node[fill=white] {$a$} +(-\a,0);
-    \draw[<->] (0,0.04) -- node[fill=white] {$c$} +(\c,0);
-    \draw[<->] (-0.04,0) -- node[fill=white] {$b$} +(0,\b);
-    \draw[<->] (\c-0.04,0) -- node[fill=white] {$p$} +(0,\p);
-    \draw[<->] (\c,-0.04) -- node[fill=white,inner sep=0] {$a-c$} +({\a-\c},0);
+    \input{Immagini/tikz/ellisse_polare}
   \end{tikzpicture}
   \caption[Ellisse in coordinate polari]{Ellisse in coordinate polari. L'origine
     del sistema di riferimento $Oxy$ è la posizione di $M_\textup{T}$ e coincide
@@ -556,29 +430,7 @@ stesso semiasse maggiore ma con eccentricità differenti.
 \begin{figure}
   \centering
   \begin{tikzpicture}[font=\footnotesize,scale=2]
-    \pgfmathsetmacro{\a}{1.0} % Semiasse delle tre ellissi: a=1
-    % parametri della prima ellisse
-    \pgfmathsetmacro{\euno}{0.2} % e1 = 0.2
-    \pgfmathsetmacro{\buno}{\a*sqrt(1-\euno*\euno)} % b_1=a*sqrt(1-e_1^2)
-    \pgfmathsetmacro{\cuno}{\a*\euno} % c_1=a*e_1
-    % parametri della seconda ellisse
-    \pgfmathsetmacro{\edue}{0.5} % e2 = 0.5
-    \pgfmathsetmacro{\bdue}{\a*sqrt(1-\edue*\edue)} % b_2=a*sqrt(1-e_2^2)
-    \pgfmathsetmacro{\cdue}{\a*\edue} % c_2=a*e_2
-    % parametri della terza ellisse
-    \pgfmathsetmacro{\etre}{0.9} % e3 = 0.9
-    \pgfmathsetmacro{\btre}{\a*sqrt(1-\etre*\etre)} % b_3=a*sqrt(1-e_3^2)
-    \pgfmathsetmacro{\ctre}{\a*\etre} % c_3=a*e_3
-
-    % Fisso il fuoco comune nell'origine, quindi i centri si trovano in (-c_i,0)
-    \draw [->] (-2,0) -- (1.1,0) node[right] {$x$}; %asse x
-    \draw [->] (0,-1.2) -- (0,1.2) node[above] {$y$}; %asse y
-    \draw (-\cuno,0) ellipse ({\a} and \buno); %ellisse 1
-    \draw (0.8,0.8) node {$e=\euno$};
-    \draw[dashed] (-\cdue,0) ellipse ({\a} and \bdue); %ellisse 2
-    \draw (-1.2,0.7) node[left] {$e=\edue$};
-    \draw[dashdotted] (-\ctre,0) ellipse ({\a} and \btre); %ellisse 3
-    \draw (-1.9,0.2) node[left] {$e=\etre$};
+    \input{Immagini/tikz/ellissi}
   \end{tikzpicture}
   \caption[Ellissi con diversi valori di eccentricità]{Ellissi con fuoco comune
     nell'origine del sistema di riferimento, stesso semiasse maggiore $a=1$ ed
@@ -716,110 +568,8 @@ l'eccentricità sono legati dalla~\eqref{eq:semilato-iperbole}, si ha
 
 \begin{figure}[tb]
   \centering
-  \begin{tikzpicture}[scale=2.5,font=\footnotesize,
-    %% stili dei vettori
-    % velocità
-    vel/.style=thick,
-    % velocità radiale
-    rad/.style={thick,dashed},
-    % velocità tangenziale
-    tang/.style={thick,dashed},
-    % velocità nella direzione della linea di vista
-    los/.style={thick,dashdotted}]
-    \pgfmathsetmacro{\a}{2} % a=2
-    \pgfmathsetmacro{\e}{0.7} % e=0.7
-    \pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
-    \pgfmathsetmacro{\c}{\a*\e} % c=a*e
-    \pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
-
-    % funzione che restituisce la velocità nel punto di anomalia vera #1.
-    \pgfmathdeclarefunction{vel}{1}{\pgfmathparse{sqrt(2/dist(#1)-1/\a)}}
-    % funzione che restituisce la velocità radiale nel punto di anomalia vera #1
-    \pgfmathdeclarefunction{velrad}{1}{\pgfmathparse{\e*sin(#1)/sqrt(\p)}}
-    % funzione che restituisce la velocità tangenziale nel punto di anomalia
-    % vera #1
-    \pgfmathdeclarefunction{veltang}{1}{\pgfmathparse{(1+\e*cos(#1))/sqrt(\p)}}
-
-    %% parametri del primo punto
-    % anomalia vera del primo punto
-    \pgfmathsetmacro{\anomaliauno}{70}
-    % coordinata x del primo punto in cui disegno il vettore posizione
-    \pgfmathsetmacro{\xuno}{dist(\anomaliauno)*cos(\anomaliauno)}
-    % coordinata y del primo punto in cui disegno il vettore posizione
-    \pgfmathsetmacro{\yuno}{dist(\anomaliauno)*sin(\anomaliauno)}
-    % componente x del vettore velocità
-    \pgfmathsetmacro{\vxuno}{vel(\anomaliauno)*cos(beta(\anomaliauno))}
-    % componente y del vettore velocità
-    \pgfmathsetmacro{\vyuno}{vel(\anomaliauno)*sin(beta(\anomaliauno))}
-    %% secondo punto
-    % anomalia vera del secondo punto
-    \pgfmathsetmacro{\anomaliadue}{230}
-    % coordinata x del secondo punto in cui disegno il vettore posizione
-    \pgfmathsetmacro{\xdue}{dist(\anomaliadue)*cos(\anomaliadue)}
-    % coordinata y del secondo punto in cui disegno il vettore posizione
-    \pgfmathsetmacro{\ydue}{dist(\anomaliadue)*sin(\anomaliadue)}
-    % componente x del vettore velocità
-    \pgfmathsetmacro{\vxdue}{vel(\anomaliadue)*cos(beta(\anomaliadue))}
-    % componente y del vettore velocità
-    \pgfmathsetmacro{\vydue}{vel(\anomaliadue)*sin(beta(\anomaliadue))}
-
-    % origine dei sistemi di riferimento
-    \node [shape=coordinate](O) at (0,0)
-          [label=below left:$O \equiv M_{\textup{T}}$] {};
-    % asse x
-    \draw[->] ({-1.05*(\a+\c)},0) -- ({1.3*\a*(1-\e)},0) node[right] {$x$};
-    % asse y
-    \draw[->] (0,{-1.2*\b}) -- (0,{1.2*\b}) node[above] {$y$};
-    \draw (-\c,0) ellipse ({\a} and \b); % ellisse
-
-    %% primo punto
-    % vettore velocità
-    \draw[->,vel] (\xuno,\yuno) -- +(\vxuno,\vyuno)
-                  node[above left] {$\bm{v}$};
-    % vettore velocità radiale
-    \draw[->,rad] (\xuno,\yuno) -- +({velrad(\anomaliauno)*cos(\anomaliauno)},
-                  {velrad(\anomaliauno)*sin(\anomaliauno)})
-                  node[above] {$\bm{v}_{\textup{r}}$};
-    % vettore velocità tangenziale
-    \draw[->,tang] (\xuno,\yuno) --
-                   +({veltang(\anomaliauno)*cos(\anomaliauno+90)},
-                   {veltang(\anomaliauno)*sin(\anomaliauno+90)})
-                   node[left] {$\bm{v}_{\textup{t}}$};
-    % vettore velocità nella direzione della linea di vista (asse x)
-    \draw[->,los] (\xuno,\yuno) --  +(\vxuno,0) node[left]
-                  {$\bm{v}_{\textup{los}}$};
-    \draw ({\xuno+0.2*cos(\anomaliauno)},{\yuno+0.2*sin(\anomaliauno)}) arc
-          (\anomaliauno:beta(\anomaliauno):0.2) node[above right=2] {$\alpha$};
-    \draw[loosely dashed] (O) -- (\xuno,\yuno);
-    \draw ($(O) + (0.2,0)$) to[out=90,in=\anomaliauno-90] node[right] {$\theta$}
-          ($(O) + 0.2*({cos(\anomaliauno)},{sin(\anomaliauno)})$);
-    %% secondo punto
-    % vettore velocità
-    \draw[->,vel] (\xdue,\ydue) -- +(\vxdue,\vydue) node[above right] {$\bm{v}$};
-    % vettore velocità radiale
-    \draw[->,rad] (\xdue,\ydue) -- +({velrad(\anomaliadue)*cos(\anomaliadue)},
-                  {velrad(\anomaliadue)*sin(\anomaliadue)})
-                  node[above right] {$\bm{v}_{\textup{r}}$};
-    % vettore velocità tangenziale
-    \draw[->,tang] (\xdue,\ydue) --
-                   +({veltang(\anomaliadue)*cos(\anomaliadue+90)},
-                   {veltang(\anomaliadue)*sin(\anomaliadue+90)})
-                   node[below right] {$\bm{v}_{\textup{t}}$};
-    % vettore velocità nella direzione della linea di vista (asse x)
-    \draw[->,los] (\xdue,\ydue) --  +(\vxdue,0) node[below right,fill=white]
-                  {$\bm{v}_{\textup{los}}$};
-    \draw[loosely dashed] (\xdue,\ydue) --
-                          +($0.5*({cos(\anomaliadue)},{sin(\anomaliadue)})$);
-    \draw ({\xdue+0.2*cos(\anomaliadue)},{\ydue+0.2*sin(\anomaliadue)}) arc
-         ({\anomaliadue}:beta(\anomaliadue):0.2) node[below left=14] {$\alpha$};
-
-    %% disegno una specie di occhio
-    \pgfmathsetmacro{\occhio}{20} % metà dell'apertura angolare dell'occhio
-    \draw ({2.5*(\a-\c)},0) -- +({cos(180+\occhio)*0.2},{sin(180+\occhio)*0.2});
-    \draw ({2.5*(\a-\c)},0) -- +({cos(180-\occhio)*0.2},{sin(180-\occhio)*0.2});
-    \draw ({2.5*(\a-\c)-cos(\occhio)*0.16},{sin(\occhio)*0.16}) arc
-          ({180-\occhio}:{180+\occhio}:0.16);
-    \node at ({2.3*(\a-\c)},0.1) [label=above:osservatore] {};
+  \begin{tikzpicture}[scale=2.5,font=\footnotesize]
+    \input{Immagini/tikz/ellisse_los}
   \end{tikzpicture}
   \caption[Velocità nella direzione della linea di vista]{Orbita della
     particella relativa nel sistema di riferimento di $M_\textup{T}$. È
@@ -1021,33 +771,8 @@ equivalente a un moto unidimensionale lungo la direzione radiale e con un
 \emph{potenziale efficace}
 \begin{figure}
   \centering
-    \begin{tikzpicture}[xscale=1.45,yscale=0.1,font=\scriptsize]
-    % coefficienti che compaiono nel potenziale efficace
-    \pgfmathsetmacro{\a}{25}
-    \pgfmathsetmacro{\b}{50}
-    % funzione potenziale efficace
-    \pgfmathdeclarefunction{ueff}{1}{\pgfmathparse{\a/#1^2-\b/#1}}
-    %% valori dell'energia
-    % energia E_0 = minimo di U_eff, il minimo si ha nel punto r = 2a/b e
-    % U_eff(2a/b) = -b^2/(4a)
-    \pgfmathsetmacro{\ezero}{-\b^2/(4*\a)}
-    \pgfmathsetmacro{\euno}{-20} % energia E_1
-    \pgfmathsetmacro{\edue}{15} % energia E_2
-
-    \draw[->] (0,-30) -- (0,30) node[above] {$U_{\textup{eff}}$}; % asse y
-    \draw[->] (0,0) node[left] {$O$} -- (8,0) node[right] {$r(\theta)$}; %asse x
-    % grafico della funzione potenziale efficace
-    \draw[name path=U] [domain=0.4:8,samples=100] plot (\x,{ueff(\x)});
-    \draw[dashed,name path={E0}] (0,\ezero) node[left] {$E_0$} -- +(8,0);
-    \draw[dashed,name path={E1}] (0,\euno) node[left] {$E_1$} -- +(8,0);
-    \draw[dashed] (0,\edue) node[left] {$E_2$} -- +(8,0);
-    % individuo il punto di intersezione fra il potenziale e l'energia E_0
-    \path[name intersections={of=U and {E0},by={A}}];
-    \draw[loosely dashed] (A) -- +(0,-\ezero) node[above] {$r_0$};
-    % individuo i punti di intersezione fra il potenziale e l'energia E_1
-    \path[name intersections={of=U and {E1},by={B,C}}];
-    \draw[loosely dashed] (B) -- +(0,-\euno) node[above] {$r_{\textup{min}}$}
-                          (C) -- +(0,-\euno) node[above] {$r_{\textup{max}}$};
+  \begin{tikzpicture}[xscale=1.45,yscale=0.1,font=\scriptsize]
+    \input{Immagini/tikz/potenziale_efficace}
   \end{tikzpicture}
   \caption[Andamento del potenziale efficace in funzione della distanza dal
   centro del campo]{Andamento qualitativo del potenziale efficace della
@@ -1509,21 +1234,12 @@ due corpi nel sistema di riferimento del centro di massa sono
   \subfloat[][Orbite ellittiche dei due corpi nel sistema di riferimento del
   centro di massa]
   {\begin{tikzpicture}[font=\footnotesize,scale=2.5]
-      \draw[->] (-1.6,0) -- (0.4,0) node[right] {$x$}; %asse x
-      \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y$}; %asse y
-      \draw (\cuno,0) ellipse (\auno*1 and \buno); %ellisse di m_1
-      \node at (0.35,0.1) {$m_1$};
-      \draw[dashed] (-\cdue,0) ellipse (\adue*1 and \bdue); %ellisse di m_2
-      \node at (-1.2,0.5) {$m_2$};
+      \input{Immagini/tikz/soluzione_due_corpi}
     \end{tikzpicture}} \quad
   \subfloat[][Orbita della particella relativa nel sistema di riferimento con
   origine nel corpo di massa $m_1$]
   {\begin{tikzpicture}[font=\footnotesize,scale=2.5]
-      \draw[->] (-1.9,0) -- (0.3,0) node[right] {$x$}; %asse x
-      \draw[->] (0,-0.7) -- (0,0.7) node[above] {$y$}; %asse y
-      \draw (-\c,0) ellipse ({\a} and \b); %ellisse della particella ridotta
-      \node [below left] at (0,0) {$m_1$};
-      \node at (-1.6,0.5) {$\mu$};
+      \input{Immagini/tikz/soluzione_particella_relativa}
     \end{tikzpicture}}
   \caption[Soluzione del problema di Keplero]{Soluzione del problema di
     Keplero. Abbiamo posto $m_1=5$ e $m_2=1$ in unità arbitrarie, i parametri
@@ -1610,59 +1326,7 @@ di cinque costanti indipendenti fra le sette complessivamente trovate.
   % Ruoto sistema di riferimento principale (che qui chiamo x'y'z')
   \tdplotsetmaincoords{70}{135}
   \begin{tikzpicture}[tdplot_main_coords,scale=6]
-    %% colori
-    % colore per gli assi del sistema di riferimento Ox'y'z'
-    \colorlet{intrinseco}{black}
-    % colore per gli assi del sistema di riferimento Oxyz
-    \colorlet{ausiliario}{red}
-    % colore per gli assi del sistema di riferimento Ox'y'z'
-    \colorlet{pdc}{blue}
-
-    \pgfmathsetmacro{\angolophi}{20} % valore dell'angolo `phi_0'
-    \pgfmathsetmacro{\angoloi}{40} % valore dell'angolo `i'
-    % origine dei sistemi di riferimento
-    \node [shape=coordinate](O) at (0,0,0) [label=above right:$O$] {};
-    % asse x'
-    \draw[->,intrinseco] (O) -- (1,0,0) node[anchor=north east]{$x'$};
-    % asse y'
-    \draw[->,intrinseco] (O) -- (0,1,0) node[anchor=north west]{$y'$};
-    % asse z' (coincidente con l'asse z)
-    \draw[->,intrinseco!50!ausiliario] (O) -- (0,0,1) node[anchor=south]{$z'
-      \equiv z$};
-    \draw[thick] (-0.4,0,0) ellipse (0.5 and 0.3); % ellisse
-
-    % ruoto il sistema di riferimento principale x'y'z' intorno all'asse z'
-    % dell'angolo `phi_0'
-    \tdplotsetrotatedcoords{0}{0}{\angolophi}
-    % asse x
-    \draw[tdplot_rotated_coords,->,ausiliario] (O) -- (1,0,0)
-    node[anchor=north]{$x$};
-    % asse y (coincidente con l'asse y'')
-    \draw[tdplot_rotated_coords,->,ausiliario!50!pdc] (O) -- (0,1,0)
-    node[anchor=west]{$y \equiv y''$};
-    % disegno archi dell'angolo `phi_0'
-    \tdplotdrawarc[->,tdplot_rotated_coords,ausiliario]{(O)}{0.8}{-\angolophi}%
-    {0}{anchor=north east}{$\phi_0$}
-    \tdplotdrawarc[->,tdplot_rotated_coords,ausiliario]{(O)}{0.8}%
-    {90-\angolophi}{90}{anchor=north west}{$\phi_0$}
-
-    % ruoto il sistema di riferimento xyz intorno all'asse y dell'angolo `phi_0'
-    \tdplotsetrotatedcoords{\angolophi}{-\angoloi}{0}
-    % asse x''
-    \draw[tdplot_rotated_coords,->,pdc] (O) -- (1,0,0)
-    node[anchor=east]{$x''$};
-    % asse z''
-    \draw[tdplot_rotated_coords,->,pdc] (O) -- (0,0,1)
-    node[anchor=south]{$z''$};
-    % ruoto il piano theta (di `phi_0') per disegnare l'arco di `i'
-    \tdplotsetthetaplanecoords{\angolophi}
-    % disegno archi dell'angolo `i' e `pi/2-i'
-    \tdplotdrawarc[->,tdplot_rotated_coords,pdc]{(O)}{0.8}{90-\angoloi}%
-    {0}{anchor=south east}{$i$}
-    \tdplotdrawarc[->,tdplot_rotated_coords,pdc]{(O)}{0.8}{90}%
-    {90-\angoloi}{anchor=south east}{$\pi/2-i$}
-    \tdplotdrawarc[->,tdplot_rotated_coords,pdc]{(O)}{0.8}{0}%
-    {-\angoloi}{anchor=south}{$\pi/2-i$}
+    \input{Immagini/tikz/geometria_sistema_binario}
   \end{tikzpicture}
   \caption[Geometria del sistema binario]{Geometria del sistema binario. Il
     sistema di riferimento proprio dell'ellisse è $Ox'y'z'$, l'origine $O$

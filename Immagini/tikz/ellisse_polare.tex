@@ -1,0 +1,28 @@
+\pgfmathsetmacro{\a}{1} % a=1
+\pgfmathsetmacro{\e}{0.8} % e=0.8
+\pgfmathsetmacro{\b}{\a*sqrt(1-\e*\e)} % b=a*sqrt(1-e^2)
+\pgfmathsetmacro{\c}{\a*\e} % c=a*e
+\pgfmathsetmacro{\p}{\a*(1-\e*\e)} % p=a*(1-e^2)
+
+\draw[->] (-1.1,0) -- (1.1,0) node[right] {$x\equiv x'$}; %assi x e x'
+\draw[->] (0,-0.7) -- (0,0.7) node[above] {$y'$}; %asse y'
+\draw[->] (\c,-0.7) -- (\c,0.7) node[above] {$y$}; %asse y
+\draw[thick] (0,0) ellipse ({\a} and \b); % ellisse
+\draw[fill=black] (-\c,0) circle (0.005) node[below] {$F_2$}; % fuoco F_2
+\draw (0,0) node[below left] {$O'$}; % origine O'
+\draw[fill=black] (\c,0) circle (0.005) % fuoco F_1 e origine O
+                  node[below left] {$O\equiv F_1 \equiv M_{\textup{T}}$};
+% arco dell'anomalia vera
+\draw[->] (\c+0.1,0) to [out=90,in=-45] node[inner sep=0,fill=white,right=3]
+          {$\theta - \theta_0$} ($(\c,0) + 0.1*({cos(45)},{sin(45)})$);
+\draw[->] (\c,0) -- node[above] {$r$} +($dist(45)*({cos(45},{sin(45)})$);
+\draw[<->] (0,0.04) -- node[fill=white] {$a$} +(-\a,0);
+\draw[<->] (0,0.04) -- node[fill=white] {$c$} +(\c,0);
+\draw[<->] (-0.04,0) -- node[fill=white] {$b$} +(0,\b);
+\draw[<->] (\c-0.04,0) -- node[fill=white] {$p$} +(0,\p);
+\draw[<->] (\c,-0.04) -- node[fill=white,inner sep=0] {$a-c$} +({\a-\c},0);
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../tesi"
+%%% End:
