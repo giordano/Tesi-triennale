@@ -9,6 +9,7 @@ tesi-frn.tex
 *.lof
 *.nav
 *.out
+*.pgf-plot.*
 *.snm
 tesi*.pdf
 presentazione.pdf

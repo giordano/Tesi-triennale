@@ -12,12 +12,14 @@
 \rel{Achille Nucita}
 \title{Il problema dei due corpi e applicazioni astrofisiche}
 \institute[UniSalento]{Università del Salento}
-\date{20 ottobre 2011}
+\date{20 ottobre 2011 \\
+Licenza: CC-BY 3.0}
 
 \usefonttheme{professionalfonts}
 \usepackage{lxfonts}
 
-\usepackage{booktabs,siunitx,tikz,tikz-3dplot,bm}
+\usepackage{booktabs,siunitx,tikz,tikz-3dplot,pgfplots}
+\pgfplotsset{compat=1.3}
 
 \sisetup{per-mode=symbol,
   inter-unit-separator={}\cdot{},
@@ -37,7 +39,11 @@
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
 
-\newcommand*{\versor}[1]{\hat{\bm{#1}}}
+% definisco il comando `\bm' uguale a `\vec' perché nelle slide preferisco
+% mettere la frecce piuttosto che usare il grassetto. Non uso direttamente
+% sempre `\vec' perché includo una figura tikz (momento_angolare.tex) che non
+% posso/voglio modificare e utilizza `\bm'.
+\newcommand{\bm}[1]{\vec{#1}}
 
 %%%%% Funzioni PGF
 % funzione che restituisce la distanza dal fuoco di un punto di un'ellisse in
@@ -71,7 +77,7 @@
       Il \alert{problema di Keplero} si occupa del caso particolare della forza
       di gravità
       \begin{equation*}
-        \bm{F} = \frac{Gm_{1} m_{2}}{r^{2}}\versor{r},
+        \bm{F} = \frac{Gm_{1} m_{2}}{r^{3}}\bm{r},
       \end{equation*}
       con $\bm{r} = \bm{r}_{2} - \bm{r}_{1}.$
     \end{column}
@@ -172,6 +178,12 @@ parabola, iperbole). Nel caso dell'ellisse e della circonferenza abbiamo la
     % ricorda che con questa tecnica si può anche stimare il rapporto fra le
     % masse dei due corpi
   \end{adv}
+  \begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+      \input{Immagini/presentazione/velocita_los_due_corpi}
+    \end{tikzpicture}
+  \end{figure}
 \end{frame}
 
 
