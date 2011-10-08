@@ -1,3 +1,8 @@
+/* Autore: Mosè Giordano
+ * Data: 07/09/2011
+ * Licenza: GNU General Public License v3 o, a scelta, una
+ * versione successiva.  Vedi <http://www.gnu.org/licenses/>.
+ */
 #include <math.h>
 #include <gsl/gsl_sf_bessel.h>
 
