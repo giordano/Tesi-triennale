@@ -7,8 +7,11 @@ tesi-frn.tex
 *.fdb_latexmk
 *.log
 *.lof
+*.nav
 *.out
+*.snm
 tesi*.pdf
+presentazione.pdf
 *.run.xml
 *.toc
 *~

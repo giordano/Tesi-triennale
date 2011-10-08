@@ -1,0 +1,183 @@
+\documentclass[10pt]{beamer}
+
+\usetheme[language=italian,
+  titlepagelogo=logo_unisalento,
+  bullet=triangle,
+  color=green,
+  pageofpages=di,
+  titleline=true
+  ]{TorinoTh}
+
+\author{Mosè Giordano}
+\rel{Achille Nucita}
+\title{Il problema dei due corpi e applicazioni astrofisiche}
+\institute[UniSalento]{Università del Salento}
+\date{20 ottobre 2011}
+
+\usefonttheme{professionalfonts}
+\usepackage{lxfonts}
+
+\usepackage{booktabs,siunitx,tikz,tikz-3dplot,bm}
+
+\sisetup{per-mode=symbol,
+  inter-unit-separator={}\cdot{},
+  exponent-product=\cdot,
+  output-product=\cdot,
+  separate-uncertainty=true
+}
+
+\graphicspath{{Immagini/}} % cartella in cui cercare le immagini da caricare
+\setbeamercovered{dynamic} % rende il testo coperto trasparente in modo
+                           % dinamico: la trasparenza sarà tanto più marcata
+                           % quanto più tempo il testo dovrà rimanere coperto, e
+                           % viceversa.
+
+% ridefinisco i comandi per alcune lettere greche in modo che si usino le
+% varianti
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand*{\versor}[1]{\hat{\bm{#1}}}
+
+%%%%% Funzioni PGF
+% funzione che restituisce la distanza dal fuoco di un punto di un'ellisse in
+% corrispondenza dell'anomalia vera #1 (\e = eccentricità, \p = semilato retto)
+\pgfmathdeclarefunction{dist}{1}{\pgfmathparse{\p/(1+\e*cos(#1))}}
+% vedi equazione (1.51), pag 10 della tesi (eq:angolo-alpha2). Per avere
+% risultati corretti bisogna inserire un valore dell'anomalia diverso da 0,
+% 180 e 360 (e numeri a loro congrui in modulo 360)
+\pgfmathdeclarefunction{alpha}{1}{\pgfmathparse{
+    (mod(#1,360) < 180) ? atan(cos(mod(#1,360))/sin(mod(#1,360)) +
+                          1/(\e*sin(mod(#1,360)))):
+                          atan(cos(mod(#1,360))/sin(mod(#1,360)) +
+                          1/(\e*sin(mod(#1,360)))) + 180}
+}
+% vedi sempre il paragrafo sulla velocità nella direzione della linea di
+% vista (sec:velocita-linea-di-vista)
+\pgfmathdeclarefunction{beta}{1}{\pgfmathparse{#1+alpha(#1)}}
+%%%%% Fine funzioni PGF
+\begin{document}
+
+\titlepageframe{}
+
+\begin{frame}
+  \frametitle{Introduzione}
+  \begin{columns}
+    \begin{column}{0.5\columnwidth}
+      Il \alert{problema dei due corpi} è lo studio del moto di due corpi
+      soggetti solamente alla mutua interazione dovuta a forze che soddisfano il
+      principio di azione e reazione.
+
+      Il \alert{problema di Keplero} si occupa del caso particolare della forza
+      di gravità
+      \begin{equation*}
+        \bm{F} = \frac{Gm_{1} m_{2}}{r^{2}}\versor{r},
+      \end{equation*}
+      con $\bm{r} = \bm{r}_{2} - \bm{r}_{1}.$
+    \end{column}
+    \begin{column}{0.4\columnwidth}
+      \tdplotsetmaincoords{70}{100}
+      \begin{tikzpicture}[tdplot_main_coords,scale=3,font=\footnotesize]
+        \input{Immagini/tikz/due_corpi}
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Risultati del problema dei due corpi}
+  \begin{itemize}[<+->]
+  \item Il moto dei due corpi può essere ridotto al
+    \alert{moto di un solo corpo} in un potenziale esterno
+  \item Si \alert{conserva il momento angolare} e il moto dei due corpi si
+    svolge in un \alert{piano} \\
+    \centering
+    \tdplotsetmaincoords{70}{135}
+    \begin{tikzpicture}[tdplot_main_coords,scale=2.5,font=\scriptsize]
+      \input{Immagini/tikz/momento_angolare}
+    \end{tikzpicture}
+  \item È valida la \alert{seconda legge di Keplero}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equazione dell'orbita nel problema di Keplero}
+  L'equazione dell'orbita è
+  \begin{equation*}
+    r(\theta) = \frac{p}{1 + e \cos\theta}
+  \end{equation*}
+cioè l'equazione in coordinate polari di una conica (circonferenza, ellisse,
+parabola, iperbole). Nel caso dell'ellisse e della circonferenza abbiamo la
+\alert{prima legge di Keplero}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ellisse}
+  \begin{tikzpicture}[scale=4.5,font=\tiny]
+    \input{Immagini/presentazione/ellisse_polare2}
+  \end{tikzpicture}
+\end{frame}
+
+% TODO: decidere se tenere o meno questa slide
+\begin{frame}
+  \frametitle{Geometria del sistema binario}
+  \begin{center}
+    \tdplotsetmaincoords{70}{135}
+    \begin{tikzpicture}[tdplot_main_coords,scale=4.5,font=\tiny]
+      \input{Immagini/tikz/geometria_sistema_binario}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evoluzione temporale}
+  \begin{block}{Equazione di Keplero}
+    \begin{equation*}
+    \phi \equiv \omega t = \psi - e\sin\psi
+  \end{equation*}
+  \end{block}
+  \begin{center}
+    \begin{tikzpicture}[font=\tiny,scale=1.9]
+      \input{Immagini/tikz/ellisse_keplero}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applicazioni}
+  \begin{adv}
+  \item Stima della massa di corpi non visibili
+  \end{adv}
+  \begin{center}
+    \includegraphics[width=0.5\columnwidth]{Immagini/orbite_sgra}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applicazioni (continua)}
+  \begin{adv}
+  \item Individuazione e studio di pianeti extrasolari
+  \end{adv}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.55,font=\scriptsize]
+      \input{Immagini/tikz/schema_transito}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applicazioni (continua)}
+  \begin{adv}
+  \item Calcolo della velocità di allontanamento dei sistemi binari
+    % ricorda che con questa tecnica si può anche stimare il rapporto fra le
+    % masse dei due corpi
+  \end{adv}
+\end{frame}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
