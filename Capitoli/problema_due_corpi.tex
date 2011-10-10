@@ -231,7 +231,8 @@ vettoriale~\eqref{eq:forza-mu} può essere riscritta come due equazioni scalari
   \end{gather}
 \end{subequations}
 Dalla~\eqref{eq:forza-mu-azimutale} si trova nuovamente la costanza del modulo
-$l_0 = \norm{\bm{l}_0} = \mu r^2\dot{\theta}$ del momento angolare. Infatti
+$l_0 = \norm{\bm{l}_0} = \norm{\bm{r} \times \mu\dot{\bm{r}}} = \mu
+r^2\dot{\theta}$ del momento angolare. Infatti
 \begin{equation}
   0 = r\mu(r\ddot{\theta} + 2\dot{r}\dot{\theta}) = \toder{\mu
     r^2\dot{\theta}}{t} = \toder{l_0}{t}.
@@ -300,7 +301,7 @@ Sostituendo la~\eqref{eq:derivata2-r} nella~\eqref{eq:forza-mu-radiale} abbiamo
 Poiché $r$ rappresenta la distanza della particella di massa ridotta da
 $M_\textup{T}$, essa assume valori finiti e il suo reciproco $u$ non è mai
 nullo. Nell'equazione precedente possiamo quindi dividere ambo i membri per
-$u^2$ ottenendo
+$l_{0}^{2}u^2/\mu^{2}$ ottenendo
 \begin{equation}
   \toder[2]{u}{\theta} + u = \frac{GM_\textup{T}\mu^2}{l_0^2}.
 \end{equation}
@@ -390,7 +391,7 @@ possono essere classificate nel seguente modo:
   \label{fig:ellisse}
 \end{figure}
 
-Ricordiamo alcune proprietà geometriche delle coniche. Per l'ellisse (vedi la
+Ricordiamo alcune proprietà geometriche delle coniche. Per l'ellisse (si veda la
 Figura~\ref{fig:ellisse}) il semilato retto $p$ è dato da
 \begin{equation}
   \label{eq:semilato-ellisse}
@@ -1267,21 +1268,18 @@ orbitale.
 \subsection{Integrali primi del moto}
 \label{sec:integrali-primi}
 
-Si dimostra che in un sistema isolato, come quello composto dai due corpi, con
-$n$ gradi di libertà esistono $2n+1$ integrali primi del moto indipendenti (si
-veda \textcite[42]{landau:meccanica}). Abbiamo visto che il problema di Keplero
-ha due gradi di libertà e finora abbiamo trovati quattro costanti: l'energia $E$
-del sistema e le tre componenti del vettore momento angolare $\bm{l}_0$. Per
-tutti i campi centrali con forza del tipo $\bm{F} = -k\versor{r}/r^2$, agente su
-un corpo di massa $\mu$, esistono altre tre costanti corrispondenti alle tre
-componenti del \emph{vettore di Laplace-Runge-Lenz} (si veda
+Finora abbiamo trovato quattro costanti del moto: l'energia $E$ del sistema e le
+tre componenti del vettore momento angolare $\bm{l}_0$. Per tutti i campi
+centrali con forza del tipo $\bm{F} = -k\versor{r}/r^2$, agente su un corpo di
+massa $\mu$, esistono altre tre costanti corrispondenti alle tre componenti del
+\emph{vettore di Laplace-Runge-Lenz} (si veda
 \textcite[98]{goldstein:meccanica}) definito da
 \begin{equation}
   \bm{A} = \bm{p}\times\bm{l}_0 - \mu k\versor{r}.
 \end{equation}
 Per il campo gravitazionale abbiamo $k=GM_\textup{T}\mu$, dove $M_\textup{T}$ è
 la massa del corpo che genera il campo. Verifichiamo che il vettore $\bm{A}$ è
-una costante del moto
+un integrale primo del moto
 \begin{equation}
   \begin{split}
     \toder{\bm{A}}{t} &= \dot{\bm{p}}\times\bm{l}_0 + \bm{p}\times\dot{\bm{l}}_0
@@ -1311,12 +1309,11 @@ Confrontando questa equazione con la~\eqref{eq:soluzione2-binet} notiamo che
 $\bm{A}$ è diretto parallelamente al vettore $\bm{r}$ nel punto di periapside e
 che ha modulo $A = \mu ke$.
 
-Adesso conosciamo sette costanti del moto, ma non sono tutte fra loro
+Adesso conosciamo sette integrali primi del moto, ma non sono tutti fra loro
 indipendenti. Un prima relazione che lega queste costanti è l'ortogonalità fra
 $\bm{A}$ e $\bm{l}_0$, l'altra deriva da $A = \mu ke$. Infatti, ricordando la
 relazione~\eqref{eq:eccentricita-energia} fra l'eccentricità $e$ e l'energia $E$
-risulta $A^2 = \mu^2k^2e^2 = \mu^2k^2 + 2\mu El_0^2$. Questo prova l'esistenza
-di cinque costanti indipendenti fra le sette complessivamente trovate.
+risulta $A^2 = \mu^2k^2e^2 = \mu^2k^2 + 2\mu El_0^2$.
 
 \section{Geometria del sistema binario}
 \label{sec:geometria-sistema}
