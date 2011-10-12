@@ -102,7 +102,7 @@ double anomvera(double e, double psi)
  * sistema di riferimento intrinseco al sistema binario
  * nelle coordinate del punto Qb visto da un osservatore
  * nel proprio piano del cielo. Abbiamo sfruttato la formula
- * (1.97) di pagina 23 della tesi e le trasformazioni discusse
+ * (1.97) di pagina 24 della tesi e le trasformazioni discusse
  * nel capitolo 4 del Goldstein, Poole e Safko (vedi la
  * bibliografia). `phi' è l'angolo fra l'asse x' e l'asse x,
  * `i' è l'angolo fra l'asse z e x'', come spiegato nella tesi.

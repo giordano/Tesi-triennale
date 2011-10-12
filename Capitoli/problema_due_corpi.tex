@@ -1066,9 +1066,11 @@ moto dei due corpi che costituiscono il sistema sono
     \bm{p}_2 &= \toder{m_2\bm{r}_2}{t} = m_2\dot{\bm{r}}_2
   \end{align}
 \end{subequations}
-Supponiamo che le forze con cui interagiscono i due corpi derivino da un unico
-potenziale $U=U(\bm{r})$ dipendente solo dalla posizione relativa fra i due
-corpi, dunque la lagrangiana del sistema è data da
+Poiché non sono presenti vincoli olonomi e ciascuno dei vettore $\bm{r}_{1}$ e
+$\bm{r}_{2}$ è descritto da tre coordinate indipendenti il numero di gradi di
+libertà del sistema è pari a sei. Supponiamo che le forze con cui interagiscono
+i due corpi derivino da un unico potenziale $U=U(\bm{r})$ dipendente solo dalla
+posizione relativa fra i due corpi, dunque la lagrangiana del sistema è data da
 \begin{equation}
   \label{eq:lagrangiana-due-corpi}
   \begin{split}
@@ -1118,10 +1120,13 @@ lagrangiana diventa
 \end{equation}
 Il primo termine di questa lagrangiana è l'energia cinetica di un corpo fittizio
 di massa $\mu$ e posizione $\bm{r}$ rispetto all'origine del sistema di
-riferimento. Il vettore $\bm{r}$ svolge dunque il ruolo di coordinate
-generalizzate e il numero di grandezze indipendenti che lo individuano è uguale
-al numero di gradi di libertà del sistema.  L'equazione di Lagrange per la
-coordinata $\bm{r}$ è
+riferimento. Abbiamo nuovamente trovato che il problema dei due corpi diventa lo
+studio del moto di una particella libera, quella del centro di massa che abbiamo
+fissato nell'origine del sistema di riferimento, e della particella relativa in
+un campo esterno. Il vettore $\bm{r}$ svolge dunque il ruolo di coordinate
+generalizzate e poiché nello spazio è individuato da tre coordinate il numero di
+gradi di libertà del sistema si riduce in questo modo a tre. L'equazione di
+Lagrange per la coordinata $\bm{r}$ è
 \begin{equation}
   \toder{\bm{p}}{t} = -\toder{U(\bm{r})}{\bm{r}} \iff \mu\toder[2]{\bm{r}}{t} =
   -\nabla U(\bm{r}),
@@ -1157,9 +1162,9 @@ comporta, per l'equazione di Lagrange o per la seconda equazione di Hamilton,
 che la forza che agisce sulla particella relativa è centrale, quindi, come
 abbiamo visto nel paragrafo~\ref{sec:problema-keplero}, il vettore momento
 angolare $\bm{l}_0$ è un integrale primo e il moto si svolge in un piano. Allora
-il sistema ha due gradi di libertà e possiamo riscrivere la
-lagrangiana~\eqref{eq:lagrangiana2-due-corpi} nelle coordinate generalizzate
-polari $r,\theta$
+sono sufficienti due coordinate per studiare il moto della particella relativa e
+possiamo riscrivere la lagrangiana~\eqref{eq:lagrangiana2-due-corpi} nelle
+coordinate polari $r,\theta$
 \begin{equation}
   \mathcal{L} = \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2) - U(r).
 \end{equation}
@@ -1167,9 +1172,9 @@ La coordinata $\theta$ è ciclica e quindi il suo momento coniugato
 \begin{equation}
   p_\theta = \parder{\mathcal{L}}{\dot{\theta}} = \mu r^2\dot{\theta} = l_0
 \end{equation}
-è una costante del moto. Abbiamo così trovato nuovamente che il modulo del
-vettore momento angolare è costante e ricordiamo che, grazie a questo risultato,
-nel paragrafo~\ref{sec:problema-keplero} siamo stati in grado di dimostrare la
+è una costante del moto. Abbiamo così trovato di nuovo che il modulo del vettore
+momento angolare è costante e ricordiamo che, grazie a questo risultato, nel
+paragrafo~\ref{sec:problema-keplero} siamo stati in grado di dimostrare la
 seconda legge di Keplero. L'equazione di Lagrange per la coordinata $r$ è
 \begin{equation}
   \label{eq:eq-lagrange-due-corpi}
@@ -1193,8 +1198,10 @@ gravitazionale~\eqref{eq:potenziale-gravitazionale} è data da
 \begin{equation}
   \begin{split}
     \mathcal{H} &= p\dot{r} + p_\theta\dot{\theta} - \mathcal{L} =
-    \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2) - \frac{GM_\textup{T}\mu}{r} \\
-    &= \frac{1}{2}\mu\dot{r}^2 + \frac{1}{2}\frac{l_0^2}{\mu r^2} -
+    \frac{1}{2\mu} \left( p^{2} + \frac{p_{\theta}^{2}}{r^{2}} \right) -
+    \frac{GM_\textup{T}\mu}{r}  \\
+    &= \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2) - \frac{GM_\textup{T}\mu}{r}
+    = \frac{1}{2}\mu\dot{r}^2 + \frac{1}{2}\frac{l_0^2}{\mu r^2} -
     \frac{GM_\textup{T}\mu}{r},
   \end{split}
 \end{equation}
@@ -1268,11 +1275,17 @@ orbitale.
 \subsection{Integrali primi del moto}
 \label{sec:integrali-primi}
 
-Finora abbiamo trovato quattro costanti del moto: l'energia $E$ del sistema e le
-tre componenti del vettore momento angolare $\bm{l}_0$. Per tutti i campi
-centrali con forza del tipo $\bm{F} = -k\versor{r}/r^2$, agente su un corpo di
-massa $\mu$, esistono altre tre costanti corrispondenti alle tre componenti del
-\emph{vettore di Laplace-Runge-Lenz} (si veda
+Si dimostra che in un sistema isolato, come quello composto dai due corpi, con
+$n$ gradi di libertà esistono al massimo $2n-1$ integrali primi del moto
+indipendenti (si veda \textcite[42]{landau:meccanica}). Se il sistema ha $n$
+costanti indipendenti si dice \emph{integrabile}, se queste sono più di $n$ si
+dice \emph{superintegrabile}, se sono esattamente $2n-1$ il sistema sarà
+\emph{massimalmente superintegrabile}. Abbiamo visto che il problema di Keplero
+ha tre gradi di libertà e finora abbiamo trovati quattro costanti: l'energia $E$
+del sistema e le tre componenti del vettore momento angolare $\bm{l}_0$. Per
+tutti i campi centrali con forza del tipo $\bm{F} = -k\versor{r}/r^2$, agente su
+un corpo di massa $\mu$, esistono altre tre costanti corrispondenti alle tre
+componenti del \emph{vettore di Laplace-Runge-Lenz} (si veda
 \textcite[98]{goldstein:meccanica}) definito da
 \begin{equation}
   \bm{A} = \bm{p}\times\bm{l}_0 - \mu k\versor{r}.
@@ -1313,7 +1326,9 @@ Adesso conosciamo sette integrali primi del moto, ma non sono tutti fra loro
 indipendenti. Un prima relazione che lega queste costanti è l'ortogonalità fra
 $\bm{A}$ e $\bm{l}_0$, l'altra deriva da $A = \mu ke$. Infatti, ricordando la
 relazione~\eqref{eq:eccentricita-energia} fra l'eccentricità $e$ e l'energia $E$
-risulta $A^2 = \mu^2k^2e^2 = \mu^2k^2 + 2\mu El_0^2$.
+risulta $A^2 = \mu^2k^2e^2 = \mu^2k^2 + 2\mu El_0^2$. Questo prova l'esistenza
+di cinque costanti indipendenti fra le sette complessivamente trovate e il
+sistema è massimalmente superintegrabile.
 
 \section{Geometria del sistema binario}
 \label{sec:geometria-sistema}
