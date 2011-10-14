@@ -35,15 +35,15 @@ TUTTI_FILE		= $(PROG)/keplero-immagini $(PROG)/keplero-dat \
 	$(PROG)/eclissi.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
 	$(FRONTESPIZIO_PDF) mythesis.bbx mythesis.cbx
 CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
-	*.log *.out *.run.xml *.toc *~ $(wildcard Capitoli/*~) \
-	$(wildcard MaterialeInizialeFinale/*~) $(IMMAGINI_GNUPLOT_EPS) \
-	$(wildcard Immagini/gnuplot/*~) $(wildcard Immagini/tikz/*~) \
+	*.log *.nav *.out *.pgf-plot.* *.run.xml *.snm *.toc *~ \
+	$(wildcard Capitoli/*~) $(wildcard MaterialeInizialeFinale/*~) \
+	$(IMMAGINI_GNUPLOT_EPS) $(wildcard Immagini/gnuplot/*~) \
+	$(wildcard Immagini/tikz/*~) $(wildcard Immagini/presentazione/*~) \
 	$(wildcard $(PROG)/*~) $(wildcard $(PROG)/*.eps)
-DISTCLEAN_FILE		= $(PRINCIPALE_PDF) $(IMMAGINI_GNUPLOT_PDF) \
-	$(IMMAGINI_GNUPLOT_TEX) $(FRONTESPIZIO_FRN) $(FRONTESPIZIO_PDF) \
-	$(KEPLERO_DAT) $(PROG)/keplero-immagini $(PROG)/keplero-dat \
-	$(IMMAGINI_KEPLERO_PDF) $(IMMAGINI_KEPLERO_TEX) \
-	$(ECLISSI_DAT) $(PROG)/eclissi-immagini \
+DISTCLEAN_FILE		= *.pdf $(IMMAGINI_GNUPLOT_PDF) \
+	$(IMMAGINI_GNUPLOT_TEX) $(FRONTESPIZIO_FRN) $(KEPLERO_DAT) \
+	$(PROG)/keplero-immagini $(PROG)/keplero-dat $(IMMAGINI_KEPLERO_PDF) \
+	$(IMMAGINI_KEPLERO_TEX) $(ECLISSI_DAT) $(PROG)/eclissi-immagini \
 	$(IMMAGINI_ECLISSI_PDF) $(IMMAGINI_ECLISSI_TEX)
 
 ##### Regole
