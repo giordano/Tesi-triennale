@@ -13,6 +13,8 @@
  * letti da un software per la realizzazione di grafici.
  * Autore: Mosè Giordano
  * Data: 18/09/2011
+ * Licenza: GNU General Public License v3 o, a scelta, una
+ * versione successiva.  Vedi <http://www.gnu.org/licenses/>.
  */
 
 #include <stdio.h>

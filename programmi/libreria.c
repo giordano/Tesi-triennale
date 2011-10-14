@@ -1,3 +1,8 @@
+/* Autore: Mosè Giordano
+ * Data: 26/09/2011
+ * Licenza: GNU General Public License v3 o, a scelta, una
+ * versione successiva.  Vedi <http://www.gnu.org/licenses/>.
+ */
 #include "libreria.h"
 
 /* Funzione di cui vogliamo trovare le radici. Il primo
