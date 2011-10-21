@@ -177,12 +177,15 @@ dove $\phi \equiv \omega(t-t_0)$ è chiamata \emph{anomalia media}. Anche
 l'anomalia media varia fra $0$, valore raggiunto per al periapside $t = t_0$, e
 $2\pi$. Il corpo relativo passa all'apoapside all'istante $t = t_0 + P/2$,
 quindi in questo punto $\phi = \psi = \theta = \pi$. La~\eqref{eq:keplero} è
-detta \emph{equazione di Keplero}. In ogni fissato istante di tempo $t$, la sua
-soluzione $\psi$ permette di ricavare, tramite
-la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare $r$. Inoltre possiamo
-determinare una relazione tra l'anomalia eccentrica e l'anomalia vera $\theta$.
-Infatti, uguagliando i secondi membri delle equazioni~\eqref{eq:orbita}
-e~\eqref{eq:r-anomalia-eccentrica} abbiamo
+detta \emph{equazione di Keplero}.\footnote{In letteratura è usata spesso una
+  notazione differente: con $E$ si indica l'anomalia eccentrica, con $M$
+  l'anomalia media e con $n$ la velocità angolare media. In questo modo
+  l'equazione di Keplero assume l'espressione $M \equiv n(t-t_{0}) = E - e\sin
+  E$.} In ogni fissato istante di tempo $t$, la sua soluzione $\psi$ permette di
+ricavare, tramite la~\eqref{eq:r-anomalia-eccentrica}, la coordinata polare
+$r$. Inoltre possiamo determinare una relazione tra l'anomalia eccentrica e
+l'anomalia vera $\theta$. Infatti, uguagliando i secondi membri delle
+equazioni~\eqref{eq:orbita} e~\eqref{eq:r-anomalia-eccentrica} abbiamo
 \begin{equation}
   \begin{aligned}
     a(1-e\cos\psi) &= \frac{a(1-e^2)}{1+e\cos\theta} \iff 1+e\cos\theta =
@@ -476,7 +479,7 @@ dove
 avendo ricordato l'equazione di Keplero~\eqref{eq:keplero} e la rappresentazione
 integrale dei coefficienti di Bessel~\eqref{eq:bessel-integrale}. Dunque
 \begin{equation}
-  \toder{\psi}{\phi} = 1 + \sum_{n=1}^{+\infty}2J_n(x)\cos(n\phi).
+  \toder{\psi}{\phi} = 1 + \sum_{n=1}^{+\infty}2J_n(ne)\cos(n\phi).
 \end{equation}
 Integriamo questa equazione con la condizione iniziale del periapside $\psi(\phi
 = 0) = 0$

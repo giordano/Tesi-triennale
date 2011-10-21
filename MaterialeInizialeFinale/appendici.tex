@@ -8,7 +8,7 @@
   dell'equazione di Keplero}
 
 Di seguito è riportato il codice sorgente del programma usato per risolvere
-l'equazione di Keplero con i metodi numeric di Newton~-~Raphson e dei
+l'equazione di Keplero con i metodi numerici di Newton~-~Raphson e dei
 coefficienti di Bessel, illustrati nel
 paragrafo~\ref{sec:soluzione-keplero}. Per calcolare i coefficienti di Bessel ho
 utilizzato la GNU Scientific Library (GSL).\footnote{La GSL è software libero e
@@ -72,8 +72,6 @@ $ gcc -Wall -pedantic -lm -lgsl -lgslcblas -o eclissi \
 \end{verbatim}
 Eseguendo il programma si ottiene un file di testo, \verb|eclissi.dat|, con i
 risultati della simulazione.
-% TODO: ho commentato l'inserimento del codice per accelerare i tempi di
-% compilazione del documento, ricordarsi di decommentare nella versione finale!
 \lstinputlisting[language=C,caption={File \texttt{eclissi.c}}]
 {programmi/eclissi.c}
 

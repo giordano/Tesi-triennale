@@ -21,7 +21,7 @@
 
 % ruoto il sistema di riferimento principale x'y'z' intorno all'asse z'
 % dell'angolo `phi_0'
-\tdplotsetrotatedcoords{0}{0}{\angolophi}
+\tdplotsetrotatedcoords{\angolophi}{0}{0}
 % asse x
 \draw[tdplot_rotated_coords,->,ausiliario] (O) -- (1,0,0)
                                            node[anchor=north]{$x$};
@@ -34,7 +34,8 @@
 \tdplotdrawarc[->,tdplot_rotated_coords,ausiliario]{(O)}{0.8}%
 {90-\angolophi}{90}{anchor=north west}{$\phi_0$}
 
-% ruoto il sistema di riferimento xyz intorno all'asse y dell'angolo `phi_0'
+% ruoto il sistema di riferimento xyz (che deriva a sua volta dalla rotazione di
+% x'y'z' attorno a z' dell'angolo `phi_0') intorno all'asse y dell'angolo `i'
 \tdplotsetrotatedcoords{\angolophi}{-\angoloi}{0}
 % asse x''
 \draw[tdplot_rotated_coords,->,pdc] (O) -- (1,0,0)
