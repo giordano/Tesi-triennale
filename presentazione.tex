@@ -12,14 +12,16 @@
 \rel{Achille Nucita}
 \title{Il problema dei due corpi e applicazioni astrofisiche}
 \institute[UniSalento]{Università del Salento}
-\date{20 ottobre 2011 \\
-Licenza: CC-BY 3.0}
+\date{20 ottobre 2011}
 
 \usefonttheme{professionalfonts}
 \usepackage{lxfonts}
 
 \usepackage{booktabs,siunitx,tikz,tikz-3dplot,pgfplots}
 \pgfplotsset{compat=1.3}
+
+\usepackage[font=scriptsize,format=hang,labelformat=empty,
+textformat=period]{caption}
 
 \sisetup{per-mode=symbol,
   inter-unit-separator={}\cdot{},
@@ -38,6 +40,14 @@ Licenza: CC-BY 3.0}
 % varianti
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
+
+%% Nuove unità di misura
+\DeclareSIUnit\parsec{pc}
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\solarmass{\ensuremath{M_\odot}}
+% C'era già l'arcosecondo, però lo ridefinisco per essere coerente con gli
+% articoli che cito
+\DeclareSIUnit\arcsecond{as}
 
 % definisco il comando `\bm' uguale a `\vec' perché nelle slide preferisco
 % mettere la frecce piuttosto che usare il grassetto. Non uso direttamente
@@ -71,13 +81,12 @@ Licenza: CC-BY 3.0}
   \begin{columns}
     \begin{column}{0.5\columnwidth}
       Il \alert{problema dei due corpi} è lo studio del moto di due corpi
-      soggetti solamente alla mutua interazione dovuta a forze che soddisfano il
-      principio di azione e reazione.
+      soggetti solamente alla mutua interazione.
 
       Il \alert{problema di Keplero} si occupa del caso particolare della forza
       di gravità
       \begin{equation*}
-        \bm{F} = \frac{Gm_{1} m_{2}}{r^{3}}\bm{r},
+        \bm{F} = -\frac{Gm_{1} m_{2}}{r^{2}}\hat{r},
       \end{equation*}
       con $\bm{r} = \bm{r}_{2} - \bm{r}_{1}.$
     \end{column}
@@ -91,9 +100,29 @@ Licenza: CC-BY 3.0}
 \end{frame}
 
 \begin{frame}
+  \frametitle{Esempi di sistemi binari}
+  \begin{columns}
+    \begin{column}{0.48\columnwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\columnwidth]{presentazione/ophiuchi_binary_system}
+        \caption{Crediti: W. M. Keck Observatory}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.48\columnwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\columnwidth]{presentazione/star-planet}
+        \caption{Crediti: NASA/JPL-Caltech}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
   \frametitle{Risultati del problema dei due corpi}
   \begin{itemize}[<+->]
-  \item Il moto dei due corpi può essere ridotto al
+  \item Il moto dei due corpi può essere ricondotto al
     \alert{moto di un solo corpo} in un potenziale esterno
   \item Si \alert{conserva il momento angolare} e il moto dei due corpi si
     svolge in un \alert{piano} \\
@@ -124,55 +153,151 @@ parabola, iperbole). Nel caso dell'ellisse e della circonferenza abbiamo la
   \end{tikzpicture}
 \end{frame}
 
-% TODO: decidere se tenere o meno questa slide
-\begin{frame}
-  \frametitle{Geometria del sistema binario}
-  \begin{center}
-    \tdplotsetmaincoords{70}{135}
-    \begin{tikzpicture}[tdplot_main_coords,scale=4.5,font=\tiny]
-      \input{Immagini/tikz/geometria_sistema_binario}
-    \end{tikzpicture}
-  \end{center}
-\end{frame}
+% % non metto questa slide, non è necessaria
+% \begin{frame}
+%   \frametitle{Geometria del sistema binario}
+%   \begin{center}
+%     \tdplotsetmaincoords{70}{135}
+%     \begin{tikzpicture}[tdplot_main_coords,scale=4.5,font=\tiny]
+%       \input{Immagini/tikz/geometria_sistema_binario}
+%     \end{tikzpicture}
+%   \end{center}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Evoluzione temporale}
   \begin{block}{Equazione di Keplero}
     \begin{equation*}
-    \phi \equiv \omega t = \psi - e\sin\psi
+    \phi(t) \equiv \omega t = \psi(t) - e\sin\psi(t)
   \end{equation*}
   \end{block}
   \begin{center}
     \begin{tikzpicture}[font=\tiny,scale=1.9]
-      \input{Immagini/tikz/ellisse_keplero}
+      \input{Immagini/presentazione/ellisse_keplero}
     \end{tikzpicture}
   \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Applicazioni}
+  \frametitle{Applicazioni: Sgr A*}
   \begin{adv}
   \item Stima della massa di corpi non visibili
   \end{adv}
-  \begin{center}
-    \includegraphics[width=0.5\columnwidth]{Immagini/orbite_sgra}
-  \end{center}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.49\columnwidth]{presentazione/sgra}
+    \caption{Crediti: NASA/CXC/SAO}
+  \end{figure}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Applicazioni (continua)}
+  \frametitle{Applicazioni: Sgr A* (continua)}
+  \begin{columns}
+    \begin{column}{0.4\columnwidth}
+      \begin{table}
+        \centering
+        \begin{tabular}{lc}
+          \toprule
+          Grandezza         & Valore                       \\
+          \midrule
+          $R_0$             & \SI{7.96}{\kilo\parsec}      \\
+          $P$               & \SI{15.86}{\year}            \\
+          $a$               & \SI{126.5}{\milli\arcsecond} \\
+          $e$               & $0.8904$                     \\
+          $R_\textup{min}$  & \SI{0.535}{\milli\parsec}    \\
+          $M_{\textup{S}2}$ & circa \SI{15}{\solarmass}    \\
+          \bottomrule
+        \end{tabular}
+      \end{table}
+      Con questi dati $M_{\textup{BH}} = \SI{4.06e6}{\solarmass}$.
+    \end{column}
+    \begin{column}{0.5\columnwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\columnwidth]{orbite_sgra}
+        \caption{Crediti: S. Gillessen \emph{et al}}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applicazioni: Cygnus X-1}
+  \begin{columns}
+    \begin{column}{0.35\columnwidth}
+      Funzione di massa
+      \begin{equation*}
+        f(m_{1},m_{2}) = \frac{v_{1}^{3}P}{2\pi G}
+      \end{equation*}
+      Dati noti \\
+      $P = \SI{5.6}{d},$ \\
+      $v_{1} = \SI{75}{\kilo\metre\per\second}$. \\
+      Risultato \\
+      $m_{2} \gtrsim \SI{4}{\solarmass}$.
+    \end{column}
+    \begin{column}{0.55\columnwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\columnwidth]{presentazione/cygnusx1}
+        \caption{Crediti: ESA/Hubble}
+    \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applicazioni: transiti}
   \begin{adv}
   \item Individuazione e studio di pianeti extrasolari
   \end{adv}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.5\columnwidth]{presentazione/transit}
+    \caption{Crediti: NASA/JPL-Caltech}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applicazioni: transiti (continua)}
+  $\Delta t = t_{\textup{ef}} - t_{ii} = \dfrac{P(r_{1} + r_{2})}{\pi a}$
   \begin{center}
-    \begin{tikzpicture}[scale=0.55,font=\scriptsize]
+    \begin{tikzpicture}[scale=0.48,font=\scriptsize]
       \input{Immagini/tikz/schema_transito}
     \end{tikzpicture}
   \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Applicazioni (continua)}
+  \frametitle{Applicazioni: transiti (continua)}
+  \begin{columns}
+    \begin{column}{0.35\columnwidth}
+      \begin{figure}
+        \centering
+        \begin{tikzpicture}[scale=0.55]
+          \begin{axis}[restrict x to domain=0.985:1.005,xlabel={Fase
+              orbitale},ylabel={luminosità},
+            xtick={0.985,0.99,0.995,1,1.005},
+            xticklabels={$0.985$,$0.990$,$0.995$,$1.000$,$1.005$},
+            ytick={0.99,0.995,1,1.005},
+            yticklabels={$0.990$,$0.995$,$1.000$,$1.005$}]
+            \addplot[mark=none]
+            table[x index=0,y index=8]{programmi/eclissi.dat};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.55\columnwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.95\columnwidth]{presentazione/transito_nucita}
+        \caption{Crediti: Nucita \emph{et al}}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applicazioni: velocità radiale}
   \begin{adv}
   \item Calcolo della velocità di allontanamento dei sistemi binari
     % ricorda che con questa tecnica si può anche stimare il rapporto fra le
