@@ -23,8 +23,8 @@ tre file: \verb|keplero.c| che contiene il \verb|main|, l'header
 ambiente GNU/Linux ho usato i seguenti comandi da terminale
 \begin{verbatim}
 $ gcc -c -Wall -pedantic -lm -lgsl -lgslcblas libreria.c
-$ gcc -Wall -pedantic -lm -lgsl -lgslcblas -o keplero \
-  keplero.c libreria.o
+$ gcc keplero.c libreria.o -Wall -pedantic \
+  -lm -lgsl -lgslcblas -o keplero
 \end{verbatim}
 L'esecuzione del programma genera due file di testo, \verb|bessel.dat| e
 \verb|newton.dat|, contenenti i risultati delle simulazioni effettuate con i due
@@ -67,8 +67,8 @@ presenti nella libreria riportata nei codici~\ref{lst:lib.h} e
 seguenti comandi da terminale
 \begin{verbatim}
 $ gcc -c -Wall -pedantic -lm -lgsl -lgslcblas libreria.c
-$ gcc -Wall -pedantic -lm -lgsl -lgslcblas -o eclissi \
-  eclissi.c libreria.o
+$ gcc eclissi.c libreria.o -Wall -pedantic \
+  -lm -lgsl -lgslcblas -o eclissi
 \end{verbatim}
 Eseguendo il programma si ottiene un file di testo, \verb|eclissi.dat|, con i
 risultati della simulazione.

@@ -1,4 +1,5 @@
 SHELL		= /bin/sh
+CC		= gcc
 KEPLERO		= keplero
 ECLISSI		= eclissi
 EXES		= $(KEPLERO) $(ECLISSI)
@@ -14,17 +15,17 @@ DISTCLEAN_FILES	= $(EXES) $(OBJECT) *.dat *~
 all: $(EXES)
 
 $(KEPLERO): keplero.c $(HEADER) $(OBJECT)
-	gcc $(CFLAGS) $(LIBRARIES) -o $(KEPLERO) keplero.c $(OBJECT)
+	$(CC) keplero.c $(OBJECT) $(CFLAGS) $(LIBRARIES) -o $(KEPLERO)
 
 $(ECLISSI): eclissi.c $(HEADER) $(OBJECT)
-	gcc $(CFLAGS) $(LIBRARIES) -o $(ECLISSI) eclissi.c $(OBJECT)
+	$(CC) eclissi.c $(OBJECT) $(CFLAGS) $(LIBRARIES) -o $(ECLISSI)
 
 $(OBJECT): $(OBJECT_SOURCE) $(HEADER)
-	gcc -c $(CFLAGS) $(LIBRARIES) $(OBJECT_SOURCE)
+	$(CC) -c $(CFLAGS) $(LIBRARIES) $(OBJECT_SOURCE)
 
 distclean:
 	rm -f $(DISTCLEAN_FILES)
 
 # per effettuare il controllo della sintassi in Emacs con Flymake
 check-syntax:
-	gcc -o /dev/null $(CFLAGS) -S $(CHK_SOURCES)
+	$(CC) -o /dev/null $(CFLAGS) -S $(CHK_SOURCES)
