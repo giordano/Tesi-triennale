@@ -13,10 +13,6 @@
 \usepackage[autostyle=true]{csquotes}
 \usepackage[style=mythesis,hyperref,abbreviate=false,backend=biber]{biblatex}
 \usepackage{listings}
-% `listingsutf8' serve per risolvere il problema di `listings' con gli
-% accenti. Per un workaround alternativo vedi il sito
-% http://stackoverflow.com/questions/1116266/
-\usepackage{listingsutf8}
 % `mathtools' serve per definire la norma e il valore assoluto
 \usepackage{mathtools}
 \usepackage{frontespizio}
@@ -85,8 +81,23 @@
 \newtheorem*{teorema}{Teorema}
 
 % impostazioni del pacchetto `listings'.
-\lstset{basicstyle=\small\ttfamily,showstringspaces=false,frame=lines,
-  numbers=left,numberstyle=\tiny,extendedchars=true,inputencoding=utf8/latin1}
+\lstset{basicstyle=\small\ttfamily,
+  showstringspaces=false,
+  frame=lines,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true, % spezza le righe lunghe...
+  breakindent=10pt, % ...impostando l'indentazione delle continuazioni a 10pt
+  % aggiungo manualmente la "conversione" in comandi LaTeX per tutti i simboli
+  % "strani" presenti nei sorgenti che includo usando il pacchetto `listings'
+  literate=
+  {à}{{\`a}}1
+  {è}{{\`e}}1
+  {ì}{{\`i}}1
+  {ò}{{\`o}}1
+  {ù}{{\`u}}1
+  {·}{{\textperiodcentered}}1,
+}
 
 \addto\captionsitalian{%
   \renewcommand{\lstlistingname}{Codice}}
