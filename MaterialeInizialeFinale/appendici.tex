@@ -22,7 +22,7 @@ tre file: \verb|keplero.c| che contiene il \verb|main|, l'header
 \verb|libreria.h| e la libreria \verb|libreria.c|. Per compilare il programma in
 ambiente GNU/Linux ho usato i seguenti comandi da terminale
 \begin{verbatim}
-$ gcc -c -Wall -pedantic -lm -lgsl -lgslcblas libreria.c
+$ gcc -c -Wall -pedantic libreria.c
 $ gcc keplero.c libreria.o -Wall -pedantic \
   -lm -lgsl -lgslcblas -o keplero
 \end{verbatim}
@@ -66,7 +66,7 @@ presenti nella libreria riportata nei codici~\ref{lst:lib.h} e
 \verb|eclissi.c|. Per compilare il programma in ambiente GNU/Linux ho usato i
 seguenti comandi da terminale
 \begin{verbatim}
-$ gcc -c -Wall -pedantic -lm -lgsl -lgslcblas libreria.c
+$ gcc -c -Wall -pedantic libreria.c
 $ gcc eclissi.c libreria.o -Wall -pedantic \
   -lm -lgsl -lgslcblas -o eclissi
 \end{verbatim}

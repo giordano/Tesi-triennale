@@ -21,7 +21,7 @@ $(ECLISSI): eclissi.c $(HEADER) $(OBJECT)
 	$(CC) eclissi.c $(OBJECT) $(CFLAGS) $(LIBRARIES) -o $(ECLISSI)
 
 $(OBJECT): $(OBJECT_SOURCE) $(HEADER)
-	$(CC) -c $(CFLAGS) $(LIBRARIES) $(OBJECT_SOURCE)
+	$(CC) -c $(CFLAGS) $(OBJECT_SOURCE)
 
 distclean:
 	rm -f $(DISTCLEAN_FILES)
