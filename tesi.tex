@@ -4,6 +4,7 @@
 \usepackage[italian]{babel}
 
 %%%%% Pacchetti caricati
+\usepackage[light]{kpfonts}
 \usepackage{fancyhdr,emptypage}
 \usepackage{layaureo}
 \usepackage[font=small,format=hang,labelfont=bf,textformat=period]{caption}
@@ -18,12 +19,13 @@
 \usepackage{frontespizio}
 % pacchetto per inserire il simbolo del GuIT
 \usepackage{guit}
-% pacchetti matematici dell'American Mathematical Society
-\usepackage{amsmath,amssymb,amsthm}
-% `bm' serve per scrivere i vettori in corsivo con il comando
-% `\bm{vettore}'. Deve sostituire il comando `\mathbf{vettore}' perché questo
-% restituisce erroneamente lettere in tondo, non in corsivo e non funziona con
-% le lettere greche.
+% pacchetto per i teoremi
+\usepackage{amsthm}
+% `bm' serve per scrivere i vettori in corsivo con il comando `\bm{vettore}'.
+% Deve sostituire il comando `\mathbf{vettore}' perché questo restituisce
+% erroneamente lettere in tondo, non in corsivo e non funziona con le lettere
+% greche.  Caricarlo *dopo* il font, altrimenti i vettori saranno composti con
+% Computer Modern!
 \usepackage{bm}
 \usepackage{siunitx}
 \usepackage{hyperref}
