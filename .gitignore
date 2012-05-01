@@ -5,6 +5,7 @@ tesi-frn.tex
 *.blg
 *-blx.bib
 *.fdb_latexmk
+*.fls
 *.log
 *.lof
 *.nav

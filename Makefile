@@ -34,8 +34,8 @@ TUTTI_FILE		= $(PROG)/keplero-immagini $(PROG)/keplero-dat \
 	$(PROG)/keplero.c $(PROG)/eclissi-immagini $(ECLISSI_DAT) \
 	$(PROG)/eclissi.c $(TUTTI_TEX) $(BIBLIOGRAFIA) $(IMMAGINI_GNUPLOT_PDF) \
 	$(FRONTESPIZIO_PDF) mythesis.bbx mythesis.cbx
-CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.lof \
-	*.log *.nav *.out *.pgf-plot.* *.run.xml *.snm *.toc *~ \
+CLEAN_FILE		= *.aux *.bbl *.bcf *.blg *-blx.bib *.fdb_latexmk *.fls \
+	*.lof *.log *.nav *.out *.pgf-plot.* *.run.xml *.snm *.toc *~ \
 	$(wildcard Capitoli/*~) $(wildcard MaterialeInizialeFinale/*~) \
 	$(IMMAGINI_GNUPLOT_EPS) $(wildcard Immagini/gnuplot/*~) \
 	$(wildcard Immagini/tikz/*~) $(wildcard Immagini/presentazione/*~) \
@@ -53,7 +53,7 @@ DISTCLEAN_FILE		= *.pdf $(IMMAGINI_GNUPLOT_PDF) \
 pdf: $(PRINCIPALE_PDF)
 
 $(PRINCIPALE_PDF): $(TUTTI_FILE)
-	latexmk -pdf $(PRINCIPALE_TEX)
+	latexmk -pdf -recorder $(PRINCIPALE_TEX)
 
 $(FRONTESPIZIO_PDF): $(FRONTESPIZIO)
 	pdflatex $(PRINCIPALE_TEX)
