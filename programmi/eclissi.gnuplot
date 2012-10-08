@@ -1,6 +1,8 @@
 # imposta il terminale su `epslatex'
 set term epslatex
 
+set lmargin at screen 0.15
+set rmargin at screen 1
 set style data lines # stile dei dati: linea
 unset key
 set format x "$%g$"
@@ -26,8 +28,8 @@ set xtics rotate
 set zeroaxis linewidth 2
 
 set output 'programmi/piano_cielo.tex'
-set xlabel "$y\\prime\\prime$ (\\si{\\centi\\metre})" offset 0,5
-set ylabel "$z\\prime\\prime$ (\\si{\\centi\\metre})" offset 8,0
+set xlabel "$y\\prime\\prime$ (\\si{\\centi\\metre})" offset 0,-1.5
+set ylabel "$z\\prime\\prime$ (\\si{\\centi\\metre})"
 set bmargin 6
 set lmargin 11
 set key

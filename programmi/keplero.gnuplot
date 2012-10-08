@@ -2,6 +2,8 @@
 set term epslatex
 
 # impostazioni per tutti i grafici
+set lmargin at screen 0.13
+set rmargin at screen 1
 set xlabel "$t$ (\\si{\\hour})" # etichetta asse x
 set format x "$%g$" # formato dei tic dell'asse x
 set style data lines # stile dei dati: linea

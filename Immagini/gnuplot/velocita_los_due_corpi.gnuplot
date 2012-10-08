@@ -2,6 +2,8 @@
 set term epslatex size 6,3
 # imposta il file di output
 set output 'Immagini/gnuplot/velocita_los_due_corpi.tex'
+set lmargin at screen 0.12
+set rmargin at screen 0.86
 unset xtics
 #set ytics nomirror
 set format y "$%g$"

@@ -2,6 +2,8 @@
 set term epslatex size 6,3
 # imposta il file di output
 set output 'Immagini/gnuplot/velocita_los.tex'
+set lmargin at screen 0.12
+set rmargin at screen 0.86
 unset xtics
 set format y "$%g$"
 set key bottom right

@@ -1,6 +1,8 @@
 # imposta il terminale su `epslatex'
 set term epslatex size 6,3
 # imposta il file di output
+set lmargin at screen 0.08
+set rmargin at screen 0.86
 set output 'Immagini/gnuplot/velocita.tex'
 set key top center
 unset xtics
